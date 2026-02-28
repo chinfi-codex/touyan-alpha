@@ -61,11 +61,11 @@ jobs:
 
           if [ -z "$DATE" ]; then
             DATE=$(python - <<'PY'
-from datetime import datetime
-from zoneinfo import ZoneInfo
-print(datetime.now(ZoneInfo('Asia/Shanghai')).strftime('%Y-%m-%d'))
-PY
-)
+            from datetime import datetime
+            from zoneinfo import ZoneInfo
+            print(datetime.now(ZoneInfo('Asia/Shanghai')).strftime('%Y-%m-%d'))
+            PY
+            )
           fi
 
           echo "slot=$SLOT" >> "$GITHUB_OUTPUT"
