@@ -57,8 +57,36 @@ projects/投研alpha/
 
 ```bash
 cd /home/admin/.openclaw/workspace/projects/投研alpha
-python3 collect.py --date 2026-02-26
+python3 collect.py --date 2026-02-26 --slot 2200
+python3 render_static_report.py --date 2026-02-26
+python3 scripts/publish_daily.py --date 2026-02-26 --slot 2200
 ```
+
+## 定时更新 + GitHub Pages 发布（已内置 workflow）
+
+工作流文件：`.github/workflows/daily-update-pages.yml`
+
+- 每天 **07:10（北京时间）**：执行 `slot=0700`（早盘前快照，偏新闻）
+- 每天 **22:10（北京时间）**：执行 `slot=2200`（收盘后全量）
+- 同时支持手动触发（`workflow_dispatch`）
+
+运行结果：
+
+- 原始数据落地：`output/YYYY-MM-DD/*.json`
+- 页面发布目录：`docs/`
+  - `docs/index.html`：入口页（最近 30 天）
+  - `docs/YYYY-MM-DD/index.html`：日报页面
+  - `docs/data/YYYY-MM-DD/*.json`：对应原始数据
+
+### 首次启用步骤
+
+1. 在 GitHub 仓库设置里打开 Pages：
+   - **Source** 选 `Deploy from a branch`
+   - Branch 选 `master`（或 `main`），Folder 选 `/docs`
+2. 在仓库 Secrets 中配置（按需）：
+   - `TUSHARE_TOKEN`
+   - `TAVILY_API_KEY`
+3. 在 Actions 页面手动运行一次 `Daily Update + Pages` 验证。
 
 ## 已接入信源清单（第一步）
 

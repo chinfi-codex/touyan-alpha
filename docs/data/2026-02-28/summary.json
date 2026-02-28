@@ -1,0 +1,12 @@
+{
+  "date": "2026-02-28",
+  "slot": "2200",
+  "counts": {
+    "tushare_forecast": 4
+  },
+  "counts_by_subcategory": {
+    "业绩预告": 4
+  },
+  "excluded_counts_by_rule": {},
+  "errors": {}
+}
