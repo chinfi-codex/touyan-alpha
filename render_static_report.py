@@ -35,6 +35,15 @@ def domain_of(url):
         return ""
 
 
+def fmt_pct(v):
+    if v is None or v == "":
+        return ""
+    try:
+        return f"{float(v):.2f}%"
+    except Exception:
+        return str(v)
+
+
 def render_simple_table(title, items, columns, empty_text="无数据", limit=30):
     rows_html = []
     for item in top_items(items, limit=limit):
@@ -46,6 +55,8 @@ def render_simple_table(title, items, columns, empty_text="无数据", limit=30)
                 cell = f"<a href='{fmt(link)}' target='_blank'>link</a>" if link else ""
             elif kind == "domain":
                 cell = fmt(domain_of(item.get("url")))
+            elif col.get("type") == "pct":
+                cell = fmt(fmt_pct(item.get(kind)))
             else:
                 cell = fmt(item.get(kind))
             cls = " class='title'" if col.get("title") else ""
@@ -175,7 +186,9 @@ def render_report(date, base_dir):
             {"label": "Date", "key": "date"},
             {"label": "Symbol", "key": "symbol"},
             {"label": "Company", "key": "company"},
-            {"label": "Title", "key": "title", "title": True},
+            {"label": "变动下限", "key": "change_range_min", "type": "pct"},
+            {"label": "变动上限", "key": "change_range_max", "type": "pct"},
+            {"label": "变动原因", "key": "change_reason", "title": True},
             {"label": "Summary", "key": "summary", "title": True},
             {"label": "URL", "key": "url"},
         ],

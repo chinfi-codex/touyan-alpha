@@ -63,6 +63,10 @@ def collect(date, include_next_day=False):
                 continue
             seen.add(dedup_key)
 
+            p_change_min = raw.get("p_change_min")
+            p_change_max = raw.get("p_change_max")
+            change_reason = str(raw.get("change_reason") or "")
+
             items.append(
                 normalize_item(
                     date=date,
@@ -80,6 +84,9 @@ def collect(date, include_next_day=False):
                     exclude_reason="",
                     tags=["业绩预告"],
                     event_time=str(raw.get("ann_date") or ""),
+                    change_range_min=p_change_min,
+                    change_range_max=p_change_max,
+                    change_reason=change_reason,
                 )
             )
 
