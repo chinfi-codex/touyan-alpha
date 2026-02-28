@@ -1,0 +1,87 @@
+﻿#!/usr/bin/env python3
+import argparse
+import datetime as dt
+import json
+from pathlib import Path
+
+from adapters import ADAPTERS
+
+
+def _adapter_source(adapter):
+    return getattr(adapter, "SOURCE", adapter.__name__.split(".")[-1])
+
+
+def _parse_sources(raw):
+    if not raw:
+        return set()
+    return {x.strip() for x in raw.split(",") if x.strip()}
+
+
+def _default_sources_by_slot(slot):
+    if slot == "0700":
+        return {"tavily_news"}
+    if slot == "2200":
+        return {"cninfo_fulltext", "cninfo_relation", "p5w_interaction", "tushare_forecast", "tavily_news"}
+    # Keep legacy default behavior when slot is not specified.
+    return {"cninfo_fulltext", "cninfo_relation", "p5w_interaction", "tushare_forecast"}
+
+
+def run_collect(date, base_dir, slot="", sources=""):
+    out_dir = base_dir / "output" / date
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    selected = _parse_sources(sources) or _default_sources_by_slot(slot)
+    summary = {
+        "date": date,
+        "slot": slot or "",
+        "counts": {},
+        "counts_by_subcategory": {},
+        "excluded_counts_by_rule": {},
+        "errors": {},
+    }
+
+    for adapter in ADAPTERS:
+        src = _adapter_source(adapter)
+        if selected and src not in selected:
+            continue
+
+        if src == "tushare_forecast":
+            result = adapter.collect(date, include_next_day=(slot == "2200"))
+        elif src == "tavily_news":
+            result = adapter.collect(date, slot=slot)
+        else:
+            result = adapter.collect(date)
+
+        src = result["source"]
+        (out_dir / (src + ".json")).write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+        summary["counts"][src] = result.get("count", 0)
+
+        for item in result.get("items") or []:
+            sub = item.get("subcategory") or ""
+            if sub:
+                summary["counts_by_subcategory"][sub] = summary["counts_by_subcategory"].get(sub, 0) + 1
+            if item.get("excluded"):
+                rid = item.get("rule_id") or "excluded.unknown"
+                summary["excluded_counts_by_rule"][rid] = summary["excluded_counts_by_rule"].get(rid, 0) + 1
+
+        if result.get("error"):
+            summary["errors"][src] = result["error"]
+
+    (out_dir / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    return summary
+
+
+def main():
+    ap = argparse.ArgumentParser(description="投研alpha：按日期聚合抓取信源")
+    ap.add_argument("--date", default=dt.date.today().strftime("%Y-%m-%d"), help="抓取日期 YYYY-MM-DD")
+    ap.add_argument("--slot", default="", choices=["", "0700", "2200"], help="运行时段，用于控制窗口逻辑")
+    ap.add_argument("--sources", default="", help="仅运行指定源，逗号分隔")
+    ap.add_argument("--project-dir", default=str(Path(__file__).resolve().parent), help="项目目录")
+    args = ap.parse_args()
+
+    summary = run_collect(args.date, Path(args.project_dir), slot=args.slot, sources=args.sources)
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+
+
+if __name__ == "__main__":
+    main()
