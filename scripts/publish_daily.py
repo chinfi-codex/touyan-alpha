@@ -41,9 +41,8 @@ def main() -> None:
     # publish report
     target_name = "index.html" if not slot else f"index-{slot}.html"
     shutil.copy2(report, daily_dir / target_name)
-    # keep a stable file for final/night run
-    if slot == "2200" or not slot:
-        shutil.copy2(report, daily_dir / "index.html")
+    # always keep a stable entry for that date
+    shutil.copy2(report, daily_dir / "index.html")
 
     # publish raw json for debugging/inspection
     data_dir = docs / "data" / date
