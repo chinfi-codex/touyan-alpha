@@ -1,16 +1,19 @@
 {
   "date": "2026-03-01",
-  "slot": "0700",
+  "slot": "2200",
   "counts": {
-    "cninfo_fulltext": 0,
-    "cninfo_relation": 0,
-    "p5w_interaction": 0,
+    "cninfo_fulltext": 2,
+    "cninfo_relation": 6,
+    "p5w_interaction": 22,
     "tushare_forecast": 0,
-    "tavily_news": 46
+    "tavily_news": 45
   },
   "counts_by_subcategory": {
-    "科技新闻": 22,
-    "宏观新闻": 24
+    "其他": 2,
+    "机构调研": 6,
+    "互动问答": 22,
+    "科技新闻": 20,
+    "宏观新闻": 25
   },
   "excluded_counts_by_rule": {},
   "errors": {}

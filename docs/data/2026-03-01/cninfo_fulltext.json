@@ -1,7 +1,114 @@
 {
   "date": "2026-03-01",
   "source": "cninfo_fulltext",
-  "count": 0,
+  "count": 2,
   "error": "",
-  "items": []
+  "items": [
+    {
+      "date": "2026-03-01",
+      "source": "cninfo_fulltext",
+      "symbol": "301009",
+      "company": "可靠股份",
+      "title": "关于取消召开2026年第二次临时股东会的公告",
+      "summary": "关于取消召开2026年第二次临时股东会的公告",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-03-01/1224989518.PDF",
+      "raw": {
+        "id": null,
+        "secCode": "301009",
+        "secName": "可靠股份",
+        "orgId": "9900023748",
+        "announcementId": "1224989518",
+        "announcementTitle": "关于取消召开2026年第二次临时股东会的公告",
+        "announcementTime": 1772294400000,
+        "adjunctUrl": "finalpage/2026-03-01/1224989518.PDF",
+        "adjunctSize": 120,
+        "adjunctType": "PDF",
+        "storageTime": null,
+        "columnId": "09020202||160203||250301||251302",
+        "pageColumn": "SZCY",
+        "announcementType": "01010503||010112||010115||011901||011903",
+        "associateAnnouncement": null,
+        "important": null,
+        "batchNum": null,
+        "announcementContent": "",
+        "orgName": null,
+        "tileSecName": "可靠股份",
+        "shortTitle": "关于取消召开2026年第二次临时股东会的公告",
+        "announcementTypeName": null,
+        "secNameList": null,
+        "classification": {
+          "category": "上市公司公开信息",
+          "subcategory": "其他",
+          "rule_id": "cninfo.fulltext.other.v1",
+          "excluded": false,
+          "exclude_reason": "",
+          "tags": [
+            "其他"
+          ]
+        }
+      },
+      "category": "上市公司公开信息",
+      "subcategory": "其他",
+      "rule_id": "cninfo.fulltext.other.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "其他"
+      ],
+      "event_time": "2026-03-01"
+    },
+    {
+      "date": "2026-03-01",
+      "source": "cninfo_fulltext",
+      "symbol": "301009",
+      "company": "可靠股份",
+      "title": "第五届董事会第十八次（临时）会议决议公告",
+      "summary": "第五届董事会第十八次（临时）会议决议公告",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-03-01/1224989517.PDF",
+      "raw": {
+        "id": null,
+        "secCode": "301009",
+        "secName": "可靠股份",
+        "orgId": "9900023748",
+        "announcementId": "1224989517",
+        "announcementTitle": "第五届董事会第十八次（临时）会议决议公告",
+        "announcementTime": 1772294400000,
+        "adjunctUrl": "finalpage/2026-03-01/1224989517.PDF",
+        "adjunctSize": 100,
+        "adjunctType": "PDF",
+        "storageTime": null,
+        "columnId": "09020202||160203||250301||251302",
+        "pageColumn": "SZCY",
+        "announcementType": "01010503||010112||010115||01239901",
+        "associateAnnouncement": null,
+        "important": null,
+        "batchNum": null,
+        "announcementContent": "",
+        "orgName": null,
+        "tileSecName": "可靠股份",
+        "shortTitle": "第五届董事会第十八次（临时）会议决议公告",
+        "announcementTypeName": null,
+        "secNameList": null,
+        "classification": {
+          "category": "上市公司公开信息",
+          "subcategory": "其他",
+          "rule_id": "cninfo.fulltext.other.v1",
+          "excluded": false,
+          "exclude_reason": "",
+          "tags": [
+            "其他"
+          ]
+        }
+      },
+      "category": "上市公司公开信息",
+      "subcategory": "其他",
+      "rule_id": "cninfo.fulltext.other.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "其他"
+      ],
+      "event_time": "2026-03-01"
+    }
+  ]
 }
