@@ -1,0 +1,51 @@
+{
+  "date": "2026-03-02",
+  "source": "cninfo_relation",
+  "count": 1,
+  "error": "",
+  "items": [
+    {
+      "date": "2026-03-02",
+      "source": "cninfo_relation",
+      "symbol": "300190",
+      "company": "维尔利",
+      "title": "300190维尔利投资者关系管理信息20260302",
+      "summary": "300190维尔利投资者关系管理信息20260302",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-03-02/1224989598.PDF",
+      "raw": {
+        "id": null,
+        "secCode": "300190",
+        "secName": "维尔利",
+        "orgId": "9900017267",
+        "announcementId": "1224989598",
+        "announcementTitle": "300190维尔利投资者关系管理信息20260302",
+        "announcementTime": 1772382868000,
+        "adjunctUrl": "finalpage/2026-03-02/1224989598.PDF",
+        "adjunctSize": 196,
+        "adjunctType": "PDF",
+        "storageTime": null,
+        "columnId": "01010415||01010419||160213||160217||251310||251314",
+        "pageColumn": "SZCY",
+        "announcementType": "012001",
+        "associateAnnouncement": null,
+        "important": null,
+        "batchNum": null,
+        "announcementContent": "",
+        "orgName": null,
+        "tileSecName": "维尔利",
+        "shortTitle": "300190维尔利投资者关系管理信息20260302",
+        "announcementTypeName": null,
+        "secNameList": null
+      },
+      "category": "上市公司公开信息",
+      "subcategory": "机构调研",
+      "rule_id": "cninfo.relation.fixed.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "机构调研"
+      ],
+      "event_time": "2026-03-02"
+    }
+  ]
+}
