@@ -19,7 +19,7 @@ def _parse_sources(raw):
 
 def _default_sources_by_slot(slot):
     if slot == "0700":
-        return {"tavily_news"}
+        return {"cninfo_fulltext", "cninfo_relation", "p5w_interaction", "tushare_forecast", "tavily_news"}
     if slot == "2200":
         return {"cninfo_fulltext", "cninfo_relation", "p5w_interaction", "tushare_forecast", "tavily_news"}
     # Keep legacy default behavior when slot is not specified.
