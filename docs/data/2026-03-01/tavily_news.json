@@ -1,37 +1,9 @@
 {
   "date": "2026-03-01",
   "source": "tavily_news",
-  "count": 50,
+  "count": 46,
   "error": "",
   "items": [
-    {
-      "date": "2026-03-01",
-      "source": "tavily_news",
-      "symbol": "",
-      "company": "",
-      "title": "Say Goodbye to the Idea of Chinese RAM Being Cheap; 32GB DDR5 Modules Now Retail for Over $500 as Local Prices Catch Up Globally - Wccftech",
-      "summary": "Right now, memory suppliers have every reason to cater to enterprise demand, and they cannot afford to allocate their 'precious' capacity to consumer segments, where the ROI is lower than what AI customers are willing to pay. We recently discussed how CXMT plans to shift a significant chunk of its D",
-      "url": "https://wccftech.com/chinese-memory-prices-have-started-to-catch-up-with-global-markets/",
-      "raw": {
-        "url": "https://wccftech.com/chinese-memory-prices-have-started-to-catch-up-with-global-markets/",
-        "title": "Say Goodbye to the Idea of Chinese RAM Being Cheap; 32GB DDR5 Modules Now Retail for Over $500 as Local Prices Catch Up Globally - Wccftech",
-        "score": 3,
-        "published_date": "Sun, 22 Feb 2026 09:43:42 GMT",
-        "content": "Right now, memory suppliers have every reason to cater to enterprise demand, and they cannot afford to allocate their 'precious' capacity to consumer segments, where the ROI is lower than what AI customers are willing to pay. We recently discussed how CXMT plans to shift a significant chunk of its DRAM capacity to HBM3, which is a clear indicator of why even the region's DRAM producers won't take their chances by siding with consumer businesses. [...] We did see the narrative of Chinese memory emerging as a 'saviour' for gamers pop up a few weeks ago, and it was mainly driven by the fact that manufacturers like CXMT weren't as mainstream compared to the 'Big 3' memory suppliers. However, it didn't take much time for the Chinese RAM retail market to catch up to global prices, as according to a recent listing by KingBank, a 32 GB DDR5 memory is now going for 3629 yuan, which is around $530 on the Chinese retail platform JD.com, which is a similar price tag to what Western alternatives are offering for the same memory configuration.\n\n##### Related Story Samsung’s Memory Comeback Is One to Watch as the Korean Giant Reclaims the Top Spot in the Industry After Losing Ground Just a Few Quarters Ago [...] HardwareReport\n\n# Say Goodbye to the Idea of Chinese RAM Being Cheap; 32GB DDR5 Modules Now Retail for Over $500 as Local Prices Catch Up Globally\n\nMuhammad Zuhair\n\n•\n\nAdd Wccftech on Google  Comments\n\nWell, the idea that Chinese memory modules are cheaper has been outdated, as a recent DDR5 listing by a domestic vendor shows that RAM prices have almost leveled out worldwide.\n\n## KingBank's DDR5 Modules Are Now Retailing For Prices Similar to Western Alternatives, As Shortages Leave No Other Way",
-        "raw_content": null,
-        "topic": "memory",
-        "slot": "0700"
-      },
-      "category": "新闻",
-      "subcategory": "科技新闻",
-      "rule_id": "tavily.news.topic_filter.v1",
-      "excluded": false,
-      "exclude_reason": "",
-      "tags": [
-        "memory"
-      ],
-      "event_time": "Sun, 22 Feb 2026 09:43:42 GMT"
-    },
     {
       "date": "2026-03-01",
       "source": "tavily_news",
@@ -45,7 +17,7 @@
         "title": "Asia tech stocks rally as Nvidia earnings soothe AI slowdown fears - CNBC",
         "score": 2,
         "published_date": "Thu, 26 Feb 2026 02:03:58 GMT",
-        "content": "SK Hynix, which is a key supplier of high-bandwidth memory used in AI applications to Nvidia, rose over 2%. Samsung Electronics, which has been a decades-old partner of Nvidia, was up about 5%.\n\n\"This is a positive read through for many of the Asia supply chain players including SK Hynix, Samsung, and many others given the explosion of data center demand,\" said Dan Ives,  senior equity research analyst at Wedbush Securities.\n\nOther South Korean tech stocks also rose, with components manufacturer LG Innotek surging almost 14%, while Seoul Semiconductor soared 13%.\n\nIn Japan, the TOPIX Information & Communication index climbed 2.6%, building on previous day's 0.58% gain.\n\nSoftware firm Trend Micro jumped 5.95%, while Sony Group rose over 3.86%. SoftBank Group added 5%. [...] WATCH LIVE\n\nKey Points\n\n Asian tech stocks rallied in early trading on Thursday after stronger-than-expected results from Nvidia.\n Japan's TOPIX Information & Communication index climbed 2.6%.\n Nvidia partners SK Hynix and Samsung rose 2% and 5%, respectively.\n\nIn this article\n\n NVDA\n\nCheng Xin | Getty Images News | Getty Images\n\nAsian tech stocks rallied in early trading on Thursday as stronger-than-expected results from Nvidia eased concerns that momentum in artificial intelligence sector was cooling.\n\nShares of South Korean chipmaking giants Samsung Electronics and SK Hynix jumped in early trade. [...] Watchlist\n\nInvesting Club\n\n Trust Portfolio\n Analysis\n Trade Alerts\n Meeting Videos\n Homestretch\n Jim's Columns\n Education\n Subscribe\n\nPRO\n\n Pro News\n Josh Brown\n Mike Santoli\n Calls of the Day\n My Portfolio\n Livestream\n Full Episodes\n Stock Screener\n Market Forecast\n Options Investing\n Chart Investing\n Subscribe\n\nLivestream\n\n Make It\n select\n\n USA\n INTL\n\n Livestream\n\n Livestream\n\nWatchlist\n\nSIGN IN\n\nCreate free account\n\nMarkets\n\nBusiness\n\nInvesting\n\nTech\n\nPolitics\n\nVideo\n\nWatchlist\n\nInvesting Club\n\nPRO\n\nLivestream\n\nAsia Markets\n\n# Asia tech stocks rally as Nvidia earnings soothe AI slowdown fears\n\nLee Ying Shan@in/ying-shan-lee@LeeYingshan\n\nWATCH LIVE\n\nKey Points",
+        "content": "SK Hynix, which is a key supplier of high-bandwidth memory used in AI applications to Nvidia, rose over 2%. Samsung Electronics, which has been a decades-old partner of Nvidia, was up about 5%.\n\n\"This is a positive read through for many of the Asia supply chain players including SK Hynix, Samsung, and many others given the explosion of data center demand,\" said Dan Ives,  senior equity research analyst at Wedbush Securities.\n\nOther South Korean tech stocks also rose, with components manufacturer LG Innotek surging almost 14%, while Seoul Semiconductor soared 13%.\n\nIn Japan, the TOPIX Information & Communication index climbed 2.6%, building on previous day's 0.58% gain.\n\nSoftware firm Trend Micro jumped 5.95%, while Sony Group rose over 3.86%. SoftBank Group added 5%. [...] Skip Navigation\n\nMarkets\n\n Pre-Markets\n U.S. Markets\n Currencies\n Prediction Markets\n Cryptocurrency\n Futures & Commodities\n Bonds\n Funds & ETFs\n\nBusiness\n\n Economy\n Finance\n Health & Science\n Media\n Real Estate\n Energy\n Climate\n Transportation\n Investigations\n Industrials\n Retail\n Wealth\n Sports\n Life\n Small Business\n\nInvesting\n\n Personal Finance\n Fintech\n Financial Advisors\n Options Action\n ETF Street\n Buffett Archive\n Earnings\n Trader Talk\n\nTech\n\n Cybersecurity\n AI\n Enterprise\n Internet\n Media\n Mobile\n Social Media\n CNBC Disruptor 50\n Tech Guide\n\nPolitics\n\n White House\n Policy\n Defense\n Congress\n Expanding Opportunity\n\nVideo\n\n Latest Video\n Full Episodes\n Livestream\n Live Audio\n Live TV Schedule\n CNBC Podcasts\n CEO Interviews\n CNBC Documentaries\n Digital Originals\n\nWatchlist [...] Watchlist\n\nInvesting Club\n\n Trust Portfolio\n Analysis\n Trade Alerts\n Meeting Videos\n Homestretch\n Jim's Columns\n Education\n Subscribe\n\nPRO\n\n Pro News\n Josh Brown\n Mike Santoli\n Calls of the Day\n My Portfolio\n Livestream\n Full Episodes\n Stock Screener\n Market Forecast\n Options Investing\n Chart Investing\n Subscribe\n\nLivestream\n\n Make It\n select\n\n USA\n INTL\n\n Livestream\n\n Livestream\n\nWatchlist\n\nSIGN IN\n\nCreate free account\n\nMarkets\n\nBusiness\n\nInvesting\n\nTech\n\nPolitics\n\nVideo\n\nWatchlist\n\nInvesting Club\n\nPRO\n\nLivestream\n\nAsia Markets\n\n# Asia tech stocks rally as Nvidia earnings soothe AI slowdown fears\n\nLee Ying Shan@in/ying-shan-lee@LeeYingshan\n\nWATCH LIVE\n\nKey Points",
         "raw_content": null,
         "topic": "memory",
         "slot": "0700"
@@ -65,15 +37,43 @@
       "source": "tavily_news",
       "symbol": "",
       "company": "",
+      "title": "Foresight and Flexibility: Winning in a Constrained Semiconductor Market - Inbound Logistics",
+      "summary": "While analog is more widely distributed and easier to stockpile, memory is concentrated among a handful of manufacturers, carries high dollar value, and is rarely held in inventory. These structural characteristics make the segment highly sensitive to shifts in demand.  \n\nMajor memory producers (Mic",
+      "url": "https://www.inboundlogistics.com/articles/foresight-and-flexibility-winning-in-a-constrained-semiconductor-market/",
+      "raw": {
+        "url": "https://www.inboundlogistics.com/articles/foresight-and-flexibility-winning-in-a-constrained-semiconductor-market/",
+        "title": "Foresight and Flexibility: Winning in a Constrained Semiconductor Market - Inbound Logistics",
+        "score": 2,
+        "published_date": "Fri, 27 Feb 2026 19:36:23 GMT",
+        "content": "While analog is more widely distributed and easier to stockpile, memory is concentrated among a handful of manufacturers, carries high dollar value, and is rarely held in inventory. These structural characteristics make the segment highly sensitive to shifts in demand.  \n\nMajor memory producers (Micron, Samsung, and SK Hynix) are directing the bulk of their capacity toward high-performance memory for AI and cloud workloads. This leaves far less available for traditional markets such as consumer electronics, automotive components, and healthcare devices, creating mounting pressures throughout the supply chain. [...] ×\n\n## 200,000 Readers Can’t Be Wrong\n\nJoin them by signing up for our free, weekly newsletter for supply chain and logistics news you can use.\n\n\"\\\" indicates required fields [...] Skip to Content)\n\n Free Subscription\n Advertise\n Whitepapers\n Web-Cite City\n Podcast\n Video Podcasts\n Webinars\n Knowledge Center\n\n Free Subscription\n Advertise\n Whitepapers\n Web-Cite City\n Podcast\n Video Podcasts\n Webinars\n Knowledge Center\n\nMenu  3PL Solutions\n\n| Commentary | Procurement\n\n# Foresight and Flexibility: Winning in a Constrained Semiconductor Market\n\nPosted By:  Katrina Arabe\n\nTags: Supply Chain Resilience, Technology\n\nBy Graham Scott, Chief Procurement Officer at Jabil\n\nAmidst a memory chip shortage, maintaining a long-term view on cost versus continuity will not only weather this cycle but gain a competitive advantage in the market that follows.",
+        "raw_content": null,
+        "topic": "memory",
+        "slot": "0700"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "memory"
+      ],
+      "event_time": "Fri, 27 Feb 2026 19:36:23 GMT"
+    },
+    {
+      "date": "2026-03-01",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
       "title": "GreenRoc advances Amitsoq graphite pilot plant and deepens EU ties - TipRanks",
-      "summary": "Disclaimer & DisclosureReport an Issue\n\nLooking for investment ideas? Subscribe to our Smart Investor newsletter for weekly expert stock picks!\n\nGet real-time notifications on news & analysis, curated for your stock watchlist. Download the TipRanks app today! Get the App\n\n1\n\n## Latest News Feed\n\n[Pr",
+      "summary": "[Premium\n\n‘As Expected,’ Top Analysts Praise Nvidia’s Stellar Q4 Results\n\nNVDA](/news/as-expected-top-analysts-praise-nvidias-stellar-q4-results \"NVDA\")\n\n[Premium\n\nSamsung, SK Hynix Stocks Hit Record Highs after Nvidia’s Blowout Earnings – Here’s Why\n\nEWYNVDA](/news/samsung-sk-hynix-stocks-hit-recor",
       "url": "https://www.tipranks.com/news/company-announcements/greenroc-advances-amitsoq-graphite-pilot-plant-and-deepens-eu-ties",
       "raw": {
         "url": "https://www.tipranks.com/news/company-announcements/greenroc-advances-amitsoq-graphite-pilot-plant-and-deepens-eu-ties",
         "title": "GreenRoc advances Amitsoq graphite pilot plant and deepens EU ties - TipRanks",
         "score": 2,
         "published_date": "Thu, 26 Feb 2026 08:14:43 GMT",
-        "content": "Disclaimer & DisclosureReport an Issue\n\nLooking for investment ideas? Subscribe to our Smart Investor newsletter for weekly expert stock picks!\n\nGet real-time notifications on news & analysis, curated for your stock watchlist. Download the TipRanks app today! Get the App\n\n1\n\n## Latest News Feed\n\n[Premium\n\n### ‘As Expected,’ Top Analysts Praise Nvidia’s Stellar Q4 Results\n\nSheryl Sheth41m ago\n\nNVDA](/news/as-expected-top-analysts-praise-nvidias-stellar-q4-results \"NVDA\")\n\n[Premium\n\n### Samsung, SK Hynix Stocks Hit Record Highs after Nvidia’s Blowout Earnings – Here’s Why\n\nKirti Tak1h ago\n\nEWYNVDA](/news/samsung-sk-hynix-stocks-hit-record-highs-after-nvidias-blowout-earnings-heres-why \"EWY | NVDA | SNDK | SSNLF\")\n\n[Premium [...] [Premium\n\n‘As Expected,’ Top Analysts Praise Nvidia’s Stellar Q4 Results\n\nNVDA](/news/as-expected-top-analysts-praise-nvidias-stellar-q4-results \"NVDA\")\n\n[Premium\n\nSamsung, SK Hynix Stocks Hit Record Highs after Nvidia’s Blowout Earnings – Here’s Why\n\nEWYNVDA](/news/samsung-sk-hynix-stocks-hit-record-highs-after-nvidias-blowout-earnings-heres-why \"EWY | NVDA | SNDK | SSNLF\")\n\nMore News >\n\nEducation\n\nPersonal FinanceHow To Use TipRanksTipRanks LabsGlossaryFAQs\n\nAbout Us\n\nAbout TipRanksContact UsReviewsMobile APP\n\nWorking with TipRanks\n\nEnterprise SolutionsAdvertise with UsTop Online BrokersBecome an AffiliateTipRanks News Wire\n\nFollow Us\n\nOpen App\n\nDownload the TipRanks App\n\nScan the QR code to download the app\n\nGoogle Play\n\nApp Store\n\nLearn more about the TipRanks app >>\n\nOpen App [...] Steve Anderson7h ago\n\nINTCNVDA](/news/community-colleges-prove-fertile-ground-for-ais-next-generation-intel-stock-nasdaqintc-gains \"INTC | NVDA\")\n\n[Premium\n\n### Intel Stock (INTC) Volatility Creates Tactical Options Discount\n\nJoshua Enomoto7h ago\n\nINTC](/news/intel-stock-intc-volatility-creates-tactical-options-discount \"INTC\")\n\n[Premium\n\n### AMD Got a Boost from AI Deal — Let’s Look at Who Owns It\n\nShalu Saraf8h ago\n\nAMDMETA](/news/amd-stock-rally-continues-after-meta-ai-deal-lets-look-at-who-owns-it \"AMD | META\")\n\n[Premium\n\n### 3 ‘Strong Buy’ Stocks to Buy Today, 2/25/2026, According to Top Analysts\n\nShalu Saraf8h ago\n\nAMZNKTOS](/news/3-strong-buy-stocks-to-buy-today-2-25-2026-according-to-top-analysts \"AMZN | KTOS | CRDF\")\n\nMore Market News >\n\n## More Articles\n\nPremiumMarket News",
+        "content": "[Premium\n\n‘As Expected,’ Top Analysts Praise Nvidia’s Stellar Q4 Results\n\nNVDA](/news/as-expected-top-analysts-praise-nvidias-stellar-q4-results \"NVDA\")\n\n[Premium\n\nSamsung, SK Hynix Stocks Hit Record Highs after Nvidia’s Blowout Earnings – Here’s Why\n\nEWYNVDA](/news/samsung-sk-hynix-stocks-hit-record-highs-after-nvidias-blowout-earnings-heres-why \"EWY | NVDA | SNDK | SSNLF\")\n\nMore News >\n\nEducation\n\nPersonal FinanceHow To Use TipRanksTipRanks LabsGlossaryFAQs\n\nAbout Us\n\nAbout TipRanksContact UsReviewsMobile APP\n\nWorking with TipRanks\n\nEnterprise SolutionsAdvertise with UsTop Online BrokersBecome an AffiliateTipRanks News Wire\n\nFollow Us\n\nOpen App\n\nDownload the TipRanks App\n\nScan the QR code to download the app\n\nGoogle Play\n\nApp Store\n\nLearn more about the TipRanks app >>\n\nOpen App [...] Disclaimer & DisclosureReport an Issue\n\nLooking for investment ideas? Subscribe to our Smart Investor newsletter for weekly expert stock picks!\n\nGet real-time notifications on news & analysis, curated for your stock watchlist. Download the TipRanks app today! Get the App\n\n1\n\n## Latest News Feed\n\n[Premium\n\n### ‘As Expected,’ Top Analysts Praise Nvidia’s Stellar Q4 Results\n\nSheryl Sheth41m ago\n\nNVDA](/news/as-expected-top-analysts-praise-nvidias-stellar-q4-results \"NVDA\")\n\n[Premium\n\n### Samsung, SK Hynix Stocks Hit Record Highs after Nvidia’s Blowout Earnings – Here’s Why\n\nKirti Tak1h ago\n\nEWYNVDA](/news/samsung-sk-hynix-stocks-hit-record-highs-after-nvidias-blowout-earnings-heres-why \"EWY | NVDA | SNDK | SSNLF\")\n\n[Premium [...] Daily Insiders Trades\n\nDividend Stocks\n\nETF Center\n\nTop Gainers/losers/active ETFs\n\nTrump Dashboard\n\nNew\n\nDividend Calculator\n\nOptions Profit Calculator\n\nDollar Cost Averaging\n\nCompound Interest Calculator\n\nMortgage Calculator\n\nAuto Loan Calculator\n\nStudent Loan Calculator\n\n401k Retirement Calculator\n\nEarnings Calendar\n\nDividend Calendar\n\nEconomic Calendar\n\nIPO Calendar\n\nStock Splits\n\nStock Buybacks\n\nFDA Calendar\n\nMarket Holidays\n\nDividend Center\n\nBest Dividend Stocks\n\nPopular\n\nBest High Yield Dividend Stocks\n\nDividend Aristocrats\n\nDividend Stock Comparison\n\nNew\n\nDividend Calculator\n\nDividend Returns Comparison\n\nDividend Calendar\n\nTop Analysts\n\nTop Financial Bloggers\n\nTop-Performing Corporate Insiders\n\nTop Hedge Fund Managers\n\nTop Research Firms\n\nTop Individual Investors\n\nTop Gainers",
         "raw_content": null,
         "topic": "memory",
         "slot": "0700"
@@ -93,15 +93,15 @@
       "source": "tavily_news",
       "symbol": "",
       "company": "",
-      "title": "DRAM Shortage Will Cause 'Seismic Shift' in Smartphone Market, But Apple Will Be Less Affected - MacRumors",
-      "summary": "Skip to Content\n\nGot a tip for us?Let us know\n\n a. Send us an email\n b. Anonymous form\n\n# DRAM Shortage Will Cause 'Seismic Shift' in Smartphone Market, But Apple Will Be Less Affected\n\nby Juli Clover\n\nGlobal memory scarcity will cause a 13 percent drop in smartphone sales in 2026, according to IDC ",
-      "url": "https://www.macrumors.com/2026/02/26/dram-shortage-apple-less-affected/",
+      "title": "Better Artificial Intelligence (AI) Stock: Micron Technology vs. Sandisk - The Motley Fool",
+      "summary": "Avg Vol\n\n32M\n\nGross Margin\n\n45.53%\n\nDividend Yield\n\n0.11%\n\nNAND flash, on the other hand, is a non-volatile memory type that's used for storing data without the need for power. So, while DRAM is used for computing applications, NAND flash is used to store the data on which computations are to be per",
+      "url": "https://www.fool.com/investing/2026/02/25/artificial-intelligence-ai-stock-micron-sandisk/",
       "raw": {
-        "url": "https://www.macrumors.com/2026/02/26/dram-shortage-apple-less-affected/",
-        "title": "DRAM Shortage Will Cause 'Seismic Shift' in Smartphone Market, But Apple Will Be Less Affected - MacRumors",
-        "score": 3,
-        "published_date": "Thu, 26 Feb 2026 20:43:00 GMT",
-        "content": "Skip to Content\n\nGot a tip for us?Let us know\n\n a. Send us an email\n b. Anonymous form\n\n# DRAM Shortage Will Cause 'Seismic Shift' in Smartphone Market, But Apple Will Be Less Affected\n\nby Juli Clover\n\nGlobal memory scarcity will cause a 13 percent drop in smartphone sales in 2026, according to IDC (via Bloomberg). DRAM is in short supply because AI companies are buying huge quantities of high-bandwidth memory (HBM) for servers in data centers, and manufacturers are prioritizing HBM instead of the memory used in consumer devices.\n\nIDC says that the global memory supply has been drained into next year, putting smartphone makers in a tough spot. Prices have spiked because there's not enough memory to meet production needs, which will cause a smartphone market \"crisis like no other.\" [...] > ('  \n>   \n> Global memory scarcity will cause a 13 percent drop in smartphone sales in 2026, according to IDC (via Bloomberg (' DRAM is in short supply because AI companies are buying huge quantities of high-bandwidth memory (HBM) for servers in data centers, and manufacturers are prioritizing HBM instead of the memory used in consumer devices.  \n>   \n>   \n>   \n> IDC says that the global memory supply has been drained into next year, putting smartphone makers in a tough spot. Prices have spiked because there's not enough memory to meet production needs, which will cause a smartphone market \"crisis like no other.\"  \n>   \n> Smartphone makers are expected to ship 1.1 billion devices in 2026, down from 1.26 billion in 2025.  \n> [...] Apple is expected to absorb higher memory costs in the short term, but it isn't unaffected by the shortages. Just today, a report suggested Apple is paying Samsung twice as much for the LPDDR5X memory chips that it needs for producing iPhone 17 models.\n\nDuring Apple's January earnings call, Apple CEO Tim Cook said that memory price increases had a \"minimal impact\" on Apple's gross margin during the 2025 holiday quarter, but the company is expecting a \"bit more of an impact\" during the first calendar quarter of 2026.\n\nIDC says that even when the DRAM shortage is resolved, memory prices are not expected to return to 2025 levels, so there could be a permanent shift toward higher-priced smartphones.\n\nTag: IDC\n\n [89 comments ]\n\n## Popular Stories",
+        "url": "https://www.fool.com/investing/2026/02/25/artificial-intelligence-ai-stock-micron-sandisk/",
+        "title": "Better Artificial Intelligence (AI) Stock: Micron Technology vs. Sandisk - The Motley Fool",
+        "score": 2,
+        "published_date": "Thu, 26 Feb 2026 00:33:00 GMT",
+        "content": "Avg Vol\n\n32M\n\nGross Margin\n\n45.53%\n\nDividend Yield\n\n0.11%\n\nNAND flash, on the other hand, is a non-volatile memory type that's used for storing data without the need for power. So, while DRAM is used for computing applications, NAND flash is used to store the data on which computations are to be performed.\n\nMicron gets 80% of its revenue from selling DRAM chips. The advent of AI workloads has created a need for larger, faster DRAM, known as high-bandwidth memory (HBM). This type of memory is used in AI accelerator chips such as graphics processing units, custom AI processors, and server central processing units. [...] This explains why Sandisk's earnings growth is poised to be substantially bigger than Micron's. And its stock has outpaced Micron on the market as well.\n\n## The verdict\n\nIt is evident that both Sandisk and Micron are capitalizing on similar growth drivers in the memory market, and both companies are poised to see terrific increases in revenue and earnings as a result. There isn't much separating them on the valuation front, either.\n\nData by YCharts; PE = price to earnings. [...] Accessibility Menu\n\nAccessibilityHelp\n\nTop 10 Stocks to Buy Now ›\n\nS&P 500\n\nBitcoin\n\n$68,414.00\n\n+4.6%\n\n+$2,999.89\n\nNFLX\n\n$82.72\n\n+6.0%\n\n+$4.68\n\nCRCL\n\n$83.14\n\n+35.5%\n\n+$21.77\n\nMELI\n\n$1,767.71\n\n-8.1%\n\n-$154.85\n\nCCC\n\n$6.33\n\n+25.1%\n\n+$1.27\n\nFSLR\n\n$210.54\n\n-13.4%\n\n-$32.67\n\nBMNR\n\n$21.50\n\n+10.6%\n\n+$2.06\n\nAMZN\n\n$210.64\n\n+1.0%\n\n+$2.08\n\nGOOG\n\n$313.03\n\n+0.7%\n\n+$2.11\n\nMETA\n\n$652.97\n\n+2.1%\n\n+$13.67\n\nMSFT\n\n$400.65\n\n+3.0%\n\n+$11.65\n\nNVDA\n\n$195.62\n\n+1.4%\n\n+$2.77\n\nTSLA\n\n$417.40\n\n+2.0%\n\n+$8.02\n\nMost Active StocksDaily Stock GainersDaily Stock Losers\n\nMost Active StocksDaily Stock GainersDaily Stock Losers\n\n# Better Artificial Intelligence (AI) Stock: Micron Technology vs. Sandisk\n\nByHarsh Chauhan – Feb 25, 2026 at 7:33PM EST\n\n## Key Points",
         "raw_content": null,
         "topic": "memory",
         "slot": "0700"
@@ -114,63 +114,7 @@
       "tags": [
         "memory"
       ],
-      "event_time": "Thu, 26 Feb 2026 20:43:00 GMT"
-    },
-    {
-      "date": "2026-03-01",
-      "source": "tavily_news",
-      "symbol": "",
-      "company": "",
-      "title": "The AI Chip War You Didn’t See Coming - WSJ",
-      "summary": "The AI Chip War You Didn’t See Coming - WSJ\n\nSkip to Main Content\n\nSkip to... \n\nSelect\n   What to Read Next\n   Most Popular News\n   Most Popular Opinion\n\nDJIA 49174.50 0.76%\n\nS&P 500 6890.07 0.77%\n\nNasdaq 22863.68 1.04%\n\nRussell 2000 2652.33 1.20%\n\nU.S. 10 Yr -0/32 4.038%\n\nVIX 19.55 -6.95%\n\nGold 516",
-      "url": "https://www.wsj.com/tech/ai/the-ai-chip-war-you-didnt-see-coming-16c99d82?gaa_at=eafs&gaa_n=AWEtsqcnEtjd_zIlRCkx6MxtRdfTH_q7QrEMewB0rph5pLBJgCeOUuS3Qact&gaa_ts=699e25e8&gaa_sig=BQ8qno5ComzWnQ2NKle57YbWLBBAzfQPWwL4MJgtGdEXRTjDLGzJvURScSmDLkNO-d6fzaXzwAYSDPmxKBlA6g%3D%3D",
-      "raw": {
-        "url": "https://www.wsj.com/tech/ai/the-ai-chip-war-you-didnt-see-coming-16c99d82?gaa_at=eafs&gaa_n=AWEtsqcnEtjd_zIlRCkx6MxtRdfTH_q7QrEMewB0rph5pLBJgCeOUuS3Qact&gaa_ts=699e25e8&gaa_sig=BQ8qno5ComzWnQ2NKle57YbWLBBAzfQPWwL4MJgtGdEXRTjDLGzJvURScSmDLkNO-d6fzaXzwAYSDPmxKBlA6g%3D%3D",
-        "title": "The AI Chip War You Didn’t See Coming - WSJ",
-        "score": 1,
-        "published_date": "Tue, 24 Feb 2026 22:08:00 GMT",
-        "content": "The AI Chip War You Didn’t See Coming - WSJ\n\nSkip to Main Content\n\nSkip to... \n\nSelect\n   What to Read Next\n   Most Popular News\n   Most Popular Opinion\n\nDJIA 49174.50 0.76%\n\nS&P 500 6890.07 0.77%\n\nNasdaq 22863.68 1.04%\n\nRussell 2000 2652.33 1.20%\n\nU.S. 10 Yr -0/32 4.038%\n\nVIX 19.55 -6.95%\n\nGold 5160.60 -1.24%\n\nBitcoin 64180.76 -0.45%\n\nCrude Oil 66.08 -0.35%\n\nDollar Index 94.90 -0.02%\n\nKBW Nasdaq Bank Index 161.48 -0.15%\n\nS&P GSCI Index Spot 601.32 -0.29%\n\nThe Wall Street Journal\n\nLimited-Time SaleSign In\n\n   English Edition  Edition Use Alt + Down Arrow to expand.   \n   Print Edition\n   Video\n   Audio\n   Latest Headlines\n   Puzzles\n   More  More [...] Image 3: Note:\n\nNote:Source: FactSet\n\nFears of what Anthropic might do have been costly. The idea that the ascendant AI startup might actually play nice is proving rewarding.\n\nSoftware stocks rallied Tuesday morning after Anthropic hosted an online event to announce its latest efforts geared toward getting its Claude AI tool deeper into enterprises. The presentation included positive mentions of software providers like Salesforce, DocuSign and LegalZoom who are partners with Anthropic on various offerings. Those stocks have all seen severe selloffs of late on fears that AI tools will displace their services. All rallied after the event—Salesforce jumped more than 4% in morning trading. The BVP Nasdaq Emerging Cloud Index was up more than 3% in the morning. [...] But Google also has to get its chips actually made. That is no small matter when Nvidia has tied up much of the manufacturing capacity and necessary components. The top chip-production lines at TSMC are now so dominated by Nvidia that even Apple is having a hard time getting enough capacity for its mobile-device processors. In a recent report, Mark Lipacis of Evercore ISI said Nvidia has locked down production capacity “aggressively” while also being “first in line” for the type of specialized memory that AI systems require.\n\nGoogle is most definitely an AI powerhouse. Becoming an AI-chip powerhouse is still no simple matter.\n\n  \n\n#### Anthropic Finally Lifts Cloud over Software\n\nImage 3: Note:\n\nNote:Source: FactSet",
-        "raw_content": null,
-        "topic": "china_ai_chips",
-        "slot": "0700"
-      },
-      "category": "新闻",
-      "subcategory": "科技新闻",
-      "rule_id": "tavily.news.topic_filter.v1",
-      "excluded": false,
-      "exclude_reason": "",
-      "tags": [
-        "china_ai_chips"
-      ],
-      "event_time": "Tue, 24 Feb 2026 22:08:00 GMT"
-    },
-    {
-      "date": "2026-03-01",
-      "source": "tavily_news",
-      "symbol": "",
-      "company": "",
-      "title": "Why China’s humanoid robot industry is winning the early market - TechCrunch",
-      "summary": "“China has a more robust hardware supply chain — much of it built up through the EV sector, from sensors to batteries — and the world’s strongest manufacturing base, allowing companies to iterate far faster than Western competitors,” Xu told TechCrunch.\n\nAs a result, not only are Chinese robots chea",
-      "url": "https://techcrunch.com/2026/02/28/why-chinas-humanoid-robot-industry-is-winning-the-early-market/",
-      "raw": {
-        "url": "https://techcrunch.com/2026/02/28/why-chinas-humanoid-robot-industry-is-winning-the-early-market/",
-        "title": "Why China’s humanoid robot industry is winning the early market - TechCrunch",
-        "score": 2,
-        "published_date": "Sat, 28 Feb 2026 15:00:00 GMT",
-        "content": "“China has a more robust hardware supply chain — much of it built up through the EV sector, from sensors to batteries — and the world’s strongest manufacturing base, allowing companies to iterate far faster than Western competitors,” Xu told TechCrunch.\n\nAs a result, not only are Chinese robots cheaper but companies can also release new models more quickly, Xu noted, adding that leading Chinese player Unitree shipped roughly 36 times more units last year than U.S. rivals Figure and Tesla. [...] While increased funding toward humanoid startups “has definitely accelerated” the pace of progress, “the most durable adoption comes when you can show reliable and repeatable value in production or service operations, not just a one-off showcase,” Zhao added.\n\nStill, investing helps and Chinese robotics makers are securing it. Last year Unitree was valued at around $3 billion after closing its Series C, with ambitions to reach as much as $7 billion in a future IPO. Meanwhile, Galbot has raised more than $300 million in fresh funding, reportedly pushing its valuation to $3 billion, one of the largest financings in China’s humanoid robotics sector to date. [...] Asia, ASIMO, boston dynamics, China, China, Engine AI, Fourier Intelligence, Galbot, Hardware, humanoid robot, humanoid robotics, humanoids, Japan, Japan, North America, Robotics, softbank robotics, South Korea, Startups, Ubtech Robotics, United States, Unitree\n\nKate Park\n\nReporter, Asia\n\nKate Park is a reporter at TechCrunch, with a focus on technology, startups and venture capital in Asia. She previously was a financial journalist at Mergermarket covering M&A, private equity and venture capital.\n\nView Bio\n\nLoading the next article\n\nError loading the next article",
-        "raw_content": null,
-        "topic": "robotics",
-        "slot": "0700"
-      },
-      "category": "新闻",
-      "subcategory": "科技新闻",
-      "rule_id": "tavily.news.topic_filter.v1",
-      "excluded": false,
-      "exclude_reason": "",
-      "tags": [
-        "robotics"
-      ],
-      "event_time": "Sat, 28 Feb 2026 15:00:00 GMT"
+      "event_time": "Thu, 26 Feb 2026 00:33:00 GMT"
     },
     {
       "date": "2026-03-01",
@@ -185,7 +129,7 @@
         "title": "Unitree A2 offers 100 kg payload, 20 km range for industry - MEXC",
         "score": 2,
         "published_date": "Tue, 24 Feb 2026 10:48:06 GMT",
-        "content": "Its relevance now reflects maturing legged locomotion, on-robot perception, and battery management that together expand real-world duty cycles. As estimated by Omdia, Unitree shipped over 5,500 humanoid robots last year, illustrating production capacity that could support A‑series deployments.\n\nPractical value will depend on the balance between payload, speed, and endurance, as well as terrain and software configuration. Organizations evaluating the A2 should map tasks to these trade-offs rather than headline figures. [...] As reported by Robotics & Automation News ( the A2 weighs about 37 kg and can reach roughly 5 m/s. It supports a 100 kg standing load, around 25 kg walking payload, and up to a 20 km unloaded range with dual hot-swappable batteries, plus front/rear 3D LiDAR and an HD camera.\n\nThe report notes endurance declines as payload increases and as terrain complexity rises. Distinguishing standing load from walking payload is essential when planning inspection routes or logistics tasks.\n\nResearch-facing materials emphasize suitability for SLAM, navigation, and locomotion experiments. “a strong foundation for embodied intelligence research,” said K-Robotic, a robotics distributor ( [...] ExchangeDEX+\n\nBuy CryptoMarketsSpotFuturesGOLDEarnEvent Center\nCommodity Zero-Fee Gala\n\nUnitree A2 quadruped robot, 100 kg load capacity, 20 km range; data show endurance vs payload trade-offs, sensors, hot-swap batteries, and market positioning.Unitree A2 quadruped robot, 100 kg load capacity, 20 km range; data show endurance vs payload trade-offs, sensors, hot-swap batteries, and market positioning.\n\n# Unitree A2 offers 100 kg payload, 20 km range for industry\n\nAuthor: coinlineup\n\nSource: coinlineup\n\n2026/02/24 17:21\n\n2 min read\n\nShare\n\nTRADE$0,0321-9,60%\n\nKey Takeaways:",
+        "content": "Its relevance now reflects maturing legged locomotion, on-robot perception, and battery management that together expand real-world duty cycles. As estimated by Omdia, Unitree shipped over 5,500 humanoid robots last year, illustrating production capacity that could support A‑series deployments.\n\nPractical value will depend on the balance between payload, speed, and endurance, as well as terrain and software configuration. Organizations evaluating the A2 should map tasks to these trade-offs rather than headline figures. [...] As reported by Robotics & Automation News ( the A2 weighs about 37 kg and can reach roughly 5 m/s. It supports a 100 kg standing load, around 25 kg walking payload, and up to a 20 km unloaded range with dual hot-swappable batteries, plus front/rear 3D LiDAR and an HD camera.\n\nThe report notes endurance declines as payload increases and as terrain complexity rises. Distinguishing standing load from walking payload is essential when planning inspection routes or logistics tasks.\n\nResearch-facing materials emphasize suitability for SLAM, navigation, and locomotion experiments. “a strong foundation for embodied intelligence research,” said K-Robotic, a robotics distributor ( [...] 2 min read\n\nShare\n\nTRADE$0,0321-9,60%\n\nKey Takeaways:\n\n Legged platform for industrial inspection, logistics support, and research applications.\n Shifts from lab demos to field-deployable systems built for repeatable work.\n Maturing tech and production scale expand duty cycles; assess payload-speed-endurance trade-offs.\n\nUnitree has introduced the Unitree A2 quadruped robot, a legged platform aimed at industrial inspection, logistics support, and research. The design signals a move from lab demos toward field-deployable systems built for repeatable work.",
         "raw_content": null,
         "topic": "robotics",
         "slot": "0700"
@@ -205,6 +149,34 @@
       "source": "tavily_news",
       "symbol": "",
       "company": "",
+      "title": "Why China’s humanoid robot industry is winning the early market - TechCrunch",
+      "summary": "“China has a more robust hardware supply chain — much of it built up through the EV sector, from sensors to batteries — and the world’s strongest manufacturing base, allowing companies to iterate far faster than Western competitors,” Xu told TechCrunch.\n\nAs a result, not only are Chinese robots chea",
+      "url": "https://techcrunch.com/2026/02/28/why-chinas-humanoid-robot-industry-is-winning-the-early-market/",
+      "raw": {
+        "url": "https://techcrunch.com/2026/02/28/why-chinas-humanoid-robot-industry-is-winning-the-early-market/",
+        "title": "Why China’s humanoid robot industry is winning the early market - TechCrunch",
+        "score": 2,
+        "published_date": "Sat, 28 Feb 2026 15:00:00 GMT",
+        "content": "“China has a more robust hardware supply chain — much of it built up through the EV sector, from sensors to batteries — and the world’s strongest manufacturing base, allowing companies to iterate far faster than Western competitors,” Xu told TechCrunch.\n\nAs a result, not only are Chinese robots cheaper but companies can also release new models more quickly, Xu noted, adding that leading Chinese player Unitree shipped roughly 36 times more units last year than U.S. rivals Figure and Tesla. [...] While increased funding toward humanoid startups “has definitely accelerated” the pace of progress, “the most durable adoption comes when you can show reliable and repeatable value in production or service operations, not just a one-off showcase,” Zhao added.\n\nStill, investing helps and Chinese robotics makers are securing it. Last year Unitree was valued at around $3 billion after closing its Series C, with ambitions to reach as much as $7 billion in a future IPO. Meanwhile, Galbot has raised more than $300 million in fresh funding, reportedly pushing its valuation to $3 billion, one of the largest financings in China’s humanoid robotics sector to date. [...] Yet humanoid robotics makers are still working on fundamental problems. The challenge is enabling robot foundation models to predict the “next physical state” the robot will face in unpredictable environments, like how large language models predict the next word. But unlike LLMs, humanoid robotics companies can’t simply scrape the internet for training data, Xu said. So most are relying on simulation environments, which generates synthetic data, though real-world data collection remains essential.",
+        "raw_content": null,
+        "topic": "robotics",
+        "slot": "0700"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "robotics"
+      ],
+      "event_time": "Sat, 28 Feb 2026 15:00:00 GMT"
+    },
+    {
+      "date": "2026-03-01",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
       "title": "AI2 Robotics raises Series B funding to advance AlphaBot, embodied AI - The Robot Report",
       "summary": "“AI² Robotics is committed to accelerating the global adoption of general-purpose robots, making them as accessible as smart cars and smartphones, becoming a universal device for everyone,” said the company.\n\n## AI² Robotics develops VLA model as ‘China’s Tesla’\n\nAI2 Robotics has developed the Globa",
       "url": "https://www.therobotreport.com/ai2-robotics-raises-series-b-funding-advance-alphabot-embodied-ai/",
@@ -213,7 +185,7 @@
         "title": "AI2 Robotics raises Series B funding to advance AlphaBot, embodied AI - The Robot Report",
         "score": 2,
         "published_date": "Tue, 24 Feb 2026 23:58:50 GMT",
-        "content": "“AI² Robotics is committed to accelerating the global adoption of general-purpose robots, making them as accessible as smart cars and smartphones, becoming a universal device for everyone,” said the company.\n\n## AI² Robotics develops VLA model as ‘China’s Tesla’\n\nAI2 Robotics has developed the Global and Omni-body vision-language-action (GOVLA) model for “full-space understanding, whole-body coordination, and complex task reasoning.” It said its “data closed-loop + scenario compounding” approach provides a competitive advantage.\n\n“Like Tesla, AI² Robotics positions itself as a rare developer, manufacturer, and service provider of productivity-oriented, general-purpose intelligent robots — distinct from performance or entertainment-focused models,” noted Pandaily. [...] The Robot Report\n\n# AI2 Robotics raises Series B funding to advance AlphaBot, embodied AI\n\nBy The Robot Report Staff |\n\nAI2 Robotics has developed VLA models for its AlphaBot 2 robot. Source: AI2 Robotics\n\nAI2 Robotics this week reportedly raised CN¥1.2 billion ($144.7 million U.S.) to continue developing embodied AI. The company said it plans to use the funding to advance its model toward general-purpose humanoid robots.\n\nDr. Yangdong Eric Guo founded Shenzhen, China-based AI2 Robotics in 2023. The startup (not to be confused with the Allen Institute for AI or Ai2) said its AlphaBot wheeled humanoid robots integrate proprietary foundation models with machine learning and robust hardware. [...] - RBR50 Winners 2024\n    - RBR50 Winners 2023\n    - RBR50 Winners 2022\n    - RBR50 Winners 2021\n Resources\n  + Automated Warehouse Research Reports\n  + Digital Issues\n  + eBooks\n  + Publications\n    - Automated Warehouse\n    - Collaborative Robotics Trends\n  + Search Robotics Database\n  + Videos\n  + Webinars / Digital Events\n Events\n  + RoboBusiness\n  + Robotics Summit & Expo\n  + DeviceTalks\n  + R&D 100\n  + Robotics Weeks\n Podcast\n  + Episodes\n Advertise\n Subscribe",
+        "content": "“AI² Robotics is committed to accelerating the global adoption of general-purpose robots, making them as accessible as smart cars and smartphones, becoming a universal device for everyone,” said the company.\n\n## AI² Robotics develops VLA model as ‘China’s Tesla’\n\nAI2 Robotics has developed the Global and Omni-body vision-language-action (GOVLA) model for “full-space understanding, whole-body coordination, and complex task reasoning.” It said its “data closed-loop + scenario compounding” approach provides a competitive advantage.\n\n“Like Tesla, AI² Robotics positions itself as a rare developer, manufacturer, and service provider of productivity-oriented, general-purpose intelligent robots — distinct from performance or entertainment-focused models,” noted Pandaily. [...] - RBR50 Winners 2024\n    - RBR50 Winners 2023\n    - RBR50 Winners 2022\n    - RBR50 Winners 2021\n Resources\n  + Automated Warehouse Research Reports\n  + Digital Issues\n  + eBooks\n  + Publications\n    - Automated Warehouse\n    - Collaborative Robotics Trends\n  + Search Robotics Database\n  + Videos\n  + Webinars / Digital Events\n Events\n  + RoboBusiness\n  + Robotics Summit & Expo\n  + DeviceTalks\n  + R&D 100\n  + Robotics Weeks\n Podcast\n  + Episodes\n Advertise\n Subscribe [...] Home\n News\n Technologies\n  + Batteries / Power Supplies\n  + Cameras / Imaging / Vision\n  + Controllers\n  + End Effectors\n  + Microprocessors / SoCs\n  + Motion Control\n  + Sensors\n  + Soft Robotics\n  + Software / Simulation\n Development\n  + Artificial Intelligence\n  + Human Robot Interaction / Haptics\n  + Mobility / Navigation\n  + Research\n Robots\n  + AGVs\n  + AMRs\n  + Consumer\n  + Collaborative Robots\n  + Drones\n  + Humanoids\n  + Industrial\n  + Self-Driving Vehicles\n  + Unmanned Maritime Systems\n Business\n  + Financial\n    - Investments\n    - Mergers & Acquisitions\n    - Earnings\n  + Markets\n    - Agriculture\n    - Healthcare\n    - Logistics\n    - Manufacturing\n    - Mining\n    - Security\n  + RBR50\n    - RBR50 Winners 2025\n    - RBR50 Winners 2024\n    - RBR50 Winners 2023",
         "raw_content": null,
         "topic": "robotics",
         "slot": "0700"
@@ -233,43 +205,15 @@
       "source": "tavily_news",
       "symbol": "",
       "company": "",
-      "title": "Software woes persist; BMW’s humanoid robot expansion - Automotive News",
-      "summary": "Daily Drive\n\n# Software woes persist; BMW’s humanoid robot expansion\n\nFebruary 27, 2026 03:33 PM EST\n\n## Featured Stories\n\nBMW\n\nBMW intensifies humanoid robot push with test project in Germany after U.S. success\n\nBMW joins automakers that are exploring humanoid robotics as the next frontier of manuf",
-      "url": "https://www.autonews.com/podcasts/daily-drive/an-daily-drive-software-woes-cuyler-owens/",
-      "raw": {
-        "url": "https://www.autonews.com/podcasts/daily-drive/an-daily-drive-software-woes-cuyler-owens/",
-        "title": "Software woes persist; BMW’s humanoid robot expansion - Automotive News",
-        "score": 2,
-        "published_date": "Fri, 27 Feb 2026 20:33:00 GMT",
-        "content": "Daily Drive\n\n# Software woes persist; BMW’s humanoid robot expansion\n\nFebruary 27, 2026 03:33 PM EST\n\n## Featured Stories\n\nBMW\n\nBMW intensifies humanoid robot push with test project in Germany after U.S. success\n\nBMW joins automakers that are exploring humanoid robotics as the next frontier of manufacturing flexibility.\n\nDA\n\nBy\n\nDouglas A. Bolduc\n\nManufacturing\n\nU.S. Supreme Court quashed Trump’s reciprocal tariffs. Could auto tariffs be next?\n\nDK\n\nBy\n\nDavid Kennedy\n\nBuy-Sell\n\nDealership buy-sell database updates: Penske Automotive buys 2 Lexus stores, Ken Garff Automotive sells Utah dealership as part of deals tracked across 9 states\n\nPH\n\nBy\n\nPaige Hodder\n\nHyundai\n\nRise of robots pits Hyundai’s Atlas against Musk’s Optimus\n\nBN\n\nBy\n\nBloomberg News",
-        "raw_content": null,
-        "topic": "robotics",
-        "slot": "0700"
-      },
-      "category": "新闻",
-      "subcategory": "科技新闻",
-      "rule_id": "tavily.news.topic_filter.v1",
-      "excluded": false,
-      "exclude_reason": "",
-      "tags": [
-        "robotics"
-      ],
-      "event_time": "Fri, 27 Feb 2026 20:33:00 GMT"
-    },
-    {
-      "date": "2026-03-01",
-      "source": "tavily_news",
-      "symbol": "",
-      "company": "",
       "title": "Tesollo commercializes its lightweight, compact robotic hand for humanoids - The Robot Report",
-      "summary": "- RBR50 Winners 2024\n    - RBR50 Winners 2023\n    - RBR50 Winners 2022\n    - RBR50 Winners 2021\n Resources\n  + Automated Warehouse Research Reports\n  + Digital Issues\n  + eBooks\n  + Publications\n    - Automated Warehouse\n    - Collaborative Robotics Trends\n  + Search Robotics Database\n  + Videos\n  +",
+      "summary": "The company debuted its flagship DG-5F at the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) in 2024. Since then, major Korean and global technology companies have adopted the gripper, expanding its use cases across industries.\n\n### Tell Us What You Think! Cancel reply\n\nT",
       "url": "https://www.therobotreport.com/tesollo-commercializes-its-lightweight-compact-robotic-hand-for-humanoids/",
       "raw": {
         "url": "https://www.therobotreport.com/tesollo-commercializes-its-lightweight-compact-robotic-hand-for-humanoids/",
         "title": "Tesollo commercializes its lightweight, compact robotic hand for humanoids - The Robot Report",
         "score": 1,
         "published_date": "Mon, 23 Feb 2026 18:22:36 GMT",
-        "content": "- RBR50 Winners 2024\n    - RBR50 Winners 2023\n    - RBR50 Winners 2022\n    - RBR50 Winners 2021\n Resources\n  + Automated Warehouse Research Reports\n  + Digital Issues\n  + eBooks\n  + Publications\n    - Automated Warehouse\n    - Collaborative Robotics Trends\n  + Search Robotics Database\n  + Videos\n  + Webinars / Digital Events\n Events\n  + RoboBusiness\n  + Robotics Summit & Expo\n  + DeviceTalks\n  + R&D 100\n  + Robotics Weeks\n Podcast\n  + Episodes\n Advertise\n Subscribe [...] The company debuted its flagship DG-5F at the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) in 2024. Since then, major Korean and global technology companies have adopted the gripper, expanding its use cases across industries.\n\n### Tell Us What You Think! Cancel reply\n\nThis site uses Akismet to reduce spam. Learn how your comment data is processed.\n\n#### Related Articles Read More >\n\n##### Warehousing robot maker turns to lubrication-free motion plastics\n\n##### OnRobot to share automation roadmap advice in Dallas\n\n##### Robotiq brings sense of touch to physical AI with fingertips for 2F grippers\n\n##### The hidden technology behind fluid robot motion\n\n## Search The Robot Report [...] Home\n News\n Technologies\n  + Batteries / Power Supplies\n  + Cameras / Imaging / Vision\n  + Controllers\n  + End Effectors\n  + Microprocessors / SoCs\n  + Motion Control\n  + Sensors\n  + Soft Robotics\n  + Software / Simulation\n Development\n  + Artificial Intelligence\n  + Human Robot Interaction / Haptics\n  + Mobility / Navigation\n  + Research\n Robots\n  + AGVs\n  + AMRs\n  + Consumer\n  + Collaborative Robots\n  + Drones\n  + Humanoids\n  + Industrial\n  + Self-Driving Vehicles\n  + Unmanned Maritime Systems\n Business\n  + Financial\n    - Investments\n    - Mergers & Acquisitions\n    - Earnings\n  + Markets\n    - Agriculture\n    - Healthcare\n    - Logistics\n    - Manufacturing\n    - Mining\n    - Security\n  + RBR50\n    - RBR50 Winners 2025\n    - RBR50 Winners 2024\n    - RBR50 Winners 2023",
+        "content": "The company debuted its flagship DG-5F at the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) in 2024. Since then, major Korean and global technology companies have adopted the gripper, expanding its use cases across industries.\n\n### Tell Us What You Think! Cancel reply\n\nThis site uses Akismet to reduce spam. Learn how your comment data is processed.\n\n#### Related Articles Read More >\n\n##### Warehousing robot maker turns to lubrication-free motion plastics\n\n##### OnRobot to share automation roadmap advice in Dallas\n\n##### Robotiq brings sense of touch to physical AI with fingertips for 2F grippers\n\n##### The hidden technology behind fluid robot motion\n\n## Search The Robot Report [...] - RBR50 Winners 2024\n    - RBR50 Winners 2023\n    - RBR50 Winners 2022\n    - RBR50 Winners 2021\n Resources\n  + Automated Warehouse Research Reports\n  + Digital Issues\n  + eBooks\n  + Publications\n    - Automated Warehouse\n    - Collaborative Robotics Trends\n  + Search Robotics Database\n  + Videos\n  + Webinars / Digital Events\n Events\n  + RoboBusiness\n  + Robotics Summit & Expo\n  + DeviceTalks\n  + R&D 100\n  + Robotics Weeks\n Podcast\n  + Episodes\n Advertise\n Subscribe [...] Home\n News\n Technologies\n  + Batteries / Power Supplies\n  + Cameras / Imaging / Vision\n  + Controllers\n  + End Effectors\n  + Microprocessors / SoCs\n  + Motion Control\n  + Sensors\n  + Soft Robotics\n  + Software / Simulation\n Development\n  + Artificial Intelligence\n  + Human Robot Interaction / Haptics\n  + Mobility / Navigation\n  + Research\n Robots\n  + AGVs\n  + AMRs\n  + Consumer\n  + Collaborative Robots\n  + Drones\n  + Humanoids\n  + Industrial\n  + Self-Driving Vehicles\n  + Unmanned Maritime Systems\n Business\n  + Financial\n    - Investments\n    - Mergers & Acquisitions\n    - Earnings\n  + Markets\n    - Agriculture\n    - Healthcare\n    - Logistics\n    - Manufacturing\n    - Mining\n    - Security\n  + RBR50\n    - RBR50 Winners 2025\n    - RBR50 Winners 2024\n    - RBR50 Winners 2023",
         "raw_content": null,
         "topic": "robotics",
         "slot": "0700"
@@ -345,15 +289,15 @@
       "source": "tavily_news",
       "symbol": "",
       "company": "",
-      "title": "New Siemens partnership brings flexible autonomous robotics manufacturing to the UK - The Manufacturer",
-      "summary": "The latest real-world applications of groundbreaking technologies like this will be showcased at Transform 2026, where thousands of industry leaders, technology experts and policymakers will convene at Manchester Central to explore the future of digital and sustainable transformation. Hosted by Siem",
-      "url": "https://www.themanufacturer.com/articles/new-siemens-partnership-brings-flexible-autonomous-robotics-manufacturing-to-the-uk/",
+      "title": "Software woes persist; BMW’s humanoid robot expansion - Automotive News",
+      "summary": "Daily Drive\n\n# Software woes persist; BMW’s humanoid robot expansion\n\nFebruary 27, 2026 03:33 PM EST\n\n## Featured Stories\n\nBMW\n\nBMW intensifies humanoid robot push with test project in Germany after U.S. success\n\nBMW joins automakers that are exploring humanoid robotics as the next frontier of manuf",
+      "url": "https://www.autonews.com/podcasts/daily-drive/an-daily-drive-software-woes-cuyler-owens/",
       "raw": {
-        "url": "https://www.themanufacturer.com/articles/new-siemens-partnership-brings-flexible-autonomous-robotics-manufacturing-to-the-uk/",
-        "title": "New Siemens partnership brings flexible autonomous robotics manufacturing to the UK - The Manufacturer",
-        "score": 1,
-        "published_date": "Fri, 27 Feb 2026 03:31:58 GMT",
-        "content": "The latest real-world applications of groundbreaking technologies like this will be showcased at Transform 2026, where thousands of industry leaders, technology experts and policymakers will convene at Manchester Central to explore the future of digital and sustainable transformation. Hosted by Siemens, the free-to-attend two-day conference and exhibition will take place on July 15th and 16th.\n\nFor more articles like this, visit our Automation channel\n\n Automation\n AutonomousVehicles\n Cobots\n Collaboration\n IndustrialRobots\n Innovation\n R&D\n\n### Read more articles related to Siemens\n\nAutomation \n\n### Humanoid and Siemens complete proof of concept to test humanoid robot\n\nPeople & Skills \n\n### Top engineering firms back prestigious STEM competition for young innovators [...] The robots are designed to help factories and warehouses move materials around more easily, without the need for fixed tracks or heavy infrastructure. Built in the UK, the robots can be adapted to suit different tasks, industries and environments, giving manufacturers a flexible, scalable solution to improve productivity.\n\nUnlike traditional automated guided vehicles (AGVs), autonomous mobile robots (AMRs) offer intelligent, infrastructure-light mobility powered by onboard sensors, making them effective at moving materials in dynamic industrial environments. [...] The Siemens-led solution leverages its SIMOVE technology to deliver scalable, hyperflexible AMRs, that can be modified to adapt to the needs of each facility, supporting everything from autonomous logistics and warehouse management to real-time data collection for digital twin simulations.\n\nExpert Technology Group’s FlexDrive AMR platform, built on Siemens SIMOVE core control systems, offers full flexibility with drive platforms and features advanced navigation options including path planning, obstacle avoidance, and real-time dynamic positioning.\n\nRMGroup’s solution harnesses Siemens laser-based navigation software, to deliver both conventional track-based and true free navigation capabilities, featuring wireless safety technology with real-time location-based safety zones.",
+        "url": "https://www.autonews.com/podcasts/daily-drive/an-daily-drive-software-woes-cuyler-owens/",
+        "title": "Software woes persist; BMW’s humanoid robot expansion - Automotive News",
+        "score": 2,
+        "published_date": "Fri, 27 Feb 2026 20:33:00 GMT",
+        "content": "Daily Drive\n\n# Software woes persist; BMW’s humanoid robot expansion\n\nFebruary 27, 2026 03:33 PM EST\n\n## Featured Stories\n\nBMW\n\nBMW intensifies humanoid robot push with test project in Germany after U.S. success\n\nBMW joins automakers that are exploring humanoid robotics as the next frontier of manufacturing flexibility.\n\nDA\n\nBy\n\nDouglas A. Bolduc\n\nManufacturing\n\nU.S. Supreme Court quashed Trump’s reciprocal tariffs. Could auto tariffs be next?\n\nDK\n\nBy\n\nDavid Kennedy\n\nBuy-Sell\n\nDealership buy-sell database updates: Penske Automotive buys 2 Lexus stores, Ken Garff Automotive sells Utah dealership as part of deals tracked across 9 states\n\nPH\n\nBy\n\nPaige Hodder\n\nHyundai\n\nRise of robots pits Hyundai’s Atlas against Musk’s Optimus\n\nBN\n\nBy\n\nBloomberg News",
         "raw_content": null,
         "topic": "robotics",
         "slot": "0700"
@@ -366,7 +310,7 @@
       "tags": [
         "robotics"
       ],
-      "event_time": "Fri, 27 Feb 2026 03:31:58 GMT"
+      "event_time": "Fri, 27 Feb 2026 20:33:00 GMT"
     },
     {
       "date": "2026-03-01",
@@ -395,6 +339,34 @@
         "commercial_space"
       ],
       "event_time": "Sun, 22 Feb 2026 11:07:13 GMT"
+    },
+    {
+      "date": "2026-03-01",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "SpaceX Achieves Major Milestone with 33rd Rocket Reuse: What’s Next for Space Exploration? - The Daily Galaxy",
+      "summary": "Share on X Send through Whatsapp Copy the link\n\nOn February 21, 2026, SpaceX made history with the launch of two Falcon 9 rockets, setting a new record for rocket reusability. One of the rockets achieved its 33rd successful re-flight, a testament to SpaceX’s commitment to lowering the costs of space",
+      "url": "https://dailygalaxy.com/2026/02/spacex-major-milestone-33rd-rocket-reuse/",
+      "raw": {
+        "url": "https://dailygalaxy.com/2026/02/spacex-major-milestone-33rd-rocket-reuse/",
+        "title": "SpaceX Achieves Major Milestone with 33rd Rocket Reuse: What’s Next for Space Exploration? - The Daily Galaxy",
+        "score": 3,
+        "published_date": "Mon, 23 Feb 2026 15:15:00 GMT",
+        "content": "Share on X Send through Whatsapp Copy the link\n\nOn February 21, 2026, SpaceX made history with the launch of two Falcon 9 rockets, setting a new record for rocket reusability. One of the rockets achieved its 33rd successful re-flight, a testament to SpaceX’s commitment to lowering the costs of space exploration through reusable technology. The dual launches, which carried 53 new Starlink satellites into orbit, took place from both California and Florida. This achievement marks an important milestone in the ongoing development of SpaceX’s Starlink project, which aims to provide high-speed internet globally.\n\n## A New Era for Reusable Rockets [...] ## The Starlink Constellation Expands\n\nThe February 21 launches added 53 more satellites to SpaceX’s growing Starlink constellation. These satellites are part of an ambitious plan to provide worldwide broadband coverage, especially in underserved or remote areas. Accordingto Space.com, the Starlink constellation currently has more than 9,700 active satellites, and with each new batch of launches, the coverage and reliability of the network increase. [...] Starlink’s mission to provide global internet coverage is part of SpaceX’s broader vision of connecting the entire world to high-speed, low-latency internet. While the project started with a small number of satellites, it has now evolved into one of the most extensive satellite constellations in history. The satellites are designed to provide internet access to even the most remote regions, which have historically been difficult or expensive to reach using traditional ground-based infrastructure.\n\n## Falcon 9’s Journey to 33 Flights: A Technological Triumph",
+        "raw_content": null,
+        "topic": "commercial_space",
+        "slot": "0700"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "commercial_space"
+      ],
+      "event_time": "Mon, 23 Feb 2026 15:15:00 GMT"
     },
     {
       "date": "2026-03-01",
@@ -541,15 +513,15 @@
       "source": "tavily_news",
       "symbol": "",
       "company": "",
-      "title": "February finale: SpaceX wraps up month with three Starlink launches this week - Space",
-      "summary": "On Tuesday (Feb. 24) at 6:04 p.m. EST (2304 GMT), a Falcon 9 lifted the first 29 satellites into low Earth orbit from Space Launch Complex 40 (SLC-40) at Cape Canaveral Space Force Station in Florida. The next day, 25 more Starlink units were sent space-ward by a different Falcon 9 flying at 9:17 a.",
-      "url": "https://www.space.com/space-exploration/launches-spacecraft/spacex-starlink-6-110-b1902-ccsfs-17-26-b1093-vsfb-6-108-b1069-ccsfs",
+      "title": "Google spinout Aalyria valued at $1.3 billion as investors pour into space-based communications - CNBC",
+      "summary": "Michael Brown, a general partner at Battery, said SpaceX's success in commercializing lower earth orbit satellites with Starlink has \"stoked competitive fears of satellite vendors.\" In the early days of Russia's war on Ukraine, after SpaceX turned off Starlink over Crimea, the U.S. and European coun",
+      "url": "https://www.cnbc.com/2026/02/23/google-spinout-aalyria-valued-at-1point3-billion-in-100-million-round.html",
       "raw": {
-        "url": "https://www.space.com/space-exploration/launches-spacecraft/spacex-starlink-6-110-b1902-ccsfs-17-26-b1093-vsfb-6-108-b1069-ccsfs",
-        "title": "February finale: SpaceX wraps up month with three Starlink launches this week - Space",
+        "url": "https://www.cnbc.com/2026/02/23/google-spinout-aalyria-valued-at-1point3-billion-in-100-million-round.html",
+        "title": "Google spinout Aalyria valued at $1.3 billion as investors pour into space-based communications - CNBC",
         "score": 1,
-        "published_date": "Fri, 27 Feb 2026 23:27:33 GMT",
-        "content": "On Tuesday (Feb. 24) at 6:04 p.m. EST (2304 GMT), a Falcon 9 lifted the first 29 satellites into low Earth orbit from Space Launch Complex 40 (SLC-40) at Cape Canaveral Space Force Station in Florida. The next day, 25 more Starlink units were sent space-ward by a different Falcon 9 flying at 9:17 a.m. EST (1417 GMT or 6:17 a.m. PST local time) from Space Launch Complex 4 East (SLC-4E) from Vandenberg Space Force Base in California.\n\nFinally, on Friday (Feb. 27) at 7:16 a.m. EST (1216 GMT), a third Falcon 9 rocket carrying 29 new additions for the SpaceX megaconstellation lifted off from Space Launch Complex 40 (SLC-40) at Cape Canaveral Space Force Station in Florida. [...] Friday's booster (B1069) wrapped its 30th trip to space and back on the A Shortfall of Gravitas droneship, which was stationed in the Atlantic Ocean.\n\nThe 83 satellites boosted the commercial broadband internet network to including more than 9,850 units in Earth orbit, according to satellite tracker Jonathan McDowell.\n\nGet the Space.com Newsletter\n\nBreaking space news, the latest updates on rocket launches, skywatching events and more!\n\nThe Starlink service provides access to the internet to areas around the world where connectivity is sparse or non-existent. The network also supports cell-to-satellite on select carriers and in-flight wifi on some airlines.\n\nFriday's launch was SpaceX's 25th Falcon 9 mission of 2026.\n\nRobert Z. Pearlman\n\nSocial Links Navigation [...] Get the Space Newsletter\n\nBreaking space news, the latest updates on rocket launches, skywatching events and more!\n\nBy submitting your information you agree to the Terms & Conditions and Privacy Policy and are aged 16 or over.\n\nYou are now subscribed\n\nYour newsletter sign-up was successful\n\nWant to add more newsletters?\n\nAn account already exists for this email address, please log in.\n\nSubscribe to our newsletter\n\nIn what has become hardly a leap for the company, SpaceX concluded its Starlink satellite launches for February 2026 with a trio of flights this week.",
+        "published_date": "Mon, 23 Feb 2026 13:30:01 GMT",
+        "content": "Michael Brown, a general partner at Battery, said SpaceX's success in commercializing lower earth orbit satellites with Starlink has \"stoked competitive fears of satellite vendors.\" In the early days of Russia's war on Ukraine, after SpaceX turned off Starlink over Crimea, the U.S. and European countries sought greater diversity among service providers.\n\n\"They love Starlink but want alternatives, too,\" Brown said. \"This is where Aalyria comes into play. When you have a diversity of satellite platforms, including in lower and mid-earth orbit, the ability to route traffic between them has been nearly impossible. But they provide a seamless networking layer.\" [...] Aalyria's software helps networks deliver better service across land, at sea and in space. Its $100 million in fresh funding lands as the U.S. government bolsters its spending on defense technology and national security satellites, and as the Trump administration seeks to outpace China.\n\nSpaceX's Starlink has been snapping up government contracts, and gaining popularity with consumers, especially in areas that aren't well served by traditional high-speed internet. Rivals like Eutelsat, Amazon and others are investing heavily in their own services.\n\nGoogle is retaining a stake in Aalyria. Battery Ventures led the new funding round, joined by firms including J2 Ventures and DYNE. [...] Battery's Brown said he expects the funding will enable the company to \"get their first constellations launched, operating in space, running Aalyria every minute of every day, and begin capturing additional commercial and government opportunities.\"\n\nWATCH: Why the U.S. and SpaceX need each other\n\nwatch now\n\nVIDEO13:1913:19\n\nWhy the U.S. and SpaceX need each other\n\nTech",
         "raw_content": null,
         "topic": "commercial_space",
         "slot": "0700"
@@ -562,63 +534,7 @@
       "tags": [
         "commercial_space"
       ],
-      "event_time": "Fri, 27 Feb 2026 23:27:33 GMT"
-    },
-    {
-      "date": "2026-03-01",
-      "source": "tavily_news",
-      "symbol": "",
-      "company": "",
-      "title": "Rocket Lab (RKLB) stock slips in premarket after Neutron delay despite record Q4 revenue - Bez Kabli",
-      "summary": "The company late Thursday reported record quarterly revenue of $180 million and a loss of 9 cents per share for the quarter ended Dec. 31. Rocket Lab forecast first-quarter revenue of $185 million to $200 million and an adjusted EBITDA loss of $21 million to $27 million; adjusted EBITDA is a measure",
-      "url": "https://www.bez-kabli.pl/rocket-lab-rklb-stock-slips-in-premarket-after-neutron-delay-despite-record-q4-revenue/",
-      "raw": {
-        "url": "https://www.bez-kabli.pl/rocket-lab-rklb-stock-slips-in-premarket-after-neutron-delay-despite-record-q4-revenue/",
-        "title": "Rocket Lab (RKLB) stock slips in premarket after Neutron delay despite record Q4 revenue - Bez Kabli",
-        "score": 1,
-        "published_date": "Fri, 27 Feb 2026 11:07:35 GMT",
-        "content": "The company late Thursday reported record quarterly revenue of $180 million and a loss of 9 cents per share for the quarter ended Dec. 31. Rocket Lab forecast first-quarter revenue of $185 million to $200 million and an adjusted EBITDA loss of $21 million to $27 million; adjusted EBITDA is a measure of operating profit that strips out interest, tax and some other items. It also said Neutron’s first launch is now targeted for the fourth quarter of 2026 after a stage 1 tank test failure, and it ended 2025 with a $1.85 billion backlog — contracted work not yet delivered — including an $816 million Space Development Agency prime contract to build 18 satellites. 2 [...] Rocket Lab’s “space power” pitch landed in the same batch of announcements. It said it introduced silicon solar arrays aimed at powering future space-based data centers, and CEO Peter Beck called space-based data centers “the next frontier” for computing infrastructure. 7\n\nThe company also pointed to deep-space work it says is now moving into a steadier phase. Rocket Lab said it completed commissioning of the twin spacecraft it built for NASA’s ESCAPADE Mars mission; the spacecraft will operate near the Earth–Sun L2 point until November 2026 before an Earth gravity assist sends them toward Mars. 8 [...] The Neutron timeline matters because it is the company’s bridge into a bigger launch market, and a big draw for investors who want Rocket Lab to move beyond its smaller Electron rocket. In its annual report, the company warned that an inability to develop Neutron — or significant delays — could hurt its business and results. 3\n\nRocket Lab also flagged new commercial work tied to its core Electron launcher. It said it signed another multi-launch deal with BlackSky Technology for four dedicated Electron missions, taking the total number of Electron launches for BlackSky since 2019 to 17; BlackSky CEO Brian O’Toole said the contract would help increase Gen-3 on-orbit capacity. 4",
-        "raw_content": null,
-        "topic": "commercial_space",
-        "slot": "0700"
-      },
-      "category": "新闻",
-      "subcategory": "科技新闻",
-      "rule_id": "tavily.news.topic_filter.v1",
-      "excluded": false,
-      "exclude_reason": "",
-      "tags": [
-        "commercial_space"
-      ],
-      "event_time": "Fri, 27 Feb 2026 11:07:35 GMT"
-    },
-    {
-      "date": "2026-03-01",
-      "source": "tavily_news",
-      "symbol": "",
-      "company": "",
-      "title": "Rocket Lab Delays Neutron Flight To Late 2026 After Test Failure - Aviation Week",
-      "summary": "## Share\n\nRobert Wall February 27, 2026\n\nRocket Lab says a manufacturing fault caused the failure of a Neutron rocket Stage 1 tank in January and has now pushed the inaugural flight for the launcher to late this year. The company reviewed what caused the manufacturing miscue and will make changes to",
-      "url": "https://aviationweek.com/space/launch-vehicles-propulsion/rocket-lab-delays-neutron-flight-late-2026-after-test-failure",
-      "raw": {
-        "url": "https://aviationweek.com/space/launch-vehicles-propulsion/rocket-lab-delays-neutron-flight-late-2026-after-test-failure",
-        "title": "Rocket Lab Delays Neutron Flight To Late 2026 After Test Failure - Aviation Week",
-        "score": 2,
-        "published_date": "Fri, 27 Feb 2026 13:37:39 GMT",
-        "content": "## Share\n\nRobert Wall February 27, 2026\n\nRocket Lab says a manufacturing fault caused the failure of a Neutron rocket Stage 1 tank in January and has now pushed the inaugural flight for the launcher to late this year. The company reviewed what caused the manufacturing miscue and will make changes to its production process and hardware...\n\nRobert Wall\n\nRobert Wall is Executive Editor for Defense and Space. Based in London, he directs a team of military and space journalists across the U.S., Europe and Asia-Pacific.\n\n Rocket Lab\n\n## Subscription Required\n\nRocket Lab Delays Neutron Flight To Late 2026 After Test Failure is published in Aerospace Daily & Defense Report, an Aviation Week Intelligence Network (AWIN) Market Briefing and is included with your AWIN membership. [...] - Sustainability\n  + Space\n    - Launch Vehicles & Propulsion\n    - Commercial Space\n    - Space Exploration\n    - Satellites\n    - Budget, Policy & Regulation\n    - Operations & Safety\n  + Business Aviation\n    - Aircraft & Propulsion\n    - Interiors & Connectivity\n    - Airports, FBOs & Suppliers\n    - Flight Deck\n    - Safety, Ops & Regulation\n    - Maintenance & Training\n    - Sustainability\n  + In Focus\n    - Middle East & Africa\n Marketplace\n Services [...] Market Sector\n\n  + Aerospace\n  + Air Transport\n  + MRO\n  + Defense\n  + Space\n  + Business Aviation\n Markets",
-        "raw_content": null,
-        "topic": "commercial_space",
-        "slot": "0700"
-      },
-      "category": "新闻",
-      "subcategory": "科技新闻",
-      "rule_id": "tavily.news.topic_filter.v1",
-      "excluded": false,
-      "exclude_reason": "",
-      "tags": [
-        "commercial_space"
-      ],
-      "event_time": "Fri, 27 Feb 2026 13:37:39 GMT"
+      "event_time": "Mon, 23 Feb 2026 13:30:01 GMT"
     },
     {
       "date": "2026-03-01",
@@ -793,6 +709,34 @@
       "source": "tavily_news",
       "symbol": "",
       "company": "",
+      "title": "Two Fed officials do not see imminent need to change monetary policy - KITCO",
+      "summary": "“I think that it's quite likely that it'll be appropriate to hold in the current range for some time,” Federal Reserve Bank of Boston President Susan Collins said as part of a panel discussion at a conference on technology held by her bank. But she added “there are different scenarios that are possi",
+      "url": "https://www.kitco.com/news/off-the-wire/2026-02-24/two-fed-officials-do-not-see-imminent-need-change-monetary-policy",
+      "raw": {
+        "url": "https://www.kitco.com/news/off-the-wire/2026-02-24/two-fed-officials-do-not-see-imminent-need-change-monetary-policy",
+        "title": "Two Fed officials do not see imminent need to change monetary policy - KITCO",
+        "score": 2,
+        "published_date": "Tue, 24 Feb 2026 23:40:39 GMT",
+        "content": "“I think that it's quite likely that it'll be appropriate to hold in the current range for some time,” Federal Reserve Bank of Boston President Susan Collins said as part of a panel discussion at a conference on technology held by her bank. But she added “there are different scenarios that are possible, and so it'll be important to continue to really take that patient, deliberate approach to making policy decisions.”\n\nRichmond Fed leader Thomas Barkin, who was on the same panel, said that monetary policy is “well positioned” to deal with the risks around the economic outlook. [...] Both officials said that while they are seeing signs of stability for a job market that’s in a low-hire, low-fire environment, they are still seeking evidence that inflation will moderate further. Inflation has been steadily above the central bank’s 2% target.\n\nThey both noted the recent Supreme Court decision invalidating much of President Donald Trump’s trade tariffs, which the president responded to by imposing even more tariffs, is unlikely to have a huge impact on the economy.\n\nCollins also said that the current setting of monetary policy is mildly restrictive or close to neutral. Last year the Fed cut its interest rate target by three-quarters of a percentage point to between 3.5% and 3.75%, holding that rate steady at its late January Federal Open Market Committee meeting. [...] ### off-the-wire\n\n# Two Fed officials do not see imminent need to change monetary policy\n\n###### By Reuters\n\nPublished:\n\nUpdated:\n\n##### Reuters\n\nFeb 24 (Reuters) - Two Federal Reserve officials on Tuesday signaled no near-term appetite to change the setting of central bank interest rate policy.\n\nMarkets expect the Fed to lower rates again this year but officials, faced with a stabilizing job market and uncertainty over whether inflation pressures will moderate back to target, have not given much guidance about the prospect for more reductions in the cost of short-term borrowing.",
+        "raw_content": null,
+        "topic": "fed_fomc",
+        "slot": "0700"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "fed_fomc"
+      ],
+      "event_time": "Tue, 24 Feb 2026 23:40:39 GMT"
+    },
+    {
+      "date": "2026-03-01",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
       "title": "Two Fed officials do not see imminent need to change monetary policy - Reuters",
       "summary": "Both officials said that while they are seeing signs of stability for a job market that’s in a low-hire, low-fire environment, they are still seeking evidence that inflation will moderate further. Inflation has been steadily above the central bank’s 2% target.\n\nAdvertisement · Scroll to continue\n\nTh",
       "url": "https://www.reuters.com/business/two-fed-officials-do-not-see-imminent-need-change-monetary-policy-2026-02-24/",
@@ -877,15 +821,15 @@
       "source": "tavily_news",
       "symbol": "",
       "company": "",
-      "title": "Following earlier actions to remove reputation risk from its supervision of banks, Federal Reserve Board requests comment on proposal to codify that removal - F",
-      "summary": "Stay Connected\n  + Federal Reserve Facebook Page\n  + Federal Reserve Instagram Page\n  + Federal Reserve YouTube Page\n  + Federal Reserve Flickr Page\n  + Federal Reserve LinkedIn Page\n  + Federal Reserve Threads Page\n  + Federal Reserve X Page\n  + Federal Reserve Bluesky Page\n  + Subscribe to RSS\n  +",
-      "url": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260223a.htm",
+      "title": "Fed's Miran: Four quarter-point cuts still warranted this year, no \"all clear\" for job market - Reuters",
+      "summary": "Skip to main content\n\n# Fed's Miran: Four quarter-point cuts still warranted this year, no \"all clear\" for job market\n\nBy Reuters\n\nWASHINGTON, Feb 26 (Reuters) - Federal Reserve Governor Stephen Miran said strong job growth in January was \"a really good thing,\" but that the Fed should still cut a fu",
+      "url": "https://www.reuters.com/business/feds-miran-four-quarter-point-cuts-still-warranted-this-year-no-all-clear-job-2026-02-26/",
       "raw": {
-        "url": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260223a.htm",
-        "title": "Following earlier actions to remove reputation risk from its supervision of banks, Federal Reserve Board requests comment on proposal to codify that removal - Federal Reserve Board (.gov)",
+        "url": "https://www.reuters.com/business/feds-miran-four-quarter-point-cuts-still-warranted-this-year-no-all-clear-job-2026-02-26/",
+        "title": "Fed's Miran: Four quarter-point cuts still warranted this year, no \"all clear\" for job market - Reuters",
         "score": 2,
-        "published_date": "Mon, 23 Feb 2026 22:03:50 GMT",
-        "content": "Stay Connected\n  + Federal Reserve Facebook Page\n  + Federal Reserve Instagram Page\n  + Federal Reserve YouTube Page\n  + Federal Reserve Flickr Page\n  + Federal Reserve LinkedIn Page\n  + Federal Reserve Threads Page\n  + Federal Reserve X Page\n  + Federal Reserve Bluesky Page\n  + Subscribe to RSS\n  + Subscribe to Email\n Recent Postings\n Calendar\n Publications\n Site Map\n A-Z index\n Careers\n FAQs\n Videos\n Contact\n\nToggle Dropdown Menu\n\n# Board of Governors of the Federal Reserve System\n\nThe Federal Reserve, the central bank of the United States, provides the nation with a safe, flexible, and stable monetary and financial system. \n\nSections\n\n1. Home\n2. News & Events\n3. Press Releases\n\n## Press Release\n\nFebruary 23, 2026 [...] For media inquiries, please email (/cdn-cgi/l/email-protection#93fef6f7faf2d3f5e1f1bdf4fce5) or call 202-452-2955.\n\nFederal Register notice: Prohibition on Use of Reputation Risk or Other Supervisory Tools to Encourage or Compel Banking Organizations to Engage in Politicized or Unlawful Discrimination (PDF)\n\nBoard memo (PDF)\n\nStatement by Vice Chair for Supervision Bowman\n\n##### Related Content\n\n Board Votes\n\nLast Update: February 23, 2026 [...] ## Press Release\n\nFebruary 23, 2026\n\n### Following earlier actions to remove reputation risk from its supervision of banks, Federal Reserve Board requests comment on proposal to codify that removal\n\nFor release at 5:00 p.m. EST\n\n Share\n\nFollowing earlier actions to remove reputation risk from its supervision of banks, the Federal Reserve Board on Monday requested comment on a proposal to codify that removal. The proposal reiterates the Board's policy against penalizing or prohibiting an institution from banking a customer engaged in legal activity.",
+        "published_date": "Thu, 26 Feb 2026 15:04:47 GMT",
+        "content": "Skip to main content\n\n# Fed's Miran: Four quarter-point cuts still warranted this year, no \"all clear\" for job market\n\nBy Reuters\n\nWASHINGTON, Feb 26 (Reuters) - Federal Reserve Governor Stephen Miran said strong job growth in January was \"a really good thing,\" but that the Fed should still cut a full percentage point from its policy rate this year because there were still risks to the labor market while inflation was no longer a problem.\n\n\"I think it's way too early to sort of sound an all clear that the labor market doesn't need more support from the Federal Reserve. I definitely think the labor market can be supported by the Federal Reserve further,\" with four cuts this year, Miran said on Fox Business's \"Mornings with Maria\". [...] Get a daily digest of breaking business news straight to your inbox with the Reuters Business newsletter. Sign up here.\n\nAdvertisement · Scroll to continue\n\n\"I really do not think that we have an inflation problem,\" with recent inflation readings a percentage point above the Fed's target likely to slow.\n\nReporting by Howard Schneider; Editing by Chizu Nomiyama\n\nOur Standards: The Thomson Reuters Trust Principles., opens new tab\n\nPurchase Licensing Rights\n\n## Read Next\n\n Businesscategory\n\n  US mortgage rates dip below 6%, but supply remains key\n Nasdaq leads Wall Street lower as tech rally stalls, Nvidia earnings disappoint\n Businesscategory\n\n  Brazilian digital bank Nubank's profit rises 50% in Q4 on customer growth\n Sustainabilitycategory [...] Shell ready for bigger backstop of Brazil sugar-ethanol JV Raizen, sources say\n U.S. Marketscategory\n\n  Fed's Musalem: monetary policy is appropriately balancing risks\n\n## Business\n\n ### Smartphone market set for biggest-ever decline in 2026 on memory price surge, IDC says\n\n  Media & Telecomcategory · · 7 mins ago",
         "raw_content": null,
         "topic": "fed_fomc",
         "slot": "0700"
@@ -898,35 +842,7 @@
       "tags": [
         "fed_fomc"
       ],
-      "event_time": "Mon, 23 Feb 2026 22:03:50 GMT"
-    },
-    {
-      "date": "2026-03-01",
-      "source": "tavily_news",
-      "symbol": "",
-      "company": "",
-      "title": "Fed seeks to block Justice Dept. subpoenas in Powell probe - The Washington Post",
-      "summary": "Democracy Dies in Darkness\n\n# Fed seeks to block Justice Dept. subpoenas in Powell probe\n\nFederal Reserve Chair Jerome Powell has called the probe a baseless attack by the Trump administration on the central bank’s independence.\n\n3 min\n\nMake us preferred on Google\n\nFederal Reserve Chair Jerome H. Po",
-      "url": "https://www.washingtonpost.com/national-security/2026/02/26/fed-subpoena-powell-investigation/",
-      "raw": {
-        "url": "https://www.washingtonpost.com/national-security/2026/02/26/fed-subpoena-powell-investigation/",
-        "title": "Fed seeks to block Justice Dept. subpoenas in Powell probe - The Washington Post",
-        "score": 3,
-        "published_date": "Fri, 27 Feb 2026 02:24:32 GMT",
-        "content": "Democracy Dies in Darkness\n\n# Fed seeks to block Justice Dept. subpoenas in Powell probe\n\nFederal Reserve Chair Jerome Powell has called the probe a baseless attack by the Trump administration on the central bank’s independence.\n\n3 min\n\nMake us preferred on Google\n\nFederal Reserve Chair Jerome H. Powell, shown in 2022. (Oliver Contreras/For The Washington Post)\n\nBy \nSalvador Rizzo\n\n,\n\nAndrew Ackerman\n\n and\n\nPerry Stein\n\nThe Federal Reserve is asking a court to throw out subpoenas issued as part of the Justice Department’s inquiry into Fed Chair Jerome H. Powell and the central bank’s renovations of its building, according to a person familiar with the matter.\n\nSubscribe for unlimited access to The Post\n\nYou can cancel anytime.\n\nSubscribe\n\n Isaac Arnsdorf [...] You can cancel anytime.\n\nSubscribe\n\n Isaac Arnsdorf\n\n  Trump, seeking executive power over elections, is urged to declare emergency\n\n  Earlier today\n Natalie Allison\n\n  Vance: ‘No chance’ U.S. will be in drawn-out war in Middle East\n\n  2 hours ago\n Perry Stein\n\n  DOJ reviewing if Epstein files with Trump allegations were wrongly withheld\n\n  Earlier today\n\nBy \nSalvador Rizzo\n\nSalvador Rizzo covers the D.C. federal court and U.S. attorney's office for The Washington Post. Send him secure tips at srizzo.86 on Signal.\n\nBy \nAndrew Ackerman\n\nAndrew Ackerman writes for The Washington Post’s economics team, where he covers how Washington oversees Wall Street. His areas of focus include the Federal Reserve and the way its policies affect the economy and everyday consumers.\nfollow on X@amacker [...] Parental sponsors needed\n\n  Today at 6:47 p.m. EST\n\n 1\n\n  Isaac Arnsdorf\n\n  Trump, seeking executive power over elections, is urged to declare emergency\n 2\n\n  Natalie Allison\n\n  Vance: ‘No chance’ U.S. will be in drawn-out war in Middle East\n 3\n\n  Dan Diamond\n\n   and \n\n  Jonathan Edwards\n\n  Judge rules Trump’s White House ballroom can continue, for now\n 4\n\n  Perry Stein\n\n  DOJ reviewing if Epstein files with Trump allegations were wrongly withheld\n 5\n\n  Jeff Stein\n\n  Judge: IRS broke law ‘approximately 42,695 times’ in giving DHS data\n\nNewsletter\nDaily\n\nToday’s Headlines\n\nThe most important news stories of the day, curated by Post editors, delivered every morning.",
-        "raw_content": null,
-        "topic": "fed_fomc",
-        "slot": "0700"
-      },
-      "category": "新闻",
-      "subcategory": "宏观新闻",
-      "rule_id": "tavily.news.topic_filter.v1",
-      "excluded": false,
-      "exclude_reason": "",
-      "tags": [
-        "fed_fomc"
-      ],
-      "event_time": "Fri, 27 Feb 2026 02:24:32 GMT"
+      "event_time": "Thu, 26 Feb 2026 15:04:47 GMT"
     },
     {
       "date": "2026-03-01",
@@ -1241,99 +1157,15 @@
       "source": "tavily_news",
       "symbol": "",
       "company": "",
-      "title": "US filings for jobless aid rise modestly to 212,000 as layoffs remain at historically healthy levels - Greenwich Time",
-      "summary": "Earlier this month, the Labor Department reported that U.S. employers added a surprisingly strong 130,000 jobs in January and the unemployment rate fell to 4.3% from 4.4%. However, government revisions cut 2024-2025 U.S. payrolls by hundreds of thousands, reducing the number of jobs created last yea",
-      "url": "https://www.greenwichtime.com/business/article/us-filings-for-jobless-aid-rise-modestly-to-21942760.php",
-      "raw": {
-        "url": "https://www.greenwichtime.com/business/article/us-filings-for-jobless-aid-rise-modestly-to-21942760.php",
-        "title": "US filings for jobless aid rise modestly to 212,000 as layoffs remain at historically healthy levels - Greenwich Time",
-        "score": 2,
-        "published_date": "Thu, 26 Feb 2026 13:46:32 GMT",
-        "content": "Earlier this month, the Labor Department reported that U.S. employers added a surprisingly strong 130,000 jobs in January and the unemployment rate fell to 4.3% from 4.4%. However, government revisions cut 2024-2025 U.S. payrolls by hundreds of thousands, reducing the number of jobs created last year to just 181,000. That’s about one-third of the previously reported 584,000 and the weakest since the pandemic year of 2020.\n\nMore Business\n\nLatest financial picture for Connecticut’s hospitals sparks strong debate\n\nSurging debt reported by Prospect Medical Holdings in a new state report foreshadows the hospital chain's bankruptcy.\n\nBarnes & Noble relocating Farmington store to Westfarms mall [...] Data over the past year has broadly revealed a labor market in which hiring has clearly slowed, hobbled by uncertainty stoked by President Donald Trump’s tariffs and the lingering effects of the high interest rates the Fed engineered in 2022 and 2023 to tamp down a spike of pandemic-induced inflation.\n\nAdvertisement\n\nArticle continues below this ad\n\nEconomists are conflicted about whether the stronger-than-expected January job gains are a one-off or possibly the first sign of a recovering labor market, which could lead the Fed to further delay more cuts to its key interest rate.\n\nThe government issues it February jobs report next week. [...] While weekly layoffs have remained in a historically low range mostly between 200,000 and 250,000 for the past few years, a number of high-profile companies have announced job cuts recently, including UPS, Amazon, Dow and the Washington Post in recent weeks.\n\nAdvertisement\n\nArticle continues below this ad\n\n### Want more Greenwich Time?\n\nMake us a Preferred Source on Google to see more of us when you search.\n\nAdd Preferred Source\n\nThe Labor Department also recently reported that job openings fell in December to the lowest level in more than five years.\n\nFor now, the U.S. job market appears stuck in what economists call a “low-hire, low-fire” state that has kept the unemployment rate historically low, but has left those out of work struggling to find a new job.",
-        "raw_content": null,
-        "topic": "us_data",
-        "slot": "0700"
-      },
-      "category": "新闻",
-      "subcategory": "宏观新闻",
-      "rule_id": "tavily.news.topic_filter.v1",
-      "excluded": false,
-      "exclude_reason": "",
-      "tags": [
-        "us_data"
-      ],
-      "event_time": "Thu, 26 Feb 2026 13:46:32 GMT"
-    },
-    {
-      "date": "2026-03-01",
-      "source": "tavily_news",
-      "symbol": "",
-      "company": "",
-      "title": "US weekly jobless claims increase slightly as labor market steadies - Reuters",
-      "summary": "Initial claims for state unemployment benefits rose 4,000 to a seasonally adjusted 212,000 for the week ended February 21. Economists polled by Reuters had forecast 215,000 claims for the latest week. Last week's claims included the Presidents' Day holiday, which could have impacted the data. Still,",
-      "url": "https://www.reuters.com/world/us/us-weekly-jobless-claims-increase-marginally-labor-market-stabilizes-2026-02-26/",
-      "raw": {
-        "url": "https://www.reuters.com/world/us/us-weekly-jobless-claims-increase-marginally-labor-market-stabilizes-2026-02-26/",
-        "title": "US weekly jobless claims increase slightly as labor market steadies - Reuters",
-        "score": 2,
-        "published_date": "Thu, 26 Feb 2026 15:11:31 GMT",
-        "content": "Initial claims for state unemployment benefits rose 4,000 to a seasonally adjusted 212,000 for the week ended February 21. Economists polled by Reuters had forecast 215,000 claims for the latest week. Last week's claims included the Presidents' Day holiday, which could have impacted the data. Still, claims were below the levels seen during the same period last year.\n\nAdvertisement · Scroll to continue\n\nThe U.S. Supreme Court last Friday struck down the tariffs, which Trump pursued under a law meant for use in national emergencies. Trump swiftly imposed a 10% global tariff for 150 days to replace some of the emergency duties, before raising the rate to 15% over the weekend.\n\nEconomists said the latest moves created near-term uncertainty, but anticipated minimal economic impact. [...] The number of people receiving unemployment benefits after an initial week of aid, a proxy for hiring, dropped 31,000 to a seasonally adjusted 1.833 million during the week ended February 14, the claims report showed. The so-called continuing claims covered the period during which the government surveyed households for February's unemployment rate.\n\nContinued claims rose modestly between the January and February survey weeks. The jobless rate eased to 4.3% in January from 4.4% in December. The Chicago Fed forecast the unemployment rate steady at 4.28% in February, which would round up to 4.3%.\n\nWhile the labor market is stabilizing, consumers remain anxious about their employment prospects. [...] The Reuters Inside Track newsletter is your essential guide to the biggest events in global sport. Sign up here.\n\nAdvertisement · Scroll to continue\n\nThe labor market is regaining its footing after hitting a soft patch last year amid uncertainty economists attributed to President Donald Trump's broad tariffs.\n\n\"The data show no sign of the layoffs we would expect in a weakening labor market during the early days of a hypothetical recession,\" said Carl Weinberg, chief economist at High Frequency Economics. \"That will jolly up traders who believe the Fed will not cut rates anytime soon, given a steady labor market and inflation above target.\"",
-        "raw_content": null,
-        "topic": "us_data",
-        "slot": "0700"
-      },
-      "category": "新闻",
-      "subcategory": "宏观新闻",
-      "rule_id": "tavily.news.topic_filter.v1",
-      "excluded": false,
-      "exclude_reason": "",
-      "tags": [
-        "us_data"
-      ],
-      "event_time": "Thu, 26 Feb 2026 15:11:31 GMT"
-    },
-    {
-      "date": "2026-03-01",
-      "source": "tavily_news",
-      "symbol": "",
-      "company": "",
-      "title": "Producer Price Index comes in hotter than expected in January - Seeking Alpha",
-      "summary": "### The Rotation Is Peaking\n\n### Comments (90)\n\nSort by\n\nIf you type a company or ETF ticker symbol in capital letters we will automatically link to the symbol page. You can remove the link by deleting the $ in the comment.\n\nHave a tip? Submit confidentially to our News team. Found a factual error? ",
-      "url": "https://seekingalpha.com/news/4558689-producer-price-index-rises-more-than-expected-in-january",
-      "raw": {
-        "url": "https://seekingalpha.com/news/4558689-producer-price-index-rises-more-than-expected-in-january",
-        "title": "Producer Price Index comes in hotter than expected in January - Seeking Alpha",
-        "score": 2,
-        "published_date": "Fri, 27 Feb 2026 13:56:34 GMT",
-        "content": "### The Rotation Is Peaking\n\n### Comments (90)\n\nSort by\n\nIf you type a company or ETF ticker symbol in capital letters we will automatically link to the symbol page. You can remove the link by deleting the $ in the comment.\n\nHave a tip? Submit confidentially to our News team. Found a factual error? Report here.\n\nM\n\nMichaelW\\_R\n\nToday, 10:20 AM\n\nInvesting Group\n\nComments (2.74K)\n\n|\n\nIf rising energy prices begin to bleed into the CPI watch out!! Lower energy prices have been a big boost to more moderate inflation. The Bloomberg $CRB index has been moving up at a pretty good rate - caution warranted!!\n\nC\n\nChristoph Z\n\nToday, 10:17 AM\n\nComments (622)\n\n| [...] Real007\n\nToday, 9:35 AM\n\nInvesting Group\n\nComments (1.93K)\n\n|\n\nMob Boss Trump and his Crew are a disaster, continue to do massive damage to the US Economy - the scary part is the Producer Price Index DOESN'T even include import prices -- where Trump Tariffs / National Sales Taxes (currently averaging 18%) would show up, BUT $DON'T.Mobster Trump is a colossal arrogant screw up (doesn't even read) -- look no further than the recent PCE (Fed's Favorite Inflation Gauge) released on Feb 20, 2026:Personal Consumption Expenditures Price Index  \nChange From Month One Year Ago  \nDecember 2025 +2.9%  \nNovember 2025 +2.8%  \nOctober 2025 +2.7%\n\nl\n\nlitwos\n\nToday, 9:52 AM\n\nInvesting Group\n\nComments (1.26K)\n\n|\n\n@Real007 if it goes up another 3% I am going to start calling him Biden.\n\nDude's Two Cents [...] New! Get unlimited breaking news with a free Seeking Alpha account »\n\n U.S. Economy\n Top News\n\n# Producer Price Index comes in hotter than expected in January\n\nFeb. 27, 2026 8:32 AM ETBy: Liz Kiesche, SA News Editor\n\nFollow us on Google for the latest stock newsFollow Seeking Alpha on Google for the latest stock news\n\nThe U.S. Producer Price Index increased 0.5% M/M in January, hotter than the +0.3% consensus and +0.4% in December (revised from +0.5%), according to data released by the Bureau of Labor Statistics on Friday.\n\nOn a Y/Y basis, PPI rose 2.9% Y/Y vs. +2.6% consensus and +3.0% prior.",
-        "raw_content": null,
-        "topic": "us_data",
-        "slot": "0700"
-      },
-      "category": "新闻",
-      "subcategory": "宏观新闻",
-      "rule_id": "tavily.news.topic_filter.v1",
-      "excluded": false,
-      "exclude_reason": "",
-      "tags": [
-        "us_data"
-      ],
-      "event_time": "Fri, 27 Feb 2026 13:56:34 GMT"
-    },
-    {
-      "date": "2026-03-01",
-      "source": "tavily_news",
-      "symbol": "",
-      "company": "",
       "title": "Stocks will get early March test with high stakes jobs report next week - CNBC",
       "summary": "to AI, as investors weighed the possibility that AI will one day make tall office towers unnecessary. Interest rate outlook A hotter than expected report wouldn't be welcomed by markets either. Mizuho Americas chief economist Steve Ricchiuto expects payrolls of 100,000 in February, much higher than ",
       "url": "https://www.cnbc.com/2026/02/27/stocks-will-get-early-march-test-with-high-stakes-jobs-report-next-week.html",
       "raw": {
         "url": "https://www.cnbc.com/2026/02/27/stocks-will-get-early-march-test-with-high-stakes-jobs-report-next-week.html",
         "title": "Stocks will get early March test with high stakes jobs report next week - CNBC",
-        "score": 2,
+        "score": 3,
         "published_date": "Fri, 27 Feb 2026 18:43:14 GMT",
-        "content": "to AI, as investors weighed the possibility that AI will one day make tall office towers unnecessary. Interest rate outlook A hotter than expected report wouldn't be welcomed by markets either. Mizuho Americas chief economist Steve Ricchiuto expects payrolls of 100,000 in February, much higher than is consensus, though he also expects that the January number will be revised down possibly as much as 50,000. He also said the unemployment rate will hold at 4.3%. That could show investors the U.S. economy is even more exceptionally resilient than they thought, but could also hurt the interest rate outlook following this week's inflation print. While markets are currently pricing in two cuts this year, Ricchiuto expects that could actually be zero, which would be unwelcome news for stocks. \"I [...] Skip Navigation\n\nMarkets\n\n Pre-Markets\n U.S. Markets\n Currencies\n Prediction Markets\n Cryptocurrency\n Futures & Commodities\n Bonds\n Funds & ETFs\n\nBusiness\n\n Economy\n Finance\n Health & Science\n Media\n Real Estate\n Energy\n Climate\n Transportation\n Investigations\n Industrials\n Retail\n Wealth\n Sports\n Life\n Small Business\n\nInvesting\n\n Personal Finance\n Fintech\n Financial Advisors\n Options Action\n ETF Street\n Buffett Archive\n Earnings\n Trader Talk\n\nTech\n\n Cybersecurity\n AI\n Enterprise\n Internet\n Media\n Mobile\n Social Media\n CNBC Disruptor 50\n Tech Guide\n\nPolitics\n\n White House\n Policy\n Defense\n Congress\n Expanding Opportunity\n\nVideo\n\n Latest Video\n Full Episodes\n Livestream\n Live Audio\n Live TV Schedule\n CNBC Podcasts\n CEO Interviews\n CNBC Documentaries\n Digital Originals\n\nWatchlist [...] Watchlist\n\nInvesting Club\n\n Trust Portfolio\n Analysis\n Trade Alerts\n Meeting Videos\n Homestretch\n Jim's Columns\n Education\n Subscribe\n\nPRO\n\n Pro News\n Josh Brown\n Mike Santoli\n Calls of the Day\n My Portfolio\n Livestream\n Full Episodes\n Stock Screener\n Market Forecast\n Options Investing\n Chart Investing\n Subscribe\n\nLivestream\n\n Make It\n select\n\n USA\n INTL\n\n Livestream\n\n Livestream\n\nWatchlist\n\nSIGN IN\n\nCreate free account\n\nMarkets\n\nBusiness\n\nInvesting\n\nTech\n\nPolitics\n\nVideo\n\nWatchlist\n\nInvesting Club\n\nPRO\n\nLivestream\n\n# Stocks will get early March test with high stakes jobs report next week\n\nSarah Min@\\_sarahmin\n\nWATCH LIVE",
+        "content": "to AI, as investors weighed the possibility that AI will one day make tall office towers unnecessary. Interest rate outlook A hotter than expected report wouldn't be welcomed by markets either. Mizuho Americas chief economist Steve Ricchiuto expects payrolls of 100,000 in February, much higher than is consensus, though he also expects that the January number will be revised down possibly as much as 50,000. He also said the unemployment rate will hold at 4.3%. That could show investors the U.S. economy is even more exceptionally resilient than they thought, but could also hurt the interest rate outlook following this week's inflation print. While markets are currently pricing in two cuts this year, Ricchiuto expects that could actually be zero, which would be unwelcome news for stocks. \"I [...] The stakes for next week's jobs report just got higher after Friday's hot inflation print, amid rising fears that artificial intelligence will inflict greater damage to the labor market than investors thought. Stocks sold off Friday , with the Dow Jones Industrial Average last tumbling more than 600 points after the latest wholesale inflation print showed traders have been underestimating pricing pressures. Puzzlingly, the 10-year Treasury yield that would in theory go higher on a hotter inflation report remained below 4%. This raised fears of a stagflation stagflation scenario — in which higher inflation is coupled with slowing economic growth — that kept them in the bond market. Investors trying to understand the economic outlook will read the nonfarm payrolls report carefully, as it",
         "raw_content": null,
         "topic": "us_data",
         "slot": "0700"
@@ -1353,6 +1185,34 @@
       "source": "tavily_news",
       "symbol": "",
       "company": "",
+      "title": "Producer Price Index comes in hotter than expected in January - Seeking Alpha",
+      "summary": "The index for final demand services rose 0.8% M/M in January, the largest increase since +0.9% in July 2025. Most of that increase comes from trade services, which jumped 2.5%. Prices for final demand transportation and warehousing services climbed 1.0%. Excluding trade, transportation, and warehous",
+      "url": "https://seekingalpha.com/news/4558689-producer-price-index-rises-more-than-expected-in-january",
+      "raw": {
+        "url": "https://seekingalpha.com/news/4558689-producer-price-index-rises-more-than-expected-in-january",
+        "title": "Producer Price Index comes in hotter than expected in January - Seeking Alpha",
+        "score": 2,
+        "published_date": "Fri, 27 Feb 2026 13:56:34 GMT",
+        "content": "The index for final demand services rose 0.8% M/M in January, the largest increase since +0.9% in July 2025. Most of that increase comes from trade services, which jumped 2.5%. Prices for final demand transportation and warehousing services climbed 1.0%. Excluding trade, transportation, and warehousing services, the final demand services index was unchanged from December.\n\nPrices for final demand goods slipped 0.3% M/M in January, representing the biggest decrease since a 0.7% decline in March 2025. Final demand energy fell 2.7%, and prices for final demand foods slid 1.5%. Gasoline accounted for 80% of the decline in final demand goods. Excluding energy and food, the index for goods rose 0.7% M/M, the BLS said.\n\n## More on the US Economy [...] Today, 9:06 AM\n\nInvesting Group\n\nComments (2.74K)\n\n|\n\nJanuary $PPI M/M + 0.5 % vs. + 0.3 % Con; Prior 0.4 % MISS  \nJanuary PPI Yr/Yr + 2.9 % vs. + 2.6 % Con; Prior + 3.0 % MISS  \nJanuary Core $PPI M/M + 0.8 % vs. 0.3; Prior +.0.8 % MISS  \nJanuary Core $PPI Yr/Yr + 3.6 % vs. 3.0 % Con; Prior +3.3 % MISSThis report scares me!  \nA miss on all 4 metric fronts.  \nYr/yr $PPI stuck once again at 2.9 %.  \nWhat is the most disconcerting here is the increase in the core $PPI; a very big percentage miss from consensus.  \nThe core $PPI yr/yr miss from prior month December rings the bell. This possibly puts future CPI prints at risk of pronounced upside.This report is going to set off some alarm bells at the Fed!!\n\nA\n\nAmateur1\n\nToday, 9:06 AM\n\nComments (939)\n\n| [...] Core PPI (excluding food and energy) advanced +0.8% M/M vs. +0.3% consensus and +0.6% prior (revised from +0.7%). That translated to a 3.6% Y/Y increase, compared with the +3.0% consensus and +3.3% in December.\n\nBoth headline and core PPI indicate that inflation at the wholesale level remains elevated as businesses continue to navigate economic uncertainty. That contrasts with the Consumer Price Index, which came in slightly cooler than expected in January. The numbers indicate that businesses are still facing pricing pressure, which could flow through to consumers in coming months.",
+        "raw_content": null,
+        "topic": "us_data",
+        "slot": "0700"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "us_data"
+      ],
+      "event_time": "Fri, 27 Feb 2026 13:56:34 GMT"
+    },
+    {
+      "date": "2026-03-01",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
       "title": "Week Ahead for FX, Bonds: U.S. Jobs Data in Focus - WSJ",
       "summary": "What to Read Next\n Most Popular News\n Most Popular Opinion\n\nS&P 500\n\nRussell 2000\n\nU.S. 10 Yr\n\n3.961%\n\nVIX\n\n20.85\n\n11.92%\n\nGold\n\n5268.00\n\n1.42%\n\nBitcoin\n\n65342.36\n\n-3.07%\n\nCrude Oil\n\n67.19\n\n3.04%\n\nDollar Index\n\n94.66\n\n-0.10%\n\nKBW Nasdaq Bank Index\n\n158.18\n\n-5.45%\n\nS&P GSCI Index Spot\n\n611.36\n\n1.35%\n",
       "url": "https://www.wsj.com/economy/week-ahead-for-fx-bonds-u-s-jobs-data-in-focus-853350ce?gaa_at=eafs&gaa_n=AWEtsqezHOxYXUCebSBHbMarGx9kmnCoeAxq5zRc2-_SpiD295I-iCIEXlxD&gaa_ts=69a1f7ba&gaa_sig=hapWucPx95eMn_hlMv99fnFScToPH2zH8u_AL7lskdSfjZP3W15uUXigmOr4IXRzz5YgfivUVhJQDZ7ocLZ_QA%3D%3D",
@@ -1361,7 +1221,7 @@
         "title": "Week Ahead for FX, Bonds: U.S. Jobs Data in Focus - WSJ",
         "score": 2,
         "published_date": "Fri, 27 Feb 2026 16:56:00 GMT",
-        "content": "What to Read Next\n Most Popular News\n Most Popular Opinion\n\nS&P 500\n\nRussell 2000\n\nU.S. 10 Yr\n\n3.961%\n\nVIX\n\n20.85\n\n11.92%\n\nGold\n\n5268.00\n\n1.42%\n\nBitcoin\n\n65342.36\n\n-3.07%\n\nCrude Oil\n\n67.19\n\n3.04%\n\nDollar Index\n\n94.66\n\n-0.10%\n\nKBW Nasdaq Bank Index\n\n158.18\n\n-5.45%\n\nS&P GSCI Index Spot\n\n611.36\n\n1.35%\n\nThe Wall Street Journal\n\nDiscover WSJ+Sign In\n\n Use Alt + Down Arrow to expand.\n Print Edition\n Video\n Audio\n Latest Headlines\n Puzzles\n\nAdvertisement\n\nThis copy is for your personal, non-commercial use only. Distribution and use of this material are governed by\nour Subscriber Agreement and by copyright law. For non-personal use or to order multiple copies, please contact\nDow Jones Reprints at 1-800-843-0008 or visit www.djreprints.com.\n\n# Week Ahead for FX, Bonds: U.S. Jobs Data in Focus [...] # Week Ahead for FX, Bonds: U.S. Jobs Data in Focus\n\n## The most important global events likely to affect FX and bond markets in the week starting March 2\n\nBy\n\nDow Jones Newswires staff\n\nET\n\nU.S. jobs data are back in focus in the coming week. elizabeth frantz/Reuters\n\nU.S. jobs data will mark the highlight of the coming week as investors remain uncertain about when the Federal Reserve is next likely to cut interest rates.\n\nIn Europe, attention will center on eurozone inflation data and the spring statement by the U.K.’s treasury chief. In Asia, the Bank of Japan’s policy outlook, Australia’s growth figures and China’s annual parliamentary sessions are in focus.\n\n### U.S.\n\nU.S. jobs data are back in focus in the coming week, with monthly nonfarm payrolls data for February due on Friday. [...] Investors will be looking to see whether January’s surprisingly strong payrolls numbers were a one-off. This comes amid uncertainty over whether the U.S. Federal Reserve will cut interest rates in the coming months, although analysts say it would likely take a particularly weak number to move the dial much on rate expectations.\n\nCopyright ©2026 Dow Jones & Company, Inc. All Rights Reserved. 87990cbe856818d5eddac44c7b1cdeb8\n\nContinue reading your article with  \na WSJ subscription\n\nSubscribe Now\n\nAlready a subscriber? Sign In\n\n## What to Read Next\n\n### Treasury Yields Decline Ahead of U.S. Producer Price Data\n\n22 hours ago\n\nTreasury yields declined in a session light on data points.\n\nContinue To Article\n\n### The WSJ Dollar Index Rises 0.07% to 94.76",
+        "content": "What to Read Next\n Most Popular News\n Most Popular Opinion\n\nS&P 500\n\nRussell 2000\n\nU.S. 10 Yr\n\n3.961%\n\nVIX\n\n20.85\n\n11.92%\n\nGold\n\n5268.00\n\n1.42%\n\nBitcoin\n\n65342.36\n\n-3.07%\n\nCrude Oil\n\n67.19\n\n3.04%\n\nDollar Index\n\n94.66\n\n-0.10%\n\nKBW Nasdaq Bank Index\n\n158.18\n\n-5.45%\n\nS&P GSCI Index Spot\n\n611.36\n\n1.35%\n\nThe Wall Street Journal\n\nDiscover WSJ+Sign In\n\n Use Alt + Down Arrow to expand.\n Print Edition\n Video\n Audio\n Latest Headlines\n Puzzles\n\nAdvertisement\n\nThis copy is for your personal, non-commercial use only. Distribution and use of this material are governed by\nour Subscriber Agreement and by copyright law. For non-personal use or to order multiple copies, please contact\nDow Jones Reprints at 1-800-843-0008 or visit www.djreprints.com.\n\n# Week Ahead for FX, Bonds: U.S. Jobs Data in Focus [...] # Week Ahead for FX, Bonds: U.S. Jobs Data in Focus\n\n## The most important global events likely to affect FX and bond markets in the week starting March 2\n\nBy\n\nDow Jones Newswires staff\n\nET\n\nU.S. jobs data are back in focus in the coming week. elizabeth frantz/Reuters\n\nU.S. jobs data will mark the highlight of the coming week as investors remain uncertain about when the Federal Reserve is next likely to cut interest rates.\n\nIn Europe, attention will center on eurozone inflation data and the spring statement by the U.K.’s treasury chief. In Asia, the Bank of Japan’s policy outlook, Australia’s growth figures and China’s annual parliamentary sessions are in focus.\n\n### U.S.\n\nU.S. jobs data are back in focus in the coming week, with monthly nonfarm payrolls data for February due on Friday. [...] ### The WSJ Dollar Index Rises 0.07% to 94.76\n\nThe WSJ Dollar Index rose 0.1% — up two of the past three trading days.\n\nContinue To Article\n\nAdvertisement\n\n### Treasury Yields Tick Higher Ahead of U.S. Jobless Claims\n\nTreasury yields rose as Fed officials expressed concerns over inflation and central bank independence.\n\nContinue To Article\n\n### Dollar Lifted by Diminished Rate-Cut Bets\n\nThe dollar rose against a basket of currencies as it continues to get support from the scaling back of interest-rate cut expectations.\n\nContinue To Article\n\n### Waller Weighs Supporting Fed Rate Pause if Labor Data Stabilize",
         "raw_content": null,
         "topic": "us_data",
         "slot": "0700"
@@ -1381,17 +1241,17 @@
       "source": "tavily_news",
       "symbol": "",
       "company": "",
-      "title": "China holiday spending sends a strong signal on consumer stimulus plans - CNBC",
-      "summary": "China's retail sales have remained sluggish since the pandemic. Unlike the U.S., which handed out cash to consumers, Beijing has instead offered trade-in programs and vouchers. Chinese authorities have increasingly emphasized the need to boost consumers' incomes, but have yet to release details.\n\nTh",
-      "url": "https://www.cnbc.com/2026/02/26/china-lunar-new-year-holiday-spending-signal-consumer-stimulus-outlook.html",
+      "title": "US weekly jobless claims increase slightly as labor market steadies - Reuters",
+      "summary": "UK business and professional services sentiment highest since August 2024, CBI says\n United Kingdomcategory\n\n  UK public inflation expectations fall in January, Citi/YouGov survey shows\n Asia Pacificcategory\n\n  Exclusive: Ex-BOJ chief Kuroda calls for rate hikes, tighter fiscal policy\n Asia Pacificc",
+      "url": "https://www.reuters.com/world/us/us-weekly-jobless-claims-increase-marginally-labor-market-stabilizes-2026-02-26/",
       "raw": {
-        "url": "https://www.cnbc.com/2026/02/26/china-lunar-new-year-holiday-spending-signal-consumer-stimulus-outlook.html",
-        "title": "China holiday spending sends a strong signal on consumer stimulus plans - CNBC",
+        "url": "https://www.reuters.com/world/us/us-weekly-jobless-claims-increase-marginally-labor-market-stabilizes-2026-02-26/",
+        "title": "US weekly jobless claims increase slightly as labor market steadies - Reuters",
         "score": 2,
-        "published_date": "Thu, 26 Feb 2026 04:20:53 GMT",
-        "content": "China's retail sales have remained sluggish since the pandemic. Unlike the U.S., which handed out cash to consumers, Beijing has instead offered trade-in programs and vouchers. Chinese authorities have increasingly emphasized the need to boost consumers' incomes, but have yet to release details.\n\nThat's not likely to change soon.\n\nwatch now\n\nVIDEO4:3704:37\n\nChina's consumption sector will compliment the over-crowded AI theme: CIO\n\nThe China Connection\n\n\"Policymakers are likely to build on the positive [holiday] momentum and introduce targeted, incremental easing around the March Two Sessions to stabilize expectations and sustain the recovery,\" the CCB analysts said, referring to the annual parliamentary meetings that kicks off next week. [...] Watchlist\n\nInvesting Club\n\n Trust Portfolio\n Analysis\n Trade Alerts\n Meeting Videos\n Homestretch\n Jim's Columns\n Education\n Subscribe\n\nPRO\n\n Pro News\n Josh Brown\n Mike Santoli\n Calls of the Day\n My Portfolio\n Livestream\n Full Episodes\n Stock Screener\n Market Forecast\n Options Investing\n Chart Investing\n Subscribe\n\nLivestream\n\n Make It\n select\n\n USA\n INTL\n\n Livestream\n\n Livestream\n\nWatchlist\n\nSIGN IN\n\nCreate free account\n\nMarkets\n\nBusiness\n\nInvesting\n\nTech\n\nPolitics\n\nVideo\n\nWatchlist\n\nInvesting Club\n\nPRO\n\nLivestream\n\nChina Economy\n\n# China holiday spending sends a strong signal on consumer stimulus plans\n\nEvelyn Cheng@in/evelyn-cheng-53b23624@chengevelyn\n\nWATCH LIVE\n\nKey Points [...] Instead, Beijing appears focused on preventing consumption growth from slipping below a certain level, Ren noted, indicating sector growth of roughly 2% to 3%.",
+        "published_date": "Thu, 26 Feb 2026 15:11:31 GMT",
+        "content": "UK business and professional services sentiment highest since August 2024, CBI says\n United Kingdomcategory\n\n  UK public inflation expectations fall in January, Citi/YouGov survey shows\n Asia Pacificcategory\n\n  Exclusive: Ex-BOJ chief Kuroda calls for rate hikes, tighter fiscal policy\n Asia Pacificcategory\n\n  Japan's services inflation steady, signals wage-driven price pressure\n\n## World\n\n ### Russia to help select and train first Myanmar cosmonaut\n\n  Asia Pacificcategory · · 9 mins ago [...] Initial claims for state unemployment benefits rose 4,000 to a seasonally adjusted 212,000 for the week ended February 21. Economists polled by Reuters had forecast 215,000 claims for the latest week. Last week's claims included the Presidents' Day holiday, which could have impacted the data. Still, claims were below the levels seen during the same period last year.\n\nAdvertisement · Scroll to continue\n\nThe U.S. Supreme Court last Friday struck down the tariffs, which Trump pursued under a law meant for use in national emergencies. Trump swiftly imposed a 10% global tariff for 150 days to replace some of the emergency duties, before raising the rate to 15% over the weekend.\n\nEconomists said the latest moves created near-term uncertainty, but anticipated minimal economic impact. [...] Skip to main content\n\n# US weekly jobless claims increase slightly as labor market steadies\n\nBy Lucia Mutikani\n\n Summary\n\n Weekly jobless claims increase 4,000 to 212,000\n Continuing claims decrease 31,000 to 1.833 million\n Chicago Fed forecasts unemployment rate steady at 4.28% in February\n\nWASHINGTON, Feb 26 (Reuters) - The number of Americans filing new applications for jobless benefits increased slightly last week and the unemployment rate appeared to hold steady in February amid a stable labor market.\n\nThe weekly jobless claims report from the Labor Department on Thursday suggested the labor market remained in a \"low hire, low fire\" state, and supported economists' expectations that the Federal Reserve would not cut interest rates before Fed Chair Jerome Powell's term ends in May.",
         "raw_content": null,
-        "topic": "china_data",
+        "topic": "us_data",
         "slot": "0700"
       },
       "category": "新闻",
@@ -1400,9 +1260,37 @@
       "excluded": false,
       "exclude_reason": "",
       "tags": [
-        "china_data"
+        "us_data"
       ],
-      "event_time": "Thu, 26 Feb 2026 04:20:53 GMT"
+      "event_time": "Thu, 26 Feb 2026 15:11:31 GMT"
+    },
+    {
+      "date": "2026-03-01",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "US filings for jobless aid rise modestly to 212,000 as layoffs remain at historically healthy levels - Greenwich Time",
+      "summary": "Earlier this month, the Labor Department reported that U.S. employers added a surprisingly strong 130,000 jobs in January and the unemployment rate fell to 4.3% from 4.4%. However, government revisions cut 2024-2025 U.S. payrolls by hundreds of thousands, reducing the number of jobs created last yea",
+      "url": "https://www.greenwichtime.com/business/article/us-filings-for-jobless-aid-rise-modestly-to-21942760.php",
+      "raw": {
+        "url": "https://www.greenwichtime.com/business/article/us-filings-for-jobless-aid-rise-modestly-to-21942760.php",
+        "title": "US filings for jobless aid rise modestly to 212,000 as layoffs remain at historically healthy levels - Greenwich Time",
+        "score": 2,
+        "published_date": "Thu, 26 Feb 2026 13:46:32 GMT",
+        "content": "Earlier this month, the Labor Department reported that U.S. employers added a surprisingly strong 130,000 jobs in January and the unemployment rate fell to 4.3% from 4.4%. However, government revisions cut 2024-2025 U.S. payrolls by hundreds of thousands, reducing the number of jobs created last year to just 181,000. That’s about one-third of the previously reported 584,000 and the weakest since the pandemic year of 2020.\n\nMore Business\n\nLatest financial picture for Connecticut’s hospitals sparks strong debate\n\nSurging debt reported by Prospect Medical Holdings in a new state report foreshadows the hospital chain's bankruptcy.\n\nBarnes & Noble relocating Farmington store to Westfarms mall [...] Data over the past year has broadly revealed a labor market in which hiring has clearly slowed, hobbled by uncertainty stoked by President Donald Trump’s tariffs and the lingering effects of the high interest rates the Fed engineered in 2022 and 2023 to tamp down a spike of pandemic-induced inflation.\n\nAdvertisement\n\nArticle continues below this ad\n\nEconomists are conflicted about whether the stronger-than-expected January job gains are a one-off or possibly the first sign of a recovering labor market, which could lead the Fed to further delay more cuts to its key interest rate.\n\nThe government issues it February jobs report next week. [...] Don't Miss\n\nFood\n\nPanera Bread to offer first-ever value menu with items starting at $4.99\n\nBusiness\n\nLatest financial picture for Connecticut’s hospitals sparks strong debate\n\nConnecticut\n\n'I’d rather freeze together’: Some unhoused couples refuse Connecticut shelters\n\nNews\n\nNine people froze to death in CT last year. 'No one should die without a home'\n\nLet's Play\n\n### Your Ad Blocker Is On!\n\nOnly subscribers can read articles in this mode. To continue, \nsign in\n or \nsubscribe with a special offer\n or turn off ad blocker.\n\n### The Benefits of Unlimited Digital Access\n\n Experience more with the website, e-Edition, app, newsletters\n Explore exclusive local reporting and investigations\n Go deeper with data insights and interactive features\n Share your subscription and articles with others",
+        "raw_content": null,
+        "topic": "us_data",
+        "slot": "0700"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "us_data"
+      ],
+      "event_time": "Thu, 26 Feb 2026 13:46:32 GMT"
     }
   ]
 }

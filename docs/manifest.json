@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-01T02:56:40.471659+00:00",
+  "updated_at": "2026-03-01T02:58:25.742797+00:00",
   "days": {
     "2026-02-28": {
       "slot": "2200",
@@ -16,11 +16,9 @@
         "cninfo_relation": 0,
         "p5w_interaction": 0,
         "tushare_forecast": 0,
-        "tavily_news": 50
+        "tavily_news": 46
       },
-      "errors": {
-        "tushare_forecast": "No module named 'tushare'"
-      },
+      "errors": {},
       "page": "2026-03-01/index-0700.html"
     }
   }

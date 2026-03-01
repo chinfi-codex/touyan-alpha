@@ -6,14 +6,12 @@
     "cninfo_relation": 0,
     "p5w_interaction": 0,
     "tushare_forecast": 0,
-    "tavily_news": 50
+    "tavily_news": 46
   },
   "counts_by_subcategory": {
-    "科技新闻": 25,
-    "宏观新闻": 25
+    "科技新闻": 22,
+    "宏观新闻": 24
   },
   "excluded_counts_by_rule": {},
-  "errors": {
-    "tushare_forecast": "No module named 'tushare'"
-  }
+  "errors": {}
 }
