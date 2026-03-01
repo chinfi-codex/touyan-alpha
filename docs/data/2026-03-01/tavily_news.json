@@ -1,0 +1,7 @@
+{
+  "date": "2026-03-01",
+  "source": "tavily_news",
+  "count": 0,
+  "error": "缺少环境变量 TAVILY_API_KEY",
+  "items": []
+}

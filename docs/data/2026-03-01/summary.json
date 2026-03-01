@@ -1,0 +1,12 @@
+{
+  "date": "2026-03-01",
+  "slot": "0700",
+  "counts": {
+    "tavily_news": 0
+  },
+  "counts_by_subcategory": {},
+  "excluded_counts_by_rule": {},
+  "errors": {
+    "tavily_news": "缺少环境变量 TAVILY_API_KEY"
+  }
+}
