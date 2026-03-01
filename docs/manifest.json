@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-01T02:53:22.296171+00:00",
+  "updated_at": "2026-03-01T02:56:40.471659+00:00",
   "days": {
     "2026-02-28": {
       "slot": "2200",
@@ -12,10 +12,14 @@
     "2026-03-01": {
       "slot": "0700",
       "counts": {
-        "tavily_news": 0
+        "cninfo_fulltext": 0,
+        "cninfo_relation": 0,
+        "p5w_interaction": 0,
+        "tushare_forecast": 0,
+        "tavily_news": 50
       },
       "errors": {
-        "tavily_news": "缺少环境变量 TAVILY_API_KEY"
+        "tushare_forecast": "No module named 'tushare'"
       },
       "page": "2026-03-01/index-0700.html"
     }
