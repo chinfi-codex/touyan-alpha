@@ -1,0 +1,1436 @@
+{
+  "date": "2026-03-03",
+  "source": "tavily_news",
+  "count": 51,
+  "error": "",
+  "items": [
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Asia tech stocks rally as Nvidia earnings soothe AI slowdown fears - CNBC",
+      "summary": "SK Hynix, which is a key supplier of high-bandwidth memory used in AI applications to Nvidia, rose over 2%. Samsung Electronics, which has been a decades-old partner of Nvidia, was up about 5%.\n\n\"This is a positive read through for many of the Asia supply chain players including SK Hynix, Samsung, a",
+      "url": "https://www.cnbc.com/2026/02/26/asia-tech-stocks-nvidia-earnings-jensen-huang-chips-gpu.html",
+      "raw": {
+        "url": "https://www.cnbc.com/2026/02/26/asia-tech-stocks-nvidia-earnings-jensen-huang-chips-gpu.html",
+        "title": "Asia tech stocks rally as Nvidia earnings soothe AI slowdown fears - CNBC",
+        "score": 2,
+        "published_date": "Thu, 26 Feb 2026 02:03:58 GMT",
+        "content": "SK Hynix, which is a key supplier of high-bandwidth memory used in AI applications to Nvidia, rose over 2%. Samsung Electronics, which has been a decades-old partner of Nvidia, was up about 5%.\n\n\"This is a positive read through for many of the Asia supply chain players including SK Hynix, Samsung, and many others given the explosion of data center demand,\" said Dan Ives,  senior equity research analyst at Wedbush Securities.\n\nOther South Korean tech stocks also rose, with components manufacturer LG Innotek surging almost 14%, while Seoul Semiconductor soared 13%.\n\nIn Japan, the TOPIX Information & Communication index climbed 2.6%, building on previous day's 0.58% gain.\n\nSoftware firm Trend Micro jumped 5.95%, while Sony Group rose over 3.86%. SoftBank Group added 5%. [...] Skip Navigation\n\nMarkets\n\n Pre-Markets\n U.S. Markets\n Currencies\n Prediction Markets\n Cryptocurrency\n Futures & Commodities\n Bonds\n Funds & ETFs\n\nBusiness\n\n Economy\n Finance\n Health & Science\n Media\n Real Estate\n Energy\n Climate\n Transportation\n Investigations\n Industrials\n Retail\n Wealth\n Sports\n Life\n Small Business\n\nInvesting\n\n Personal Finance\n Fintech\n Financial Advisors\n Options Action\n ETF Street\n Buffett Archive\n Earnings\n Trader Talk\n\nTech\n\n Cybersecurity\n AI\n Enterprise\n Internet\n Media\n Mobile\n Social Media\n CNBC Disruptor 50\n Tech Guide\n\nPolitics\n\n White House\n Policy\n Defense\n Congress\n Expanding Opportunity\n\nVideo\n\n Latest Video\n Full Episodes\n Livestream\n Live Audio\n Live TV Schedule\n CNBC Podcasts\n CEO Interviews\n CNBC Documentaries\n Digital Originals\n\nWatchlist [...] Watchlist\n\nInvesting Club\n\n Trust Portfolio\n Analysis\n Trade Alerts\n Meeting Videos\n Homestretch\n Jim's Columns\n Education\n Subscribe\n\nPRO\n\n Pro News\n Josh Brown\n Mike Santoli\n Calls of the Day\n My Portfolio\n Livestream\n Full Episodes\n Stock Screener\n Market Forecast\n Options Investing\n Chart Investing\n Subscribe\n\nLivestream\n\n Make It\n select\n\n USA\n INTL\n\n Livestream\n\n Livestream\n\nWatchlist\n\nSIGN IN\n\nCreate free account\n\nMarkets\n\nBusiness\n\nInvesting\n\nTech\n\nPolitics\n\nVideo\n\nWatchlist\n\nInvesting Club\n\nPRO\n\nLivestream\n\nAsia Markets\n\n# Asia tech stocks rally as Nvidia earnings soothe AI slowdown fears\n\nLee Ying Shan@in/ying-shan-lee@LeeYingshan\n\nWATCH LIVE\n\nKey Points",
+        "raw_content": null,
+        "topic": "memory",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "memory"
+      ],
+      "event_time": "Thu, 26 Feb 2026 02:03:58 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Foresight and Flexibility: Winning in a Constrained Semiconductor Market - Inbound Logistics",
+      "summary": "While analog is more widely distributed and easier to stockpile, memory is concentrated among a handful of manufacturers, carries high dollar value, and is rarely held in inventory. These structural characteristics make the segment highly sensitive to shifts in demand.  \n\nMajor memory producers (Mic",
+      "url": "https://www.inboundlogistics.com/articles/foresight-and-flexibility-winning-in-a-constrained-semiconductor-market/",
+      "raw": {
+        "url": "https://www.inboundlogistics.com/articles/foresight-and-flexibility-winning-in-a-constrained-semiconductor-market/",
+        "title": "Foresight and Flexibility: Winning in a Constrained Semiconductor Market - Inbound Logistics",
+        "score": 2,
+        "published_date": "Fri, 27 Feb 2026 19:36:23 GMT",
+        "content": "While analog is more widely distributed and easier to stockpile, memory is concentrated among a handful of manufacturers, carries high dollar value, and is rarely held in inventory. These structural characteristics make the segment highly sensitive to shifts in demand.  \n\nMajor memory producers (Micron, Samsung, and SK Hynix) are directing the bulk of their capacity toward high-performance memory for AI and cloud workloads. This leaves far less available for traditional markets such as consumer electronics, automotive components, and healthcare devices, creating mounting pressures throughout the supply chain. [...] ×\n\n## 200,000 Readers Can’t Be Wrong\n\nJoin them by signing up for our free, weekly newsletter for supply chain and logistics news you can use.\n\n\"\\\" indicates required fields [...] Skip to Content)\n\n Free Subscription\n Advertise\n Whitepapers\n Web-Cite City\n Podcast\n Video Podcasts\n Webinars\n Knowledge Center\n\n Free Subscription\n Advertise\n Whitepapers\n Web-Cite City\n Podcast\n Video Podcasts\n Webinars\n Knowledge Center\n\nMenu  3PL Solutions\n\n| Commentary | Procurement\n\n# Foresight and Flexibility: Winning in a Constrained Semiconductor Market\n\nPosted By:  Katrina Arabe\n\nTags: Supply Chain Resilience, Technology\n\nBy Graham Scott, Chief Procurement Officer at Jabil\n\nAmidst a memory chip shortage, maintaining a long-term view on cost versus continuity will not only weather this cycle but gain a competitive advantage in the market that follows.",
+        "raw_content": null,
+        "topic": "memory",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "memory"
+      ],
+      "event_time": "Fri, 27 Feb 2026 19:36:23 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Micron Stock: Is The AI Memory Boom Just Beginning? - Forbes",
+      "summary": "VCG via Getty Images\n\n### Why Bet On MU Now?\n\nMicron is taking advantage of a structural, AI-driven surge in demand for High-Bandwidth Memory (HBM), which is causing a significant supply-demand imbalance in the memory sector. This enables a considerable positive shift toward higher-margin HBM produc",
+      "url": "https://www.forbes.com/sites/greatspeculations/2026/02/24/micron-stock-is-the-ai-memory-boom-just-beginning/",
+      "raw": {
+        "url": "https://www.forbes.com/sites/greatspeculations/2026/02/24/micron-stock-is-the-ai-memory-boom-just-beginning/",
+        "title": "Micron Stock: Is The AI Memory Boom Just Beginning? - Forbes",
+        "score": 3,
+        "published_date": "Tue, 24 Feb 2026 13:46:03 GMT",
+        "content": "VCG via Getty Images\n\n### Why Bet On MU Now?\n\nMicron is taking advantage of a structural, AI-driven surge in demand for High-Bandwidth Memory (HBM), which is causing a significant supply-demand imbalance in the memory sector. This enables a considerable positive shift toward higher-margin HBM products, giving the firm substantial pricing power, which results in accelerated revenue growth and margin expansion. [...] The general sentiment is optimistic. The AI-driven super-cycle is overshadowing all other elements. Record guidance, heightened growth, and substantial pricing power create a strong headwind. Competitive challenges are considerable but seem futuristically oriented; the current cash flow situation is irrefutable.\n\n_Bull View_\n\nAn unparalleled, AI-induced supply deficit provides Micron with immense pricing power and visibility, resulting in record revenue and margins extending through 2026.\n\n_Bear View_\n\nRival firms (SK Hynix, Samsung) are establishing commanding positions in next-gen HBM, potentially sidelining Micron from significant AI platforms like Nvidia’s ‘Rubin.’\n\n1/1 Skip Ad Continue watching after the adImage 12: Loading PodsVisit Advertiser websiteGO TO PAGE [...] The High-Bandwidth Memory (HBM) total addressable market (TAM) is anticipated to increase at a ~40% CAGR, expected to reach $100 billion by 2028.\n   Micron's total HBM supply for 2026 is fully contracted with predetermined pricing, ensuring high revenue visibility.\n   The company's guidance for Q2 2026 includes a gross margin prediction of ~68%, indicating significant growth.\n   DRAM prices increased by about 20% in the last reported quarter alone, showcasing a favorable pricing climate.\n\n### How Do The Fundamentals Look?",
+        "raw_content": null,
+        "topic": "memory",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "memory"
+      ],
+      "event_time": "Tue, 24 Feb 2026 13:46:03 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "GreenRoc advances Amitsoq graphite pilot plant and deepens EU ties - TipRanks",
+      "summary": "[Premium\n\n‘As Expected,’ Top Analysts Praise Nvidia’s Stellar Q4 Results\n\nNVDA](/news/as-expected-top-analysts-praise-nvidias-stellar-q4-results \"NVDA\")\n\n[Premium\n\nSamsung, SK Hynix Stocks Hit Record Highs after Nvidia’s Blowout Earnings – Here’s Why\n\nEWYNVDA](/news/samsung-sk-hynix-stocks-hit-recor",
+      "url": "https://www.tipranks.com/news/company-announcements/greenroc-advances-amitsoq-graphite-pilot-plant-and-deepens-eu-ties",
+      "raw": {
+        "url": "https://www.tipranks.com/news/company-announcements/greenroc-advances-amitsoq-graphite-pilot-plant-and-deepens-eu-ties",
+        "title": "GreenRoc advances Amitsoq graphite pilot plant and deepens EU ties - TipRanks",
+        "score": 2,
+        "published_date": "Thu, 26 Feb 2026 08:14:43 GMT",
+        "content": "[Premium\n\n‘As Expected,’ Top Analysts Praise Nvidia’s Stellar Q4 Results\n\nNVDA](/news/as-expected-top-analysts-praise-nvidias-stellar-q4-results \"NVDA\")\n\n[Premium\n\nSamsung, SK Hynix Stocks Hit Record Highs after Nvidia’s Blowout Earnings – Here’s Why\n\nEWYNVDA](/news/samsung-sk-hynix-stocks-hit-record-highs-after-nvidias-blowout-earnings-heres-why \"EWY | NVDA | SNDK | SSNLF\")\n\nMore News >\n\nEducation\n\nPersonal FinanceHow To Use TipRanksTipRanks LabsGlossaryFAQs\n\nAbout Us\n\nAbout TipRanksContact UsReviewsMobile APP\n\nWorking with TipRanks\n\nEnterprise SolutionsAdvertise with UsTop Online BrokersBecome an AffiliateTipRanks News Wire\n\nFollow Us\n\nOpen App\n\nDownload the TipRanks App\n\nScan the QR code to download the app\n\nGoogle Play\n\nApp Store\n\nLearn more about the TipRanks app >>\n\nOpen App [...] Disclaimer & DisclosureReport an Issue\n\nLooking for investment ideas? Subscribe to our Smart Investor newsletter for weekly expert stock picks!\n\nGet real-time notifications on news & analysis, curated for your stock watchlist. Download the TipRanks app today! Get the App\n\n1\n\n## Latest News Feed\n\n[Premium\n\n### ‘As Expected,’ Top Analysts Praise Nvidia’s Stellar Q4 Results\n\nSheryl Sheth41m ago\n\nNVDA](/news/as-expected-top-analysts-praise-nvidias-stellar-q4-results \"NVDA\")\n\n[Premium\n\n### Samsung, SK Hynix Stocks Hit Record Highs after Nvidia’s Blowout Earnings – Here’s Why\n\nKirti Tak1h ago\n\nEWYNVDA](/news/samsung-sk-hynix-stocks-hit-record-highs-after-nvidias-blowout-earnings-heres-why \"EWY | NVDA | SNDK | SSNLF\")\n\n[Premium [...] Daily Insiders Trades\n\nDividend Stocks\n\nETF Center\n\nTop Gainers/losers/active ETFs\n\nTrump Dashboard\n\nNew\n\nDividend Calculator\n\nOptions Profit Calculator\n\nDollar Cost Averaging\n\nCompound Interest Calculator\n\nMortgage Calculator\n\nAuto Loan Calculator\n\nStudent Loan Calculator\n\n401k Retirement Calculator\n\nEarnings Calendar\n\nDividend Calendar\n\nEconomic Calendar\n\nIPO Calendar\n\nStock Splits\n\nStock Buybacks\n\nFDA Calendar\n\nMarket Holidays\n\nDividend Center\n\nBest Dividend Stocks\n\nPopular\n\nBest High Yield Dividend Stocks\n\nDividend Aristocrats\n\nDividend Stock Comparison\n\nNew\n\nDividend Calculator\n\nDividend Returns Comparison\n\nDividend Calendar\n\nTop Analysts\n\nTop Financial Bloggers\n\nTop-Performing Corporate Insiders\n\nTop Hedge Fund Managers\n\nTop Research Firms\n\nTop Individual Investors\n\nTop Gainers",
+        "raw_content": null,
+        "topic": "memory",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "memory"
+      ],
+      "event_time": "Thu, 26 Feb 2026 08:14:43 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "What’s behind the humanoid robot hype? - Automotive World",
+      "summary": "“Robots are a physical manifestation of AI on the manufacturing floor,” observes CJ Finn, PwC US Automotive and Mobility Leader. Anything related to AI is attracting investment and headline space. McKinsey Partner Kersten Heineke describes robots and physical AI as “the hidden heartbeat of the auto ",
+      "url": "https://www.automotiveworld.com/articles/whats-behind-the-humanoid-robot-hype/",
+      "raw": {
+        "url": "https://www.automotiveworld.com/articles/whats-behind-the-humanoid-robot-hype/",
+        "title": "What’s behind the humanoid robot hype? - Automotive World",
+        "score": 2,
+        "published_date": "Mon, 02 Mar 2026 08:56:17 GMT",
+        "content": "“Robots are a physical manifestation of AI on the manufacturing floor,” observes CJ Finn, PwC US Automotive and Mobility Leader. Anything related to AI is attracting investment and headline space. McKinsey Partner Kersten Heineke describes robots and physical AI as “the hidden heartbeat of the auto industry” as “cars are no longer just assembled—they’re created in adaptive, intelligent factories.”\n\nWhile this applies to all AI-powered robots, the past few months have seen particular interest in humanoids. Tesla unveiled its Optimus robot in 2021. Powered by AI, it can walk, climb stairs, and carry and manipulate objects. Chief Executive Elon Musk announced in December 2025 that sales of Optimus units to other parties would finally begin in 2026. [...] Tesla has deployed a couple of Optimus robots within its car assembly operations, while BYD has used the humanoid Walker S1 model, but applications remain limited. Mercedes-Benz signed an agreement with US robotics company Apptronik in March 2024 to develop new applications for humanoid robots in a logistics and production environment jointly. In 2025, the automaker invested an unspecified “low double-digit million-euro amount” in the partnership. While nothing has yet to materialise on the plant floor, Mercedes confirmed to Automotive World that “as part of this cooperation, a deployment of humanoid robots is planned for intra-logistic areas in production over the next few years.” [...] Where Tesla leads, others are keen to follow. CES 2026 featured a dedicated Robot Pavillion from the K-Humanoid Alliance, a coalition devoted to humanoid robot research and development. Among the automotive players, such big names as Hyundai, Nvidia, and Qualcomm are all keen to get in on the action as well. For instance, Qualcomm unveiled an end‑to‑end general‑purpose robotics architecture designed for full‑size humanoids. Both Tesla and Qualcomm have highlighted the crossover between automated driving technology and automated robots.",
+        "raw_content": null,
+        "topic": "robotics",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "robotics"
+      ],
+      "event_time": "Mon, 02 Mar 2026 08:56:17 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Why China’s humanoid robot industry is winning the early market - TechCrunch",
+      "summary": "“China has a more robust hardware supply chain — much of it built up through the EV sector, from sensors to batteries — and the world’s strongest manufacturing base, allowing companies to iterate far faster than Western competitors,” Xu told TechCrunch.\n\nAs a result, not only are Chinese robots chea",
+      "url": "https://techcrunch.com/2026/02/28/why-chinas-humanoid-robot-industry-is-winning-the-early-market/",
+      "raw": {
+        "url": "https://techcrunch.com/2026/02/28/why-chinas-humanoid-robot-industry-is-winning-the-early-market/",
+        "title": "Why China’s humanoid robot industry is winning the early market - TechCrunch",
+        "score": 2,
+        "published_date": "Sat, 28 Feb 2026 15:00:00 GMT",
+        "content": "“China has a more robust hardware supply chain — much of it built up through the EV sector, from sensors to batteries — and the world’s strongest manufacturing base, allowing companies to iterate far faster than Western competitors,” Xu told TechCrunch.\n\nAs a result, not only are Chinese robots cheaper but companies can also release new models more quickly, Xu noted, adding that leading Chinese player Unitree shipped roughly 36 times more units last year than U.S. rivals Figure and Tesla. [...] While increased funding toward humanoid startups “has definitely accelerated” the pace of progress, “the most durable adoption comes when you can show reliable and repeatable value in production or service operations, not just a one-off showcase,” Zhao added.\n\nStill, investing helps and Chinese robotics makers are securing it. Last year Unitree was valued at around $3 billion after closing its Series C, with ambitions to reach as much as $7 billion in a future IPO. Meanwhile, Galbot has raised more than $300 million in fresh funding, reportedly pushing its valuation to $3 billion, one of the largest financings in China’s humanoid robotics sector to date. [...] Asia, ASIMO, boston dynamics, China, China, Engine AI, Fourier Intelligence, Galbot, Hardware, humanoid robot, humanoid robotics, humanoids, Japan, Japan, North America, Robotics, softbank robotics, South Korea, Startups, Ubtech Robotics, United States, Unitree\n\nKate Park\n\nReporter, Asia\n\nKate Park is a reporter at TechCrunch, with a focus on technology, startups and venture capital in Asia. She previously was a financial journalist at Mergermarket covering M&A, private equity and venture capital.\n\nView Bio\n\nLoading the next article\n\nError loading the next article",
+        "raw_content": null,
+        "topic": "robotics",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "robotics"
+      ],
+      "event_time": "Sat, 28 Feb 2026 15:00:00 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Unitree A2 offers 100 kg payload, 20 km range for industry - MEXC",
+      "summary": "Its relevance now reflects maturing legged locomotion, on-robot perception, and battery management that together expand real-world duty cycles. As estimated by Omdia, Unitree shipped over 5,500 humanoid robots last year, illustrating production capacity that could support A‑series deployments.\n\nPrac",
+      "url": "https://www.mexc.com/news/786398",
+      "raw": {
+        "url": "https://www.mexc.com/news/786398",
+        "title": "Unitree A2 offers 100 kg payload, 20 km range for industry - MEXC",
+        "score": 2,
+        "published_date": "Tue, 24 Feb 2026 10:48:06 GMT",
+        "content": "Its relevance now reflects maturing legged locomotion, on-robot perception, and battery management that together expand real-world duty cycles. As estimated by Omdia, Unitree shipped over 5,500 humanoid robots last year, illustrating production capacity that could support A‑series deployments.\n\nPractical value will depend on the balance between payload, speed, and endurance, as well as terrain and software configuration. Organizations evaluating the A2 should map tasks to these trade-offs rather than headline figures. [...] As reported by Robotics & Automation News ( the A2 weighs about 37 kg and can reach roughly 5 m/s. It supports a 100 kg standing load, around 25 kg walking payload, and up to a 20 km unloaded range with dual hot-swappable batteries, plus front/rear 3D LiDAR and an HD camera.\n\nThe report notes endurance declines as payload increases and as terrain complexity rises. Distinguishing standing load from walking payload is essential when planning inspection routes or logistics tasks.\n\nResearch-facing materials emphasize suitability for SLAM, navigation, and locomotion experiments. “a strong foundation for embodied intelligence research,” said K-Robotic, a robotics distributor ( [...] ExchangeDEX+\n\nBuy CryptoMarketsSpotFuturesGOLDEarnEvent Center\nCommodity Zero-Fee Gala\n\nUnitree A2 quadruped robot, 100 kg load capacity, 20 km range; data show endurance vs payload trade-offs, sensors, hot-swap batteries, and market positioning.Unitree A2 quadruped robot, 100 kg load capacity, 20 km range; data show endurance vs payload trade-offs, sensors, hot-swap batteries, and market positioning.\n\n# Unitree A2 offers 100 kg payload, 20 km range for industry\n\nAuthor: coinlineup\n\nSource: coinlineup\n\n2026/02/24 17:21\n\n2 min read\n\nShare\n\nTRADE$0,0321-9,60%\n\nKey Takeaways:",
+        "raw_content": null,
+        "topic": "robotics",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "robotics"
+      ],
+      "event_time": "Tue, 24 Feb 2026 10:48:06 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "AI2 Robotics raises Series B funding to advance AlphaBot, embodied AI - The Robot Report",
+      "summary": "“AI² Robotics is committed to accelerating the global adoption of general-purpose robots, making them as accessible as smart cars and smartphones, becoming a universal device for everyone,” said the company.\n\n## AI² Robotics develops VLA model as ‘China’s Tesla’\n\nAI2 Robotics has developed the Globa",
+      "url": "https://www.therobotreport.com/ai2-robotics-raises-series-b-funding-advance-alphabot-embodied-ai/",
+      "raw": {
+        "url": "https://www.therobotreport.com/ai2-robotics-raises-series-b-funding-advance-alphabot-embodied-ai/",
+        "title": "AI2 Robotics raises Series B funding to advance AlphaBot, embodied AI - The Robot Report",
+        "score": 2,
+        "published_date": "Tue, 24 Feb 2026 23:58:50 GMT",
+        "content": "“AI² Robotics is committed to accelerating the global adoption of general-purpose robots, making them as accessible as smart cars and smartphones, becoming a universal device for everyone,” said the company.\n\n## AI² Robotics develops VLA model as ‘China’s Tesla’\n\nAI2 Robotics has developed the Global and Omni-body vision-language-action (GOVLA) model for “full-space understanding, whole-body coordination, and complex task reasoning.” It said its “data closed-loop + scenario compounding” approach provides a competitive advantage.\n\n“Like Tesla, AI² Robotics positions itself as a rare developer, manufacturer, and service provider of productivity-oriented, general-purpose intelligent robots — distinct from performance or entertainment-focused models,” noted Pandaily. [...] The Robot Report\n\n# AI2 Robotics raises Series B funding to advance AlphaBot, embodied AI\n\nBy The Robot Report Staff |\n\nAI2 Robotics has developed VLA models for its AlphaBot 2 robot. Source: AI2 Robotics\n\nAI2 Robotics this week reportedly raised CN¥1.2 billion ($144.7 million U.S.) to continue developing embodied AI. The company said it plans to use the funding to advance its model toward general-purpose humanoid robots.\n\nDr. Yangdong Eric Guo founded Shenzhen, China-based AI2 Robotics in 2023. The startup (not to be confused with the Allen Institute for AI or Ai2) said its AlphaBot wheeled humanoid robots integrate proprietary foundation models with machine learning and robust hardware. [...] - RBR50 Winners 2024\n    - RBR50 Winners 2023\n    - RBR50 Winners 2022\n    - RBR50 Winners 2021\n Resources\n  + Automated Warehouse Research Reports\n  + Digital Issues\n  + eBooks\n  + Publications\n    - Automated Warehouse\n    - Collaborative Robotics Trends\n  + Search Robotics Database\n  + Videos\n  + Webinars / Digital Events\n Events\n  + RoboBusiness\n  + Robotics Summit & Expo\n  + DeviceTalks\n  + R&D 100\n  + Robotics Weeks\n Podcast\n  + Episodes\n Advertise\n Subscribe",
+        "raw_content": null,
+        "topic": "robotics",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "robotics"
+      ],
+      "event_time": "Tue, 24 Feb 2026 23:58:50 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Software woes persist; BMW’s humanoid robot expansion - Automotive News",
+      "summary": "Daily Drive\n\n# Software woes persist; BMW’s humanoid robot expansion\n\nFebruary 27, 2026 03:33 PM EST\n\n## Featured Stories\n\nBMW\n\nBMW intensifies humanoid robot push with test project in Germany after U.S. success\n\nBMW joins automakers that are exploring humanoid robotics as the next frontier of manuf",
+      "url": "https://www.autonews.com/podcasts/daily-drive/an-daily-drive-software-woes-cuyler-owens/",
+      "raw": {
+        "url": "https://www.autonews.com/podcasts/daily-drive/an-daily-drive-software-woes-cuyler-owens/",
+        "title": "Software woes persist; BMW’s humanoid robot expansion - Automotive News",
+        "score": 2,
+        "published_date": "Fri, 27 Feb 2026 20:33:00 GMT",
+        "content": "Daily Drive\n\n# Software woes persist; BMW’s humanoid robot expansion\n\nFebruary 27, 2026 03:33 PM EST\n\n## Featured Stories\n\nBMW\n\nBMW intensifies humanoid robot push with test project in Germany after U.S. success\n\nBMW joins automakers that are exploring humanoid robotics as the next frontier of manufacturing flexibility.\n\nDA\n\nBy\n\nDouglas A. Bolduc\n\nManufacturing\n\nU.S. Supreme Court quashed Trump’s reciprocal tariffs. Could auto tariffs be next?\n\nDK\n\nBy\n\nDavid Kennedy\n\nBuy-Sell\n\nDealership buy-sell database updates: Penske Automotive buys 2 Lexus stores, Ken Garff Automotive sells Utah dealership as part of deals tracked across 9 states\n\nPH\n\nBy\n\nPaige Hodder\n\nHyundai\n\nRise of robots pits Hyundai’s Atlas against Musk’s Optimus\n\nBN\n\nBy\n\nBloomberg News",
+        "raw_content": null,
+        "topic": "robotics",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "robotics"
+      ],
+      "event_time": "Fri, 27 Feb 2026 20:33:00 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Tesollo commercializes its lightweight, compact robotic hand for humanoids - The Robot Report",
+      "summary": "- RBR50 Winners 2024\n    - RBR50 Winners 2023\n    - RBR50 Winners 2022\n    - RBR50 Winners 2021\n Resources\n  + Automated Warehouse Research Reports\n  + Digital Issues\n  + eBooks\n  + Publications\n    - Automated Warehouse\n    - Collaborative Robotics Trends\n  + Search Robotics Database\n  + Videos\n  +",
+      "url": "https://www.therobotreport.com/tesollo-commercializes-its-lightweight-compact-robotic-hand-for-humanoids/",
+      "raw": {
+        "url": "https://www.therobotreport.com/tesollo-commercializes-its-lightweight-compact-robotic-hand-for-humanoids/",
+        "title": "Tesollo commercializes its lightweight, compact robotic hand for humanoids - The Robot Report",
+        "score": 1,
+        "published_date": "Mon, 23 Feb 2026 18:22:36 GMT",
+        "content": "- RBR50 Winners 2024\n    - RBR50 Winners 2023\n    - RBR50 Winners 2022\n    - RBR50 Winners 2021\n Resources\n  + Automated Warehouse Research Reports\n  + Digital Issues\n  + eBooks\n  + Publications\n    - Automated Warehouse\n    - Collaborative Robotics Trends\n  + Search Robotics Database\n  + Videos\n  + Webinars / Digital Events\n Events\n  + RoboBusiness\n  + Robotics Summit & Expo\n  + DeviceTalks\n  + R&D 100\n  + Robotics Weeks\n Podcast\n  + Episodes\n Advertise\n Subscribe [...] The company debuted its flagship DG-5F at the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) in 2024. Since then, major Korean and global technology companies have adopted the gripper, expanding its use cases across industries.\n\n### Tell Us What You Think! Cancel reply\n\nThis site uses Akismet to reduce spam. Learn how your comment data is processed.\n\n#### Related Articles Read More >\n\n##### Warehousing robot maker turns to lubrication-free motion plastics\n\n##### OnRobot to share automation roadmap advice in Dallas\n\n##### Robotiq brings sense of touch to physical AI with fingertips for 2F grippers\n\n##### The hidden technology behind fluid robot motion\n\n## Search The Robot Report [...] Home\n News\n Technologies\n  + Batteries / Power Supplies\n  + Cameras / Imaging / Vision\n  + Controllers\n  + End Effectors\n  + Microprocessors / SoCs\n  + Motion Control\n  + Sensors\n  + Soft Robotics\n  + Software / Simulation\n Development\n  + Artificial Intelligence\n  + Human Robot Interaction / Haptics\n  + Mobility / Navigation\n  + Research\n Robots\n  + AGVs\n  + AMRs\n  + Consumer\n  + Collaborative Robots\n  + Drones\n  + Humanoids\n  + Industrial\n  + Self-Driving Vehicles\n  + Unmanned Maritime Systems\n Business\n  + Financial\n    - Investments\n    - Mergers & Acquisitions\n    - Earnings\n  + Markets\n    - Agriculture\n    - Healthcare\n    - Logistics\n    - Manufacturing\n    - Mining\n    - Security\n  + RBR50\n    - RBR50 Winners 2025\n    - RBR50 Winners 2024\n    - RBR50 Winners 2023",
+        "raw_content": null,
+        "topic": "robotics",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "robotics"
+      ],
+      "event_time": "Mon, 23 Feb 2026 18:22:36 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "BMW intensifies humanoid robot push with test project in Germany after U.S. success - Automotive News",
+      "summary": "# BMW intensifies humanoid robot push with test project in Germany after U.S. success\n\nBy\n\nDouglas A. Bolduc\n\nFebruary 27, 2026 09:00 AM EST\n\n## Featured Stories\n\nHyundai\n\nRise of robots pits Hyundai’s Atlas against Musk’s Optimus\n\nWhile the world’s attention has been fixated on Elon Musk’s model an",
+      "url": "https://www.autonews.com/bmw/ane-bmw-humanoid-robot-leipzig-germany-0227/",
+      "raw": {
+        "url": "https://www.autonews.com/bmw/ane-bmw-humanoid-robot-leipzig-germany-0227/",
+        "title": "BMW intensifies humanoid robot push with test project in Germany after U.S. success - Automotive News",
+        "score": 2,
+        "published_date": "Fri, 27 Feb 2026 14:00:00 GMT",
+        "content": "# BMW intensifies humanoid robot push with test project in Germany after U.S. success\n\nBy\n\nDouglas A. Bolduc\n\nFebruary 27, 2026 09:00 AM EST\n\n## Featured Stories\n\nHyundai\n\nRise of robots pits Hyundai’s Atlas against Musk’s Optimus\n\nWhile the world’s attention has been fixated on Elon Musk’s model and the high-stakes AI race between the U.S. and China, Hyundai has emerged as a leader in humanoid robots.\n\nBN\n\nBy\n\nBloomberg News\n\nBuy-Sell\n\nDealership buy-sell database updates: Penske Automotive buys 2 Lexus stores, Ken Garff Automotive sells Utah dealership as part of deals tracked across 9 states\n\nPH\n\nBy\n\nPaige Hodder\n\nBuy-Sell\n\nFoundation Automotive reverses course on U.S. acquisition tear, becomes seller\n\nJH\n\nBy\n\nJim Henry\n\nAudi [...] JH\n\nBy\n\nJim Henry\n\nAudi\n\nAudi names Vito Paladino new North America boss as part of global executive shuffle\n\nJW\n\nBy\n\nJack Walsworth",
+        "raw_content": null,
+        "topic": "robotics",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "robotics"
+      ],
+      "event_time": "Fri, 27 Feb 2026 14:00:00 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Lei Xing: The Chinese vehicle threat is overblown - Automotive News",
+      "summary": "# Lei Xing: The Chinese vehicle threat is overblown\n\nBy\n\nMolly Boigon\n\nMarch 01, 2026 06:00 AM EST\n\n## Featured Stories\n\nBMW\n\nBMW intensifies humanoid robot push with test project in Germany after U.S. success\n\nBMW joins automakers that are exploring humanoid robotics as the next frontier of manufac",
+      "url": "https://www.autonews.com/podcasts/shift/an-shift-podcast-lei-xing-0301/",
+      "raw": {
+        "url": "https://www.autonews.com/podcasts/shift/an-shift-podcast-lei-xing-0301/",
+        "title": "Lei Xing: The Chinese vehicle threat is overblown - Automotive News",
+        "score": 1,
+        "published_date": "Sun, 01 Mar 2026 11:00:00 GMT",
+        "content": "# Lei Xing: The Chinese vehicle threat is overblown\n\nBy\n\nMolly Boigon\n\nMarch 01, 2026 06:00 AM EST\n\n## Featured Stories\n\nBMW\n\nBMW intensifies humanoid robot push with test project in Germany after U.S. success\n\nBMW joins automakers that are exploring humanoid robotics as the next frontier of manufacturing flexibility.\n\nDA\n\nBy\n\nDouglas A. Bolduc\n\nService And Parts\n\nHow Ford is helping dealers aim for same-day vehicle repairs\n\nMM\n\nBy\n\nMichael Martinez\n\nManufacturing\n\nU.S. Supreme Court quashed Trump’s reciprocal tariffs. Could auto tariffs be next?\n\nDK\n\nBy\n\nDavid Kennedy\n\nBuy-Sell\n\nDealership buy-sell database updates: Penske Automotive buys 2 Lexus stores, Ken Garff Automotive sells Utah dealership as part of deals tracked across 9 states\n\nPH\n\nBy\n\nPaige Hodder",
+        "raw_content": null,
+        "topic": "robotics",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "robotics"
+      ],
+      "event_time": "Sun, 01 Mar 2026 11:00:00 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Rocket Lab expands machining as NZ lifts launch cap to 1,000 - Stock Titan",
+      "summary": "Rocket Lab is a leading space company that provides launch services, spacecraft, payloads and satellite components serving commercial, government, and national security markets. Rocket Lab’s Electron rocket is the world’s most frequently launched orbital small rocket; its HASTE rocket provides hyper",
+      "url": "https://www.stocktitan.net/news/RKLB/rocket-lab-establishes-new-precision-machining-complex-expands-eb2kxp4k8cnw.html",
+      "raw": {
+        "url": "https://www.stocktitan.net/news/RKLB/rocket-lab-establishes-new-precision-machining-complex-expands-eb2kxp4k8cnw.html",
+        "title": "Rocket Lab expands machining as NZ lifts launch cap to 1,000 - Stock Titan",
+        "score": 1,
+        "published_date": "Thu, 26 Feb 2026 21:09:00 GMT",
+        "content": "Rocket Lab is a leading space company that provides launch services, spacecraft, payloads and satellite components serving commercial, government, and national security markets. Rocket Lab’s Electron rocket is the world’s most frequently launched orbital small rocket; its HASTE rocket provides hypersonic test launch capability for the U.S. government and allied nations; and its Neutron launch vehicle in development will unlock medium launch for constellation deployment, national security and exploration missions. Rocket Lab’s spacecraft and satellite components have enabled more than 1,700 missions spanning commercial, defense and national security missions including GPS, constellations, and exploration missions to the Moon, Mars, and Venus. Rocket Lab is a publicly listed company on the [...] Sir Peter Beck, Rocket Lab founder and CEO said: “Precision Components Limited has been a long-time and trusted supplier, and by officially bringing them underneath the Rocket Lab umbrella, we’re expanding our manufacturing capabilities to support the scaling of our launch and spacecraft programs to better serve our global customer base. Rocket Lab’s focus on precision and reliability is what sets us apart. It’s why our rockets are relied upon by governments and commercial constellations alike; it’s why our satellites are chosen for everything from interplanetary missions to national security programs; and it’s why Rocket Lab hardware features on some of the most ambitious space missions of this generation, from Artemis to the James Webb Space Telescope. The team at PCL share this focus [...] Rocket Lab’s New Zealand growth has continued for space systems too with the establishment of a new satellite operations mission control center in Auckland, New Zealand that supports the Company’s increasing volume of contracts to design, build, and operate spacecraft and constellation missions.\n\nRocket Lab Media Contact  \nMurielle Baker  \nmedia@rocketlabusa.com",
+        "raw_content": null,
+        "topic": "commercial_space",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "commercial_space"
+      ],
+      "event_time": "Thu, 26 Feb 2026 21:09:00 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "SpaceX’s Tuesday twilight Falcon 9 rocket launch sends 29 Starlink satellites into low Earth orbit - Spaceflight Now",
+      "summary": "A little more than eight minutes after liftoff, B1092 landed on the drone ship, ‘Just Read the Instructions,’ positioned in the Atlantic Ocean to the northeast of The Bahamas. This was the 151st landing on this vessel and the 576th booster landing for SpaceX to date.\n\n#### Price increases\n\nOne of Sp",
+      "url": "https://spaceflightnow.com/2026/02/24/live-coverage-spacex-to-launch-29-starlink-satellites-on-falcon-9-rocket-from-cape-canaveral-8/",
+      "raw": {
+        "url": "https://spaceflightnow.com/2026/02/24/live-coverage-spacex-to-launch-29-starlink-satellites-on-falcon-9-rocket-from-cape-canaveral-8/",
+        "title": "SpaceX’s Tuesday twilight Falcon 9 rocket launch sends 29 Starlink satellites into low Earth orbit - Spaceflight Now",
+        "score": 1,
+        "published_date": "Wed, 25 Feb 2026 01:56:06 GMT",
+        "content": "A little more than eight minutes after liftoff, B1092 landed on the drone ship, ‘Just Read the Instructions,’ positioned in the Atlantic Ocean to the northeast of The Bahamas. This was the 151st landing on this vessel and the 576th booster landing for SpaceX to date.\n\n#### Price increases\n\nOne of SpaceX’s biggest selling points for reusability of its Falcon 9 boosters and payload fairings is that this drives down the overall cost of launching payloads into space. However, that doesn’t mean that the company doesn’t raise its prices. [...] The company updated its Falcon 9 rocket Capabilities and Services page. It now states that a standard payment plan through 2026 for a Falcon 9 rocket launching up to 5.5 metric tons to a geostationary transfer orbit (GTO) is $74 million, up from $70 million in 2025.\n\nIn 2022, SpaceX listed Falcon 9 launches with the same payload capacity at $67 million, citing possible future price increases due to inflation.\n\nAccording to reporting from Ars Technica earlier this month, SpaceX’s internal costs for launching a reusable Falcon 9 rocket is $15 million. [...] Liftoff from Space Launch Complex 40 happened at 6:04:10 p.m. EST (2304:10 UTC). The Falcon 9 rocket flew on a south-easterly trajectory upon leaving Florida’s Space Coast.\n\nThe 45th Weather Squadron forecast a greater than 95 percent chance for favorable weather at liftoff with no specific meteorological concerns.\n\n“High pressure will continue to build across the peninsula overnight and into tomorrow, bringing ideal conditions for the launch window,” launch weather officers wrote.\n\nSpaceX launched the mission using its Falcon 9 first stage booster with the tail number 1092. This was its 10th flight, following previous missions, including CRS-32, NROL-69, and USSF-36.",
+        "raw_content": null,
+        "topic": "commercial_space",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "commercial_space"
+      ],
+      "event_time": "Wed, 25 Feb 2026 01:56:06 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "What do 83 new Starlink satellites add to orbit? SpaceX launch wrap-up explained - primetimer.com",
+      "summary": "SpaceX continues to demonstrate its rocket reuse system through these landings, which reduce the need for new booster manufacturing while enabling more frequent satellite launches.\n\n  The February series marked SpaceX’s 25th Falcon 9 launch of 2026.\n\n  The addition of 83 satellites this week strengt",
+      "url": "https://www.primetimer.com/features/what-do-83-new-starlink-satellites-add-to-orbit-spacex-launch-wrap-up-explained",
+      "raw": {
+        "url": "https://www.primetimer.com/features/what-do-83-new-starlink-satellites-add-to-orbit-spacex-launch-wrap-up-explained",
+        "title": "What do 83 new Starlink satellites add to orbit? SpaceX launch wrap-up explained - primetimer.com",
+        "score": 1,
+        "published_date": "Sat, 28 Feb 2026 06:03:00 GMT",
+        "content": "SpaceX continues to demonstrate its rocket reuse system through these landings, which reduce the need for new booster manufacturing while enabling more frequent satellite launches.\n\n  The February series marked SpaceX’s 25th Falcon 9 launch of 2026.\n\n  The addition of 83 satellites this week strengthens the operational capacity of the Starlink network, maintaining its population in low Earth orbit and supporting ongoing broadband and connectivity operations worldwide.\n\n  Stay tuned for more updates.\n\n  TOPICS: Starlink satellites launch, Astronomy, Low Earth orbit satellites, Satellite deployment 2026, Space exploration, Space Launch, SpaceX Falcon 9, Starlink network expansion [...] The following day at 9:17 a.m. EST, another Falcon 9 launched 25 satellites from Space Launch Complex 4 East (SLC-4E) at Vandenberg.\n\n  The final launch on February 27 at 7:16 a.m. EST carried 29 additional Starlink satellites from SLC-40 in Florida.\n\n  All three launches deployed their Starlink payloads successfully, with booster landings completed on the ocean-based droneships \"Just Read the Instructions,\" \"Of Course I Still Love You\" and \"A Shortfall of Gravitas.\"\n\n  Tuesday’s booster B1092 completed its 10th mission, Wednesday’s B1093 its 11th, and Friday’s B1069 its 30th mission.\n\n  ### Starlink constellation expansion [...] ### Starlink constellation expansion\n\n  The ongoing effort to expand the Starlink megaconstellation received 83 new satellites this week. Satellite tracker Jonathan McDowell reported that the new units brought the operational satellite count to more than 9,850.\n\n  The network provides commercial broadband access to areas with limited connectivity and supports services such as cell-to-satellite communication and in-flight Wi-Fi on select airlines.\n\n  SpaceX confirmed that the deployments correspond to Starlink payload groups 6-110, 17-26, and 6-108. SpaceX conducted its 25th Falcon 9 mission of 2026 on Friday.\n\n  The three February flights achieved their mission objectives by successfully deploying payloads to the designated orbit.\n\n  ### Low Earth orbit characteristics",
+        "raw_content": null,
+        "topic": "commercial_space",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "commercial_space"
+      ],
+      "event_time": "Sat, 28 Feb 2026 06:03:00 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Rocket Lab to launch Australian scramjet on first hypersonic flight - Astronomy Magazine",
+      "summary": "Closing out the week on Sunday, March 1, SpaceX will launch the Starlink Group 10-41 mission from Cape Canaveral at 7:07 p.m. EST, with the booster slated to land on Just Read the Instructions.\n\n## Last week’s recap\n\nThe third week of February was an all-SpaceX affair, with four Starlink missions ma",
+      "url": "https://www.astronomy.com/whats-launching-this-week/rocket-lab-to-launch-australian-scramjet-on-first-hypersonic-flight/",
+      "raw": {
+        "url": "https://www.astronomy.com/whats-launching-this-week/rocket-lab-to-launch-australian-scramjet-on-first-hypersonic-flight/",
+        "title": "Rocket Lab to launch Australian scramjet on first hypersonic flight - Astronomy Magazine",
+        "score": 2,
+        "published_date": "Mon, 23 Feb 2026 19:57:13 GMT",
+        "content": "Closing out the week on Sunday, March 1, SpaceX will launch the Starlink Group 10-41 mission from Cape Canaveral at 7:07 p.m. EST, with the booster slated to land on Just Read the Instructions.\n\n## Last week’s recap\n\nThe third week of February was an all-SpaceX affair, with four Starlink missions maintaining the company’s typical cadence. [...] On Friday, Feb. 27, SpaceX returns to the East Coast for the Starlink Group 6-108 mission from Cape Canaveral at 4:52 a.m. EST. The booster is slated to land on the droneship A Shortfall of Gravitas.\n\nLater on Friday, Feb. 27, Firefly Aerospace is targeting 7:50 p.m. EST for the launch of its Alpha rocket on the “Stairway to Seven” mission from Space Launch Complex 2 West at Vandenberg Space Force Base. The mission, which represents the seventh and final flight of the Alpha Block 1 configuration, was delayed from its original Feb. 20 target.\n\nOn Sunday, March 1, SpaceX kicks off the new month with the Starlink Group 17-23 mission from Vandenberg at 3:00 a.m. EST, with the booster targeting a landing on Of Course I Still Love You. [...] The week opened on Monday, Feb. 16, with the launch of Starlink Group 6-103 from Cape Canaveral at 2:59 a.m. EST, landing on A Shortfall of Gravitas. On Wednesday, Feb. 19, the Starlink Group 10-36 mission lifted off from Cape Canaveral at 8:41 p.m. EST, with the booster returning to Just Read the Instructions. The weekend brought a double-header on Saturday, Feb. 21: Starlink Group 17-25 launched from Vandenberg at 4:04 a.m. EST, landing on Of Course I Still Love You, followed by Starlink Group 6-104 from Cape Canaveral at 10:47 p.m. EST, returning to A Shortfall of Gravitas.\n\n## Looking ahead\n\nOn Wednesday, March 4, SpaceX is slated to launch the Starlink Group 10-40 mission from Cape Canaveral at 3:40 a.m. EST.",
+        "raw_content": null,
+        "topic": "commercial_space",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "commercial_space"
+      ],
+      "event_time": "Mon, 23 Feb 2026 19:57:13 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "February finale: SpaceX wraps up month with three Starlink launches this week - Space",
+      "summary": "On Tuesday (Feb. 24) at 6:04 p.m. EST (2304 GMT), a Falcon 9 lifted the first 29 satellites into low Earth orbit from Space Launch Complex 40 (SLC-40) at Cape Canaveral Space Force Station in Florida. The next day, 25 more Starlink units were sent space-ward by a different Falcon 9 flying at 9:17 a.",
+      "url": "https://www.space.com/space-exploration/launches-spacecraft/spacex-starlink-6-110-b1902-ccsfs-17-26-b1093-vsfb-6-108-b1069-ccsfs",
+      "raw": {
+        "url": "https://www.space.com/space-exploration/launches-spacecraft/spacex-starlink-6-110-b1902-ccsfs-17-26-b1093-vsfb-6-108-b1069-ccsfs",
+        "title": "February finale: SpaceX wraps up month with three Starlink launches this week - Space",
+        "score": 1,
+        "published_date": "Fri, 27 Feb 2026 23:27:33 GMT",
+        "content": "On Tuesday (Feb. 24) at 6:04 p.m. EST (2304 GMT), a Falcon 9 lifted the first 29 satellites into low Earth orbit from Space Launch Complex 40 (SLC-40) at Cape Canaveral Space Force Station in Florida. The next day, 25 more Starlink units were sent space-ward by a different Falcon 9 flying at 9:17 a.m. EST (1417 GMT or 6:17 a.m. PST local time) from Space Launch Complex 4 East (SLC-4E) from Vandenberg Space Force Base in California.\n\nFinally, on Friday (Feb. 27) at 7:16 a.m. EST (1216 GMT), a third Falcon 9 rocket carrying 29 new additions for the SpaceX megaconstellation lifted off from Space Launch Complex 40 (SLC-40) at Cape Canaveral Space Force Station in Florida. [...] Friday's booster (B1069) wrapped its 30th trip to space and back on the A Shortfall of Gravitas droneship, which was stationed in the Atlantic Ocean.\n\nThe 83 satellites boosted the commercial broadband internet network to including more than 9,850 units in Earth orbit, according to satellite tracker Jonathan McDowell.\n\nGet the Space.com Newsletter\n\nBreaking space news, the latest updates on rocket launches, skywatching events and more!\n\nThe Starlink service provides access to the internet to areas around the world where connectivity is sparse or non-existent. The network also supports cell-to-satellite on select carriers and in-flight wifi on some airlines.\n\nFriday's launch was SpaceX's 25th Falcon 9 mission of 2026.\n\nRobert Z. Pearlman\n\nSocial Links Navigation [...] Get the Space Newsletter\n\nBreaking space news, the latest updates on rocket launches, skywatching events and more!\n\nBy submitting your information you agree to the Terms & Conditions and Privacy Policy and are aged 16 or over.\n\nYou are now subscribed\n\nYour newsletter sign-up was successful\n\nWant to add more newsletters?\n\nAn account already exists for this email address, please log in.\n\nSubscribe to our newsletter\n\nIn what has become hardly a leap for the company, SpaceX concluded its Starlink satellite launches for February 2026 with a trio of flights this week.",
+        "raw_content": null,
+        "topic": "commercial_space",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "commercial_space"
+      ],
+      "event_time": "Fri, 27 Feb 2026 23:27:33 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Open Cosmos unveils vision for imagery-linked sovereign satellite connectivity - SpaceNews",
+      "summary": "“Our satellites are in advanced stages of production at our new industrial facility and will be ready for launch on time,” Siquier said, adding that “the team is in place, and we’ve been working closely with our partners to move to deployment. Execution is the priority now — and soon we will turn ca",
+      "url": "https://spacenews.com/open-cosmos-unveils-vision-for-imagery-linked-sovereign-satellite-connectivity/",
+      "raw": {
+        "url": "https://spacenews.com/open-cosmos-unveils-vision-for-imagery-linked-sovereign-satellite-connectivity/",
+        "title": "Open Cosmos unveils vision for imagery-linked sovereign satellite connectivity - SpaceNews",
+        "score": 3,
+        "published_date": "Mon, 02 Mar 2026 08:10:00 GMT",
+        "content": "“Our satellites are in advanced stages of production at our new industrial facility and will be ready for launch on time,” Siquier said, adding that “the team is in place, and we’ve been working closely with our partners to move to deployment. Execution is the priority now — and soon we will turn capability into operational reality.”\n\nEuropean autonomy in a Starlink era\n\nConnectedCosmos would enter a LEO broadband market dominated by SpaceX’s Starlink, which has rapidly scaled into the world’s largest satellite constellation and secured major government and defense customers worldwide. [...] “That fundamentally changes decision-making, whether it’s for disaster response, infrastructure monitoring or security operations,” he said.\n\n“It’s the convergence of sensing and connectivity that sets this apart, and to our knowledge, no one else has fused these capabilities together in this way.”\n\nRacing regulatory deadlines\n\nThe announcement follows the Jan. 22 launch of two prototype satellites by Rocket Lab to activate the Ka-band spectrum filings, which Liechtenstein reassigned to Open Cosmos from Rivada Space Networks.\n\nUnder International Telecommunication Union rules, operators must deploy satellites and begin using assigned frequencies within defined milestones or risk losing priority rights. [...] As well as providing regulatory anchors for the constellation, Siquier said the two recently launched satellites are also serving as technical pathfinders for performance it has yet to disclose.\n\n“The in-orbit learning they generate is already feeding directly into the optimization of our next production batch,” he continued, “refining both hardware configurations and our overarching service architecture.”\n\nHe said the next generation of satellites would support initial IoT and broadband pilot services.",
+        "raw_content": null,
+        "topic": "commercial_space",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "commercial_space"
+      ],
+      "event_time": "Mon, 02 Mar 2026 08:10:00 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Rocket Lab (RKLB) stock slips in premarket after Neutron delay despite record Q4 revenue - Bez Kabli",
+      "summary": "The company late Thursday reported record quarterly revenue of $180 million and a loss of 9 cents per share for the quarter ended Dec. 31. Rocket Lab forecast first-quarter revenue of $185 million to $200 million and an adjusted EBITDA loss of $21 million to $27 million; adjusted EBITDA is a measure",
+      "url": "https://www.bez-kabli.pl/rocket-lab-rklb-stock-slips-in-premarket-after-neutron-delay-despite-record-q4-revenue/",
+      "raw": {
+        "url": "https://www.bez-kabli.pl/rocket-lab-rklb-stock-slips-in-premarket-after-neutron-delay-despite-record-q4-revenue/",
+        "title": "Rocket Lab (RKLB) stock slips in premarket after Neutron delay despite record Q4 revenue - Bez Kabli",
+        "score": 1,
+        "published_date": "Fri, 27 Feb 2026 11:07:35 GMT",
+        "content": "The company late Thursday reported record quarterly revenue of $180 million and a loss of 9 cents per share for the quarter ended Dec. 31. Rocket Lab forecast first-quarter revenue of $185 million to $200 million and an adjusted EBITDA loss of $21 million to $27 million; adjusted EBITDA is a measure of operating profit that strips out interest, tax and some other items. It also said Neutron’s first launch is now targeted for the fourth quarter of 2026 after a stage 1 tank test failure, and it ended 2025 with a $1.85 billion backlog — contracted work not yet delivered — including an $816 million Space Development Agency prime contract to build 18 satellites. 2 [...] Rocket Lab’s “space power” pitch landed in the same batch of announcements. It said it introduced silicon solar arrays aimed at powering future space-based data centers, and CEO Peter Beck called space-based data centers “the next frontier” for computing infrastructure. 7\n\nThe company also pointed to deep-space work it says is now moving into a steadier phase. Rocket Lab said it completed commissioning of the twin spacecraft it built for NASA’s ESCAPADE Mars mission; the spacecraft will operate near the Earth–Sun L2 point until November 2026 before an Earth gravity assist sends them toward Mars. 8 [...] The Neutron timeline matters because it is the company’s bridge into a bigger launch market, and a big draw for investors who want Rocket Lab to move beyond its smaller Electron rocket. In its annual report, the company warned that an inability to develop Neutron — or significant delays — could hurt its business and results. 3\n\nRocket Lab also flagged new commercial work tied to its core Electron launcher. It said it signed another multi-launch deal with BlackSky Technology for four dedicated Electron missions, taking the total number of Electron launches for BlackSky since 2019 to 17; BlackSky CEO Brian O’Toole said the contract would help increase Gen-3 on-orbit capacity. 4",
+        "raw_content": null,
+        "topic": "commercial_space",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "commercial_space"
+      ],
+      "event_time": "Fri, 27 Feb 2026 11:07:35 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Rocket Lab Delays Neutron Flight To Late 2026 After Test Failure - Aviation Week",
+      "summary": "## Share\n\nRobert Wall February 27, 2026\n\nRocket Lab says a manufacturing fault caused the failure of a Neutron rocket Stage 1 tank in January and has now pushed the inaugural flight for the launcher to late this year. The company reviewed what caused the manufacturing miscue and will make changes to",
+      "url": "https://aviationweek.com/space/launch-vehicles-propulsion/rocket-lab-delays-neutron-flight-late-2026-after-test-failure",
+      "raw": {
+        "url": "https://aviationweek.com/space/launch-vehicles-propulsion/rocket-lab-delays-neutron-flight-late-2026-after-test-failure",
+        "title": "Rocket Lab Delays Neutron Flight To Late 2026 After Test Failure - Aviation Week",
+        "score": 2,
+        "published_date": "Fri, 27 Feb 2026 13:37:39 GMT",
+        "content": "## Share\n\nRobert Wall February 27, 2026\n\nRocket Lab says a manufacturing fault caused the failure of a Neutron rocket Stage 1 tank in January and has now pushed the inaugural flight for the launcher to late this year. The company reviewed what caused the manufacturing miscue and will make changes to its production process and hardware...\n\nRobert Wall\n\nRobert Wall is Executive Editor for Defense and Space. Based in London, he directs a team of military and space journalists across the U.S., Europe and Asia-Pacific.\n\n Rocket Lab\n\n## Subscription Required\n\nRocket Lab Delays Neutron Flight To Late 2026 After Test Failure is published in Aerospace Daily & Defense Report, an Aviation Week Intelligence Network (AWIN) Market Briefing and is included with your AWIN membership. [...] - Sustainability\n  + Space\n    - Launch Vehicles & Propulsion\n    - Commercial Space\n    - Space Exploration\n    - Satellites\n    - Budget, Policy & Regulation\n    - Operations & Safety\n  + Business Aviation\n    - Aircraft & Propulsion\n    - Interiors & Connectivity\n    - Airports, FBOs & Suppliers\n    - Flight Deck\n    - Safety, Ops & Regulation\n    - Maintenance & Training\n    - Sustainability\n  + In Focus\n    - Middle East & Africa\n Marketplace\n Services [...] Market Sector\n\n  + Aerospace\n  + Air Transport\n  + MRO\n  + Defense\n  + Space\n  + Business Aviation\n Markets",
+        "raw_content": null,
+        "topic": "commercial_space",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "commercial_space"
+      ],
+      "event_time": "Fri, 27 Feb 2026 13:37:39 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Neutron’s First Launch Slips to Q4 - Payload Space",
+      "summary": "Skip to content\n\nFriday February 27, 2026 Waxing Gibbous\n\n Webinars\n Events\n\n Webinars\n Events\n\n Business\n Launch\n Civil\n VC/PE\n Military\n Europe\n Polaris\n All\n  + Debris\n  + EO\n  + Equities\n  + International\n  + ISS\n  + LEO\n  + Moonshot Mechanics 2025\n  + Lunar\n  + Opinion\n  + Payload Pioneers 2025",
+      "url": "https://payloadspace.com/neutrons-first-launch-slips-to-q4/",
+      "raw": {
+        "url": "https://payloadspace.com/neutrons-first-launch-slips-to-q4/",
+        "title": "Neutron’s First Launch Slips to Q4 - Payload Space",
+        "score": 1,
+        "published_date": "Fri, 27 Feb 2026 13:56:01 GMT",
+        "content": "Skip to content\n\nFriday February 27, 2026 Waxing Gibbous\n\n Webinars\n Events\n\n Webinars\n Events\n\n Business\n Launch\n Civil\n VC/PE\n Military\n Europe\n Polaris\n All\n  + Debris\n  + EO\n  + Equities\n  + International\n  + ISS\n  + LEO\n  + Moonshot Mechanics 2025\n  + Lunar\n  + Opinion\n  + Payload Pioneers 2025\n  + Startups\n  + State of the Space Industry 2025\n  + Technology\n\nNewsletters ➝   PayloadPro ➝\n\nEquities • Launch\n\n# Neutron’s First Launch Slips to Q4\n\nDouglas Gorman\n\nShare\n\n Twitter\n Linkedin\n Facebook\n Email\n\nRocket Lab’s Neutron rocket won’t fly until the end of the year, the New Zealand launcher announced Thursday in its 2025 earnings. [...] “The way to think about follow-on flights, it’s not quite as dire as moving all of the follow-on flights 12 months,” Beck said. “We’re already building—flat out—additional Neutron tail numbers, so it’ll probably be a slightly faster convergence into subsequent flights because none of the other hardware that’s qualified has been halted.”\n\nBigger picture: Despite the disappointing Neutron news, the New Zealand launcher posted its strongest year yet. Rocket Lab flew a record 21 Electron missions in 2025, and notched a new record cadence of seven launches in Q4 alone.\n\nSome high level stats include:\n\n $179.7M in Q4 revenue, +36% YoY\n $601.8M in FY2025 revenue, +38% YoY\n Record backlog of $1.85B, +73% YoY\n FY 2025 net loss was a record $198.2M, +4% YoY [...] Douglas Gorman\n\nShare\n\n Twitter\n Linkedin\n Facebook\n Email\n\nGreen energy is all the rage in Europe, and the trend is beginning to reach beyond the stratosphere.\n\nISPTech—a German startup developing in-space propulsion systems reliant on non-toxic fuel—announced a €5.5M seed round today to ramp up its production of green spacecraft thrusters.\n\nThe new capital will also help the company grow its workforce, and build a new in-house test facility to increase ISPTech’s production rate (from about four or five prop systems annually, into the dozens) by the end of the decade, according to CEO Lukas Werling.\n\nKeep reading\n\n### Payload in your inbox\n\nYou are now subscribed to our list.  \n Be sure to add us to your contacts, so we don’t end up in your spam folder!",
+        "raw_content": null,
+        "topic": "commercial_space",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "commercial_space"
+      ],
+      "event_time": "Fri, 27 Feb 2026 13:56:01 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "A non-public document reveals that science may not be prioritized on next Mars mission - Ars Technica",
+      "summary": "## New award to Rocket Lab may complicate things\n\nOne of the other intriguing parts of this mission is that it sets up a battle royale of sorts for some of NASA’s most prominent contractors. Rocket Lab and Blue Origin have both waged very public campaigns that tout their solutions to NASA’s needs. S",
+      "url": "https://arstechnica.com/space/2026/02/a-non-public-document-reveals-that-science-may-not-be-prioritized-on-next-mars-mission/",
+      "raw": {
+        "url": "https://arstechnica.com/space/2026/02/a-non-public-document-reveals-that-science-may-not-be-prioritized-on-next-mars-mission/",
+        "title": "A non-public document reveals that science may not be prioritized on next Mars mission - Ars Technica",
+        "score": 1,
+        "published_date": "Thu, 26 Feb 2026 14:44:25 GMT",
+        "content": "## New award to Rocket Lab may complicate things\n\nOne of the other intriguing parts of this mission is that it sets up a battle royale of sorts for some of NASA’s most prominent contractors. Rocket Lab and Blue Origin have both waged very public campaigns that tout their solutions to NASA’s needs. SpaceX is also interested in winning a Mars mission for its Starship launch system. Then there are traditional contractors, such as Lockheed Martin, which have a long and storied history of building robust (if costly) Mars missions. [...] The contracting office for the Rocket Lab award is Goddard Space Flight Center, which is also responsible for managing the Mars Telecommunications Network. That Rocket Lab, alone, received an award like this from the NASA center that will also decide on the orbiting spacecraft—coterminous when such a decision will be made—is surely to be the basis of one or more protests should Rocket Lab win the Mars Telecommunications Network contract, the source told Ars.\n\nEric Berger  Senior Space Editor\n\nEric Berger  Senior Space Editor [...] If NASA is going to launch the Mars Telecommunications Network by late 2028 to make the next “window” to the red planet, it must move quickly with this solicitation. In particular, industry protests after a decision is made could hold up the project for months and would almost certainly doom NASA’s hopes of making the 2028 launch opportunity.\n\nOn Monday, the space agency awarded Rocket Lab a $390,936 contract to study “Mars End-to-End Communication Service Architectures.” The award is not significant monetarily, but it does indicate that NASA is interested in Rocket Lab’s ideas for improving communications between Earth and Mars, and potentially a Mars Sample Return mission down the road. However, one source suggested to Ars that the award is a potential conflict of interest.",
+        "raw_content": null,
+        "topic": "commercial_space",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "commercial_space"
+      ],
+      "event_time": "Thu, 26 Feb 2026 14:44:25 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "ASML's High-NA EUV Machines Ready for Mass Production - Intellectia AI",
+      "summary": "ASML Holding N.V. is a holding company based in the Netherlands. The Company operates through its subsidiaries in the Netherlands, the United States, Italy, France, Germany, the United Kingdom, Ireland, Belgium, South Korea, Taiwan, Singapore, China, Hong Kong, Japan, Malaysia and Israel. The Compan",
+      "url": "https://intellectia.ai/news/stock/asmls-highna-euv-machines-ready-for-mass-production",
+      "raw": {
+        "url": "https://intellectia.ai/news/stock/asmls-highna-euv-machines-ready-for-mass-production",
+        "title": "ASML's High-NA EUV Machines Ready for Mass Production - Intellectia AI",
+        "score": 2,
+        "published_date": "Fri, 27 Feb 2026 11:04:51 GMT",
+        "content": "ASML Holding N.V. is a holding company based in the Netherlands. The Company operates through its subsidiaries in the Netherlands, the United States, Italy, France, Germany, the United Kingdom, Ireland, Belgium, South Korea, Taiwan, Singapore, China, Hong Kong, Japan, Malaysia and Israel. The Company operates through one business segment which is engage in development, production, marketing, sales, upgrading and servicing of advanced semiconductor equipment systems, consisting of lithography, metrology and inspection systems. The Company offers TWINSCAN systems, equipped with lithography system with a mercury lamp as light source (i-line), Krypton Fluoride (KrF) and Argon Fluoride (ArF) light sources for processing wafers for manufacturing environments for which imaging at a small [...] Surging Market Demand: ASML's lithography machine sales have increased by 100% over the past five years, and with new chip manufacturing facilities emerging globally, demand is expected to continue rising, solidifying its monopoly in the semiconductor industry.\n Capacity Enhancement through Innovation: ASML's recently announced new process is projected to increase chip production by 50% per hour by the end of the decade, significantly lowering production costs and enhancing the competitiveness of its equipment in the market. [...] Surging Market Demand: ASML's lithography machine sales have increased by 100% over the past five years, and with new chip manufacturing facilities emerging globally, demand is expected to continue rising, solidifying its monopoly in the semiconductor industry.\n Capacity Enhancement through Innovation: ASML's recently announced new process is projected to increase chip production by 50% per hour by the end of the decade, significantly lowering production costs and enhancing the competitiveness of its equipment in the market.",
+        "raw_content": null,
+        "topic": "semi_equipment_packaging",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "semi_equipment_packaging"
+      ],
+      "event_time": "Fri, 27 Feb 2026 11:04:51 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Exclusive: ASML plots future of chipmaking tools for AI beyond EUV - Reuters",
+      "summary": "Exclusive: ASML plots future of chipmaking tools for AI beyond EUV | Reuters\n\nSkip to main content\n\nReport AdImage 1\n\nExclusive news, data and analytics for financial market professionals Learn more about Refinitiv\n\n in Shanghai, China, November 5, 2025. REUTERS/Maxim Shemetov/File Photo Purchase Li",
+      "url": "https://www.reuters.com/world/asia-pacific/asml-plots-future-chipmaking-tools-ai-beyond-euv-2026-03-02/",
+      "raw": {
+        "url": "https://www.reuters.com/world/asia-pacific/asml-plots-future-chipmaking-tools-ai-beyond-euv-2026-03-02/",
+        "title": "Exclusive: ASML plots future of chipmaking tools for AI beyond EUV - Reuters",
+        "score": 2,
+        "published_date": "Mon, 02 Mar 2026 11:05:06 GMT",
+        "content": "Exclusive: ASML plots future of chipmaking tools for AI beyond EUV | Reuters\n\nSkip to main content\n\nReport AdImage 1\n\nExclusive news, data and analytics for financial market professionals Learn more about Refinitiv\n\n in Shanghai, China, November 5, 2025. REUTERS/Maxim Shemetov/File Photo Purchase Licensing Rights, opens new tab\n\n   Summary\n   Companies\n\n   ASML plans to expand into advanced packaging for AI chips\n   Company to use AI to enhance tool performance and production speed\n   ASML explores larger chip sizes and new scanner systems [...] \"We look, not just for the next five years, we look at the next 10, maybe 15 years,\" ASML Chief Technology Officer Marco Pieters told Reuters. \"(We look at) what are potential directions the industry could take, and what would it require in terms of packaging, bonding, etc.?\"\n\nAdvertisement · Scroll to continue\n\nThe EUV machines ASML builds are used for lithography, the process of using light to print complex patterns onto silicon wafers to make chips. The company also plans to determine whether it can expand the maximum size of chips it can print beyond its current boundary - roughly the size of a postage stamp - which limits its speed.\n\nNEW TECH BOSS [...] The Reuters Inside Track newsletter is your essential guide to the biggest events in global sport. Sign up here.\n\nAdvertisement · Scroll to continue\n\nReport AdImage 3\n\nThe Dutch company is looking to grow beyond its EUV roots and plans to expand into the market to make tools that can help glue and connect multiple specialized chips, called advanced packaging - a key building block for AI chips and the advanced memory that feeds them. As part of those plans, the company will deploy AI in its forthcoming businesses and legacy efforts.",
+        "raw_content": null,
+        "topic": "semi_equipment_packaging",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "科技新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "semi_equipment_packaging"
+      ],
+      "event_time": "Mon, 02 Mar 2026 11:05:06 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Two Fed officials do not see imminent need to change monetary policy - Forex Factory",
+      "summary": "Newsstand\n\n  Category: Fundamental Analysis\n\n  Comments: 0  /  Views: 870\n Linked events:\n\n  US FOMC Member Barkin Speaks\n\n  US FOMC Member Collins Speaks\n 3 traders viewing now, 1 is registered:\n\n  Paigaonkar\n\n Fed's Collins: Recent job data has been promising\n\n  From @MarketNews\\_Feed|7 hr ago|1 c",
+      "url": "https://www.forexfactory.com/news/1385618-two-fed-officials-do-not-see-imminent-need",
+      "raw": {
+        "url": "https://www.forexfactory.com/news/1385618-two-fed-officials-do-not-see-imminent-need",
+        "title": "Two Fed officials do not see imminent need to change monetary policy - Forex Factory",
+        "score": 4,
+        "published_date": "Wed, 25 Feb 2026 00:02:00 GMT",
+        "content": "Newsstand\n\n  Category: Fundamental Analysis\n\n  Comments: 0  /  Views: 870\n Linked events:\n\n  US FOMC Member Barkin Speaks\n\n  US FOMC Member Collins Speaks\n 3 traders viewing now, 1 is registered:\n\n  Paigaonkar\n\n Fed's Collins: Recent job data has been promising\n\n  From @MarketNews\\_Feed|7 hr ago|1 comment\n Fed's Barkin: Clear sense that job market has loosened\n\n  From @LiveSquawk|7 hr ago|4 comments\n Fed governor Lisa Cook says AI could leave Fed with hard choice: Fight inflation or boost...\n\n  From finance.yahoo.com|7 hr ago|1 comment\n\n More;) [...] From kitco.com\n\n  Two Federal Reserve officials on Tuesday signaled no near-term appetite to change the setting of central bank interest rate policy. Markets expect the Fed to lower rates again this year but officials, faced with a stabilizing job market and uncertainty over whether inflation pressures will moderate back to target, have not given much guidance about the prospect for more reductions in the cost of short-term borrowing. “I think that it's quite likely that it'll be appropriate to hold in the current range for some time,” Federal Reserve Bank of Boston President Susan Collins said as part of a panel discussion at a ... (full story)\n\n Comments\n Subscribe\n\n + Older Stories\n Construction Work Done, Australia, Preliminary, December 2025\n\n  From abs.gov.au|3 hr ago [...] + Newer Stories\n Japan PM Takaichi: Emphasizes urgent vigilance in monitoring FX fluctuations\n\n  From @MarketsCapApp|2 hr 8 min ago|4 comments\n\n  Just in | Japan's Prime Minister Takaichi emphasizes urgent vigilance in monitoring foreign exchange fluctuations.\n Australia's inflation tops forecasts, core at 16-month high add to rate hike risk\n\n  From msn.com|1 hr 55 min ago\n\n  Australian consumer prices rose by more than expected in January, while core inflation hit the highest in over a year, an uncomfortable outcome for policymakers that raises the ...\n President Donald J. Trumps 2026 State of the Union Address\n\n  From youtube.com/whitehouse|1 hr 49 min ago|15 comments\n\n  Washington, D.C.\n\n More;)\n\n Story Stats\n\n Posted: Feb 24, 7:02pm (2 hr 44 min ago)\n Submitted by:\n\n  Newsstand",
+        "raw_content": null,
+        "topic": "fed_fomc",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "fed_fomc"
+      ],
+      "event_time": "Wed, 25 Feb 2026 00:02:00 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Fed officials vexed by lingering inflation, stabilizing job market - PropertyCasualty360",
+      "summary": "# Fed officials vexed by lingering inflation, stabilizing job market\n\nBy Erik Sherman  | February 24, 2026 at 02:52 PM\n\nJanuary meeting minutes show unease over uneven progress toward the 2% inflation target.\n\nThe Federal Reserve's path on interest rates has grown less certain to begin this year, as",
+      "url": "https://www.propertycasualty360.com/amp/2026/02/24/fed-officials-vexed-by-lingering-inflation-stabilizing-job-market/",
+      "raw": {
+        "url": "https://www.propertycasualty360.com/amp/2026/02/24/fed-officials-vexed-by-lingering-inflation-stabilizing-job-market/",
+        "title": "Fed officials vexed by lingering inflation, stabilizing job market - PropertyCasualty360",
+        "score": 3,
+        "published_date": "Tue, 24 Feb 2026 20:38:36 GMT",
+        "content": "# Fed officials vexed by lingering inflation, stabilizing job market\n\nBy Erik Sherman  | February 24, 2026 at 02:52 PM\n\nJanuary meeting minutes show unease over uneven progress toward the 2% inflation target.\n\nThe Federal Reserve's path on interest rates has grown less certain to begin this year, as divisions emerge within the central bank over whether inflation's cooling trend has gone far enough. Minutes from the January Federal Open Market Committee (FOMC) meeting reveal unease among policymakers about the risks of cutting rates too quickly and even some talk that further hikes might still be needed. [...] Tensions have already surfaced within the Fed. Governor Michael Barr and Warsh recently clashed over whether generative AI could boost productivity and cool inflation. Warsh described AI as \"the most powerful wave of productivity growth in modern times,\" telling Aven Financial CEO Sadi Khan in a December 2025 interview that \"productivity gains are the predecessor to wage gains.\"\n\nBarr, speaking to the New York Association for Business Economics, urged caution, emphasizing the \"delicate balance\" in the labor market and pointing to personal consumption expenditures hovering around 3% — a sign, he said, that \"inflation will remain elevated.\"\n\nThe coming FOMC meetings in March, May and June may reveal whether the Fed's next move will be down, up or simply a longer pause. [...] In its January 28 meeting, the FOMC voted 10–2 to hold the federal funds rate steady. Dissenters Stephen Miran and Christopher Waller, both appointed by President Donald Trump, favored a 25-basis-point cut. The split reflects a broader debate within the Fed over how to balance easing inflation with signs of a stabilizing labor market.\n\nAccording to the minutes, inflation has \"eased significantly\" from its 2022 peak but remains \"somewhat elevated\" relative to the Fed's 2% goal. Most participants expected continued improvement, yet many warned progress could be \"slower and more uneven\" than hoped.",
+        "raw_content": null,
+        "topic": "fed_fomc",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "fed_fomc"
+      ],
+      "event_time": "Tue, 24 Feb 2026 20:38:36 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Two Fed officials do not see imminent need to change monetary policy - KITCO",
+      "summary": "Both officials said that while they are seeing signs of stability for a job market that’s in a low-hire, low-fire environment, they are still seeking evidence that inflation will moderate further. Inflation has been steadily above the central bank’s 2% target.\n\nThey both noted the recent Supreme Cou",
+      "url": "https://www.kitco.com/news/off-the-wire/2026-02-24/two-fed-officials-do-not-see-imminent-need-change-monetary-policy",
+      "raw": {
+        "url": "https://www.kitco.com/news/off-the-wire/2026-02-24/two-fed-officials-do-not-see-imminent-need-change-monetary-policy",
+        "title": "Two Fed officials do not see imminent need to change monetary policy - KITCO",
+        "score": 2,
+        "published_date": "Tue, 24 Feb 2026 23:40:39 GMT",
+        "content": "Both officials said that while they are seeing signs of stability for a job market that’s in a low-hire, low-fire environment, they are still seeking evidence that inflation will moderate further. Inflation has been steadily above the central bank’s 2% target.\n\nThey both noted the recent Supreme Court decision invalidating much of President Donald Trump’s trade tariffs, which the president responded to by imposing even more tariffs, is unlikely to have a huge impact on the economy.\n\nCollins also said that the current setting of monetary policy is mildly restrictive or close to neutral. Last year the Fed cut its interest rate target by three-quarters of a percentage point to between 3.5% and 3.75%, holding that rate steady at its late January Federal Open Market Committee meeting. [...] ### off-the-wire\n\n# Two Fed officials do not see imminent need to change monetary policy\n\n###### By Reuters\n\nPublished:\n\nUpdated:\n\n##### Reuters\n\nFeb 24 (Reuters) - Two Federal Reserve officials on Tuesday signaled no near-term appetite to change the setting of central bank interest rate policy.\n\nMarkets expect the Fed to lower rates again this year but officials, faced with a stabilizing job market and uncertainty over whether inflation pressures will moderate back to target, have not given much guidance about the prospect for more reductions in the cost of short-term borrowing. [...] To justify cutting rates again, “I am looking for more confidence” that the process of inflation pressures easing resumes, Collins said. She added that her default outlook “would be that later this year that we might expect to see” inflation pressures cooling off.\n\nReporting by Michael S. Derby; Editing by Lincoln Feast.\n\n### Reuters",
+        "raw_content": null,
+        "topic": "fed_fomc",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "fed_fomc"
+      ],
+      "event_time": "Tue, 24 Feb 2026 23:40:39 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Two Fed officials do not see imminent need to change monetary policy - Reuters",
+      "summary": "Both officials said that while they are seeing signs of stability for a job market that’s in a low-hire, low-fire environment, they are still seeking evidence that inflation will moderate further. Inflation has been steadily above the central bank’s 2% target.\n\nAdvertisement · Scroll to continue\n\nTh",
+      "url": "https://www.reuters.com/business/two-fed-officials-do-not-see-imminent-need-change-monetary-policy-2026-02-24/",
+      "raw": {
+        "url": "https://www.reuters.com/business/two-fed-officials-do-not-see-imminent-need-change-monetary-policy-2026-02-24/",
+        "title": "Two Fed officials do not see imminent need to change monetary policy - Reuters",
+        "score": 2,
+        "published_date": "Tue, 24 Feb 2026 22:26:48 GMT",
+        "content": "Both officials said that while they are seeing signs of stability for a job market that’s in a low-hire, low-fire environment, they are still seeking evidence that inflation will moderate further. Inflation has been steadily above the central bank’s 2% target.\n\nAdvertisement · Scroll to continue\n\nThey both noted the recent Supreme Court decision invalidating much of President Donald Trump’s trade tariffs, which the president responded to by imposing even more tariffs, is unlikely to have a huge impact on the economy. [...] Skip to main content\n\n# Two Fed officials do not see imminent need to change monetary policy\n\nBy Michael S. Derby\n\nFeb 24 (Reuters) - Two Federal Reserve officials on Tuesday signaled no near-term appetite to change the setting of central bank interest rate policy.\n\nMarkets expect the Fed to lower rates again this year but officials, faced with a stabilizing job market and uncertainty over whether inflation pressures will moderate back to target, have not given much guidance about the prospect for more reductions in the cost of short-term borrowing.\n\nGet a daily digest of breaking business news straight to your inbox with the Reuters Business newsletter. Sign up here.\n\nAdvertisement · Scroll to continue [...] Collins also said that the current setting of monetary policy is mildly restrictive or close to neutral. Last year the Fed cut its interest rate target by three-quarters of a percentage point to between 3.5% and 3.75%, holding that rate steady at its late January Federal Open Market Committee meeting.\n\nTo justify cutting rates again, “I am looking for more confidence” that the process of inflation pressures easing resumes, Collins said. She added that her default outlook “would be that later this year that we might expect to see” inflation pressures cooling off.\n\nReporting by Michael S. Derby; Editing by Lincoln Feast.\n\nOur Standards: The Thomson Reuters Trust Principles., opens new tab\n\nPurchase Licensing Rights\n\n## Read Next\n\n Energycategory",
+        "raw_content": null,
+        "topic": "fed_fomc",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "fed_fomc"
+      ],
+      "event_time": "Tue, 24 Feb 2026 22:26:48 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Fed's Musalem: monetary policy is appropriately balancing risks - KITCO",
+      "summary": "### off-the-wire\n\n# Fed's Musalem: monetary policy is appropriately balancing risks\n\n###### By Reuters\n\nPublished:\n\nUpdated:\n\n##### Reuters\n\nFeb 25 (Reuters) - St. Louis Federal Reserve President Albert Musalem on Wednesday said he feels the current setting of the U.S. policy rate appropriately bala",
+      "url": "https://www.kitco.com/news/off-the-wire/2026-02-25/feds-musalem-monetary-policy-appropriately-balancing-risks",
+      "raw": {
+        "url": "https://www.kitco.com/news/off-the-wire/2026-02-25/feds-musalem-monetary-policy-appropriately-balancing-risks",
+        "title": "Fed's Musalem: monetary policy is appropriately balancing risks - KITCO",
+        "score": 2,
+        "published_date": "Wed, 25 Feb 2026 21:08:59 GMT",
+        "content": "### off-the-wire\n\n# Fed's Musalem: monetary policy is appropriately balancing risks\n\n###### By Reuters\n\nPublished:\n\nUpdated:\n\n##### Reuters\n\nFeb 25 (Reuters) - St. Louis Federal Reserve President Albert Musalem on Wednesday said he feels the current setting of the U.S. policy rate appropriately balances the current economic risks, even as his baseline outlook calls for inflation to head back down toward 2% later this year and for the labor market to stabilize. [...] \"If there were an increase in layoffs with low job creation, you could have a risk of the labor market to deteriorate further; it's not my base case, but I think it could happen,\" Musalem said. \"On the inflation side, there is a possibility that inflation could stay higher than we would all like it to be for longer ... these two risks in my assessment are roughly balanced right now.\"  \n  \nReporting by Ann Saphir; Editing by Chris Reese\n\n### Reuters",
+        "raw_content": null,
+        "topic": "fed_fomc",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "fed_fomc"
+      ],
+      "event_time": "Wed, 25 Feb 2026 21:08:59 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Fed's Miran: Four quarter-point cuts still warranted this year, no \"all clear\" for job market - KITCO",
+      "summary": "### off-the-wire\n\n# Fed's Miran: Four quarter-point cuts still warranted this year, no \"all clear\" for job market\n\n###### By Reuters\n\nPublished:\n\nUpdated:\n\n##### Reuters\n\nWASHINGTON, Feb 26 (Reuters) - Federal Reserve Governor Stephen Miran said strong job growth in January was \"a really good thing,",
+      "url": "https://www.kitco.com/news/off-the-wire/2026-02-26/feds-miran-four-quarter-point-cuts-still-warranted-year-no-all-clear",
+      "raw": {
+        "url": "https://www.kitco.com/news/off-the-wire/2026-02-26/feds-miran-four-quarter-point-cuts-still-warranted-year-no-all-clear",
+        "title": "Fed's Miran: Four quarter-point cuts still warranted this year, no \"all clear\" for job market - KITCO",
+        "score": 2,
+        "published_date": "Thu, 26 Feb 2026 12:18:00 GMT",
+        "content": "### off-the-wire\n\n# Fed's Miran: Four quarter-point cuts still warranted this year, no \"all clear\" for job market\n\n###### By Reuters\n\nPublished:\n\nUpdated:\n\n##### Reuters\n\nWASHINGTON, Feb 26 (Reuters) - Federal Reserve Governor Stephen Miran said strong job growth in January was \"a really good thing,\" but that the Fed should still cut a full percentage point from its policy rate this year because there were still risks to the labor market while inflation was no longer a problem.\n\n\"I think it's way too early to sort of sound an all clear that the labor market doesn't need more support from the Federal Reserve. I definitely think the labor market can be supported by the Federal Reserve further,\" with four cuts this year, Miran said on Fox Business's \"Mornings with Maria\". [...] \"I really do not think that we have an inflation problem,\" with recent inflation readings a percentage point above the Fed's target likely to slow.\n\nReporting by Howard Schneider; Editing by Chizu Nomiyama\n\n### Reuters",
+        "raw_content": null,
+        "topic": "fed_fomc",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "fed_fomc"
+      ],
+      "event_time": "Thu, 26 Feb 2026 12:18:00 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Fed's Miran: Four quarter-point cuts still warranted this year, no \"all clear\" for job market - Reuters",
+      "summary": "Skip to main content\n\n# Fed's Miran: Four quarter-point cuts still warranted this year, no \"all clear\" for job market\n\nBy Reuters\n\nWASHINGTON, Feb 26 (Reuters) - Federal Reserve Governor Stephen Miran said strong job growth in January was \"a really good thing,\" but that the Fed should still cut a fu",
+      "url": "https://www.reuters.com/business/feds-miran-four-quarter-point-cuts-still-warranted-this-year-no-all-clear-job-2026-02-26/",
+      "raw": {
+        "url": "https://www.reuters.com/business/feds-miran-four-quarter-point-cuts-still-warranted-this-year-no-all-clear-job-2026-02-26/",
+        "title": "Fed's Miran: Four quarter-point cuts still warranted this year, no \"all clear\" for job market - Reuters",
+        "score": 2,
+        "published_date": "Thu, 26 Feb 2026 15:04:47 GMT",
+        "content": "Skip to main content\n\n# Fed's Miran: Four quarter-point cuts still warranted this year, no \"all clear\" for job market\n\nBy Reuters\n\nWASHINGTON, Feb 26 (Reuters) - Federal Reserve Governor Stephen Miran said strong job growth in January was \"a really good thing,\" but that the Fed should still cut a full percentage point from its policy rate this year because there were still risks to the labor market while inflation was no longer a problem.\n\n\"I think it's way too early to sort of sound an all clear that the labor market doesn't need more support from the Federal Reserve. I definitely think the labor market can be supported by the Federal Reserve further,\" with four cuts this year, Miran said on Fox Business's \"Mornings with Maria\". [...] Shell ready for bigger backstop of Brazil sugar-ethanol JV Raizen, sources say\n U.S. Marketscategory\n\n  Fed's Musalem: monetary policy is appropriately balancing risks\n\n## Business\n\n ### Smartphone market set for biggest-ever decline in 2026 on memory price surge, IDC says\n\n  Media & Telecomcategory · · 7 mins ago [...] Get a daily digest of breaking business news straight to your inbox with the Reuters Business newsletter. Sign up here.\n\nAdvertisement · Scroll to continue\n\n\"I really do not think that we have an inflation problem,\" with recent inflation readings a percentage point above the Fed's target likely to slow.\n\nReporting by Howard Schneider; Editing by Chizu Nomiyama\n\nOur Standards: The Thomson Reuters Trust Principles., opens new tab\n\nPurchase Licensing Rights\n\n## Read Next\n\n Businesscategory\n\n  US mortgage rates dip below 6%, but supply remains key\n Nasdaq leads Wall Street lower as tech rally stalls, Nvidia earnings disappoint\n Businesscategory\n\n  Brazilian digital bank Nubank's profit rises 50% in Q4 on customer growth\n Sustainabilitycategory",
+        "raw_content": null,
+        "topic": "fed_fomc",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "fed_fomc"
+      ],
+      "event_time": "Thu, 26 Feb 2026 15:04:47 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Trump expects his Fed pick and AI to deliver a replay of the '90s boom. Economists have doubts - AP News",
+      "summary": "“Companies don’t change that fast,” said Baily, chair of President Bill Clinton’s Council of Economic Advisers. “It’s expensive to change. It’s risky to change. The managers don’t necessarily understand the new technology that well. So they have to learn how to use it. They have to train their staff",
+      "url": "https://apnews.com/article/trump-warsh-federal-reserve-productivity-inflation-economy-fdd43a1dd672021b2c9706432620da9f",
+      "raw": {
+        "url": "https://apnews.com/article/trump-warsh-federal-reserve-productivity-inflation-economy-fdd43a1dd672021b2c9706432620da9f",
+        "title": "Trump expects his Fed pick and AI to deliver a replay of the '90s boom. Economists have doubts - AP News",
+        "score": 3,
+        "published_date": "Sun, 01 Mar 2026 14:00:08 GMT",
+        "content": "“Companies don’t change that fast,” said Baily, chair of President Bill Clinton’s Council of Economic Advisers. “It’s expensive to change. It’s risky to change. The managers don’t necessarily understand the new technology that well. So they have to learn how to use it. They have to train their staff. All that stuff takes a long time.’’\n\nA productivity boom can raise the economy’s speed limit — how fast it can grow without pushing prices higher. But it might not justify lower interest rates, Federal Reserve Gov. Michael Barr said in a speech earlier this month. [...] ## Then and now\n\nMany of Warsh’s potential future colleagues on the Fed’s interest-rate setting committee see the late 1990s experience differently than he does, setting up what could be a clash at the central bank if the Senate confirms Warsh as chair.\n\nAustan Goolsbee, president of the Federal Reserve Bank of Chicago, said earlier this week that “the analogy to the late 90s is a little harder for me to understand.” Greenspan’s insight was that productivity gains meant the Fed could hold off on raising rates, not that it should slash them, Goolsbee noted.\n\n“It wasn’t, ‘Should we cut rates because productivity growth is higher?’” he said.\n\nThe economic backdrop that awaits Warsh is also far less friendly than the one Greenspan enjoyed. [...] “Our nation can see productivity boom like we did in the ’90s when we are not encumbered by a Federal Reserve which throws the brakes on,’' Bessent said.\n\nOn Jan. 30, Trump said he was picking Warsh.\n\nIn speeches and writings, Warsh has argued that AI-driven improvements in productivity could justify lower interest rates.\n\nThese views align with Trump’s desires for Fed rate cutes but mark a break with Warsh’s own past as an inflation hawk. In the aftermath of the 2007-2009 Great Recession, Warsh — then a Fed governor — objected to some of the central bank’s efforts to help the struggling economy by pushing down rates even though unemployment exceeded 9%. Warsh warned then, wrongly, that inflation would soon accelerate.",
+        "raw_content": null,
+        "topic": "fed_fomc",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "fed_fomc"
+      ],
+      "event_time": "Sun, 01 Mar 2026 14:00:08 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Fed's Waller says central bank deploying AI tech cautiously - KITCO",
+      "summary": "### off-the-wire\n\n# Fed's Waller says central bank deploying AI tech cautiously\n\n###### By Reuters\n\nPublished:\n\nUpdated:\n\n##### Reuters\n\nFeb 24 (Reuters) - Federal Reserve Governor Christopher Waller said Tuesday the U.S. central bank is carefully moving to adopt artificial intelligence technology i",
+      "url": "https://www.kitco.com/news/off-the-wire/2026-02-24/feds-waller-says-central-bank-deploying-ai-tech-cautiously",
+      "raw": {
+        "url": "https://www.kitco.com/news/off-the-wire/2026-02-24/feds-waller-says-central-bank-deploying-ai-tech-cautiously",
+        "title": "Fed's Waller says central bank deploying AI tech cautiously - KITCO",
+        "score": 2,
+        "published_date": "Tue, 24 Feb 2026 15:45:39 GMT",
+        "content": "### off-the-wire\n\n# Fed's Waller says central bank deploying AI tech cautiously\n\n###### By Reuters\n\nPublished:\n\nUpdated:\n\n##### Reuters\n\nFeb 24 (Reuters) - Federal Reserve Governor Christopher Waller said Tuesday the U.S. central bank is carefully moving to adopt artificial intelligence technology in a system-wide approach. [...] “We cannot approach AI casually,” and “as a central bank, we hold ourselves to a high standard” when using the technology, Waller said at a conference held by the Federal Reserve Bank of Boston.  \n  \nFor the Fed and AI usage, “that means clear guardrails on how and where it’s used, strong information-security controls, rigorous model validation, human accountability for decisions, and ongoing evaluation as the technology evolves,” with innovation and risk management standing together as complementary priorities, the Fed official said.\n\nWaller did not comment on the economic and monetary policy outlook in his prepared remarks.\n\nWaller said that despite the Fed being a highly decentralized organization, it is taking a more unified approach to implementing AI technology.",
+        "raw_content": null,
+        "topic": "fed_fomc",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "fed_fomc"
+      ],
+      "event_time": "Tue, 24 Feb 2026 15:45:39 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Dollar Lifted by Diminished Rate-Cut Bets - WSJ",
+      "summary": "Updated \n ET\n\n1141 GMT – The dollar continues to derive support from the scaling back of interest-rate cut expectations after last week’s Federal Reserve meeting minutes, MUFG Bank’s Lee Hardman says in a note. The new 10% global tariff that came into effect Tuesday represents a reduction in overall",
+      "url": "https://www.wsj.com/finance/currencies/asian-currencies-mostly-weaken-amid-lingering-u-s-iran-tensions-3749b2a7?gaa_at=eafs&gaa_n=AWEtsqd8uPBhRvsQ0lDIVB_oX7S1zCXHWkm7flqWKVt_7Jko0iS1E-nJjJTy&gaa_ts=699dae8a&gaa_sig=pyhLsNdcu205RjKVy30NrjkItY2j4kpp3ebC3OsHMG_2jsnskMGl6t4fYMiiA7sd0jpaFNctl2w_NZHRnOClEA%3D%3D",
+      "raw": {
+        "url": "https://www.wsj.com/finance/currencies/asian-currencies-mostly-weaken-amid-lingering-u-s-iran-tensions-3749b2a7?gaa_at=eafs&gaa_n=AWEtsqd8uPBhRvsQ0lDIVB_oX7S1zCXHWkm7flqWKVt_7Jko0iS1E-nJjJTy&gaa_ts=699dae8a&gaa_sig=pyhLsNdcu205RjKVy30NrjkItY2j4kpp3ebC3OsHMG_2jsnskMGl6t4fYMiiA7sd0jpaFNctl2w_NZHRnOClEA%3D%3D",
+        "title": "Dollar Lifted by Diminished Rate-Cut Bets - WSJ",
+        "score": 4,
+        "published_date": "Tue, 24 Feb 2026 01:40:00 GMT",
+        "content": "Updated \n ET\n\n1141 GMT – The dollar continues to derive support from the scaling back of interest-rate cut expectations after last week’s Federal Reserve meeting minutes, MUFG Bank’s Lee Hardman says in a note. The new 10% global tariff that came into effect Tuesday represents a reduction in overall tariffs that could create more room for the Fed to lower rates later this year by lowering inflation, he says. However, it’s unlikely to trigger an immediate shift in the Fed’s cautious stance on cutting rates, he says. Fed governor Christopher Waller said it might be appropriate to leave rates unchanged if the labor market improves. These developments are supportive to the dollar, Hardman says. The DXY dollar index rises 0.2% to 97.854. (renae.dyer@wsj.com) [...] What to Read Next\n Most Popular News\n Most Popular Opinion\n Recommended Videos\n\nDJIA Futures\n\nS&P 500 Futures\n\nNasdaq Futures\n\nStoxx 600\n\nShanghai\n\n4117.41\n\n0.87%\n\nU.S. 10 Yr\n\n-1/32\n\n4.043%\n\nVIX\n\n21.28\n\n1.29%\n\nGold\n\n5172.30\n\n-1.02%\n\nBitcoin\n\n62952.16\n\n-2.31%\n\nCrude Oil\n\n66.99\n\n1.03%\n\nDollar Index\n\n94.97\n\n0.17%\n\nS&P GSCI Index Spot\n\n605.61\n\n0.42%\n\nThe Wall Street Journal\n\nDiscover WSJ+Sign In\n\n Use Alt + Down Arrow to expand.\n Print Edition\n Video\n Audio\n Latest Headlines\n Puzzles\n\nAdvertisement\n\nThis copy is for your personal, non-commercial use only. Distribution and use of this material are governed by\nour Subscriber Agreement and by copyright law. For non-personal use or to order multiple copies, please contact\nDow Jones Reprints at 1-800-843-0008 or visit www.djreprints.com. [...] Copyright ©2026 Dow Jones & Company, Inc. All Rights Reserved. 87990cbe856818d5eddac44c7b1cdeb8\n\nContinue reading your article with  \na WSJ subscription\n\nSubscribe Now\n\nAlready a subscriber? Sign In\n\n## What to Read Next\n\n### Asian Markets Shrug Off U.S. Tariff Uncertainties\n\nAsian stocks rose broadly on Monday, with South Korea and Taiwan setting records, despite renewed trade uncertainty.\n\nContinue To Article\n\n### Oil Futures Settle Lower As Iran Tensions Simmer\n\nOil futures settled lower in choppy trade after reaching a new 6-month intraday high, with U.S.-Iran nuclear talks due later this week holding back expectations of immediate U.S. military action.\n\nContinue To Article\n\nAdvertisement\n\n### Stocks Hold Gains After Trump Promises Replacement Tariffs",
+        "raw_content": null,
+        "topic": "rates_dollar_commodities",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "rates_dollar_commodities"
+      ],
+      "event_time": "Tue, 24 Feb 2026 01:40:00 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Gold price extends gain on US-Iran tensions - Mining.com",
+      "summary": "Silver Futures $ 93.835 / ozt  5.34%\n\nAluminum Futures $ 3078.25 / ton  -0.40%\n\nMicro Gold Futures $ 5245.4 / ozt  0.83%\n\nMicro Silver Futures $ 93.835 / ozt  5.62%\n\nPlatinum $ 2361.2 / ozt  3.49%\n\nGold Futures $ 5245 / ozt  0.83%\n\nCopper $ 6.0583 / lb  0.49%\n\nBrent Crude Oil $ 72.42 / bbl  2.09%\n\nP",
+      "url": "https://www.mining.com/gold-price-extends-gain-on-us-iran-tensions/",
+      "raw": {
+        "url": "https://www.mining.com/gold-price-extends-gain-on-us-iran-tensions/",
+        "title": "Gold price extends gain on US-Iran tensions - Mining.com",
+        "score": 2,
+        "published_date": "Fri, 27 Feb 2026 17:48:10 GMT",
+        "content": "Silver Futures $ 93.835 / ozt  5.34%\n\nAluminum Futures $ 3078.25 / ton  -0.40%\n\nMicro Gold Futures $ 5245.4 / ozt  0.83%\n\nMicro Silver Futures $ 93.835 / ozt  5.62%\n\nPlatinum $ 2361.2 / ozt  3.49%\n\nGold Futures $ 5245 / ozt  0.83%\n\nCopper $ 6.0583 / lb  0.49%\n\nBrent Crude Oil $ 72.42 / bbl  2.09%\n\nPalladium $ 1819 / ozt  -1.33%\n\nCrude Oil $ 66.67 / bbl  1.55%\n\nNatural Gas $ 2.864 / Btu  1.13%\n\nSilver Futures $ 93.835 / ozt  5.34%\n\nAluminum Futures $ 3078.25 / ton  -0.40%\n\nMicro Gold Futures $ 5245.4 / ozt  0.83%\n\nMicro Silver Futures $ 93.835 / ozt  5.62%\n\nPlatinum $ 2361.2 / ozt  3.49%\n\nGold Futures $ 5245 / ozt  0.83%\n\nCopper $ 6.0583 / lb  0.49%\n\nBrent Crude Oil $ 72.42 / bbl  2.09%\n\nPalladium $ 1819 / ozt  -1.33%\n\nCrude Oil $ 66.67 / bbl  1.55%\n\nNatural Gas $ 2.864 / Btu  1.13% [...] Natural Gas $ 2.864 / Btu  1.13%\n\nSilver Futures $ 93.835 / ozt  5.34%\n\nGo to MDC Markets\n\n Watch\n Company Spotlight\n Copper\n Gold\n Critical Minerals\n Commodities\n  + Lithium\n  + Nickel\n  + Iron Ore\n  + Rare Earth\n  + Coal\n  + Uranium\n  + Cobalt\n  + Diamond\n  + Zinc\n  + Platinum\n  + Palladium\n  + Silver\n  + Potash\n  + Suppliers Equipment\n TOP 50\n USA\n Canada\n Australia\n Regions\n  + Africa\n  + China\n  + Latin America\n  + Europe\n  + Asia\n Live Charts\n  + Gold\n  + Copper\n  + Silver\n\n# Gold price extends gain on US-Iran tensions\n\nStaff Writer | February 27, 2026 | 9:48 am \nMarkets USA Gold\n\nStock image.\n\nGold extended gains on Friday as mounting geopolitical tensions in the Middle East drove investors towards the safety of the metal. [...] Meanwhile, traders are also watching for clues on the Federal Reserve’s next move on interest rates. Fed Bank of Chicago President Austan Goolsbee said this week that several cuts are possible this year if inflation declines.\n\n(With files from Bloomberg)\n\n Share\n\n### Comments\n\n### Cancel reply\n\nNo comments found.\n\n## More News\n\n#### China’s Yahua starts building lithium sulfate plant in Zimbabwe\n\nThe facility is the third such plant being developed by Chinese companies in Zimbabwe.\n\nFebruary 27, 2026 | 07:36 am\n\n## Gold\n\n## Copper\n\n## Critical Minerals",
+        "raw_content": null,
+        "topic": "rates_dollar_commodities",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "rates_dollar_commodities"
+      ],
+      "event_time": "Fri, 27 Feb 2026 17:48:10 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "XAUUSD_2026-02-23_10-15-24 - Mining.com",
+      "summary": "Silver Futures $ 87.805 / ozt  3.79%\n\nAluminum Futures $ 3058.75 / ton  -0.23%\n\nMicro Gold Futures $ 5243.8 / ozt  2.24%\n\nMicro Silver Futures $ 87.77 / ozt  3.73%\n\nPlatinum $ 2170.15 / ozt  0.07%\n\nGold Futures $ 5243.9 / ozt  2.24%\n\nCopper $ 5.85 / lb  -0.32%\n\nBrent Crude Oil $ 71.22 / bbl  -0.03%\n",
+      "url": "https://www.mining.com/gold-price-rises-above-5200-on-tariff-uncertainty-iran-tensions/xauusd_2026-02-23_10-15-24/",
+      "raw": {
+        "url": "https://www.mining.com/gold-price-rises-above-5200-on-tariff-uncertainty-iran-tensions/xauusd_2026-02-23_10-15-24/",
+        "title": "XAUUSD_2026-02-23_10-15-24 - Mining.com",
+        "score": 2,
+        "published_date": "Mon, 23 Feb 2026 20:38:41 GMT",
+        "content": "Silver Futures $ 87.805 / ozt  3.79%\n\nAluminum Futures $ 3058.75 / ton  -0.23%\n\nMicro Gold Futures $ 5243.8 / ozt  2.24%\n\nMicro Silver Futures $ 87.77 / ozt  3.73%\n\nPlatinum $ 2170.15 / ozt  0.07%\n\nGold Futures $ 5243.9 / ozt  2.24%\n\nCopper $ 5.85 / lb  -0.32%\n\nBrent Crude Oil $ 71.22 / bbl  -0.03%\n\nPalladium $ 1802 / ozt  1.09%\n\nCrude Oil $ 66.41 / bbl  0.79%\n\nNatural Gas $ 2.92 / Btu  -7.30%\n\nSilver Futures $ 87.805 / ozt  3.79%\n\nAluminum Futures $ 3058.75 / ton  -0.23%\n\nMicro Gold Futures $ 5243.8 / ozt  2.24%\n\nMicro Silver Futures $ 87.77 / ozt  3.73%\n\nPlatinum $ 2170.15 / ozt  0.07%\n\nGold Futures $ 5243.9 / ozt  2.24%\n\nCopper $ 5.85 / lb  -0.32%\n\nBrent Crude Oil $ 71.22 / bbl  -0.03%\n\nPalladium $ 1802 / ozt  1.09%\n\nCrude Oil $ 66.41 / bbl  0.79%\n\nNatural Gas $ 2.92 / Btu  -7.30% [...] February 23, 2026 | 09:43 am\n\n## Gold\n\n#### Gold price rises above $5,200 on tariff uncertainty, Iran tensions\n\nGold’s recent run of gains has helped the metal to recover ground.\n\nFebruary 23, 2026 | 10:13 am\n\n#### Lundin Gold sells silver stream to LunR Royalties in $490M deal\n\nLunR will buy all of FDN's payable silver production until 12.2 million oz. have been delivered.\n\nFebruary 23, 2026 | 09:26 am\n\n#### B2Gold CEO Johnson to retire in June\n\nHe is to be succeeded by chief financial officer Mike Cinnamond.\n\nFebruary 23, 2026 | 07:59 am\n\n#### Nova Minerals rises despite short seller attack\n\nIn its report, Spruce Point raised concerns over management's credentials and background.\n\nFebruary 20, 2026 | 08:26 am\n\n## Copper\n\n## Critical Minerals [...] Natural Gas $ 2.92 / Btu  -7.30%\n\nSilver Futures $ 87.805 / ozt  3.79%\n\nGo to MDC Markets\n\n Watch\n Company Spotlight\n Copper\n Gold\n Critical Minerals\n Commodities\n  + Lithium\n  + Nickel\n  + Iron Ore\n  + Rare Earth\n  + Coal\n  + Uranium\n  + Cobalt\n  + Diamond\n  + Zinc\n  + Platinum\n  + Palladium\n  + Silver\n  + Potash\n  + Suppliers Equipment\n TOP 50\n USA\n Canada\n Australia\n Regions\n  + Africa\n  + China\n  + Latin America\n  + Europe\n  + Asia\n Live Charts\n  + Gold\n  + Copper\n  + Silver\n\n# XAUUSD\\_2026-02-23\\_10-15-24\n\nJackson Chen | February 23, 2026 | 10:12 am\n\n Share\n\n### Comments\n\n### Cancel reply\n\nNo comments found.\n\n## More News\n\n#### Vale to invest $3.5 billion in Carajas copper projects by 2030\n\nThe forecast includes investments of $300 million in 2026.\n\nFebruary 23, 2026 | 09:43 am",
+        "raw_content": null,
+        "topic": "rates_dollar_commodities",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "rates_dollar_commodities"
+      ],
+      "event_time": "Mon, 23 Feb 2026 20:38:41 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "EU Is the Biggest Source of US Imports - Mining.com",
+      "summary": "Silver Futures $ 86.65 / ozt  -1.58%\n\nAluminum Futures $ 3068.25 / ton  0.57%\n\nMicro Gold Futures $ 5167.7 / ozt  -1.53%\n\nMicro Silver Futures $ 86.6 / ozt  -1.63%\n\nPlatinum $ 2180.8 / ozt  0.09%\n\nGold Futures $ 5167.9 / ozt  -1.52%\n\nCopper $ 5.9685 / lb  2.92%\n\nBrent Crude Oil $ 70.6 / bbl  -1.22%\n",
+      "url": "https://www.mining.com/web/eu-expects-us-to-ease-impact-of-metals-tariffs-in-coming-weeks/eu-is-the-biggest-source-of-us-imports/",
+      "raw": {
+        "url": "https://www.mining.com/web/eu-expects-us-to-ease-impact-of-metals-tariffs-in-coming-weeks/eu-is-the-biggest-source-of-us-imports/",
+        "title": "EU Is the Biggest Source of US Imports - Mining.com",
+        "score": 2,
+        "published_date": "Tue, 24 Feb 2026 19:39:17 GMT",
+        "content": "Silver Futures $ 86.65 / ozt  -1.58%\n\nAluminum Futures $ 3068.25 / ton  0.57%\n\nMicro Gold Futures $ 5167.7 / ozt  -1.53%\n\nMicro Silver Futures $ 86.6 / ozt  -1.63%\n\nPlatinum $ 2180.8 / ozt  0.09%\n\nGold Futures $ 5167.9 / ozt  -1.52%\n\nCopper $ 5.9685 / lb  2.92%\n\nBrent Crude Oil $ 70.6 / bbl  -1.22%\n\nPalladium $ 1840.25 / ozt  3.71%\n\nCrude Oil $ 65.65 / bbl  -1.00%\n\nNatural Gas $ 2.839 / Btu  -2.71%\n\nSilver Futures $ 86.65 / ozt  -1.58%\n\nAluminum Futures $ 3068.25 / ton  0.57%\n\nMicro Gold Futures $ 5167.7 / ozt  -1.53%\n\nMicro Silver Futures $ 86.6 / ozt  -1.63%\n\nPlatinum $ 2180.8 / ozt  0.09%\n\nGold Futures $ 5167.9 / ozt  -1.52%\n\nCopper $ 5.9685 / lb  2.92%\n\nBrent Crude Oil $ 70.6 / bbl  -1.22%\n\nPalladium $ 1840.25 / ozt  3.71%\n\nCrude Oil $ 65.65 / bbl  -1.00% [...] Crude Oil $ 65.65 / bbl  -1.00%\n\nNatural Gas $ 2.839 / Btu  -2.71%\n\nSilver Futures $ 86.65 / ozt  -1.58%\n\nGo to MDC Markets\n\n Watch\n Company Spotlight\n Copper\n Gold\n Critical Minerals\n Commodities\n  + Lithium\n  + Nickel\n  + Iron Ore\n  + Rare Earth\n  + Coal\n  + Uranium\n  + Cobalt\n  + Diamond\n  + Zinc\n  + Platinum\n  + Palladium\n  + Silver\n  + Potash\n  + Suppliers Equipment\n TOP 50\n USA\n Canada\n Australia\n Regions\n  + Africa\n  + China\n  + Latin America\n  + Europe\n  + Asia\n Live Charts\n  + Gold\n  + Copper\n  + Silver\n\n# EU Is the Biggest Source of US Imports\n\nJackson Chen | February 24, 2026 | 7:06 am\n\n Share\n\n### Comments\n\n### Cancel reply\n\nNo comments found.\n\n## More News\n\n#### Alcoa seeks to sell 10 sites to data centres [...] #### Alcoa seeks to sell 10 sites to data centres\n\nAluminum producers face stiff competition for supplies from power-hungry data centres.\n\nFebruary 24, 2026 | 09:52 am\n\n## Gold\n\n## Copper\n\n## Critical Minerals",
+        "raw_content": null,
+        "topic": "rates_dollar_commodities",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "rates_dollar_commodities"
+      ],
+      "event_time": "Tue, 24 Feb 2026 19:39:17 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Gold Has Found Footing Above $5,000 - Mining.com",
+      "summary": "Silver Futures $ 91.65 / ozt  5.15%\n\nAluminum Futures $ 3121.25 / ton  1.84%\n\nMicro Gold Futures $ 5226.7 / ozt  1.26%\n\nMicro Silver Futures $ 91.015 / ozt  4.61%\n\nPlatinum $ 2333.3 / ozt  7.03%\n\nGold Futures $ 5226.4 / ozt  1.29%\n\nCopper $ 6.045 / lb  1.50%\n\nBrent Crude Oil $ 70.99 / bbl  -0.32%\n\nP",
+      "url": "https://www.mining.com/gold-price-gains-on-tariff-geopolitical-risks/gold-has-found-footing-above-5000/",
+      "raw": {
+        "url": "https://www.mining.com/gold-price-gains-on-tariff-geopolitical-risks/gold-has-found-footing-above-5000/",
+        "title": "Gold Has Found Footing Above $5,000 - Mining.com",
+        "score": 2,
+        "published_date": "Wed, 25 Feb 2026 19:03:08 GMT",
+        "content": "Silver Futures $ 91.65 / ozt  5.15%\n\nAluminum Futures $ 3121.25 / ton  1.84%\n\nMicro Gold Futures $ 5226.7 / ozt  1.26%\n\nMicro Silver Futures $ 91.015 / ozt  4.61%\n\nPlatinum $ 2333.3 / ozt  7.03%\n\nGold Futures $ 5226.4 / ozt  1.29%\n\nCopper $ 6.045 / lb  1.50%\n\nBrent Crude Oil $ 70.99 / bbl  -0.32%\n\nPalladium $ 1870.1 / ozt  5.39%\n\nCrude Oil $ 65.74 / bbl  -0.50%\n\nNatural Gas $ 2.899 / Btu  2.22%\n\nSilver Futures $ 91.65 / ozt  5.15%\n\nAluminum Futures $ 3121.25 / ton  1.84%\n\nMicro Gold Futures $ 5226.7 / ozt  1.26%\n\nMicro Silver Futures $ 91.015 / ozt  4.61%\n\nPlatinum $ 2333.3 / ozt  7.03%\n\nGold Futures $ 5226.4 / ozt  1.29%\n\nCopper $ 6.045 / lb  1.50%\n\nBrent Crude Oil $ 70.99 / bbl  -0.32%\n\nPalladium $ 1870.1 / ozt  5.39%\n\nCrude Oil $ 65.74 / bbl  -0.50%\n\nNatural Gas $ 2.899 / Btu  2.22% [...] Natural Gas $ 2.899 / Btu  2.22%\n\nSilver Futures $ 91.65 / ozt  5.15%\n\nGo to MDC Markets\n\n Watch\n Company Spotlight\n Copper\n Gold\n Critical Minerals\n Commodities\n  + Lithium\n  + Nickel\n  + Iron Ore\n  + Rare Earth\n  + Coal\n  + Uranium\n  + Cobalt\n  + Diamond\n  + Zinc\n  + Platinum\n  + Palladium\n  + Silver\n  + Potash\n  + Suppliers Equipment\n TOP 50\n USA\n Canada\n Australia\n Regions\n  + Africa\n  + China\n  + Latin America\n  + Europe\n  + Asia\n Live Charts\n  + Gold\n  + Copper\n  + Silver\n\n# Gold Has Found Footing Above $5,000\n\nJackson Chen | February 25, 2026 | 8:07 am\n\n Share\n\n### Comments\n\n### Cancel reply\n\nNo comments found.\n\n## More News\n\n#### Mexican security risks highlighted in new reports [...] #### Mexican security risks highlighted in new reports\n\nA worsening security environment could shift investor preferences toward companies operating in Tier I jurisdictions, TD said.\n\nFebruary 25, 2026 | 09:10 am\n\n## Gold\n\n## Copper\n\n## Critical Minerals",
+        "raw_content": null,
+        "topic": "rates_dollar_commodities",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "rates_dollar_commodities"
+      ],
+      "event_time": "Wed, 25 Feb 2026 19:03:08 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Under-owned and undervalued: Why gold stocks still have room to run - Mining.com",
+      "summary": "Silver Futures $ 89.325 / ozt  -0.26%\n\nAluminum Futures $ 3094.75 / ton  -0.83%\n\nMicro Gold Futures $ 5212.7 / ozt  0.73%\n\nMicro Silver Futures $ 89.345 / ozt  -0.72%\n\nPlatinum $ 2282.9 / ozt  -0.14%\n\nGold Futures $ 5212 / ozt  0.71%\n\nCopper $ 6.0295 / lb  -0.30%\n\nBrent Crude Oil $ 70.89 / bbl  -0.1",
+      "url": "https://www.mining.com/video/under-owned-and-undervalued-why-gold-stocks-still-have-room-to-run/",
+      "raw": {
+        "url": "https://www.mining.com/video/under-owned-and-undervalued-why-gold-stocks-still-have-room-to-run/",
+        "title": "Under-owned and undervalued: Why gold stocks still have room to run - Mining.com",
+        "score": 3,
+        "published_date": "Thu, 26 Feb 2026 20:55:59 GMT",
+        "content": "Silver Futures $ 89.325 / ozt  -0.26%\n\nAluminum Futures $ 3094.75 / ton  -0.83%\n\nMicro Gold Futures $ 5212.7 / ozt  0.73%\n\nMicro Silver Futures $ 89.345 / ozt  -0.72%\n\nPlatinum $ 2282.9 / ozt  -0.14%\n\nGold Futures $ 5212 / ozt  0.71%\n\nCopper $ 6.0295 / lb  -0.30%\n\nBrent Crude Oil $ 70.89 / bbl  -0.11%\n\nPalladium $ 1816 / ozt  -1.49%\n\nCrude Oil $ 65.28 / bbl  -0.56%\n\nNatural Gas $ 2.833 / Btu  -2.01%\n\nSilver Futures $ 89.325 / ozt  -0.26%\n\nAluminum Futures $ 3094.75 / ton  -0.83%\n\nMicro Gold Futures $ 5212.7 / ozt  0.73%\n\nMicro Silver Futures $ 89.345 / ozt  -0.72%\n\nPlatinum $ 2282.9 / ozt  -0.14%\n\nGold Futures $ 5212 / ozt  0.71%\n\nCopper $ 6.0295 / lb  -0.30%\n\nBrent Crude Oil $ 70.89 / bbl  -0.11%\n\nPalladium $ 1816 / ozt  -1.49%\n\nCrude Oil $ 65.28 / bbl  -0.56% [...] Crude Oil $ 65.28 / bbl  -0.56%\n\nNatural Gas $ 2.833 / Btu  -2.01%\n\nSilver Futures $ 89.325 / ozt  -0.26%\n\nGo to MDC Markets\n\n Watch\n Company Spotlight\n Copper\n Gold\n Critical Minerals\n Commodities\n  + Lithium\n  + Nickel\n  + Iron Ore\n  + Rare Earth\n  + Coal\n  + Uranium\n  + Cobalt\n  + Diamond\n  + Zinc\n  + Platinum\n  + Palladium\n  + Silver\n  + Potash\n  + Suppliers Equipment\n TOP 50\n USA\n Canada\n Australia\n Regions\n  + Africa\n  + China\n  + Latin America\n  + Europe\n  + Asia\n Live Charts\n  + Gold\n  + Copper\n  + Silver\n\n# Under-owned and undervalued: Why gold stocks still have room to run\n\nMINING.com Editor | February 26, 2026 | 12:54 pm \nMarkets Gold [...] Gold’s surge toward record territory has sparked a fresh wave of aggressive price forecasts from major banks, even as short-term profit-taking tests the strength of the rally.\n\nJPMorgan this week lifted its long-term outlook to $4,500 an ounce and projected prices could approach $6,300 by the end of 2026, citing central bank demand and geopolitical uncertainty. Yet bullion has pulled back despite renewed tensions in the Middle East and Ukraine, firm Treasury yields and a stronger dollar, leaving investors questioning whether this is consolidation or the start of a deeper shift.\n\nJohn Ing, president of Maison Placements, shares his view on gold’s next phase, silver’s volatility and why he believes mining equities remain under-owned.\n\n Share\n\n### Comments\n\n### Cancel reply",
+        "raw_content": null,
+        "topic": "rates_dollar_commodities",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "rates_dollar_commodities"
+      ],
+      "event_time": "Thu, 26 Feb 2026 20:55:59 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Venezuela - Mining.com",
+      "summary": "Silver Futures $ 87.805 / ozt  3.79%\n\nAluminum Futures $ 3058.75 / ton  -0.23%\n\nMicro Gold Futures $ 5243.8 / ozt  2.24%\n\nMicro Silver Futures $ 87.77 / ozt  3.73%\n\nPlatinum $ 2170.15 / ozt  0.07%\n\nGold Futures $ 5243.9 / ozt  2.24%\n\nCopper $ 5.85 / lb  -0.32%\n\nBrent Crude Oil $ 71.22 / bbl  -0.03%\n",
+      "url": "https://www.mining.com/web/venezuela-gold-reserves-fell-11-in-2025/adobestock_354454244_editorial_use_only/",
+      "raw": {
+        "url": "https://www.mining.com/web/venezuela-gold-reserves-fell-11-in-2025/adobestock_354454244_editorial_use_only/",
+        "title": "Venezuela - Mining.com",
+        "score": 2,
+        "published_date": "Mon, 23 Feb 2026 20:38:41 GMT",
+        "content": "Silver Futures $ 87.805 / ozt  3.79%\n\nAluminum Futures $ 3058.75 / ton  -0.23%\n\nMicro Gold Futures $ 5243.8 / ozt  2.24%\n\nMicro Silver Futures $ 87.77 / ozt  3.73%\n\nPlatinum $ 2170.15 / ozt  0.07%\n\nGold Futures $ 5243.9 / ozt  2.24%\n\nCopper $ 5.85 / lb  -0.32%\n\nBrent Crude Oil $ 71.22 / bbl  -0.03%\n\nPalladium $ 1802 / ozt  1.09%\n\nCrude Oil $ 66.41 / bbl  0.79%\n\nNatural Gas $ 2.92 / Btu  -7.30%\n\nSilver Futures $ 87.805 / ozt  3.79%\n\nAluminum Futures $ 3058.75 / ton  -0.23%\n\nMicro Gold Futures $ 5243.8 / ozt  2.24%\n\nMicro Silver Futures $ 87.77 / ozt  3.73%\n\nPlatinum $ 2170.15 / ozt  0.07%\n\nGold Futures $ 5243.9 / ozt  2.24%\n\nCopper $ 5.85 / lb  -0.32%\n\nBrent Crude Oil $ 71.22 / bbl  -0.03%\n\nPalladium $ 1802 / ozt  1.09%\n\nCrude Oil $ 66.41 / bbl  0.79%\n\nNatural Gas $ 2.92 / Btu  -7.30% [...] Natural Gas $ 2.92 / Btu  -7.30%\n\nSilver Futures $ 87.805 / ozt  3.79%\n\nGo to MDC Markets\n\n Watch\n Company Spotlight\n Copper\n Gold\n Critical Minerals\n Commodities\n  + Lithium\n  + Nickel\n  + Iron Ore\n  + Rare Earth\n  + Coal\n  + Uranium\n  + Cobalt\n  + Diamond\n  + Zinc\n  + Platinum\n  + Palladium\n  + Silver\n  + Potash\n  + Suppliers Equipment\n TOP 50\n USA\n Canada\n Australia\n Regions\n  + Africa\n  + China\n  + Latin America\n  + Europe\n  + Asia\n Live Charts\n  + Gold\n  + Copper\n  + Silver\n\n# Venezuela\n\nJackson Chen | February 23, 2026 | 8:27 am\n\n354454244\n\n Share\n\n### Comments\n\n### Cancel reply\n\nNo comments found.\n\n## More News\n\n#### Vale to invest $3.5 billion in Carajas copper projects by 2030\n\nThe forecast includes investments of $300 million in 2026.\n\nFebruary 23, 2026 | 09:43 am\n\n## Gold [...] February 23, 2026 | 09:43 am\n\n## Gold\n\n## Copper\n\n## Critical Minerals",
+        "raw_content": null,
+        "topic": "rates_dollar_commodities",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "rates_dollar_commodities"
+      ],
+      "event_time": "Mon, 23 Feb 2026 20:38:41 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Chile’s copper output, manufacturing production decline in January - Mining.com",
+      "summary": "Silver Futures $ 92.58 / ozt  3.93%\n\nAluminum Futures $ 3083.25 / ton  -0.23%\n\nMicro Gold Futures $ 5246.1 / ozt  0.84%\n\nMicro Silver Futures $ 92.56 / ozt  4.18%\n\nPlatinum $ 2375.45 / ozt  4.11%\n\nGold Futures $ 5246.1 / ozt  0.85%\n\nCopper $ 6.0935 / lb  1.07%\n\nBrent Crude Oil $ 73.05 / bbl  2.97%\n\n",
+      "url": "https://www.mining.com/web/chiles-copper-output-manufacturing-production-decline-in-january/",
+      "raw": {
+        "url": "https://www.mining.com/web/chiles-copper-output-manufacturing-production-decline-in-january/",
+        "title": "Chile’s copper output, manufacturing production decline in January - Mining.com",
+        "score": 2,
+        "published_date": "Fri, 27 Feb 2026 15:13:51 GMT",
+        "content": "Silver Futures $ 92.58 / ozt  3.93%\n\nAluminum Futures $ 3083.25 / ton  -0.23%\n\nMicro Gold Futures $ 5246.1 / ozt  0.84%\n\nMicro Silver Futures $ 92.56 / ozt  4.18%\n\nPlatinum $ 2375.45 / ozt  4.11%\n\nGold Futures $ 5246.1 / ozt  0.85%\n\nCopper $ 6.0935 / lb  1.07%\n\nBrent Crude Oil $ 73.05 / bbl  2.97%\n\nPalladium $ 1827.25 / ozt  -0.88%\n\nCrude Oil $ 67.3 / bbl  2.51%\n\nNatural Gas $ 2.859 / Btu  0.95%\n\nSilver Futures $ 92.58 / ozt  3.93%\n\nAluminum Futures $ 3083.25 / ton  -0.23%\n\nMicro Gold Futures $ 5246.1 / ozt  0.84%\n\nMicro Silver Futures $ 92.56 / ozt  4.18%\n\nPlatinum $ 2375.45 / ozt  4.11%\n\nGold Futures $ 5246.1 / ozt  0.85%\n\nCopper $ 6.0935 / lb  1.07%\n\nBrent Crude Oil $ 73.05 / bbl  2.97%\n\nPalladium $ 1827.25 / ozt  -0.88%\n\nCrude Oil $ 67.3 / bbl  2.51%\n\nNatural Gas $ 2.859 / Btu  0.95% [...] Natural Gas $ 2.859 / Btu  0.95%\n\nSilver Futures $ 92.58 / ozt  3.93%\n\nGo to MDC Markets\n\n Watch\n Company Spotlight\n Copper\n Gold\n Critical Minerals\n Commodities\n  + Lithium\n  + Nickel\n  + Iron Ore\n  + Rare Earth\n  + Coal\n  + Uranium\n  + Cobalt\n  + Diamond\n  + Zinc\n  + Platinum\n  + Palladium\n  + Silver\n  + Potash\n  + Suppliers Equipment\n TOP 50\n USA\n Canada\n Australia\n Regions\n  + Africa\n  + China\n  + Latin America\n  + Europe\n  + Asia\n Live Charts\n  + Gold\n  + Copper\n  + Silver\n\n# Chile’s copper output, manufacturing production decline in January\n\nReuters | February 27, 2026 | 7:13 am \nMarkets Latin America Copper\n\nBig haul truck and machinery working in Chuquicamata, biggest open pit copper mine of the world. Stock image. [...] February 27, 2026 | 04:03 am\n\n#### RANKED: Top 10 gold mining companies of 2025\n\nAgnico snatched second place from Barrick, while Zijin surged into the top 4.\n\nFebruary 26, 2026 | 09:00 am\n\n#### Nevada tops Fraser survey as Ontario, Saskatchewan rise\n\nThe United States, Canada, Australia and Europe all placed two jurisdictions each in the Top 10.\n\nFebruary 26, 2026 | 08:56 am\n\n#### Lundin turns to space tech to find more gold in Ecuador\n\nThe Canadian miner is spending $100 million on exploration to extend Fruta del Norte’s mine life amid high gold prices.\n\nFebruary 25, 2026 | 01:00 pm\n\n## Copper\n\n## Critical Minerals",
+        "raw_content": null,
+        "topic": "rates_dollar_commodities",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "rates_dollar_commodities"
+      ],
+      "event_time": "Fri, 27 Feb 2026 15:13:51 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "EGA - Mining.com",
+      "summary": "Alcoa\" />\nAlcoa\" />\nEGA - MINING.COM\n\nSilver Futures $ 91.65 / ozt  5.15%\n\nAluminum Futures $ 3121.25 / ton  1.84%\n\nMicro Gold Futures $ 5226.7 / ozt  1.26%\n\nMicro Silver Futures $ 91.015 / ozt  4.61%\n\nPlatinum $ 2333.3 / ozt  7.03%\n\nGold Futures $ 5226.4 / ozt  1.29%\n\nCopper $ 6.045 / lb  1.50%\n\nBr",
+      "url": "https://www.mining.com/web/emirates-global-aluminium-expects-copper-substitution-and-capacity-limits-to-drive-demand/ega-3/",
+      "raw": {
+        "url": "https://www.mining.com/web/emirates-global-aluminium-expects-copper-substitution-and-capacity-limits-to-drive-demand/ega-3/",
+        "title": "EGA - Mining.com",
+        "score": 2,
+        "published_date": "Wed, 25 Feb 2026 19:03:08 GMT",
+        "content": "Alcoa\" />\nAlcoa\" />\nEGA - MINING.COM\n\nSilver Futures $ 91.65 / ozt  5.15%\n\nAluminum Futures $ 3121.25 / ton  1.84%\n\nMicro Gold Futures $ 5226.7 / ozt  1.26%\n\nMicro Silver Futures $ 91.015 / ozt  4.61%\n\nPlatinum $ 2333.3 / ozt  7.03%\n\nGold Futures $ 5226.4 / ozt  1.29%\n\nCopper $ 6.045 / lb  1.50%\n\nBrent Crude Oil $ 70.99 / bbl  -0.32%\n\nPalladium $ 1870.1 / ozt  5.39%\n\nCrude Oil $ 65.74 / bbl  -0.50%\n\nNatural Gas $ 2.899 / Btu  2.22%\n\nSilver Futures $ 91.65 / ozt  5.15%\n\nAluminum Futures $ 3121.25 / ton  1.84%\n\nMicro Gold Futures $ 5226.7 / ozt  1.26%\n\nMicro Silver Futures $ 91.015 / ozt  4.61%\n\nPlatinum $ 2333.3 / ozt  7.03%\n\nGold Futures $ 5226.4 / ozt  1.29%\n\nCopper $ 6.045 / lb  1.50%\n\nBrent Crude Oil $ 70.99 / bbl  -0.32%\n\nPalladium $ 1870.1 / ozt  5.39%\n\nCrude Oil $ 65.74 / bbl  -0.50% [...] Crude Oil $ 65.74 / bbl  -0.50%\n\nNatural Gas $ 2.899 / Btu  2.22%\n\nSilver Futures $ 91.65 / ozt  5.15%\n\nGo to MDC Markets\n\n Watch\n Company Spotlight\n Copper\n Gold\n Critical Minerals\n Commodities\n  + Lithium\n  + Nickel\n  + Iron Ore\n  + Rare Earth\n  + Coal\n  + Uranium\n  + Cobalt\n  + Diamond\n  + Zinc\n  + Platinum\n  + Palladium\n  + Silver\n  + Potash\n  + Suppliers Equipment\n TOP 50\n USA\n Canada\n Australia\n Regions\n  + Africa\n  + China\n  + Latin America\n  + Europe\n  + Asia\n Live Charts\n  + Gold\n  + Copper\n  + Silver\n\n# EGA\n\nJackson Chen | February 25, 2026 | 7:07 am\n\n Share\n Alcoa\" class=\"fb-share\">\n\n### Comments\n\n### Cancel reply\n\nNo comments found.\n\n## More News\n\n#### Mexican security risks highlighted in new reports [...] #### Mexican security risks highlighted in new reports\n\nA worsening security environment could shift investor preferences toward companies operating in Tier I jurisdictions, TD said.\n\nFebruary 25, 2026 | 09:10 am\n\n## Gold\n\n## Copper\n\n## Critical Minerals",
+        "raw_content": null,
+        "topic": "rates_dollar_commodities",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "rates_dollar_commodities"
+      ],
+      "event_time": "Wed, 25 Feb 2026 19:03:08 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "India Gold ETF Flows Surpassed Stock Funds in January - Mining.com",
+      "summary": "Silver Futures $ 87.584 / ozt  -2.21%\n\nAluminum Futures $ 3094.75 / ton  -0.83%\n\nMicro Gold Futures $ 5194.2 / ozt  0.37%\n\nMicro Silver Futures $ 87.584 / ozt  -2.68%\n\nPlatinum $ 2285.4 / ozt  -0.03%\n\nGold Futures $ 5194.2 / ozt  0.37%\n\nCopper $ 6.005 / lb  -0.70%\n\nBrent Crude Oil $ 70.84 / bbl  -0.",
+      "url": "https://www.mining.com/web/india-expands-rules-for-385-billion-stock-funds-to-add-gold/india-gold-etf-flows-surpassed-stock-funds-in-january/",
+      "raw": {
+        "url": "https://www.mining.com/web/india-expands-rules-for-385-billion-stock-funds-to-add-gold/india-gold-etf-flows-surpassed-stock-funds-in-january/",
+        "title": "India Gold ETF Flows Surpassed Stock Funds in January - Mining.com",
+        "score": 2,
+        "published_date": "Thu, 26 Feb 2026 21:40:35 GMT",
+        "content": "Silver Futures $ 87.584 / ozt  -2.21%\n\nAluminum Futures $ 3094.75 / ton  -0.83%\n\nMicro Gold Futures $ 5194.2 / ozt  0.37%\n\nMicro Silver Futures $ 87.584 / ozt  -2.68%\n\nPlatinum $ 2285.4 / ozt  -0.03%\n\nGold Futures $ 5194.2 / ozt  0.37%\n\nCopper $ 6.005 / lb  -0.70%\n\nBrent Crude Oil $ 70.84 / bbl  -0.18%\n\nPalladium $ 1817 / ozt  -1.44%\n\nCrude Oil $ 65.21 / bbl  -0.67%\n\nNatural Gas $ 2.827 / Btu  -2.21%\n\nSilver Futures $ 87.584 / ozt  -2.21%\n\nAluminum Futures $ 3094.75 / ton  -0.83%\n\nMicro Gold Futures $ 5194.2 / ozt  0.37%\n\nMicro Silver Futures $ 87.584 / ozt  -2.68%\n\nPlatinum $ 2285.4 / ozt  -0.03%\n\nGold Futures $ 5194.2 / ozt  0.37%\n\nCopper $ 6.005 / lb  -0.70%\n\nBrent Crude Oil $ 70.84 / bbl  -0.18%\n\nPalladium $ 1817 / ozt  -1.44%\n\nCrude Oil $ 65.21 / bbl  -0.67% [...] Crude Oil $ 65.21 / bbl  -0.67%\n\nNatural Gas $ 2.827 / Btu  -2.21%\n\nSilver Futures $ 87.584 / ozt  -2.21%\n\nGo to MDC Markets\n\n Watch\n Company Spotlight\n Copper\n Gold\n Critical Minerals\n Commodities\n  + Lithium\n  + Nickel\n  + Iron Ore\n  + Rare Earth\n  + Coal\n  + Uranium\n  + Cobalt\n  + Diamond\n  + Zinc\n  + Platinum\n  + Palladium\n  + Silver\n  + Potash\n  + Suppliers Equipment\n TOP 50\n USA\n Canada\n Australia\n Regions\n  + Africa\n  + China\n  + Latin America\n  + Europe\n  + Asia\n Live Charts\n  + Gold\n  + Copper\n  + Silver\n\n# India Gold ETF Flows Surpassed Stock Funds in January\n\nJackson Chen | February 26, 2026 | 10:47 am\n\n Share\n\n### Comments\n\n### Cancel reply\n\nNo comments found.\n\n## More News\n\n#### Copper price edges lower as traders await return of China demand [...] The buildup of copper inventories in China was also greater than usual during the holiday period.\n\nFebruary 26, 2026 | 11:03 am\n\n## Gold\n\n#### RANKED: Top 10 gold mining companies of 2025\n\nAgnico snatched second place from Barrick, while Zijin surged into the top 4.\n\nFebruary 26, 2026 | 09:00 am\n\n#### Nevada tops Fraser survey as Ontario, Saskatchewan rise\n\nThe United States, Canada, Australia and Europe all placed two jurisdictions each in the Top 10.\n\nFebruary 26, 2026 | 08:56 am\n\n#### Lundin turns to space tech to find more gold in Ecuador\n\nThe Canadian miner is spending $100 million on exploration to extend Fruta del Norte’s mine life amid high gold prices.\n\nFebruary 25, 2026 | 01:00 pm\n\n#### Mexican security risks highlighted in new reports",
+        "raw_content": null,
+        "topic": "rates_dollar_commodities",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "rates_dollar_commodities"
+      ],
+      "event_time": "Thu, 26 Feb 2026 21:40:35 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Baht's Sensitivity to Gold Has Increased This Year | THB-gold correlation has climbed after falling to two-year low - Mining.com",
+      "summary": "Silver Futures $ 93.291 / ozt  4.73%\n\nAluminum Futures $ 3077.5 / ton  -0.42%\n\nMicro Gold Futures $ 5247.9 / ozt  0.87%\n\nMicro Silver Futures $ 93.291 / ozt  5.00%\n\nPlatinum $ 2373.5 / ozt  4.03%\n\nGold Futures $ 5247.9 / ozt  0.88%\n\nCopper $ 6.0595 / lb  0.51%\n\nBrent Crude Oil $ 72.87 / bbl  2.72%\n\n",
+      "url": "https://www.mining.com/web/thai-gold-trading-curbs-take-effect-as-authorities-rein-in-baht/bahts-sensitivity-to-gold-has-increased-this-year-thb-gold-correlation-has-climbed-after-falling-to-two-year-low/",
+      "raw": {
+        "url": "https://www.mining.com/web/thai-gold-trading-curbs-take-effect-as-authorities-rein-in-baht/bahts-sensitivity-to-gold-has-increased-this-year-thb-gold-correlation-has-climbed-after-falling-to-two-year-low/",
+        "title": "Baht's Sensitivity to Gold Has Increased This Year | THB-gold correlation has climbed after falling to two-year low - Mining.com",
+        "score": 2,
+        "published_date": "Sun, 01 Mar 2026 20:33:39 GMT",
+        "content": "Silver Futures $ 93.291 / ozt  4.73%\n\nAluminum Futures $ 3077.5 / ton  -0.42%\n\nMicro Gold Futures $ 5247.9 / ozt  0.87%\n\nMicro Silver Futures $ 93.291 / ozt  5.00%\n\nPlatinum $ 2373.5 / ozt  4.03%\n\nGold Futures $ 5247.9 / ozt  0.88%\n\nCopper $ 6.0595 / lb  0.51%\n\nBrent Crude Oil $ 72.87 / bbl  2.72%\n\nPalladium $ 1792.2 / ozt  1.00%\n\nCrude Oil $ 67.02 / bbl  2.56%\n\nNatural Gas $ 2.859 / Btu  0.95%\n\nSilver Futures $ 93.291 / ozt  4.73%\n\nAluminum Futures $ 3077.5 / ton  -0.42%\n\nMicro Gold Futures $ 5247.9 / ozt  0.87%\n\nMicro Silver Futures $ 93.291 / ozt  5.00%\n\nPlatinum $ 2373.5 / ozt  4.03%\n\nGold Futures $ 5247.9 / ozt  0.88%\n\nCopper $ 6.0595 / lb  0.51%\n\nBrent Crude Oil $ 72.87 / bbl  2.72%\n\nPalladium $ 1792.2 / ozt  1.00%\n\nCrude Oil $ 67.02 / bbl  2.56%\n\nNatural Gas $ 2.859 / Btu  0.95% [...] March 01, 2026 | 10:17 am\n\n#### Gold price extends gain amid US-Iran standoff\n\nSpot gold rose as much as 1.2% to above $5,250 an ounce.\n\nFebruary 27, 2026 | 09:48 am\n\n#### Canada’s critical minerals push faces capital gap: RBC\n\nOttawa bets billions on projects and infrastructure as global demand surges and China dominates refining capacity.\n\nFebruary 27, 2026 | 04:03 am\n\n#### Ontario vows more cash to boost mining\n\nOntario Mines and Energy Minister Stephen Lecce promises more support for the industry at PDAC 2026.\n\nFebruary 27, 2026 | 04:00 am\n\n## Copper\n\n## Critical Minerals [...] Natural Gas $ 2.859 / Btu  0.95%\n\nSilver Futures $ 93.291 / ozt  4.73%\n\nGo to MDC Markets\n\n Watch\n Company Spotlight\n Copper\n Gold\n Critical Minerals\n Commodities\n  + Lithium\n  + Nickel\n  + Iron Ore\n  + Rare Earth\n  + Coal\n  + Uranium\n  + Cobalt\n  + Diamond\n  + Zinc\n  + Platinum\n  + Palladium\n  + Silver\n  + Potash\n  + Suppliers Equipment\n TOP 50\n USA\n Canada\n Australia\n Regions\n  + Africa\n  + China\n  + Latin America\n  + Europe\n  + Asia\n Live Charts\n  + Gold\n  + Copper\n  + Silver\n\n# Baht’s Sensitivity to Gold Has Increased This Year | THB-gold correlation has climbed after falling to two-year low\n\nJackson Chen | March 1, 2026 | 9:20 am\n\n Share\n\n### Comments\n\n### Cancel reply\n\nNo comments found.\n\n## More News",
+        "raw_content": null,
+        "topic": "rates_dollar_commodities",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "rates_dollar_commodities"
+      ],
+      "event_time": "Sun, 01 Mar 2026 20:33:39 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "US filings for jobless aid rise modestly to 212,000 as layoffs remain at historically healthy levels - Greenwich Time",
+      "summary": "Earlier this month, the Labor Department reported that U.S. employers added a surprisingly strong 130,000 jobs in January and the unemployment rate fell to 4.3% from 4.4%. However, government revisions cut 2024-2025 U.S. payrolls by hundreds of thousands, reducing the number of jobs created last yea",
+      "url": "https://www.greenwichtime.com/business/article/us-filings-for-jobless-aid-rise-modestly-to-21942760.php",
+      "raw": {
+        "url": "https://www.greenwichtime.com/business/article/us-filings-for-jobless-aid-rise-modestly-to-21942760.php",
+        "title": "US filings for jobless aid rise modestly to 212,000 as layoffs remain at historically healthy levels - Greenwich Time",
+        "score": 2,
+        "published_date": "Thu, 26 Feb 2026 13:46:32 GMT",
+        "content": "Earlier this month, the Labor Department reported that U.S. employers added a surprisingly strong 130,000 jobs in January and the unemployment rate fell to 4.3% from 4.4%. However, government revisions cut 2024-2025 U.S. payrolls by hundreds of thousands, reducing the number of jobs created last year to just 181,000. That’s about one-third of the previously reported 584,000 and the weakest since the pandemic year of 2020.\n\nMore Business\n\nLatest financial picture for Connecticut’s hospitals sparks strong debate\n\nSurging debt reported by Prospect Medical Holdings in a new state report foreshadows the hospital chain's bankruptcy.\n\nBarnes & Noble relocating Farmington store to Westfarms mall [...] Data over the past year has broadly revealed a labor market in which hiring has clearly slowed, hobbled by uncertainty stoked by President Donald Trump’s tariffs and the lingering effects of the high interest rates the Fed engineered in 2022 and 2023 to tamp down a spike of pandemic-induced inflation.\n\nAdvertisement\n\nArticle continues below this ad\n\nEconomists are conflicted about whether the stronger-than-expected January job gains are a one-off or possibly the first sign of a recovering labor market, which could lead the Fed to further delay more cuts to its key interest rate.\n\nThe government issues it February jobs report next week. [...] While weekly layoffs have remained in a historically low range mostly between 200,000 and 250,000 for the past few years, a number of high-profile companies have announced job cuts recently, including UPS, Amazon, Dow and the Washington Post in recent weeks.\n\nAdvertisement\n\nArticle continues below this ad\n\n### Want more Greenwich Time?\n\nMake us a Preferred Source on Google to see more of us when you search.\n\nAdd Preferred Source\n\nThe Labor Department also recently reported that job openings fell in December to the lowest level in more than five years.\n\nFor now, the U.S. job market appears stuck in what economists call a “low-hire, low-fire” state that has kept the unemployment rate historically low, but has left those out of work struggling to find a new job.",
+        "raw_content": null,
+        "topic": "us_data",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "us_data"
+      ],
+      "event_time": "Thu, 26 Feb 2026 13:46:32 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "US weekly jobless claims increase slightly as labor market steadies - Reuters",
+      "summary": "Initial claims for state unemployment benefits rose 4,000 to a seasonally adjusted 212,000 for the week ended February 21. Economists polled by Reuters had forecast 215,000 claims for the latest week. Last week's claims included the Presidents' Day holiday, which could have impacted the data. Still,",
+      "url": "https://www.reuters.com/world/us/us-weekly-jobless-claims-increase-marginally-labor-market-stabilizes-2026-02-26/",
+      "raw": {
+        "url": "https://www.reuters.com/world/us/us-weekly-jobless-claims-increase-marginally-labor-market-stabilizes-2026-02-26/",
+        "title": "US weekly jobless claims increase slightly as labor market steadies - Reuters",
+        "score": 2,
+        "published_date": "Thu, 26 Feb 2026 15:11:31 GMT",
+        "content": "Initial claims for state unemployment benefits rose 4,000 to a seasonally adjusted 212,000 for the week ended February 21. Economists polled by Reuters had forecast 215,000 claims for the latest week. Last week's claims included the Presidents' Day holiday, which could have impacted the data. Still, claims were below the levels seen during the same period last year.\n\nAdvertisement · Scroll to continue\n\nThe U.S. Supreme Court last Friday struck down the tariffs, which Trump pursued under a law meant for use in national emergencies. Trump swiftly imposed a 10% global tariff for 150 days to replace some of the emergency duties, before raising the rate to 15% over the weekend.\n\nEconomists said the latest moves created near-term uncertainty, but anticipated minimal economic impact. [...] The number of people receiving unemployment benefits after an initial week of aid, a proxy for hiring, dropped 31,000 to a seasonally adjusted 1.833 million during the week ended February 14, the claims report showed. The so-called continuing claims covered the period during which the government surveyed households for February's unemployment rate.\n\nContinued claims rose modestly between the January and February survey weeks. The jobless rate eased to 4.3% in January from 4.4% in December. The Chicago Fed forecast the unemployment rate steady at 4.28% in February, which would round up to 4.3%.\n\nWhile the labor market is stabilizing, consumers remain anxious about their employment prospects. [...] The Reuters Inside Track newsletter is your essential guide to the biggest events in global sport. Sign up here.\n\nAdvertisement · Scroll to continue\n\nThe labor market is regaining its footing after hitting a soft patch last year amid uncertainty economists attributed to President Donald Trump's broad tariffs.\n\n\"The data show no sign of the layoffs we would expect in a weakening labor market during the early days of a hypothetical recession,\" said Carl Weinberg, chief economist at High Frequency Economics. \"That will jolly up traders who believe the Fed will not cut rates anytime soon, given a steady labor market and inflation above target.\"",
+        "raw_content": null,
+        "topic": "us_data",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "us_data"
+      ],
+      "event_time": "Thu, 26 Feb 2026 15:11:31 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Filings for jobless aid rise modestly as layoffs remain at healthy levels - Los Angeles Times",
+      "summary": "Advertisement\n\nEarlier this month, the Labor Department reported that U.S. employers added a surprisingly strong 130,000 jobs in January and the unemployment rate fell to 4.3% from 4.4%. However, government revisions cut 2024-2025 U.S. payrolls by hundreds of thousands, reducing the number of jobs c",
+      "url": "https://www.latimes.com/business/story/2026-02-26/filings-for-jobless-aid-rise-modestly-as-layoffs-remain-at-healthy-levels",
+      "raw": {
+        "url": "https://www.latimes.com/business/story/2026-02-26/filings-for-jobless-aid-rise-modestly-as-layoffs-remain-at-healthy-levels",
+        "title": "Filings for jobless aid rise modestly as layoffs remain at healthy levels - Los Angeles Times",
+        "score": 2,
+        "published_date": "Thu, 26 Feb 2026 15:58:06 GMT",
+        "content": "Advertisement\n\nEarlier this month, the Labor Department reported that U.S. employers added a surprisingly strong 130,000 jobs in January and the unemployment rate fell to 4.3% from 4.4%. However, government revisions cut 2024-2025 U.S. payrolls by hundreds of thousands, reducing the number of jobs created last year to just 181,000. That’s about one-third of the previously reported 584,000 and the weakest since the pandemic year of 2020.\n\nWhile weekly layoffs have remained in a historically low range mostly between 200,000 and 250,000 for the past few years, a number of high-profile companies have announced job cuts recently, including UPS, Amazon, Dow and the Washington Post in recent weeks. [...] The Labor Department also recently reported that job openings fell in December to the lowest level in more than five years.\n\nAdvertisement\n\nFor now, the U.S. job market appears stuck in what economists call a “low-hire, low-fire” state that has kept the unemployment rate historically low, but has left those out of work struggling to find a new job.\n\nData over the past year has broadly revealed a labor market in which hiring has clearly slowed, hobbled by uncertainty stoked by President Donald Trump’s tariffs and the lingering effects of the high interest rates the Fed engineered in 2022 and 2023 to tamp down a spike of pandemic-induced inflation. [...] The number of Americans filing for jobless aid for the week ending Feb. 21 rose by 4,000 to 212,000 from the previous week, the Labor Department reported Thursday. That’s in line with the forecasts of analysts surveyed by the data firm FactSet.\n\nFilings for unemployment benefits are viewed as representative of U.S. layoffs and are close to a real-time indicator of the health of the job market.\n\nAdvertisement",
+        "raw_content": null,
+        "topic": "us_data",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "us_data"
+      ],
+      "event_time": "Thu, 26 Feb 2026 15:58:06 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Producer Price Index comes in hotter than expected in January - Seeking Alpha",
+      "summary": "### The Rotation Is Peaking\n\n### Comments (90)\n\nSort by\n\nIf you type a company or ETF ticker symbol in capital letters we will automatically link to the symbol page. You can remove the link by deleting the $ in the comment.\n\nHave a tip? Submit confidentially to our News team. Found a factual error? ",
+      "url": "https://seekingalpha.com/news/4558689-producer-price-index-rises-more-than-expected-in-january",
+      "raw": {
+        "url": "https://seekingalpha.com/news/4558689-producer-price-index-rises-more-than-expected-in-january",
+        "title": "Producer Price Index comes in hotter than expected in January - Seeking Alpha",
+        "score": 2,
+        "published_date": "Fri, 27 Feb 2026 13:56:34 GMT",
+        "content": "### The Rotation Is Peaking\n\n### Comments (90)\n\nSort by\n\nIf you type a company or ETF ticker symbol in capital letters we will automatically link to the symbol page. You can remove the link by deleting the $ in the comment.\n\nHave a tip? Submit confidentially to our News team. Found a factual error? Report here.\n\nM\n\nMichaelW\\_R\n\nToday, 10:20 AM\n\nInvesting Group\n\nComments (2.74K)\n\n|\n\nIf rising energy prices begin to bleed into the CPI watch out!! Lower energy prices have been a big boost to more moderate inflation. The Bloomberg $CRB index has been moving up at a pretty good rate - caution warranted!!\n\nC\n\nChristoph Z\n\nToday, 10:17 AM\n\nComments (622)\n\n| [...] Real007\n\nToday, 9:35 AM\n\nInvesting Group\n\nComments (1.93K)\n\n|\n\nMob Boss Trump and his Crew are a disaster, continue to do massive damage to the US Economy - the scary part is the Producer Price Index DOESN'T even include import prices -- where Trump Tariffs / National Sales Taxes (currently averaging 18%) would show up, BUT $DON'T.Mobster Trump is a colossal arrogant screw up (doesn't even read) -- look no further than the recent PCE (Fed's Favorite Inflation Gauge) released on Feb 20, 2026:Personal Consumption Expenditures Price Index  \nChange From Month One Year Ago  \nDecember 2025 +2.9%  \nNovember 2025 +2.8%  \nOctober 2025 +2.7%\n\nl\n\nlitwos\n\nToday, 9:52 AM\n\nInvesting Group\n\nComments (1.26K)\n\n|\n\n@Real007 if it goes up another 3% I am going to start calling him Biden.\n\nDude's Two Cents [...] New! Get unlimited breaking news with a free Seeking Alpha account »\n\n U.S. Economy\n Top News\n\n# Producer Price Index comes in hotter than expected in January\n\nFeb. 27, 2026 8:32 AM ETBy: Liz Kiesche, SA News Editor\n\nFollow us on Google for the latest stock newsFollow Seeking Alpha on Google for the latest stock news\n\nThe U.S. Producer Price Index increased 0.5% M/M in January, hotter than the +0.3% consensus and +0.4% in December (revised from +0.5%), according to data released by the Bureau of Labor Statistics on Friday.\n\nOn a Y/Y basis, PPI rose 2.9% Y/Y vs. +2.6% consensus and +3.0% prior.",
+        "raw_content": null,
+        "topic": "us_data",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "us_data"
+      ],
+      "event_time": "Fri, 27 Feb 2026 13:56:34 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Don't Show This Post About Trump's Economy To Your MAGA Family (Unless You Want To Start A Fight) - BuzzFeed",
+      "summary": "## If you're wondering how accurate his comments on the economy were, here's a real look at how the 79-year-old's numbers performed in January 2026.\n\nNote: Data on inflation is released a few weeks after each month has ended, so our reports will look at the previous month's numbers.\n\n## Kicking off ",
+      "url": "https://www.buzzfeed.com/alexalisitza/tracking-trump-economy-january-2026",
+      "raw": {
+        "url": "https://www.buzzfeed.com/alexalisitza/tracking-trump-economy-january-2026",
+        "title": "Don't Show This Post About Trump's Economy To Your MAGA Family (Unless You Want To Start A Fight) - BuzzFeed",
+        "score": 2,
+        "published_date": "Sun, 01 Mar 2026 13:19:02 GMT",
+        "content": "## If you're wondering how accurate his comments on the economy were, here's a real look at how the 79-year-old's numbers performed in January 2026.\n\nNote: Data on inflation is released a few weeks after each month has ended, so our reports will look at the previous month's numbers.\n\n## Kicking off Trump's second year in his second term, unemployment let up just a tinnnnnnnny bit from 4.4% to 4.3%, according to the Bureau of Labor Statistics.\n\nYou probably wouldn't realize the subtle difference if you listened to White House Deputy Press Secretary Kush Desai, who recently claimed, \"Today’s blockbuster, expectation-shattering jobs report proves that President Trump’s economic agenda continues to pay off.\"\n\nIs the expectation shattering in the room with us? [...] ## Hi there, my name is Alexa, and for each month of Donald Trump's presidency, I'm tracking the real numbers achieved by his administration on BuzzFeed.\n\n(AKA the unemployment rate, cost of eggs, gas prices, inflation, the Dow Jones, whether citizens received a stimulus check, and Trump's overall approval rating.)\n\n## This month, Trump spoke to the nation in a nearly two-hour State of the Union address that can be summed up as: \"Our economy — the hottest of all time — is BOOMING. You haven't seen it yet, but you will. It's going to be so handsome. A truly handsome economy. I usually don't like handsome people, but our economy can be handsome. So handsome that people tell me they've never seen anything better lookin'! They're saying it on the street. Handome, handsome money.\" [...] ## Here are 2025's numbers for comparison.\n\n## I have some good news! Inflation eased a decent — and very much needed — amount month-over-month. Compared to December 2025's 2.7% rate, January saw inflation fall to 2.4%.\n\nWill we see that reflected in the prices stores seem very comfortable with? Time will tell. For now, we can only hope the cost of living doesn't continue to skyrocket in 2026.\n\n## Here are 2025's numbers for comparison.\n\n## Outside of the months surrounding DoomsDay, aka, Trump's \"Liberation Day\" when he first announced sweeping tariffs on countries around the world, the Dow has seen bumps throughout Trump's presidency.\n\nThis month is no different. January saw a 1.6% rise according to Stat Muse. \n\nSo the rich are getting richer under Trump. What else is new?",
+        "raw_content": null,
+        "topic": "us_data",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "us_data"
+      ],
+      "event_time": "Sun, 01 Mar 2026 13:19:02 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "Stocks will get early March test with high stakes jobs report next week - CNBC",
+      "summary": "to AI, as investors weighed the possibility that AI will one day make tall office towers unnecessary. Interest rate outlook A hotter than expected report wouldn't be welcomed by markets either. Mizuho Americas chief economist Steve Ricchiuto expects payrolls of 100,000 in February, much higher than ",
+      "url": "https://www.cnbc.com/2026/02/27/stocks-will-get-early-march-test-with-high-stakes-jobs-report-next-week.html",
+      "raw": {
+        "url": "https://www.cnbc.com/2026/02/27/stocks-will-get-early-march-test-with-high-stakes-jobs-report-next-week.html",
+        "title": "Stocks will get early March test with high stakes jobs report next week - CNBC",
+        "score": 2,
+        "published_date": "Fri, 27 Feb 2026 18:43:14 GMT",
+        "content": "to AI, as investors weighed the possibility that AI will one day make tall office towers unnecessary. Interest rate outlook A hotter than expected report wouldn't be welcomed by markets either. Mizuho Americas chief economist Steve Ricchiuto expects payrolls of 100,000 in February, much higher than is consensus, though he also expects that the January number will be revised down possibly as much as 50,000. He also said the unemployment rate will hold at 4.3%. That could show investors the U.S. economy is even more exceptionally resilient than they thought, but could also hurt the interest rate outlook following this week's inflation print. While markets are currently pricing in two cuts this year, Ricchiuto expects that could actually be zero, which would be unwelcome news for stocks. \"I [...] Skip Navigation\n\nMarkets\n\n Pre-Markets\n U.S. Markets\n Currencies\n Prediction Markets\n Cryptocurrency\n Futures & Commodities\n Bonds\n Funds & ETFs\n\nBusiness\n\n Economy\n Finance\n Health & Science\n Media\n Real Estate\n Energy\n Climate\n Transportation\n Investigations\n Industrials\n Retail\n Wealth\n Sports\n Life\n Small Business\n\nInvesting\n\n Personal Finance\n Fintech\n Financial Advisors\n Options Action\n ETF Street\n Buffett Archive\n Earnings\n Trader Talk\n\nTech\n\n Cybersecurity\n AI\n Enterprise\n Internet\n Media\n Mobile\n Social Media\n CNBC Disruptor 50\n Tech Guide\n\nPolitics\n\n White House\n Policy\n Defense\n Congress\n Expanding Opportunity\n\nVideo\n\n Latest Video\n Full Episodes\n Livestream\n Live Audio\n Live TV Schedule\n CNBC Podcasts\n CEO Interviews\n CNBC Documentaries\n Digital Originals\n\nWatchlist [...] Watchlist\n\nInvesting Club\n\n Trust Portfolio\n Analysis\n Trade Alerts\n Meeting Videos\n Homestretch\n Jim's Columns\n Education\n Subscribe\n\nPRO\n\n Pro News\n Josh Brown\n Mike Santoli\n Calls of the Day\n My Portfolio\n Livestream\n Full Episodes\n Stock Screener\n Market Forecast\n Options Investing\n Chart Investing\n Subscribe\n\nLivestream\n\n Make It\n select\n\n USA\n INTL\n\n Livestream\n\n Livestream\n\nWatchlist\n\nSIGN IN\n\nCreate free account\n\nMarkets\n\nBusiness\n\nInvesting\n\nTech\n\nPolitics\n\nVideo\n\nWatchlist\n\nInvesting Club\n\nPRO\n\nLivestream\n\n# Stocks will get early March test with high stakes jobs report next week\n\nSarah Min@\\_sarahmin\n\nWATCH LIVE",
+        "raw_content": null,
+        "topic": "us_data",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "us_data"
+      ],
+      "event_time": "Fri, 27 Feb 2026 18:43:14 GMT"
+    },
+    {
+      "date": "2026-03-03",
+      "source": "tavily_news",
+      "symbol": "",
+      "company": "",
+      "title": "China holiday spending sends a strong signal on consumer stimulus plans - CNBC",
+      "summary": "China's retail sales have remained sluggish since the pandemic. Unlike the U.S., which handed out cash to consumers, Beijing has instead offered trade-in programs and vouchers. Chinese authorities have increasingly emphasized the need to boost consumers' incomes, but have yet to release details.\n\nTh",
+      "url": "https://www.cnbc.com/2026/02/26/china-lunar-new-year-holiday-spending-signal-consumer-stimulus-outlook.html",
+      "raw": {
+        "url": "https://www.cnbc.com/2026/02/26/china-lunar-new-year-holiday-spending-signal-consumer-stimulus-outlook.html",
+        "title": "China holiday spending sends a strong signal on consumer stimulus plans - CNBC",
+        "score": 2,
+        "published_date": "Thu, 26 Feb 2026 04:20:53 GMT",
+        "content": "China's retail sales have remained sluggish since the pandemic. Unlike the U.S., which handed out cash to consumers, Beijing has instead offered trade-in programs and vouchers. Chinese authorities have increasingly emphasized the need to boost consumers' incomes, but have yet to release details.\n\nThat's not likely to change soon.\n\nwatch now\n\nVIDEO4:3704:37\n\nChina's consumption sector will compliment the over-crowded AI theme: CIO\n\nThe China Connection\n\n\"Policymakers are likely to build on the positive [holiday] momentum and introduce targeted, incremental easing around the March Two Sessions to stabilize expectations and sustain the recovery,\" the CCB analysts said, referring to the annual parliamentary meetings that kicks off next week. [...] Watchlist\n\nInvesting Club\n\n Trust Portfolio\n Analysis\n Trade Alerts\n Meeting Videos\n Homestretch\n Jim's Columns\n Education\n Subscribe\n\nPRO\n\n Pro News\n Josh Brown\n Mike Santoli\n Calls of the Day\n My Portfolio\n Livestream\n Full Episodes\n Stock Screener\n Market Forecast\n Options Investing\n Chart Investing\n Subscribe\n\nLivestream\n\n Make It\n select\n\n USA\n INTL\n\n Livestream\n\n Livestream\n\nWatchlist\n\nSIGN IN\n\nCreate free account\n\nMarkets\n\nBusiness\n\nInvesting\n\nTech\n\nPolitics\n\nVideo\n\nWatchlist\n\nInvesting Club\n\nPRO\n\nLivestream\n\nChina Economy\n\n# China holiday spending sends a strong signal on consumer stimulus plans\n\nEvelyn Cheng@in/evelyn-cheng-53b23624@chengevelyn\n\nWATCH LIVE\n\nKey Points [...] Instead, Beijing appears focused on preventing consumption growth from slipping below a certain level, Ren noted, indicating sector growth of roughly 2% to 3%.",
+        "raw_content": null,
+        "topic": "china_data",
+        "slot": "2200"
+      },
+      "category": "新闻",
+      "subcategory": "宏观新闻",
+      "rule_id": "tavily.news.topic_filter.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "china_data"
+      ],
+      "event_time": "Thu, 26 Feb 2026 04:20:53 GMT"
+    }
+  ]
+}
