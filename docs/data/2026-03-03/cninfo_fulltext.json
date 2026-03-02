@@ -1,9 +1,62 @@
 {
   "date": "2026-03-03",
   "source": "cninfo_fulltext",
-  "count": 1268,
+  "count": 1269,
   "error": "",
   "items": [
+    {
+      "date": "2026-03-03",
+      "source": "cninfo_fulltext",
+      "symbol": "600362",
+      "company": "江西铜业",
+      "title": "江西铜业股份有限公司关于全资子公司正式要约收购SolGold plc全部股份的进展公告",
+      "summary": "江西铜业股份有限公司关于全资子公司正式要约收购SolGold plc全部股份的进展公告",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-03-03/1224992936.PDF",
+      "raw": {
+        "id": null,
+        "secCode": "600362",
+        "secName": "江西铜业",
+        "orgId": "gssh0600362",
+        "announcementId": "1224992936",
+        "announcementTitle": "江西铜业股份有限公司关于全资子公司正式要约收购SolGold plc全部股份的进展公告",
+        "announcementTime": 1772467200000,
+        "adjunctUrl": "finalpage/2026-03-03/1224992936.PDF",
+        "adjunctSize": 98,
+        "adjunctType": "PDF",
+        "storageTime": null,
+        "columnId": "250401||251302",
+        "pageColumn": "SHZB",
+        "announcementType": "010113",
+        "associateAnnouncement": null,
+        "important": null,
+        "batchNum": null,
+        "announcementContent": "",
+        "orgName": null,
+        "tileSecName": "江西铜业",
+        "shortTitle": "江西铜业股份有限公司关于全资子公司正式要约收购SolGold plc全部股份的进展公告",
+        "announcementTypeName": null,
+        "secNameList": null,
+        "classification": {
+          "category": "上市公司公开信息",
+          "subcategory": "其他",
+          "rule_id": "cninfo.fulltext.other.v1",
+          "excluded": false,
+          "exclude_reason": "",
+          "tags": [
+            "其他"
+          ]
+        }
+      },
+      "category": "上市公司公开信息",
+      "subcategory": "其他",
+      "rule_id": "cninfo.fulltext.other.v1",
+      "excluded": false,
+      "exclude_reason": "",
+      "tags": [
+        "其他"
+      ],
+      "event_time": "2026-03-03"
+    },
     {
       "date": "2026-03-03",
       "source": "cninfo_fulltext",
@@ -43703,7 +43756,7 @@
         "storageTime": null,
         "columnId": "250401||251302",
         "pageColumn": "SHZB",
-        "announcementType": "01010501||010113||012399",
+        "announcementType": "01010501||010113||013999",
         "associateAnnouncement": null,
         "important": null,
         "batchNum": null,
