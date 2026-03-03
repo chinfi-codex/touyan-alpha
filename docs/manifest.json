@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-03T12:30:50.751276+00:00",
+  "updated_at": "2026-03-03T15:36:30.556252+00:00",
   "days": {
     "2026-02-28": {
       "slot": "2200",
@@ -32,16 +32,14 @@
       "page": "2026-03-02/index.html"
     },
     "2026-03-03": {
-      "slot": "0700",
       "counts": {
-        "cninfo_fulltext": 1269,
-        "cninfo_relation": 0,
-        "p5w_interaction": 0,
-        "tushare_forecast": 0,
-        "tavily_news": 48
+        "cninfo_fulltext": 2267,
+        "cninfo_relation": 24,
+        "p5w_interaction": 100,
+        "tushare_forecast": 0
       },
       "errors": {},
-      "page": "2026-03-03/index-0700.html"
+      "page": "2026-03-03/index.html"
     }
   }
 }
