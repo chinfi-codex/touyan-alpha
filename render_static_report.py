@@ -152,91 +152,29 @@ def render_report(date, base_dir):
     cninfo_relation = load_json(out_dir / "cninfo_relation.json")
     p5w_interaction = load_json(out_dir / "p5w_interaction.json")
     tushare_forecast = load_json(out_dir / "tushare_forecast.json")
-    tavily_news = load_json(out_dir / "tavily_news.json")
 
-    section_cards = [
-        ("业绩预告", int(tushare_forecast.get("count") or 0)),
-        ("新闻", int(tavily_news.get("count") or 0)),
-        ("机构调研", int(cninfo_relation.get("count") or 0)),
-        ("互动问答", int(p5w_interaction.get("count") or 0)),
-        (
-            "公告",
-            sum(
-                1
-                for x in (cninfo_fulltext.get("items") or [])
-                if (x.get("subcategory") or "").strip() and not is_other_subcategory(x.get("subcategory"))
-            ),
-        ),
+    # 分类 Tab 导航（点击可滑动到对应区域）
+    tabs = [
+        ("业绩预告", "forecast"),
+        ("机构调研", "relation"),
+        ("互动问答", "interaction"),
+        ("公告", "notice"),
     ]
 
-    cards_html = "".join(
-        f"""
-        <section class="card">
-          <div class="k">{fmt(label)}</div>
-          <div class="v">{count}</div>
-        </section>
-        """
-        for label, count in section_cards
+    tabs_html = "".join(
+        f"""<a class="tab" href="#{anchor}">{label}</a>"""
+        for label, anchor in tabs
     )
 
-    forecast_section = render_simple_table(
-        "业绩预告",
-        tushare_forecast.get("items") or [],
-        [
-            {"label": "Date", "key": "date"},
-            {"label": "Symbol", "key": "symbol"},
-            {"label": "Company", "key": "company"},
-            {"label": "变动下限", "key": "change_range_min", "type": "pct"},
-            {"label": "变动上限", "key": "change_range_max", "type": "pct"},
-            {"label": "变动原因", "key": "change_reason", "title": True},
-            {"label": "Summary", "key": "summary", "title": True},
-            {"label": "URL", "key": "url"},
-        ],
-        limit=30,
-    )
+    forecast_section = f'<section id="forecast">{render_simple_table("业绩预告", tushare_forecast.get("items") or [], [{"label": "Date", "key": "date"}, {"label": "Symbol", "key": "symbol"}, {"label": "Company", "key": "company"}, {"label": "变动下限", "key": "change_range_min", "type": "pct"}, {"label": "变动上限", "key": "change_range_max", "type": "pct"}, {"label": "变动原因", "key": "change_reason", "title": True}, {"label": "Summary", "key": "summary", "title": True}, {"label": "URL", "key": "url"}], limit=30)}</section>'
 
-    news_section = render_simple_table(
-        "新闻",
-        tavily_news.get("items") or [],
-        [
-            {"label": "Date", "key": "date"},
-            {"label": "Type", "key": "subcategory"},
-            {"label": "Domain", "key": "domain"},
-            {"label": "Title", "key": "title", "title": True},
-            {"label": "Summary", "key": "summary", "title": True},
-            {"label": "URL", "key": "url"},
-        ],
-        limit=40,
-    )
 
-    relation_section = render_simple_table(
-        "机构调研",
-        cninfo_relation.get("items") or [],
-        [
-            {"label": "Date", "key": "date"},
-            {"label": "Symbol", "key": "symbol"},
-            {"label": "Company", "key": "company"},
-            {"label": "Title", "key": "title", "title": True},
-            {"label": "URL", "key": "url"},
-        ],
-        limit=40,
-    )
 
-    interaction_section = render_simple_table(
-        "互动问答",
-        p5w_interaction.get("items") or [],
-        [
-            {"label": "Date", "key": "date"},
-            {"label": "Symbol", "key": "symbol"},
-            {"label": "Company", "key": "company"},
-            {"label": "Question", "key": "title", "title": True},
-            {"label": "Answer", "key": "summary", "title": True},
-            {"label": "URL", "key": "url"},
-        ],
-        limit=40,
-    )
+    relation_section = f'<section id="relation">{render_simple_table("机构调研", cninfo_relation.get("items") or [], [{"label": "Date", "key": "date"}, {"label": "Symbol", "key": "symbol"}, {"label": "Company", "key": "company"}, {"label": "Title", "key": "title", "title": True}, {"label": "URL", "key": "url"}], limit=40)}</section>'
 
-    notice_section = render_notice_panel(cninfo_fulltext.get("items") or [])
+    interaction_section = f'<section id="interaction">{render_simple_table("互动问答", p5w_interaction.get("items") or [], [{"label": "Date", "key": "date"}, {"label": "Symbol", "key": "symbol"}, {"label": "Company", "key": "company"}, {"label": "Question", "key": "title", "title": True}, {"label": "Answer", "key": "summary", "title": True}, {"label": "URL", "key": "url"}], limit=40)}</section>'
+
+    notice_section = f'<section id="notice">{render_notice_panel(cninfo_fulltext.get("items") or [])}</section>'
 
     html_doc = f"""<!doctype html>
 <html lang="zh-CN">
@@ -282,6 +220,9 @@ def render_report(date, base_dir):
       border-radius:14px;
       box-shadow:0 8px 20px rgba(16,33,47,.06);
     }}
+    .tabs {{ display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; padding:12px 0; border-bottom:1px solid var(--line); position:sticky; top:0; background:rgba(243,246,249,0.95); backdrop-filter:blur(8px); z-index:100; }}
+    .tab {{ padding:8px 16px; border-radius:20px; background:var(--bg1); border:1px solid var(--line); color:var(--ink); text-decoration:none; font-size:13px; font-weight:500; transition:all 0.2s; }}
+    .tab:hover {{ background:var(--accent); color:#fff; border-color:var(--accent); }}
     .card {{ padding:14px; }}
     .k {{ color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.7px; }}
     .v {{ margin-top:6px; font-size:28px; font-weight:700; color:var(--accent); }}
@@ -307,19 +248,16 @@ def render_report(date, base_dir):
 <body>
   <main class="wrap">
     <h1>Touyan Alpha 静态日报</h1>
-    <div class="meta">Date: {fmt(summary.get("date") or date)} | Slot: {fmt(summary.get("slot") or "")}</div>
+    <div class="meta">Date: {fmt(summary.get("date") or date)}</div>
 
-    <section class="cards">
-      {cards_html}
-    </section>
+    <nav class="tabs">{tabs_html}</nav>
 
-    <section class="sections">
+    <div class="sections">
       {forecast_section}
-      {news_section}
       {relation_section}
       {interaction_section}
       {notice_section}
-    </section>
+    </div>
   </main>
 </body>
 </html>

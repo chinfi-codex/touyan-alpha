@@ -17,13 +17,11 @@ def ensure_parent(p: Path) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description="Publish daily report artifacts to docs/")
     ap.add_argument("--date", default="", help="YYYY-MM-DD, default today in Asia/Shanghai")
-    ap.add_argument("--slot", default="", choices=["", "0700", "2200"], help="run slot")
     ap.add_argument("--project-dir", default=str(Path(__file__).resolve().parents[1]))
     args = ap.parse_args()
 
     project = Path(args.project_dir)
     date = args.date or cst_today()
-    slot = args.slot
 
     out_dir = project / "output" / date
     report = out_dir / "report.html"
@@ -39,9 +37,6 @@ def main() -> None:
     daily_dir.mkdir(parents=True, exist_ok=True)
 
     # publish report
-    target_name = "index.html" if not slot else f"index-{slot}.html"
-    shutil.copy2(report, daily_dir / target_name)
-    # always keep a stable entry for that date
     shutil.copy2(report, daily_dir / "index.html")
 
     # publish raw json for debugging/inspection
@@ -64,10 +59,9 @@ def main() -> None:
     s = json.loads(summary.read_text(encoding="utf-8"))
     manifest["updated_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
     manifest["days"][date] = {
-        "slot": slot,
         "counts": s.get("counts") or {},
         "errors": s.get("errors") or {},
-        "page": f"{date}/{target_name}",
+        "page": f"{date}/index.html",
     }
     ensure_parent(manifest_path)
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -107,7 +101,7 @@ def main() -> None:
 """
     (docs / "index.html").write_text(index_html, encoding="utf-8")
 
-    print(f"published docs for {date} slot={slot or 'default'}")
+    print(f"published docs for {date}")
 
 
 if __name__ == "__main__":

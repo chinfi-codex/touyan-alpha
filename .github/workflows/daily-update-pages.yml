@@ -6,14 +6,9 @@ on:
       date:
         description: 'YYYY-MM-DD (optional)'
         required: false
-      slot:
-        description: '0700 or 2200 (optional, default 2200)'
-        required: false
   schedule:
-    # 07:10 CST
-    - cron: '10 23 * * *'
-    # 22:10 CST
-    - cron: '10 14 * * *'
+    # 每天 21:00 CST (13:00 UTC) 执行一次
+    - cron: '0 13 * * *'
 
 permissions:
   contents: write
@@ -39,37 +34,20 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests python-dotenv tushare
 
-      - name: Resolve date/slot
+      - name: Resolve date
         id: meta
         shell: bash
         run: |
-          EVENT="${{ github.event_name }}"
-          SLOT="2200"
-          DATE=""
-
-          if [ "$EVENT" = "workflow_dispatch" ]; then
-            SLOT="${{ github.event.inputs.slot }}"
-            DATE="${{ github.event.inputs.date }}"
-            if [ -z "$SLOT" ]; then SLOT="2200"; fi
-          elif [ "$EVENT" = "schedule" ]; then
-            if [ "${{ github.event.schedule }}" = "10 23 * * *" ]; then
-              SLOT="0700"
-            else
-              SLOT="2200"
-            fi
-          fi
-
+          DATE="${{ github.event.inputs.date }}"
           if [ -z "$DATE" ]; then
             DATE=$(python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('Asia/Shanghai')).strftime('%Y-%m-%d'))")
           fi
-
-          echo "slot=$SLOT" >> "$GITHUB_OUTPUT"
           echo "date=$DATE" >> "$GITHUB_OUTPUT"
-          echo "Using DATE=$DATE SLOT=$SLOT EVENT=$EVENT"
+          echo "Using DATE=$DATE"
 
       - name: Collect data
         run: |
-          python collect.py --date "${{ steps.meta.outputs.date }}" --slot "${{ steps.meta.outputs.slot }}"
+          python collect.py --date "${{ steps.meta.outputs.date }}"
 
       - name: Render report
         run: |
@@ -77,7 +55,7 @@ jobs:
 
       - name: Publish to docs/
         run: |
-          python scripts/publish_daily.py --date "${{ steps.meta.outputs.date }}" --slot "${{ steps.meta.outputs.slot }}"
+          python scripts/publish_daily.py --date "${{ steps.meta.outputs.date }}"
 
       - name: Commit and push
         run: |
@@ -87,6 +65,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: daily update ${{ steps.meta.outputs.date }} slot=${{ steps.meta.outputs.slot }}"
+            git commit -m "chore: daily update ${{ steps.meta.outputs.date }}"
             git push
           fi

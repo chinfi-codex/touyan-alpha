@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+
 from .cninfo_base import fetch_cninfo
 from .common import adapter_result, normalize_item
 from .cninfo_rules import classify_cninfo_fulltext
@@ -5,10 +7,17 @@ from .cninfo_rules import classify_cninfo_fulltext
 SOURCE = "cninfo_fulltext"
 
 
-def collect(date):
+def collect(date, include_next_day=False):
     try:
-        se_date = "%s~%s" % (date, date)
-        rows = fetch_cninfo(se_date=se_date, tab_name="fulltext")
+        dates = [date]
+        if include_next_day:
+            next_day = (datetime.strptime(date, "%Y-%m-%d").date() + timedelta(days=1)).strftime("%Y-%m-%d")
+            dates.append(next_day)
+        
+        rows = []
+        for d in dates:
+            se_date = "%s~%s" % (d, d)
+            rows.extend(fetch_cninfo(se_date=se_date, tab_name="fulltext"))
         items = []
         for r in rows:
             title = r.get("announcementTitle", "")

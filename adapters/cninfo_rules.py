@@ -24,6 +24,7 @@ INCREASE_HOLD = [r"增持", r"拟增持", r"增持计划"]
 DECREASE_HOLD = [r"减持", r"拟减持", r"减持计划", r"减持股份"]
 DECREASE_PROGRESS = [r"减持进展", r"减持进度", r"减持计划完成", r"减持时间过半", r"减持计划届满", r"实施进展"]
 MAJOR_COOPERATION = [r"重大合作", r"战略合作", r"合作框架", r"签署.*协议", r"投资.*项目", r"项目投资", r"中标", r"中选"]
+QUICK_REPORT = [r"业绩快报", r"季度业绩快报", r"半年度业绩快报", r"年度业绩快报"]
 
 
 def classify_cninfo_fulltext(title):
@@ -125,6 +126,16 @@ def classify_cninfo_fulltext(title):
             "excluded": False,
             "exclude_reason": "",
             "tags": ["合作", "投资项目"],
+        }
+
+    if _hit(t, QUICK_REPORT):
+        return {
+            "category": "上市公司公开信息",
+            "subcategory": "快报",
+            "rule_id": "cninfo.fulltext.quick_report.v1",
+            "excluded": False,
+            "exclude_reason": "",
+            "tags": ["快报", "业绩快报"],
         }
 
     return {

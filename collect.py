@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 import argparse
 import datetime as dt
 import json
@@ -17,23 +17,13 @@ def _parse_sources(raw):
     return {x.strip() for x in raw.split(",") if x.strip()}
 
 
-def _default_sources_by_slot(slot):
-    if slot == "0700":
-        return {"cninfo_fulltext", "cninfo_relation", "p5w_interaction", "tushare_forecast", "tavily_news"}
-    if slot == "2200":
-        return {"cninfo_fulltext", "cninfo_relation", "p5w_interaction", "tushare_forecast", "tavily_news"}
-    # Keep legacy default behavior when slot is not specified.
-    return {"cninfo_fulltext", "cninfo_relation", "p5w_interaction", "tushare_forecast"}
-
-
-def run_collect(date, base_dir, slot="", sources=""):
+def run_collect(date, base_dir, sources=""):
     out_dir = base_dir / "output" / date
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    selected = _parse_sources(sources) or _default_sources_by_slot(slot)
+    selected = _parse_sources(sources)
     summary = {
         "date": date,
-        "slot": slot or "",
         "counts": {},
         "counts_by_subcategory": {},
         "excluded_counts_by_rule": {},
@@ -45,10 +35,10 @@ def run_collect(date, base_dir, slot="", sources=""):
         if selected and src not in selected:
             continue
 
-        if src == "tushare_forecast":
-            result = adapter.collect(date, include_next_day=(slot == "2200"))
-        elif src == "tavily_news":
-            result = adapter.collect(date, slot=slot)
+        # 公告、机构调研、业绩预告带次日窗口
+        # 互动易只筛选当天日期
+        if src in ("cninfo_fulltext", "cninfo_relation", "tushare_forecast"):
+            result = adapter.collect(date, include_next_day=True)
         else:
             result = adapter.collect(date)
 
@@ -74,12 +64,11 @@ def run_collect(date, base_dir, slot="", sources=""):
 def main():
     ap = argparse.ArgumentParser(description="投研alpha：按日期聚合抓取信源")
     ap.add_argument("--date", default=dt.date.today().strftime("%Y-%m-%d"), help="抓取日期 YYYY-MM-DD")
-    ap.add_argument("--slot", default="", choices=["", "0700", "2200"], help="运行时段，用于控制窗口逻辑")
     ap.add_argument("--sources", default="", help="仅运行指定源，逗号分隔")
     ap.add_argument("--project-dir", default=str(Path(__file__).resolve().parent), help="项目目录")
     args = ap.parse_args()
 
-    summary = run_collect(args.date, Path(args.project_dir), slot=args.slot, sources=args.sources)
+    summary = run_collect(args.date, Path(args.project_dir), sources=args.sources)
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 
 
