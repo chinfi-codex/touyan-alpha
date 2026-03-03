@@ -1,25 +1,27 @@
 {
   "date": "2026-03-02",
-  "slot": "0700",
   "counts": {
-    "cninfo_fulltext": 90,
-    "cninfo_relation": 1,
+    "cninfo_fulltext": 2006,
+    "cninfo_relation": 38,
     "p5w_interaction": 0,
-    "tushare_forecast": 0,
-    "tavily_news": 46
+    "tushare_forecast": 0
   },
   "counts_by_subcategory": {
-    "其他": 73,
-    "资本运作-股权激励": 5,
-    "资本运作-特定对象发行": 2,
-    "增持": 2,
-    "重大合作/投资项目": 3,
-    "监管函": 2,
-    "减持": 3,
-    "机构调研": 1,
-    "科技新闻": 23,
-    "宏观新闻": 23
+    "其他": 1710,
+    "减持": 87,
+    "资本运作-特定对象发行": 60,
+    "对问询回复": 17,
+    "资本运作-股权激励": 65,
+    "重大合作/投资项目": 27,
+    "快报": 9,
+    "资本运作-员工持股计划": 14,
+    "增持": 14,
+    "监管函": 3,
+    "机构调研": 38
   },
-  "excluded_counts_by_rule": {},
+  "excluded_counts_by_rule": {
+    "cninfo.fulltext.excluded.decrease_progress.v1": 5,
+    "cninfo.fulltext.excluded.abnormal_volatility_reply.v1": 1
+  },
   "errors": {}
 }

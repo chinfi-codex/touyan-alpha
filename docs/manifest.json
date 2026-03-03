@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-02T23:57:15.607885+00:00",
+  "updated_at": "2026-03-03T12:30:50.751276+00:00",
   "days": {
     "2026-02-28": {
       "slot": "2200",
@@ -22,16 +22,14 @@
       "page": "2026-03-01/index-2200.html"
     },
     "2026-03-02": {
-      "slot": "0700",
       "counts": {
-        "cninfo_fulltext": 90,
-        "cninfo_relation": 1,
+        "cninfo_fulltext": 2006,
+        "cninfo_relation": 38,
         "p5w_interaction": 0,
-        "tushare_forecast": 0,
-        "tavily_news": 46
+        "tushare_forecast": 0
       },
       "errors": {},
-      "page": "2026-03-02/index-0700.html"
+      "page": "2026-03-02/index.html"
     },
     "2026-03-03": {
       "slot": "0700",
