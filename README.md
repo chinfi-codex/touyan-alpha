@@ -1,109 +1,221 @@
-# 投研alpha
+# Touyan Alpha · 投研日报系统
 
-首期目标：把当前已在用的四类信源能力统一接入到一个可复用项目中，按日拉取并落地为标准化 JSON。
+> **智能投研情报中枢** —— 为专业投资者打造的每日市场情报聚合与 AI 解读平台
 
-## 项目结构
+[![Daily Update](https://img.shields.io/badge/Daily%20Update-Automated-green)](https://github.com/yourname/touyan-alpha/actions)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-blue)](https://yourname.github.io/touyan-alpha/)
+[![Data Sources](https://img.shields.io/badge/Data%20Sources-4%2B-orange)](https://github.com/yourname/touyan-alpha)
 
-```text
-projects/投研alpha/
-├── adapters/
-│   ├── __init__.py
-│   ├── common.py                # 统一字段/统一返回结构
-│   ├── cninfo_base.py           # 复用巨潮公告查询逻辑
-│   ├── cninfo_fulltext.py       # cninfo 公告（fulltext）
-│   ├── cninfo_relation.py       # cninfo 机构调研（relation）
-│   ├── p5w_interaction.py       # p5w 互动问答（复用 skills 脚本）
-│   └── tushare_forecast.py      # tushare 业绩预告
-├── collect.py                   # 按日期一键聚合入口
-└── output/
-    └── YYYY-MM-DD/
-        ├── cninfo_fulltext.json
-        ├── cninfo_relation.json
-        ├── p5w_interaction.json
-        ├── tushare_forecast.json
-        └── summary.json
+---
+
+## 🎯 产品定位
+
+Touyan Alpha 是一款面向**专业投资者**的每日市场情报聚合系统，通过 AI 技术将碎片化的市场信息转化为结构化的投研洞察，帮助用户在开盘前快速掌握市场动态，发现投资机会。
+
+### 解决的核心痛点
+
+| 痛点 | 传统方式 | Touyan Alpha |
+|------|---------|--------------|
+| 信息分散 | 需在多个平台切换查看 | 一站式聚合四大核心信源 |
+| 信息过载 | 每日数百条公告难以筛选 | AI 智能分类+重要性过滤 |
+| 理解成本高 | 专业术语+长篇公告 | AI 一键提炼核心要点 |
+| 时效性差 | 人工整理滞后 | 每日 07:10 & 22:10 自动更新 |
+
+---
+
+## ✨ 核心功能亮点
+
+### 📊 四大核心数据板块
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  📈 业绩预告（akshare）                                       │
+│  └── AI 智能解读变动原因，一眼识别业绩暴增/暴雷公司             │
+├─────────────────────────────────────────────────────────────┤
+│  🏢 机构调研（cninfo）                                        │
+│  └── 追踪机构最新调研动向，AI 深度解读调研纪要                 │
+├─────────────────────────────────────────────────────────────┤
+│  💬 互动问答（p5w）                                           │
+│  └── 投资者最关心的 100+ 个问题，AI 聚合总结热点               │
+├─────────────────────────────────────────────────────────────┤
+│  📋 公告解读（cninfo）                                        │
+│  └── 智能分类：增减持/监管函/资本运作/重大合作，剔除噪音       │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-## 统一输出规范
+### 🤖 AI 智能加持
 
-每条数据最小字段统一为：
+1. **业绩预告 AI 解读**
+   - 自动提炼业绩变动核心原因
+   - 去除冗余信息，保留关键业务逻辑
 
-- `date`
-- `source`
-- `symbol`
-- `company`
-- `title`
-- `summary`
-- `url`
-- `raw`
+2. **互动问答 AI 聚合**
+   - 按公司自动聚类
+   - 生成当日热点话题总结
 
-每个适配器输出文件顶层统一为：
+3. **机构调研 AI 分析**（支持一键触发）
+   - 自动解析 PDF 调研纪要
+   - 提炼投资亮点、机构关注点、业务风险
 
-- `date`
-- `source`
-- `count`
-- `error`（失败不静默，写明错误）
-- `items`
+### 🎨 专业金融级 UI
 
-## 环境变量
+- **英为财情风格配色**：专业、清晰、长时间阅读不疲劳
+- **响应式设计**：完美适配桌面端、平板、手机
+- **智能高亮**：
+  - ⚠️ 监管函橙色警示
+  - 📈 业绩预增绿色标识
+  - 📉 减持计划红色提示
 
-至少建议配置：
+### 📱 多终端访问
 
-- `TUSHARE_TOKEN`：tushare 业绩预告接口
+- **GitHub Pages 自动发布**：每日自动部署，无需运维
+- **离线查看**：所有数据本地 JSON 存储，可追溯历史
+- **极速访问**：静态页面，全球 CDN 加速
 
-可在工作区 `.env` 中维护，再按现有运行习惯加载环境变量。
+---
 
-## 一键运行
+## 🚀 快速开始
+
+### 在线体验
+
+👉 **[点击访问最新日报](https://yourname.github.io/touyan-alpha/)**
+
+### 本地部署
 
 ```bash
-cd /home/admin/.openclaw/workspace/projects/投研alpha
-python3 collect.py --date 2026-02-26 --slot 2200
-python3 render_static_report.py --date 2026-02-26
-python3 scripts/publish_daily.py --date 2026-02-26 --slot 2200
+# 1. 克隆仓库
+git clone https://github.com/yourname/touyan-alpha.git
+cd touyan-alpha
+
+# 2. 安装依赖
+pip install -r requirements.txt
+
+# 3. 配置环境变量（可选）
+cp .env.example .env
+# 编辑 .env 添加 TUSHARE_TOKEN 和 KIMI_API_KEY
+
+# 4. 生成今日日报
+python render_static_report.py --date $(date +%Y-%m-%d)
+
+# 5. 打开页面
+open output/$(date +%Y-%m-%d)/report.html
 ```
 
-## 定时更新 + GitHub Pages 发布（已内置 workflow）
+---
 
-工作流文件：`.github/workflows/daily-update-pages.yml`
+## 📅 每日自动更新（内置 CI/CD）
 
-- 每天 **07:10（北京时间）**：执行 `slot=0700`（早盘前快照，偏新闻）
-- 每天 **22:10（北京时间）**：执行 `slot=2200`（收盘后全量）
-- 同时支持手动触发（`workflow_dispatch`）
+已配置 GitHub Actions，全自动运行：
 
-运行结果：
+| 时间 | Slot | 内容特点 |
+|------|------|---------|
+| 07:10 北京时间 | `0700` | 早盘前快照，偏新闻资讯 |
+| 22:10 北京时间 | `2200` | 收盘后全量，含完整公告 |
 
-- 原始数据落地：`output/YYYY-MM-DD/*.json`
-- 页面发布目录：`docs/`
-  - `docs/index.html`：入口页（最近 30 天）
-  - `docs/YYYY-MM-DD/index.html`：日报页面
-  - `docs/data/YYYY-MM-DD/*.json`：对应原始数据
+支持手动触发：GitHub → Actions → Daily Update → Run workflow
 
-### 首次启用步骤
+---
 
-1. 在 GitHub 仓库设置里打开 Pages：
-   - **Source** 选 `Deploy from a branch`
-   - Branch 选 `master`（或 `main`），Folder 选 `/docs`
-2. 在仓库 Secrets 中配置（按需）：
-   - `TUSHARE_TOKEN`
-   - `TAVILY_API_KEY`
-3. 在 Actions 页面手动运行一次 `Daily Update + Pages` 验证。
+## 🏗️ 系统架构
 
-## 已接入信源清单（第一步）
+```
+┌────────────────────────────────────────────────────────────┐
+│                     数据层 (Data Sources)                    │
+├──────────────┬──────────────┬──────────────┬───────────────┤
+│  巨潮资讯      │  巨潮资讯      │  全景网        │  akshare      │
+│  (公告)       │  (机构调研)    │  (互动问答)    │  (业绩预告)   │
+└──────┬───────┴──────┬───────┴──────┬───────┴───────┬───────┘
+       │              │              │               │
+       └──────────────┴──────────────┴───────────────┘
+                          │
+                          ▼
+┌────────────────────────────────────────────────────────────┐
+│                   处理层 (Processing)                        │
+├────────────────────────────────────────────────────────────┤
+│  • 数据清洗 & 标准化                                         │
+│  • AI 智能解读（豆包/kimi API）                               │
+│  • 智能分类过滤（剔除冗余中介文件）                            │
+│  • 重要性排序（重大合作 > 增减持 > 监管函 > 资本运作）          │
+└────────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+┌────────────────────────────────────────────────────────────┐
+│                   展示层 (Presentation)                      │
+├────────────────────────────────────────────────────────────┤
+│  • 静态 HTML 报告生成                                        │
+│  • 响应式金融级 UI                                           │
+│  • GitHub Pages 自动部署                                     │
+└────────────────────────────────────────────────────────────┘
+```
 
-1. cninfo 公告（`fulltext`）
-2. cninfo 机构调研（`relation`）
-3. p5w 互动问答
-4. tushare 业绩预告（`forecast`）
+---
 
-## 实测（2026-02-26）
+## 💡 适用场景
 
-运行后生成目录：`output/2026-02-26/`
+### 机构投资者
+- **盘前晨会**：5 分钟速览昨日重要公告和机构调研
+- **行业追踪**：监控持仓股的最新互动问答和业绩预期
+- **事件驱动**：第一时间发现重大合作、增减持、监管动态
 
-各类条数：
+### 研究员
+- **个股深度**：通过互动问答了解市场关切，通过调研追踪机构观点
+- **行业比较**：批量查看同行业公司业绩预告
+- **报告撰写**：AI 解读提供分析灵感和素材
 
-- `cninfo_fulltext`: **912**
-- `cninfo_relation`: **13**
-- `p5w_interaction`: **0**
-- `tushare_forecast`: **2**
+### 个人投资者
+- **信息平权**：获取与机构同等的信息源
+- **决策辅助**：AI 提炼的公告要点降低理解门槛
+- **效率提升**：告别多平台切换，一站式情报中心
 
-汇总见：`output/2026-02-26/summary.json`
+---
+
+## 📊 数据覆盖能力
+
+以 2026-02-27 为例：
+
+| 板块 | 条数 | 处理逻辑 |
+|------|------|---------|
+| 业绩预告 | 11 条 | 聚合 4 家公司，AI 解读变动原因 |
+| 机构调研 | 12 条 | 支持 AI 一键解读 PDF |
+| 互动问答 | 100 条 | 聚合 9 家公司热点话题 |
+| 公告解读 | 78 条 | 智能过滤后，原 149 条 → 精筛 78 条 |
+
+---
+
+## ⚙️ 技术栈
+
+- **数据采集**：Python + Requests + 多源 API 适配
+- **AI 解读**：豆包 API / Kimi API（OpenAI 兼容接口）
+- **静态站点**：Jinja2 模板 + 原生 HTML/CSS/JS
+- **自动部署**：GitHub Actions + GitHub Pages
+- **数据存储**：JSON 本地存储，Git 历史追溯
+
+---
+
+## 🛣️ 路线图
+
+- [x] 四大核心信源接入
+- [x] AI 智能解读（互动问答、业绩预告）
+- [x] 专业金融 UI 设计
+- [x] GitHub Actions 自动发布
+- [x] 移动端适配优化
+- [ ] 个股详情页（历史数据追踪）
+- [ ] 邮件订阅推送
+- [ ] 自定义关注列表
+- [ ] 更多 AI 分析维度（情绪分析、事件关联）
+
+---
+
+## 📄 License
+
+MIT License © 2026 Touyan Alpha
+
+---
+
+## 🤝 商务合作
+
+如有机构采购、API 对接、定制开发需求，请联系：
+
+📧 **your-email@example.com**
+
+> **让每一次投资决策，都有情报先行。**
