@@ -134,74 +134,171 @@ def generate_ai_summary(items):
         return f"AI总结生成失败: {str(e)[:100]}"
 
 
-def render_interaction_section_with_ai(items, limit=40):
-    """渲染互动问答区域，顶部带 AI 总结卡片"""
-    # 生成 AI 总结（自动从环境变量或 .env 文件获取 API key）
-    ai_summary = generate_ai_summary(items)
+def _is_shareholder_question(text: str) -> bool:
+    """判断是否为股东数相关问题"""
+    if not text:
+        return False
+    text = text.lower()
+    shareholder_keywords = [
+        "股东人数", "股东户数", "股东数量", "股东名数", "股东名册",
+        "股东总户数", "股东总人数", "股东总数量", "股东总共有",
+        "最新股东", "截至.*股东", "期末.*股东", "报告期.*股东",
+        "股东情况", "股东信息", "持股户数",
+    ]
+    import re
+    for kw in shareholder_keywords:
+        if re.search(kw, text):
+            return True
+    return False
+
+
+def generate_company_ai_summary(company_name: str, items: list) -> str:
+    """为单个公司生成AI总结（20秒超时）"""
+    if not items:
+        return "暂无问答数据"
     
-    # 准备表格数据
-    rows_html = []
-    display_items = top_items(items, limit=limit)
+    # 准备数据
+    content_parts = []
+    for item in items[:8]:  # 限制前8条，减少处理时间
+        question = item.get("title", "")
+        answer = item.get("summary", "")
+        if question:
+            content_parts.append(f"问：{question[:60]}\n答：{answer[:80] if answer else '未回复'}")
     
-    for idx, item in enumerate(display_items):
-        row_id = f"interaction-row-{idx}"
-        # 默认只显示前5条
-        hidden_class = " hidden-row" if idx >= 5 else ""
+    if not content_parts:
+        return "暂无可总结内容"
+    
+    prompt_text = f"总结【{company_name}】的投资者问答要点（限40字）：\n" + "\n".join(content_parts[:4])
+    
+    try:
+        import openai
+        import concurrent.futures
         
-        question = fmt(item.get("title"))
-        answer = fmt(item.get("summary"))
-        link = (item.get("url") or "").strip()
-        link_html = f"<a href='{fmt(link)}' target='_blank'>link</a>" if link else ""
+        api_key = "7c45a349-5a95-4885-a7b6-df6ed599ed5e"
+        base_url = "https://ark.cn-beijing.volces.com/api/v3"
+        model_id = "ep-20260103112951-vxd7j"
         
-        rows_html.append(
-            f"<tr id='{row_id}' class='interaction-row{hidden_class}'>"
-            f"<td>{fmt(item.get('date'))}</td>"
-            f"<td>{fmt(item.get('symbol'))}</td>"
-            f"<td>{fmt(item.get('company'))}</td>"
-            f"<td class='title'>{question}</td>"
-            f"<td class='title'>{answer}</td>"
-            f"<td>{link_html}</td>"
-            f"</tr>"
+        def _call_api():
+            client = openai.OpenAI(api_key=api_key, base_url=base_url, timeout=25)
+            completion = client.chat.completions.create(
+                model=model_id,
+                messages=[
+                    {"role": "system", "content": "你是金融分析师，用简洁中文总结投资者问答的核心要点，控制在40字以内。"},
+                    {"role": "user", "content": prompt_text},
+                ],
+                temperature=0,
+                max_tokens=80,
+            )
+            if hasattr(completion, "choices") and completion.choices:
+                return completion.choices[0].message.content.strip()
+            return "AI总结失败"
+        
+        # 设置20秒超时
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            future = executor.submit(_call_api)
+            return future.result(timeout=20)
+            
+    except concurrent.futures.TimeoutError:
+        return "AI总结超时"
+    except Exception as e:
+        return f"AI总结失败: {str(e)[:30]}"
+
+
+def render_interaction_section_with_ai(items, limit=100):
+    """渲染互动问答区域 - 按公司聚合，剔除股东数问题"""
+    
+    # 1. 剔除股东数相关问题
+    filtered_items = []
+    excluded_count = 0
+    for item in (items or []):
+        question = item.get("title", "")
+        answer = item.get("summary", "")
+        combined_text = f"{question} {answer}"
+        
+        if _is_shareholder_question(combined_text):
+            excluded_count += 1
+            continue
+        filtered_items.append(item)
+    
+    # 2. 按公司聚合
+    from collections import defaultdict
+    companies = defaultdict(list)
+    for item in filtered_items:
+        company = item.get("company") or item.get("symbol") or "未知公司"
+        companies[company].append(item)
+    
+    # 3. 为每个公司生成子区域
+    company_cards = []
+    for idx, (company_name, company_items) in enumerate(sorted(companies.items())):
+        symbol = company_items[0].get("symbol", "")
+        card_id = f"company-card-{idx}"
+        
+        # 生成公司AI总结（20秒超时）
+        print(f"  生成AI总结: {company_name}...")
+        ai_summary = generate_company_ai_summary(company_name, company_items)
+        print(f"    完成: {ai_summary[:30]}...")
+        
+        # 生成该公司的问题列表（可展开）
+        qa_rows = []
+        for q_idx, item in enumerate(company_items[:20]):  # 每公司最多显示20条
+            question = fmt(item.get("title"))
+            answer = fmt(item.get("summary"))
+            link = (item.get("url") or "").strip()
+            link_html = f"<a href='{fmt(link)}' target='_blank'>link</a>" if link else ""
+            
+            qa_rows.append(
+                f"<tr>"
+                f"<td>{fmt(item.get('date'))}</td>"
+                f"<td class='title'>{question}</td>"
+                f"<td class='title'>{answer}</td>"
+                f"<td>{link_html}</td>"
+                f"</tr>"
+            )
+        
+        qa_table = (
+            "<table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead>"
+            f"<tbody>{''.join(qa_rows)}</tbody></table>"
+            if qa_rows else "<div class='empty'>无问答数据</div>"
         )
+        
+        # 超过5条显示计数
+        more_count = len(company_items) - 20 if len(company_items) > 20 else 0
+        more_hint = f"<span class='more-hint'>还有 {more_count} 条...</span>" if more_count > 0 else ""
+        
+        # AI总结处理换行
+        ai_summary_html = html.escape(ai_summary).replace('\n', '<br>')
+        
+        company_cards.append(f"""
+        <div class="company-interaction-card" id="{card_id}">
+          <div class="company-header" onclick="toggleCompanyQa('{card_id}')">
+            <div class="company-info">
+              <span class="company-name">{fmt(company_name)}</span>
+              <span class="company-symbol">{fmt(symbol)}</span>
+              <span class="qa-count">({len(company_items)}条)</span>
+              {more_hint}
+            </div>
+            <span class="toggle-icon" id="toggle-{card_id}">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">{ai_summary_html}</span>
+          </div>
+          <div class="company-qa-list" id="qa-{card_id}">
+            {qa_table}
+          </div>
+        </div>
+        """)
     
-    body = "\n".join(rows_html) or "<tr><td colspan='6'>无数据</td></tr>"
-    total = len(items or [])
+    total_companies = len(companies)
+    total_filtered = len(filtered_items)
     
     return f"""
     <section id="interaction" class="panel">
-      <h2>互动问答 <span>({total})</span></h2>
+      <h2>互动问答 <span>({total_companies}家公司, {total_filtered}条)</span></h2>
       
-      <!-- AI 总结卡片 -->
-      <div class="ai-summary-card">
-        <div class="ai-summary-header">
-          <span class="ai-icon">🤖</span>
-          <span class="ai-title">AI 智能总结</span>
-        </div>
-        <div class="ai-summary-content">
-          {html.escape(ai_summary).replace(chr(10), '<br>')}
-        </div>
+      <div class="interaction-companies">
+        {''.join(company_cards) or "<div class='empty'>无互动问答数据</div>"}
       </div>
-      
-      <!-- 展开/收起按钮 -->
-      <div class="expand-controls">
-        <button class="expand-btn" onclick="toggleInteraction()" id="expand-btn">
-          展开全部 ({total} 条)
-        </button>
-      </div>
-      
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Symbol</th>
-            <th>Company</th>
-            <th>Question</th>
-            <th>Answer</th>
-            <th>URL</th>
-          </tr>
-        </thead>
-        <tbody>{body}</tbody>
-      </table>
     </section>
     """
 
@@ -728,6 +825,219 @@ def render_notice_panel(items):
     """
 
 
+def load_market_temperature(out_dir: Path) -> dict:
+    """加载市场温度数据"""
+    path = out_dir / "market_temperature.json"
+    if not path.exists():
+        return {}
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def render_kline_chart(div_id: str, data: dict, title: str) -> str:
+    """渲染K线图表HTML"""
+    if not data or not data.get('kline'):
+        return f'<div class="chart-empty">暂无{title}数据</div>'
+    
+    kline = data['kline']
+    dates = [k['date'] for k in kline]
+    values = [[k['open'], k['close'], k['low'], k['high']] for k in kline]
+    volumes = [k.get('volume', 0) or 0 for k in kline]
+    
+    current = data.get('current', 0)
+    change_pct = data.get('change_pct', 0)
+    change_class = 'up' if change_pct and change_pct > 0 else 'down' if change_pct and change_pct < 0 else ''
+    change_sign = '+' if change_pct and change_pct > 0 else ''
+    current_str = f"{current:.2f}" if isinstance(current, (int, float)) else str(current)
+    change_pct_str = f"{change_pct:.2f}" if isinstance(change_pct, (int, float)) else "-"
+    
+    return f'''
+    <div class="index-card">
+      <div class="index-header">
+        <span class="index-name">{title}</span>
+        <span class="index-value {change_class}">{current_str}</span>
+        <span class="index-change {change_class}">{change_sign}{change_pct_str}%</span>
+      </div>
+      <div id="{div_id}" class="kline-chart"></div>
+    </div>
+    <script>
+    (function(){{
+      var chart = echarts.init(document.getElementById('{div_id}'));
+      var option = {{
+        animation: false,
+        grid: {{ top: 10, left: 40, right: 10, bottom: 20 }},
+        xAxis: {{ 
+          type: 'category', 
+          data: {json.dumps(dates)},
+          axisLine: {{ lineStyle: {{ color: '#dfe2ea' }} }},
+          axisLabel: {{ show: false }},
+          axisTick: {{ show: false }}
+        }},
+        yAxis: {{ 
+          type: 'value', 
+          scale: true,
+          splitLine: {{ lineStyle: {{ color: '#f0f2f5' }} }},
+          axisLine: {{ show: false }},
+          axisLabel: {{ color: '#8b92a5', fontSize: 10 }}
+        }},
+        series: [{{
+          type: 'candlestick',
+          data: {json.dumps(values)},
+          itemStyle: {{
+            color: '#f24957',
+            color0: '#13b77f',
+            borderColor: '#f24957',
+            borderColor0: '#13b77f'
+          }}
+        }}]
+      }};
+      chart.setOption(option);
+    }})();
+    </script>
+    '''
+
+
+def render_sentiment_radar(div_id: str, data: dict) -> str:
+    """渲染情绪雷达图"""
+    if not data:
+        return '<div class="chart-empty">暂无情绪数据</div>'
+    
+    indicators = [
+        {{'name': '涨跌广度', 'max': 100}},
+        {{'name': '涨停强度', 'max': 100}},
+        {{'name': '一致性', 'max': 100}},
+        {{'name': '量能配合', 'max': 100}},
+        {{'name': '资金态度', 'max': 100}},
+    ]
+    values = [
+        data.get('breadth', 50),
+        data.get('intensity', 50),
+        data.get('consistency', 50),
+        data.get('volume', 50),
+        data.get('northbound', 50),
+    ]
+    
+    # 计算综合得分
+    avg_score = round(sum(values) / len(values), 1)
+    
+    # 情绪标签
+    if avg_score >= 70:
+        mood_label, mood_class = '🔥 积极', 'up'
+    elif avg_score >= 50:
+        mood_label, mood_class = '⚖️ 中性', ''
+    else:
+        mood_label, mood_class = '❄️ 谨慎', 'down'
+    
+    return f'''
+    <div class="sentiment-card">
+      <div class="sentiment-header">
+        <span class="sentiment-title">市场情绪</span>
+        <span class="sentiment-score {mood_class}">{avg_score}分 {mood_label}</span>
+      </div>
+      <div id="{div_id}" class="radar-chart"></div>
+    </div>
+    <script>
+    (function(){{
+      var chart = echarts.init(document.getElementById('{div_id}'));
+      var option = {{
+        animation: false,
+        radar: {{
+          indicator: {json.dumps(indicators)},
+          radius: '65%',
+          axisName: {{ color: '#586171', fontSize: 11 }},
+          splitArea: {{
+            areaStyle: {{
+              color: ['#fff', '#fafafc', '#f5f6fa', '#f0f2f5']
+            }}
+          }},
+          axisLine: {{ lineStyle: {{ color: '#dfe2ea' }} }},
+          splitLine: {{ lineStyle: {{ color: '#dfe2ea' }} }}
+        }},
+        series: [{{
+          type: 'radar',
+          data: [{{
+            value: {json.dumps(values)},
+            name: '今日情绪',
+            areaStyle: {{ color: 'rgba(255, 102, 0, 0.2)' }},
+            lineStyle: {{ color: '#ff6600', width: 2 }},
+            itemStyle: {{ color: '#ff6600' }}
+          }}]
+        }}]
+      }};
+      chart.setOption(option);
+    }})();
+    </script>
+    '''
+
+
+def render_market_temperature_section(data: dict) -> str:
+    """渲染市场温度板块"""
+    if not data:
+        return '<section id="market" class="panel"><h2>🌡️ 市场温度</h2><div class="empty">暂无市场数据</div></section>'
+    
+    indices = data.get('indices', {})
+    snapshot = data.get('snapshot', {})
+    radar = data.get('sentiment_radar', {})
+    
+    # 指数K线
+    sh_chart = render_kline_chart('kline-sh', indices.get('sh'), '上证指数') if indices.get('sh') else ''
+    cyb_chart = render_kline_chart('kline-cyb', indices.get('cyb'), '创业板指') if indices.get('cyb') else ''
+    
+    # 关键数据
+    up_count = snapshot.get('up_count', '-')
+    down_count = snapshot.get('down_count', '-')
+    limit_up = snapshot.get('limit_up', '-')
+    limit_down = snapshot.get('limit_down', '-')
+    turnover = snapshot.get('turnover', '-')
+    turnover_change = snapshot.get('turnover_change')
+    
+    turnover_change_str = f"+{turnover_change}%" if turnover_change and turnover_change > 0 else f"{turnover_change}%" if turnover_change else ''
+    turnover_change_class = 'up' if turnover_change and turnover_change > 0 else 'down' if turnover_change and turnover_change < 0 else ''
+    
+    # 雷达图
+    radar_chart = render_sentiment_radar('sentiment-radar', radar)
+    
+    return f'''
+    <section id="market" class="panel">
+      <h2>🌡️ 市场温度</h2>
+      
+      <!-- 指数K线区 -->
+      <div class="market-indices">
+        {sh_chart}
+        {cyb_chart}
+      </div>
+      
+      <!-- 关键数据条 -->
+      <div class="market-snapshot">
+        <div class="snapshot-item">
+          <span class="snapshot-label">涨跌比</span>
+          <span class="snapshot-value up">{up_count}</span>
+          <span class="snapshot-separator">:</span>
+          <span class="snapshot-value down">{down_count}</span>
+        </div>
+        <div class="snapshot-item">
+          <span class="snapshot-label">涨停</span>
+          <span class="snapshot-value up">{limit_up}</span>
+        </div>
+        <div class="snapshot-item">
+          <span class="snapshot-label">跌停</span>
+          <span class="snapshot-value down">{limit_down}</span>
+        </div>
+        <div class="snapshot-item">
+          <span class="snapshot-label">成交额</span>
+          <span class="snapshot-value">{turnover}亿</span>
+          <span class="snapshot-change {turnover_change_class}">{turnover_change_str}</span>
+        </div>
+      </div>
+      
+      <!-- 情绪雷达 -->
+      {radar_chart}
+    </section>
+    '''
+
+
 def load_forecast_from_akshare(date):
     """使用 akshare 获取业绩预告数据"""
     try:
@@ -785,6 +1095,7 @@ def render_report(date, base_dir):
     cninfo_relation = load_json(out_dir / "cninfo_relation.json")
     p5w_interaction = load_json(out_dir / "p5w_interaction.json")
     tushare_forecast = load_json(out_dir / "tushare_forecast.json")
+    market_temperature = load_market_temperature(out_dir)
     
     # 尝试从 akshare 获取业绩预告
     akshare_forecast = load_forecast_from_akshare(date)
@@ -795,8 +1106,9 @@ def render_report(date, base_dir):
         forecast_items = tushare_forecast.get("items") or []
 
     # 分类 Tab 导航（点击可滑动到对应区域）
-    # 顺序：业绩预告 -> 机构调研 -> 互动问答 -> 公告解读
+    # 顺序：市场温度 -> 业绩预告 -> 机构调研 -> 互动问答 -> 公告解读
     tabs = [
+        ("🌡️ 市场温度", "market"),
         ("业绩预告", "forecast"),
         ("机构调研", "relation"),
         ("互动问答", "interaction"),
@@ -808,6 +1120,9 @@ def render_report(date, base_dir):
         for label, anchor in tabs
     )
 
+    # 渲染市场温度板块
+    market_section = render_market_temperature_section(market_temperature)
+    
     # 使用新的聚合方式渲染业绩预告
     forecast_section = f'<section id="forecast">{render_forecast_panel(forecast_items)}</section>'
 
@@ -828,58 +1143,49 @@ def render_report(date, base_dir):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{fmt(date)} Alpha日报</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     /* ============================================
-       Investing.com 风格配色系统 - 专业金融风
+       Modern Bright UI - "Moomoo Style"
        ============================================ */
     :root {{
-      /* 背景色阶 */
+      /* Background */
       --bg-primary: #ffffff;
-      --bg-secondary: #f8f9fa;
-      --bg-tertiary: #f0f2f5;
-      --bg-hover: #e8eaed;
+      --bg-secondary: #f4f5f9;
+      --bg-tertiary: #ffffff;
+      --bg-hover: #f0f2f5;
       
-      /* 文字色阶 */
-      --text-primary: #1a1a1a;
-      --text-secondary: #5f6368;
-      --text-tertiary: #80868b;
+      /* Text */
+      --text-primary: #12161b;
+      --text-secondary: #586171;
+      --text-tertiary: #8b92a5;
       --text-inverse: #ffffff;
       
-      /* 边框与分隔线 */
-      --border-light: #e8eaed;
-      --border-medium: #dadce0;
-      --border-dark: #bdc1c6;
+      /* Borders & Shadows */
+      --border-light: #eaecf1;
+      --border-medium: #dfe2ea;
+      --border-dark: #c4c8d4;
+      --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.04);
+      --shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.08);
       
-      /* 金融语义色（红涨绿跌 - A股习惯） */
-      --color-up: #00a651;           /* 上涨绿 */
-      --color-up-light: #e6f4ea;
-      --color-up-bg: #d4edda;
-      --color-down: #d93025;         /* 下跌红 */
-      --color-down-light: #fce8e6;
-      --color-down-bg: #f8d7da;
-      --color-warning: #f9ab00;      /* 警示橙 */
-      --color-warning-light: #fef3e8;
-      --color-warning-bg: #fff3cd;
-      --color-info: #1a73e8;         /* 信息蓝 */
-      --color-info-light: #e8f0fe;
-      --color-info-bg: #cce5ff;
+      /* Financial Colors (A-shares: Red Up, Green Down) */
+      --color-up: #f24957;           /* Moomoo Red */
+      --color-up-bg: rgba(242, 73, 87, 0.08);
+      --color-down: #13b77f;         /* Moomoo Green */
+      --color-down-bg: rgba(19, 183, 127, 0.08);
+      --color-warning: #ff8f00;      /* Orange */
+      --color-info: #0066ff;         /* Bright Blue */
       
-      /* 品牌强调色 */
-      --accent-primary: #1a73e8;
-      --accent-secondary: #00a651;
-      --accent-hover: #1557b0;
+      /* Accents */
+      --accent-primary: #ff6600;     /* Moomoo Brand Orange */
+      --accent-hover: #ff8533;
+      --accent-gradient: linear-gradient(135deg, #ff6600, #ff8f00);
       
-      /* 阴影系统 */
-      --shadow-sm: 0 1px 2px 0 rgba(60,64,67,0.08);
-      --shadow-md: 0 2px 6px 2px rgba(60,64,67,0.08);
-      --shadow-lg: 0 4px 12px 4px rgba(60,64,67,0.08);
-      
-      /* AI专属色 */
-      --ai-bg: #e8f0fe;
-      --ai-border: #d2e3fc;
-      --ai-text: #1a73e8;
+      /* AI */
+      --ai-bg: #f5f9ff;
+      --ai-border: #d6e8ff;
+      --ai-text: #0055ff;
     }}
     
     * {{ box-sizing: border-box; }}
@@ -891,7 +1197,7 @@ def render_report(date, base_dir):
     
     body {{
       margin: 0;
-      font-family: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       color: var(--text-primary);
       background: var(--bg-secondary);
       line-height: 1.6;
@@ -902,88 +1208,90 @@ def render_report(date, base_dir):
     .wrap {{ 
       max-width: 1400px; 
       margin: 0 auto; 
-      padding: 24px 16px 40px; 
+      padding: 24px 24px 60px; 
     }}
     
     h1, h2, h3 {{ 
       margin: 0; 
-      font-weight: 600;
-      letter-spacing: -0.02em;
+      font-weight: 700;
     }}
     
     h1 {{
-      font-size: 26px;
+      font-size: 28px;
       color: var(--text-primary);
-      padding-bottom: 12px;
-      border-bottom: 3px solid var(--accent-primary);
+      padding-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }}
+    
+    h1::before {{
+      content: '';
       display: inline-block;
+      width: 6px;
+      height: 28px;
+      background: var(--accent-gradient);
+      border-radius: 4px;
     }}
     
     /* ============================================
-       导航标签 - 胶囊样式优化
+       Tabs - Modern Pill shapes
        ============================================ */
     .tabs {{ 
       display: flex; 
-      gap: 10px; 
+      gap: 12px; 
       margin-top: 20px; 
-      padding: 12px 4px; 
-      border-bottom: 1px solid var(--border-medium); 
+      padding: 12px 0; 
       position: sticky; 
       top: 0; 
-      background: rgba(248, 249, 250, 0.98); 
+      background: rgba(244, 245, 249, 0.9); 
       backdrop-filter: blur(12px); 
+      -webkit-backdrop-filter: blur(12px);
       z-index: 100;
       overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
     }}
     .tabs::-webkit-scrollbar {{ display: none; }}
     
     .tab {{ 
-      padding: 10px 20px; 
-      border-radius: 24px; 
+      padding: 10px 24px; 
+      border-radius: 20px; 
       background: var(--bg-primary); 
-      border: 1px solid var(--border-medium); 
+      border: 1px solid var(--border-light); 
       color: var(--text-secondary); 
       text-decoration: none; 
-      font-size: 14px; 
-      font-weight: 500; 
+      font-size: 15px; 
+      font-weight: 600; 
       transition: all 0.2s ease;
       white-space: nowrap;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }}
     .tab:hover {{ 
-      background: var(--bg-hover); 
-      color: var(--text-primary);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--border-dark);
-    }}
-    .tab:active {{
-      transform: translateY(0);
+      color: var(--accent-primary);
+      border-color: var(--accent-primary);
+      background: #fff8f5;
     }}
     
     /* ============================================
-       板块卡片系统 - 优化层次
+       Panels - Clean White Cards
        ============================================ */
     .sections {{ 
       margin-top: 24px; 
       display: grid; 
-      gap: 20px; 
+      gap: 24px; 
     }}
     
     .panel {{ 
       background: var(--bg-primary);
       border-radius: 16px;
-      padding: 20px;
-      box-shadow: var(--shadow-md);
+      padding: 28px;
+      box-shadow: var(--shadow-card);
       border: 1px solid var(--border-light);
-      overflow: hidden;
     }}
     
     .panel h2 {{ 
-      margin-bottom: 16px;
-      font-size: 18px;
+      margin-bottom: 20px;
+      font-size: 20px;
       color: var(--text-primary);
       display: flex;
       align-items: center;
@@ -991,13 +1299,12 @@ def render_report(date, base_dir):
     }}
     
     .panel h2 span {{ 
-      color: var(--text-tertiary); 
-      font-weight: 500; 
-      font-size: 13px;
-      background: var(--bg-tertiary);
+      color: var(--accent-primary); 
+      font-weight: 600; 
+      font-size: 14px;
+      background: #fff0e5;
       padding: 4px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--border-light);
+      border-radius: 20px;
     }}
     
     .stack {{ 
@@ -1006,26 +1313,26 @@ def render_report(date, base_dir):
     }}
     
     .subpanel {{ 
-      background: var(--bg-secondary);
+      background: #fafafc;
       border-radius: 12px;
-      padding: 16px;
+      padding: 20px;
       border: 1px solid var(--border-light);
       transition: all 0.2s ease;
     }}
     
     .subpanel:hover {{
-      box-shadow: var(--shadow-sm);
+      background: #ffffff;
+      box-shadow: var(--shadow-hover);
       border-color: var(--border-medium);
     }}
     
     .subpanel h3 {{ 
-      margin-bottom: 12px;
-      font-size: 15px;
+      margin-bottom: 16px;
+      font-size: 16px;
       color: var(--text-primary);
       display: flex;
       align-items: center;
       gap: 8px;
-      font-weight: 600;
     }}
     
     .subpanel h3 span {{ 
@@ -1035,7 +1342,7 @@ def render_report(date, base_dir):
     }}
     
     /* ============================================
-       表格系统 - 斑马纹+优化行高
+       Tables - Crisp and Readable
        ============================================ */
     table {{ 
       width: 100%; 
@@ -1048,179 +1355,165 @@ def render_report(date, base_dir):
       position: sticky;
       top: 60px;
       z-index: 50;
+      background: var(--bg-primary);
     }}
     
     th {{ 
       color: var(--text-secondary); 
-      font-weight: 600; 
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      font-weight: 500; 
+      font-size: 13px;
       padding: 14px 12px;
       text-align: left;
-      border-bottom: 2px solid var(--border-medium);
-      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-medium);
+      background: #fafafc;
+      border-radius: 0;
     }}
+    
+    .panel > table th:first-child {{ border-top-left-radius: 8px; border-bottom-left-radius: 8px; }}
+    .panel > table th:last-child {{ border-top-right-radius: 8px; border-bottom-right-radius: 8px; }}
     
     td {{ 
       padding: 16px 12px;
       text-align: left;
       vertical-align: top;
       border-bottom: 1px solid var(--border-light);
-      transition: background-color 0.15s ease;
-      line-height: 1.5;
+      transition: background-color 0.2s ease;
+      line-height: 1.6;
     }}
     
     tbody tr:hover td {{
       background-color: var(--bg-hover);
     }}
     
-    tbody tr:nth-child(even) td {{
-      background-color: rgba(248, 249, 250, 0.6);
-    }}
-    
-    tbody tr:nth-child(even):hover td {{
-      background-color: var(--bg-hover);
-    }}
-    
     td.title {{ 
-      min-width: 240px;
-      max-width: 480px;
-      line-height: 1.6;
+      min-width: 260px;
+      max-width: 500px;
+      color: var(--text-primary);
     }}
     
     /* ============================================
-       链接样式 - 图标化优化
+       Links & Buttons - Brand Accent
        ============================================ */
     a {{ 
-      color: var(--accent-primary); 
+      color: var(--color-info); 
       text-decoration: none;
       font-weight: 500;
       transition: all 0.2s;
     }}
-    a:hover {{ 
-      color: var(--accent-hover);
-      text-decoration: underline;
-    }}
     
-    a[target="_blank"]::after {{
-      content: " ↗";
-      font-size: 0.8em;
-      opacity: 0.6;
+    a:hover {{ 
+      color: #0044cc;
+      text-decoration: underline;
     }}
     
     .empty {{ 
       color: var(--text-tertiary); 
       font-size: 14px;
       text-align: center;
-      padding: 48px 20px;
-      font-style: italic;
-      background: var(--bg-secondary);
+      padding: 40px 20px;
+      background: #fafafc;
       border-radius: 12px;
+      border: 1px dashed var(--border-medium);
     }}
     
     /* ============================================
-       AI 总结卡片 - 优化样式
+       AI Summary Card - Crisp Tech Vibe
        ============================================ */
     .ai-summary-card {{
-      background: linear-gradient(135deg, var(--ai-bg) 0%, #f8fbff 100%);
+      background: var(--ai-bg);
       border: 1px solid var(--ai-border);
-      border-radius: 14px;
+      border-radius: 12px;
       padding: 20px;
       margin: 16px 0;
-      box-shadow: var(--shadow-sm);
     }}
+    
     .ai-summary-header {{
       display: flex;
       align-items: center;
       gap: 10px;
       margin-bottom: 12px;
     }}
+    
     .ai-icon {{
-      font-size: 22px;
-      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+      font-size: 20px;
     }}
+    
     .ai-title {{
-      font-weight: 600;
+      font-weight: 700;
       color: var(--ai-text);
       font-size: 15px;
     }}
+    
     .ai-summary-content {{
       color: var(--text-primary);
       font-size: 14px;
-      line-height: 1.8;
+      line-height: 1.7;
     }}
     
     /* ============================================
-       业绩预告子区域 - 优化卡片
+       Forecast Section - Dynamic Cards
        ============================================ */
     .forecast-company {{
       background: var(--bg-primary);
       border: 1px solid var(--border-light);
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.2s ease;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }}
-    .forecast-company:hover {{
-      box-shadow: var(--shadow-md);
-      border-color: var(--border-medium);
-    }}
+    
     .forecast-company h3 {{
-      margin-bottom: 12px;
-      font-size: 16px;
+      font-size: 17px;
       color: var(--text-primary);
-      font-weight: 600;
     }}
+    
     .forecast-company h3 span {{
-      color: var(--text-tertiary);
-      font-weight: 500;
-      font-size: 14px;
-      margin-left: 8px;
-      background: var(--bg-tertiary);
-      padding: 2px 8px;
-      border-radius: 8px;
+      background: #f0f2f5;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: var(--text-secondary);
     }}
+    
     .forecast-metrics {{
       width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-      margin-bottom: 12px;
-      background: var(--bg-secondary);
+      margin: 16px 0;
+      border: 1px solid var(--border-light);
       border-radius: 8px;
-      overflow: hidden;
     }}
-    .forecast-metrics thead {{
-      position: static;
+    
+    .forecast-metrics th:first-child {{
+      border-top-left-radius: 8px;
     }}
+    .forecast-metrics th:last-child {{
+      border-top-right-radius: 8px;
+    }}
+    
     .forecast-metrics th {{
-      color: var(--text-secondary);
-      font-weight: 600;
-      background: var(--bg-tertiary);
-      padding: 10px 8px;
-      font-size: 12px;
-      border-bottom: 1px solid var(--border-medium);
-    }}
-    .forecast-metrics td {{
-      padding: 10px 8px;
+      background: #fafafc;
       border-bottom: 1px solid var(--border-light);
     }}
+    
+    .forecast-metrics td {{
+      border-bottom: 1px solid var(--border-light);
+    }}
+    
+    .forecast-metrics tr:last-child td {{ border-bottom: none; }}
+    
     .forecast-reason {{
       color: var(--text-secondary);
-      font-size: 13px;
-      line-height: 1.7;
-      padding: 12px;
-      background: var(--bg-secondary);
-      border-radius: 10px;
+      font-size: 13.5px;
+      padding: 14px 16px;
+      background: #fafafc;
+      border-radius: 8px;
       border-left: 3px solid var(--accent-primary);
     }}
     
     /* ============================================
-       AI解读按钮 - 优化触控区域
+       Buttons
        ============================================ */
-    .ai-analyze-btn {{
-      padding: 8px 14px;
-      border-radius: 16px;
+    .ai-analyze-btn, .expand-btn {{
+      padding: 8px 16px;
+      border-radius: 6px;
       background: var(--ai-bg);
       color: var(--ai-text);
       border: 1px solid var(--ai-border);
@@ -1228,275 +1521,446 @@ def render_report(date, base_dir):
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
-      min-height: 36px;
-      min-width: 72px;
-    }}
-    .ai-analyze-btn:hover {{
-      background: var(--ai-text);
-      color: #fff;
-      box-shadow: var(--shadow-sm);
-    }}
-    .ai-analyze-btn.analyzing {{
-      opacity: 0.6;
-      cursor: not-allowed;
-    }}
-    .ai-result-row {{
-      background: var(--ai-bg);
-    }}
-    .ai-result-cell {{
-      padding: 0;
-    }}
-    .ai-analyze-result {{
-      padding: 16px 20px;
-      font-size: 14px;
-      line-height: 1.7;
-      color: var(--text-primary);
-    }}
-    .ai-loading {{
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--text-secondary);
-    }}
-    .ai-analyze-result .ai-icon {{
-      font-size: 18px;
-    }}
-    .ai-error {{
-      color: var(--color-down);
-      background: var(--color-down-light);
-      padding: 12px;
-      border-radius: 8px;
-      font-weight: 500;
     }}
     
-    /* ============================================
-       展开/收起按钮 - 统一风格
-       ============================================ */
+    .ai-analyze-btn:hover, .expand-btn:hover {{
+      background: #e0edff;
+    }}
+    
     .expand-controls {{
       margin: 16px 0;
       text-align: right;
     }}
+    
     .expand-btn {{
-      padding: 10px 20px;
-      border-radius: 20px;
       background: var(--accent-primary);
-      color: #fff;
       border: none;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      box-shadow: var(--shadow-sm);
-      min-height: 44px;
+      color: #fff;
     }}
+    
     .expand-btn:hover {{
       background: var(--accent-hover);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-1px);
-    }}
-    .expand-btn:active {{
-      transform: translateY(0);
-    }}
-    .interaction-row.hidden-row {{
-      display: none;
     }}
     
     /* ============================================
-       监管函警示样式 - 高对比度优化
+       Market Temperature Section
        ============================================ */
-    .regulatory-warning {{
-      background: linear-gradient(135deg, var(--color-warning-light) 0%, #fff 100%);
-      border: 1px solid var(--color-warning);
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: var(--shadow-sm);
-    }}
-    .regulatory-warning h3 {{
-      color: var(--text-primary);
-      font-weight: 700;
-    }}
-    .regulatory-warning h3::before {{
-      content: "⚠️ ";
-      font-size: 1.2em;
-    }}
-    .regulatory-row {{
-      background: rgba(249, 171, 0, 0.06);
-      border-left: 3px solid var(--color-warning);
-    }}
-    .regulatory-row:hover {{
-      background: rgba(249, 171, 0, 0.12);
-    }}
-    
-    /* ============================================
-       资本运作公司聚合样式
-       ============================================ */
-    .capital-companies {{
+    .market-indices {{
       display: grid;
-      gap: 14px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 20px;
     }}
-    .capital-company-card {{
-      background: var(--bg-primary);
-      border: 1px solid var(--border-light);
+    
+    .index-card {{
+      background: #fafafc;
       border-radius: 12px;
       padding: 16px;
-      transition: all 0.25s ease;
-      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
     }}
-    .capital-company-card:hover {{
-      border-color: var(--accent-primary);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
-    }}
-    .capital-company-header {{
+    
+    .index-header {{
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }}
-    .capital-company-name {{
-      font-weight: 700;
-      color: var(--text-primary);
-      font-size: 15px;
-    }}
-    .capital-company-symbol {{
-      color: var(--text-tertiary);
-      font-size: 14px;
-      font-weight: 500;
-      background: var(--bg-tertiary);
-      padding: 2px 8px;
-      border-radius: 6px;
-    }}
-    .capital-count {{
-      color: var(--accent-primary);
-      font-size: 13px;
-      font-weight: 700;
-    }}
-    .capital-titles {{
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.8;
-      padding-left: 4px;
+      margin-bottom: 12px;
     }}
     
-    /* ============================================
-       移动端适配 - 全面优化
-       ============================================ */
-    @media (max-width: 1024px) {{
-      .wrap {{ padding: 20px 16px; }}
-      td.title {{ min-width: 180px; max-width: 350px; }}
+    .index-name {{
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }}
+    
+    .index-value {{
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }}
+    
+    .index-value.up {{ color: var(--color-up); }}
+    .index-value.down {{ color: var(--color-down); }}
+    
+    .index-change {{
+      font-size: 13px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: #f0f2f5;
+    }}
+    
+    .index-change.up {{ 
+      color: var(--color-up); 
+      background: var(--color-up-bg);
+    }}
+    .index-change.down {{ 
+      color: var(--color-down); 
+      background: var(--color-down-bg);
+    }}
+    
+    .kline-chart {{
+      height: 160px;
+      width: 100%;
+    }}
+    
+    .market-snapshot {{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      padding: 16px 24px;
+      background: #fafafc;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }}
+    
+    .snapshot-item {{
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }}
+    
+    .snapshot-label {{
+      font-size: 13px;
+      color: var(--text-secondary);
+    }}
+    
+    .snapshot-value {{
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }}
+    
+    .snapshot-value.up {{ color: var(--color-up); }}
+    .snapshot-value.down {{ color: var(--color-down); }}
+    
+    .snapshot-separator {{
+      font-size: 14px;
+      color: var(--text-tertiary);
+      margin: 0 2px;
+    }}
+    
+    .snapshot-change {{
+      font-size: 12px;
+      margin-left: 4px;
+    }}
+    
+    .snapshot-change.up {{ color: var(--color-up); }}
+    .snapshot-change.down {{ color: var(--color-down); }}
+    
+    .sentiment-card {{
+      background: #fafafc;
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid var(--border-light);
+    }}
+    
+    .sentiment-header {{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }}
+    
+    .sentiment-title {{
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }}
+    
+    .sentiment-score {{
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }}
+    
+    .sentiment-score.up {{ color: var(--color-up); }}
+    .sentiment-score.down {{ color: var(--color-down); }}
+    
+    .radar-chart {{
+      height: 220px;
+      width: 100%;
+    }}
+    
+    .chart-empty {{
+      padding: 40px;
+      text-align: center;
+      color: var(--text-tertiary);
+      background: #fafafc;
+      border-radius: 12px;
+      font-size: 14px;
     }}
     
     @media (max-width: 768px) {{
-      /* 基础调整 */
-      html {{ font-size: 16px; }}
-      body {{ line-height: 1.5; }}
-      
-      h1 {{
-        font-size: 22px;
-        padding-bottom: 10px;
+      .market-indices {{
+        grid-template-columns: 1fr;
       }}
-      
-      .wrap {{ padding: 16px 12px; }}
-      
-      /* Tab导航优化 */
-      .tabs {{
-        padding: 10px 0;
-        gap: 8px;
+      .market-snapshot {{
+        gap: 16px;
+        padding: 12px 16px;
       }}
-      .tab {{
-        padding: 8px 16px;
-        font-size: 13px;
-      }}
-      
-      /* 卡片调整 */
-      .panel {{
-        padding: 16px;
-        border-radius: 12px;
-      }}
-      .panel h2 {{
-        font-size: 16px;
-      }}
-      .panel h2 span {{
-        font-size: 12px;
-        padding: 3px 8px;
-      }}
-      
-      .subpanel {{
-        padding: 14px;
-        border-radius: 10px;
-      }}
-      
-      /* 表格适配 - 横向滚动 */
-      table {{
-        display: block;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        white-space: nowrap;
-      }}
-      
-      thead {{
-        position: static;
-      }}
-      
-      th, td {{
-        padding: 12px 10px;
-        font-size: 14px;
-      }}
-      
-      td.title {{
-        min-width: 200px;
-        max-width: none;
-        white-space: normal;
-      }}
-      
-      /* 触控区域优化 */
-      .ai-analyze-btn,
-      .expand-btn,
-      a {{
-        min-height: 44px;
-        min-width: 44px;
-      }}
-      
-      /* AI卡片调整 */
-      .ai-summary-card {{
-        padding: 16px;
-      }}
-      
-      /* 资本运作卡片 */
-      .capital-company-card {{
-        padding: 14px;
-      }}
-      .capital-company-header {{
-        gap: 8px;
+      .snapshot-item {{
+        flex: 1 1 40%;
+        justify-content: center;
       }}
     }}
     
-    @media (max-width: 480px) {{
-      h1 {{ font-size: 20px; }}
-      
-      .tab {{
-        padding: 6px 12px;
-        font-size: 12px;
+    /* ============================================
+       Interaction Section - Company Aggregated
+       ============================================ */
+    .interaction-companies {{
+      display: grid;
+      gap: 16px;
+    }}
+    
+    .company-interaction-card {{
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }}
+    
+    .company-interaction-card:hover {{
+      border-color: var(--border-medium);
+      box-shadow: var(--shadow-hover);
+    }}
+    
+    .company-header {{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      background: #fafafc;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }}
+    
+    .company-header:hover {{
+      background: #f0f2f5;
+    }}
+    
+    .company-info {{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }}
+    
+    .company-name {{
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text-primary);
+    }}
+    
+    .company-symbol {{
+      font-size: 12px;
+      color: var(--text-secondary);
+      background: #e8eaed;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }}
+    
+    .qa-count {{
+      font-size: 13px;
+      color: var(--accent-primary);
+      font-weight: 500;
+    }}
+    
+    .more-hint {{
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }}
+    
+    .toggle-icon {{
+      font-size: 12px;
+      color: var(--text-tertiary);
+      transition: transform 0.2s;
+    }}
+    
+    .toggle-icon.collapsed {{
+      transform: rotate(-90deg);
+    }}
+    
+    .company-ai-summary {{
+      padding: 12px 20px;
+      background: var(--ai-bg);
+      border-bottom: 1px solid var(--ai-border);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }}
+    
+    .ai-tag {{
+      font-size: 12px;
+      color: var(--ai-text);
+      font-weight: 600;
+      white-space: nowrap;
+    }}
+    
+    .ai-text {{
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      word-break: break-word;
+      white-space: pre-wrap;
+    }}
+    
+    .company-qa-list {{
+      max-height: 500px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      transition: max-height 0.3s ease;
+      border-top: 1px solid var(--border-light);
+    }}
+    
+    .company-qa-list.collapsed {{
+      max-height: 0;
+      overflow: hidden;
+    }}
+    
+    .company-qa-list .qa-table {{
+      width: 100%;
+      font-size: 13px;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }}
+    
+    .company-qa-list .qa-table th {{
+      background: #f0f2f5;
+      padding: 10px 12px;
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-align: left;
+      border-bottom: 2px solid var(--border-medium);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }}
+    
+    .company-qa-list .qa-table th:first-child {{
+      width: 90px;
+    }}
+    
+    .company-qa-list .qa-table th:nth-child(2) {{
+      width: 35%;
+    }}
+    
+    .company-qa-list .qa-table th:nth-child(3) {{
+      width: 55%;
+    }}
+    
+    .company-qa-list .qa-table th:last-child {{
+      width: 60px;
+      text-align: center;
+    }}
+    
+    .company-qa-list .qa-table td {{
+      padding: 12px;
+      border-bottom: 1px solid #f0f2f5;
+      vertical-align: top;
+      background: #fff;
+    }}
+    
+    .company-qa-list .qa-table td.title {{
+      min-width: 200px;
+      max-width: 400px;
+      word-break: break-word;
+    }}
+    
+    .company-qa-list .qa-table tr:hover td {{
+      background: #fafafc;
+    }}
+    
+    .company-qa-list .qa-table tr:last-child td {{
+      border-bottom: none;
+    }}
+    
+    @media (max-width: 768px) {{
+      .company-header {{
+        padding: 12px 16px;
       }}
-      
-      .panel {{ padding: 14px 12px; }}
-      
-      th, td {{
-        padding: 10px 8px;
-        font-size: 13px;
+      .company-ai-summary {{
+        padding: 10px 16px;
       }}
-      
-      .forecast-company {{
-        padding: 14px;
-      }}
-      
-      .ai-summary-content {{
-        font-size: 13px;
-        line-height: 1.7;
+      .company-qa-list .qa-table td {{
+        padding: 10px;
       }}
     }}
-  </style>
+    
+    /* ============================================
+       Regulatory Warning & Capital
+       ============================================ */
+    .regulatory-warning {{
+      background: #fffcf5;
+      border: 1px solid #ffd599;
+    }}
+    
+    .regulatory-warning h3 {{
+      color: var(--color-warning);
+    }}
+    
+    .regulatory-row td {{
+      background: #fffcf5;
+    }}
+    
+    .regulatory-row td:first-child {{
+      border-left: 3px solid var(--color-warning);
+    }}
+    
+    .capital-companies {{ display: grid; gap: 16px; }}
+    
+    .capital-company-card {{
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 16px;
+      transition: all 0.2s;
+    }}
+    
+    .capital-company-card:hover {{
+      border-color: var(--border-medium);
+      box-shadow: var(--shadow-hover);
+    }}
+    
+    .capital-company-header {{
+      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+    }}
+    
+    .capital-company-name {{ font-weight: 600; font-size: 15px; color: var(--text-primary); }}
+    
+    .capital-company-symbol {{
+      background: #f0f2f5;
+      padding: 2px 8px; border-radius: 6px; font-size: 13px; color: var(--text-secondary);
+    }}
+    
+    .capital-count {{ color: var(--accent-primary); font-weight: 600; font-size: 13px; }}
+    
+    .capital-titles {{ color: var(--text-secondary); font-size: 14px; line-height: 1.7; }}
+    
+    /* ============================================
+       Mobile Optimizations
+       ============================================ */
+    @media (max-width: 1024px) {{
+      .wrap {{ padding: 24px 16px; }}
+      td.title {{ min-width: 200px; max-width: 350px; }}
+    }}
+    
+    @media (max-width: 768px) {{
+      h1 {{ font-size: 24px; }}
+      .tabs {{ padding: 12px 0; gap: 8px; }}
+      .tab {{ padding: 8px 16px; font-size: 13px; }}
+      
+      .panel {{ padding: 20px; border-radius: 12px; }}
+      
+      table {{ display: block; overflow-x: auto; white-space: nowrap; }}
+      th, td {{ padding: 12px; }}
+      td.title {{ white-space: normal; min-width: 220px; }}
+    }}
+</style>
 </head>
 <body>
   <main class="wrap">
@@ -1505,6 +1969,7 @@ def render_report(date, base_dir):
     <nav class="tabs">{tabs_html}</nav>
 
     <div class="sections">
+      {market_section}
       {forecast_section}
       {relation_section}
       {interaction_section}
@@ -1513,26 +1978,38 @@ def render_report(date, base_dir):
   </main>
   
   <script>
-    // 互动问答展开/收起功能
-    let interactionExpanded = false;
-    function toggleInteraction() {{
-      const rows = document.querySelectorAll('.interaction-row');
-      const btn = document.getElementById('expand-btn');
+    // 互动问答 - 公司QA展开/收起功能
+    function toggleCompanyQa(cardId) {{
+      const qaList = document.getElementById('qa-' + cardId);
+      const toggleIcon = document.getElementById('toggle-' + cardId);
       
-      interactionExpanded = !interactionExpanded;
-      
-      rows.forEach((row, idx) => {{
-        if (idx >= 5) {{
-          if (interactionExpanded) {{
-            row.classList.remove('hidden-row');
-          }} else {{
-            row.classList.add('hidden-row');
-          }}
+      if (qaList.classList.contains('collapsed')) {{
+        qaList.classList.remove('collapsed');
+        toggleIcon.classList.remove('collapsed');
+        toggleIcon.textContent = '▼';
+      }} else {{
+        qaList.classList.add('collapsed');
+        toggleIcon.classList.add('collapsed');
+        toggleIcon.textContent = '▶';
+      }}
+    }}
+    
+    // 默认收起所有公司的详细问答
+    document.addEventListener('DOMContentLoaded', function() {{
+      const cards = document.querySelectorAll('.company-interaction-card');
+      cards.forEach((card) => {{
+        const cardId = card.id;
+        const qaList = document.getElementById('qa-' + cardId);
+        const toggleIcon = document.getElementById('toggle-' + cardId);
+        if (qaList) {{
+          qaList.classList.add('collapsed');
+        }}
+        if (toggleIcon) {{
+          toggleIcon.classList.add('collapsed');
+          toggleIcon.textContent = '▶';
         }}
       }});
-      
-      btn.textContent = interactionExpanded ? '收起' : '展开全部 ({len(p5w_interaction.get("items") or [])} 条)';
-    }}
+    }});
     
     // 机构调研AI解读功能
     async function analyzeResearch(itemKey, pdfUrl) {{

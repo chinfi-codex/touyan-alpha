@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from adapters import ADAPTERS
+from adapters.market_data import save_market_data
 
 
 def _adapter_source(adapter):
@@ -56,6 +57,13 @@ def run_collect(date, base_dir, sources=""):
 
         if result.get("error"):
             summary["errors"][src] = result["error"]
+
+    # 收集市场温度数据
+    try:
+        market_ok = save_market_data(date, base_dir / "output")
+        summary["market_temperature"] = "ok" if market_ok else "failed"
+    except Exception as e:
+        summary["market_temperature"] = f"error: {str(e)[:100]}"
 
     (out_dir / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     return summary
