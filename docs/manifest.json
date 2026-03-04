@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-03T15:36:30.556252+00:00",
+  "updated_at": "2026-03-04T05:02:17.552380+00:00",
   "days": {
     "2026-02-28": {
       "slot": "2200",
@@ -33,10 +33,10 @@
     },
     "2026-03-03": {
       "counts": {
-        "cninfo_fulltext": 2267,
-        "cninfo_relation": 24,
-        "p5w_interaction": 100,
-        "tushare_forecast": 0
+        "cninfo_fulltext": 2278,
+        "cninfo_relation": 25,
+        "p5w_interaction": 52,
+        "tushare_forecast": 1
       },
       "errors": {},
       "page": "2026-03-03/index.html"
