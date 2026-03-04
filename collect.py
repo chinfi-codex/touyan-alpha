@@ -6,6 +6,7 @@ from pathlib import Path
 
 from adapters import ADAPTERS
 from adapters.market_data import save_market_data
+from adapters.tavily_news import save_news_data
 
 
 def _adapter_source(adapter):
@@ -64,6 +65,13 @@ def run_collect(date, base_dir, sources=""):
         summary["market_temperature"] = "ok" if market_ok else "failed"
     except Exception as e:
         summary["market_temperature"] = f"error: {str(e)[:100]}"
+
+    # 收集新闻动态数据
+    try:
+        news_ok = save_news_data(date, base_dir / "output")
+        summary["tavily_news"] = "ok" if news_ok else "failed"
+    except Exception as e:
+        summary["tavily_news"] = f"error: {str(e)[:100]}"
 
     (out_dir / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     return summary

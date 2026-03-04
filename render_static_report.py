@@ -836,6 +836,17 @@ def load_market_temperature(out_dir: Path) -> dict:
         return {}
 
 
+def load_tavily_news(out_dir: Path) -> dict:
+    """加载新闻动态数据"""
+    path = out_dir / "tavily_news.json"
+    if not path.exists():
+        return {}
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
 def render_kline_chart(div_id: str, data: dict, title: str) -> str:
     """渲染K线图表HTML"""
     if not data or not data.get('kline'):
@@ -1038,6 +1049,78 @@ def render_market_temperature_section(data: dict) -> str:
     '''
 
 
+def render_news_section(data: dict) -> str:
+    """渲染新闻动态板块 - 按分类聚合展示"""
+    if not data or not data.get('categories'):
+        return '<section id="news" class="panel"><h2>📰 新闻动态</h2><div class="empty">暂无新闻数据</div></section>'
+    
+    categories = data.get('categories', {})
+    
+    # 分类名称映射（中文）
+    name_mapping = {
+        'AI Industry': 'AI产业',
+        'Macro': '宏观',
+        'Robotics': '机器人',
+        'Commercial Space': '商业航天'
+    }
+    
+    bucket_cards = []
+    for idx, (bucket, cat_data) in enumerate(categories.items()):
+        bucket_id = f"news-bucket-{idx}"
+        cn_name = name_mapping.get(bucket, bucket)
+        summary = cat_data.get('summary', '暂无总结')
+        items = cat_data.get('items', [])
+        count = cat_data.get('count', 0)
+        
+        # 生成新闻列表
+        news_items_html = []
+        for i, item in enumerate(items):
+            headline = html.escape(item.get('headline', 'N/A'))
+            url = item.get('url', '')
+            url_html = f"<a href='{html.escape(url)}' target='_blank'>link</a>" if url else ""
+            score = item.get('score', 0)
+            
+            news_items_html.append(f"""
+            <div class="news-item">
+              <span class="news-index">{i+1}.</span>
+              <span class="news-headline">{headline}</span>
+              <span class="news-score">{score:.2f}</span>
+              {url_html}
+            </div>
+            """)
+        
+        bucket_cards.append(f"""
+        <div class="news-bucket-card" id="{bucket_id}">
+          <div class="bucket-header" onclick="toggleNewsBucket('{bucket_id}')">
+            <div class="bucket-info">
+              <span class="bucket-name">{cn_name}</span>
+              <span class="bucket-count">({count}条)</span>
+            </div>
+            <span class="toggle-icon" id="toggle-{bucket_id}">▶</span>
+          </div>
+          <div class="bucket-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">{html.escape(summary)}</span>
+          </div>
+          <div class="bucket-news-list collapsed" id="list-{bucket_id}">
+            {''.join(news_items_html) or "<div class='empty'>暂无新闻</div>"}
+          </div>
+        </div>
+        """)
+    
+    total_count = sum(c.get('count', 0) for c in categories.values())
+    
+    return f"""
+    <section id="news" class="panel">
+      <h2>📰 新闻动态 <span>({len(categories)}个分类, {total_count}条)</span></h2>
+      
+      <div class="news-buckets">
+        {''.join(bucket_cards) or "<div class='empty'>暂无新闻动态数据</div>"}
+      </div>
+    </section>
+    """
+
+
 def load_forecast_from_akshare(date):
     """使用 akshare 获取业绩预告数据"""
     try:
@@ -1096,6 +1179,7 @@ def render_report(date, base_dir):
     p5w_interaction = load_json(out_dir / "p5w_interaction.json")
     tushare_forecast = load_json(out_dir / "tushare_forecast.json")
     market_temperature = load_market_temperature(out_dir)
+    tavily_news = load_tavily_news(out_dir)
     
     # 尝试从 akshare 获取业绩预告
     akshare_forecast = load_forecast_from_akshare(date)
@@ -1109,6 +1193,7 @@ def render_report(date, base_dir):
     # 顺序：市场温度 -> 业绩预告 -> 机构调研 -> 互动问答 -> 公告解读
     tabs = [
         ("🌡️ 市场温度", "market"),
+        ("📰 新闻动态", "news"),
         ("业绩预告", "forecast"),
         ("机构调研", "relation"),
         ("互动问答", "interaction"),
@@ -1122,6 +1207,9 @@ def render_report(date, base_dir):
 
     # 渲染市场温度板块
     market_section = render_market_temperature_section(market_temperature)
+    
+    # 渲染新闻动态板块
+    news_section = render_news_section(tavily_news)
     
     # 使用新的聚合方式渲染业绩预告
     forecast_section = f'<section id="forecast">{render_forecast_panel(forecast_items)}</section>'
@@ -1942,6 +2030,115 @@ def render_report(date, base_dir):
     .capital-titles {{ color: var(--text-secondary); font-size: 14px; line-height: 1.7; }}
     
     /* ============================================
+       News Section Styles
+       ============================================ */
+    .news-buckets {{
+      display: grid;
+      gap: 16px;
+    }}
+    
+    .news-bucket-card {{
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }}
+    
+    .news-bucket-card:hover {{
+      border-color: var(--border-medium);
+      box-shadow: var(--shadow-hover);
+    }}
+    
+    .bucket-header {{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      background: #fafafc;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }}
+    
+    .bucket-header:hover {{
+      background: #f0f2f5;
+    }}
+    
+    .bucket-info {{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }}
+    
+    .bucket-name {{
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text-primary);
+    }}
+    
+    .bucket-count {{
+      font-size: 13px;
+      color: var(--accent-primary);
+      font-weight: 500;
+    }}
+    
+    .bucket-summary {{
+      padding: 12px 20px;
+      background: var(--ai-bg);
+      border-bottom: 1px solid var(--ai-border);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }}
+    
+    .bucket-news-list {{
+      max-height: 600px;
+      overflow-y: auto;
+      transition: max-height 0.3s ease;
+      padding: 12px 20px;
+    }}
+    
+    .bucket-news-list.collapsed {{
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 20px;
+    }}
+    
+    .news-item {{
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f2f5;
+      font-size: 13px;
+      line-height: 1.6;
+    }}
+    
+    .news-item:last-child {{
+      border-bottom: none;
+    }}
+    
+    .news-index {{
+      color: var(--text-tertiary);
+      font-weight: 500;
+      min-width: 24px;
+    }}
+    
+    .news-headline {{
+      flex: 1;
+      color: var(--text-primary);
+    }}
+    
+    .news-score {{
+      font-size: 11px;
+      color: var(--text-tertiary);
+      background: #f0f2f5;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }}
+    
+    /* ============================================
        Mobile Optimizations
        ============================================ */
     @media (max-width: 1024px) {{
@@ -1970,6 +2167,7 @@ def render_report(date, base_dir):
 
     <div class="sections">
       {market_section}
+      {news_section}
       {forecast_section}
       {relation_section}
       {interaction_section}
@@ -1994,8 +2192,23 @@ def render_report(date, base_dir):
       }}
     }}
     
-    // 默认收起所有公司的详细问答
+    // 新闻动态 - 分类展开/收起功能
+    function toggleNewsBucket(bucketId) {{
+      const newsList = document.getElementById('list-' + bucketId);
+      const toggleIcon = document.getElementById('toggle-' + bucketId);
+      
+      if (newsList.classList.contains('collapsed')) {{
+        newsList.classList.remove('collapsed');
+        toggleIcon.textContent = '▼';
+      }} else {{
+        newsList.classList.add('collapsed');
+        toggleIcon.textContent = '▶';
+      }}
+    }}
+    
+    // 默认收起所有详细内容
     document.addEventListener('DOMContentLoaded', function() {{
+      // 收起互动问答
       const cards = document.querySelectorAll('.company-interaction-card');
       cards.forEach((card) => {{
         const cardId = card.id;
@@ -2009,6 +2222,8 @@ def render_report(date, base_dir):
           toggleIcon.textContent = '▶';
         }}
       }});
+      
+      // 收起新闻动态（已默认收起，通过CSS和HTML设置）
     }});
     
     // 机构调研AI解读功能
