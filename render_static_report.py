@@ -1178,7 +1178,6 @@ def render_report(date, base_dir):
     cninfo_relation = load_json(out_dir / "cninfo_relation.json")
     p5w_interaction = load_json(out_dir / "p5w_interaction.json")
     tushare_forecast = load_json(out_dir / "tushare_forecast.json")
-    market_temperature = load_market_temperature(out_dir)
     tavily_news = load_tavily_news(out_dir)
     
     # 尝试从 akshare 获取业绩预告
@@ -1192,7 +1191,6 @@ def render_report(date, base_dir):
     # 分类 Tab 导航（点击可滑动到对应区域）
     # 顺序：市场温度 -> 业绩预告 -> 机构调研 -> 互动问答 -> 公告解读
     tabs = [
-        ("🌡️ 市场温度", "market"),
         ("📰 新闻动态", "news"),
         ("业绩预告", "forecast"),
         ("机构调研", "relation"),
@@ -1205,9 +1203,6 @@ def render_report(date, base_dir):
         for label, anchor in tabs
     )
 
-    # 渲染市场温度板块
-    market_section = render_market_temperature_section(market_temperature)
-    
     # 渲染新闻动态板块
     news_section = render_news_section(tavily_news)
     
@@ -2166,7 +2161,6 @@ def render_report(date, base_dir):
     <nav class="tabs">{tabs_html}</nav>
 
     <div class="sections">
-      {market_section}
       {news_section}
       {forecast_section}
       {relation_section}

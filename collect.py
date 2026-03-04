@@ -5,7 +5,6 @@ import json
 from pathlib import Path
 
 from adapters import ADAPTERS
-from adapters.market_data import save_market_data
 from adapters.tavily_news import save_news_data
 
 
@@ -58,13 +57,6 @@ def run_collect(date, base_dir, sources=""):
 
         if result.get("error"):
             summary["errors"][src] = result["error"]
-
-    # 收集市场温度数据
-    try:
-        market_ok = save_market_data(date, base_dir / "output")
-        summary["market_temperature"] = "ok" if market_ok else "failed"
-    except Exception as e:
-        summary["market_temperature"] = f"error: {str(e)[:100]}"
 
     # 收集新闻动态数据
     try:
