@@ -1,0 +1,429 @@
+{
+  "date": "2026-03-05",
+  "categories": {
+    "AI Industry": {
+      "summary": "Anthropic年营收速率超190亿，投资者压减增速；家族办公室加仓AI；Decagon tender offer估值45亿。",
+      "items": [
+        {
+          "headline": "Exclusive Anthropic investors push to de-escalate Anthropic's revenue run rate, or its projected annual revenue based on current data, is...",
+          "title": "Exclusive: Anthropic investors push to de-escalate Pentagon clash over AI safeguards, sources say - Reuters",
+          "url": "https://www.reuters.com/business/retail-consumer/anthropic-investors-push-de-escalate-pentagon-clash-over-ai-safeguards-sources-2026-03-04/",
+          "snippet": "Anthropic's revenue run rate, or its projected annual revenue based on current data, is about $19 billion, ​one of the people said, up from $14 billion just a few weeks ago. The push from investors came as several U.S. government agencies started terminating their use of Anthropic's technology, with",
+          "score": 0.94417685,
+          "numbers": [
+            "19",
+            "14",
+            "80"
+          ]
+        },
+        {
+          "headline": "Inflation biggest risk to debt markets facing 'big stress te AI DEBT COULD TRANSFORM CORPORATE BOND MARKET The OECD said surging borrowin...",
+          "title": "Inflation biggest risk to debt markets facing 'big stress test', OECD official says - KITCO",
+          "url": "https://www.kitco.com/news/off-the-wire/2026-03-04/inflation-biggest-risk-debt-markets-facing-big-stress-test-oecd",
+          "snippet": "AI DEBT COULD TRANSFORM CORPORATE BOND MARKET The OECD said surging borrowing by AI companies as they race ​to expand data centres and ​processor needs may make corporate ⁠bond markets more \"equity-like\". Nine major hyperscalers will need to fund $4.1 trillion of capital spending until 2030, the rep",
+          "score": 0.92523,
+          "numbers": [
+            "4.1",
+            "2030",
+            "15",
+            "12"
+          ]
+        },
+        {
+          "headline": "Anthropic tops $19 billion in annual revenue rate # Anthropic tops $19 billion in annual revenue rate CNBC's Kate Rooney delivers the new...",
+          "title": "Anthropic tops $19 billion in annual revenue rate - CNBC",
+          "url": "https://www.cnbc.com/video/2026/03/04/anthropic-tops-19-billion-in-annual-revenue-rate.html",
+          "snippet": "# Anthropic tops $19 billion in annual revenue rate CNBC's Kate Rooney delivers the latest news surrounding Anthropic. 03:07 9 minutes ago watch now watch now VIDEO09:23 'U.S. Resilience Resilient': Goldman Sachs' Sharmin Mossavar-Rahmani on 2026 outlook 4 hours ago watch now watch now VIDEO05:38 WS",
+          "score": 0.81167597,
+          "numbers": [
+            "19",
+            "03",
+            "07",
+            "9"
+          ]
+        },
+        {
+          "headline": "Family offices double down on AI investments as startup fund World Labs and Runway are in good company. (171, 189, 150, 50)",
+          "title": "Family offices double down on AI investments as startup fundraising breaks record in February - CNBC",
+          "url": "https://www.cnbc.com/2026/03/05/family-offices-ai-investments.html",
+          "snippet": "World Labs and Runway are in good company. AI-related startups raised $171 billion in February, pushing the month's total startup funding from all investors to a record $189 billion, according to Crunchbase data. Rounds by Anthropic, OpenAI and Waymo drew the lion's share of the funds, while four ot",
+          "score": 0.60206157,
+          "numbers": [
+            "171",
+            "189",
+            "150",
+            "50"
+          ]
+        },
+        {
+          "headline": "Decagon completes first tender offer at $4.5B valuation You can contact or verify outreach from Marina by emailing marina.temkin@techcrun...",
+          "title": "Decagon completes first tender offer at $4.5B valuation - TechCrunch",
+          "url": "https://techcrunch.com/2026/03/04/decagon-completes-first-tender-offer-at-4-5b-valuation/",
+          "snippet": "You can contact or verify outreach from Marina by emailing marina.temkin@techcrunch.com or via encrypted message at +1 347-683-3909 on Signal. View Bio June 9 Boston, MA Actively scaling? Fundraising? Planning your next launch? TechCrunch Founder Summit 2026 delivers tactical playbooks and direct ac",
+          "score": 0.45713672,
+          "numbers": [
+            "4.5B",
+            "1",
+            "347",
+            "683"
+          ]
+        },
+        {
+          "headline": "Buy Nvidia Shares Ahead of GTC, Says Wells Fargo Another wildcard focuses on the prospect of customization. (40M, 14M, 695, 8)",
+          "title": "Buy Nvidia Shares Ahead of GTC, Says Wells Fargo - TipRanks",
+          "url": "https://www.tipranks.com/news/article/buy-nvidia-shares-ahead-of-gtc-says-wells-fargo",
+          "snippet": "Another wildcard focuses on the prospect of customization. AMD + Meta’s recent chiplet-based partnership highlights the potential for custom AI hardware for hyperscalers. Nvidia’s Blackwell and Rubin GPUs already use a chiplet/dielet architecture, with Vera-Rubin Ultra expanding this further. The Wa",
+          "score": 0.39103433,
+          "numbers": [
+            "40M",
+            "14M",
+            "695",
+            "8"
+          ]
+        },
+        {
+          "headline": "Jensen Huang says Nvidia is pulling back from OpenAI and Ant Growing concern that such deals could be creating an investment bubble might...",
+          "title": "Jensen Huang says Nvidia is pulling back from OpenAI and Anthropic, but his explanation raises more questions than it answers - TechCrunch",
+          "url": "https://techcrunch.com/2026/03/04/jensen-huang-says-nvidia-is-pulling-back-from-openai-and-anthropic-but-his-explanation-raises-more-questions-than-it-answers/",
+          "snippet": "Growing concern that such deals could be creating an investment bubble might explain why the commitment shrank. The investment Nvidia finalized just last week as part of OpenAI’s $110 billion round came in at $30 billion — well short of that earlier pledge. (Huang has already dismissed another popul",
+          "score": 0.2782568,
+          "numbers": [
+            "110",
+            "30",
+            "10",
+            "9"
+          ]
+        },
+        {
+          "headline": "AI for investors Nvidia is expanding compute capacity for OpenAI across multiple cloud platforms including Azure, OCI, and AWS to meet su...",
+          "title": "AI for investors - MLQ.ai",
+          "url": "https://mlq.ai/news/nvidia-ceo-huang-signals-30b-openai-stake-as-likely-final-pre-ipo-move/",
+          "snippet": "Nvidia is expanding compute capacity for OpenAI across multiple cloud platforms including Azure, OCI, and AWS to meet surging infrastructure demands [...] Nvidia CEO Jensen Huang announced at the Morgan Stanley Technology, Media & Telecom Conference that the chipmaker's $30 billion investment in Ope",
+          "score": 0.21246108,
+          "numbers": [
+            "30",
+            "110"
+          ]
+        }
+      ],
+      "count": 8
+    },
+    "Macro": {
+      "summary": "美国私人非农就业增创七月最大幅；中国发布五年经济蓝图，强调科技竞、农业农村优先；京东季度营收不及预期。",
+      "items": [
+        {
+          "headline": "US private payrolls post largest increase in seven months in Nonfarm payrolls likely increased by 59,000 jobs in February after accelerat...",
+          "title": "US private payrolls post largest increase in seven months in February - Reuters",
+          "url": "https://www.reuters.com/business/us-private-payrolls-increase-february-adp-says-2026-03-04/",
+          "snippet": "Nonfarm payrolls likely increased by 59,000 jobs in February after accelerating by 130,000 in January, a Reuters survey of economists predicted. Private payrolls are forecast to have risen by 65,000 jobs after advancing by 172,000 ​in January. The unemployment rate is expected to have held steady at",
+          "score": 0.9932025,
+          "numbers": [
+            "59",
+            "000",
+            "130",
+            "65"
+          ]
+        },
+        {
+          "headline": "Key takeaways from China’s new 5-year economic blueprint and Test Your News I.Q. (5, 2026, 1991, 2030)",
+          "title": "Key takeaways from China’s new 5-year economic blueprint and growth target - AP News",
+          "url": "https://apnews.com/article/china-congress-economy-growth-target-6459c5f5b9bd7a538f9d7a7f17c304ef",
+          "snippet": "Test Your News I.Q. 2026 Elections Election Results White House Congress Supreme Court The latest AP-NORC polls Ground Game Early voting tracker. Test Your News I.Q. 2026 Elections Election Results White House Congress Supreme Court The latest AP-NORC polls Ground Game Early voting tracker. BEIJING ",
+          "score": 0.7697614431381226,
+          "numbers": [
+            "5",
+            "2026",
+            "1991",
+            "2030"
+          ]
+        },
+        {
+          "headline": "China's JD.com misses quarterly revenue estimates # China's JD.com misses quarterly revenue estimates. (1, 2, 11, 2025)",
+          "title": "China's JD.com misses quarterly revenue estimates - Reuters",
+          "url": "https://www.reuters.com/business/retail-consumer/chinas-jdcom-misses-quarterly-revenue-estimates-2026-03-05/",
+          "snippet": "# China's JD.com misses quarterly revenue estimates. Item 1 of 2 Employees turn a transportation parcel box moving on the conveyor belt at the JD.com sorting center in Beijing, China, November 11, 2025. **[1/2]**Employees turn a transportation parcel box moving on the conveyor belt at the JD.com sor",
+          "score": 0.765756368637085,
+          "numbers": [
+            "1",
+            "2",
+            "11",
+            "2025"
+          ]
+        },
+        {
+          "headline": "China ramps up 'high stakes' tech race with US as economic i BEIJING, March 5 (Reuters) - China on Thursday set out a five-year roadmap t...",
+          "title": "China ramps up 'high stakes' tech race with US as economic imbalances deepen - Reuters",
+          "url": "https://www.reuters.com/world/china/china-parliament-approve-growth-policy-plans-amid-growing-us-rivalry-2026-03-04/",
+          "snippet": "BEIJING, March 5 (Reuters) - China on Thursday set out a five-year roadmap to turbocharge scientific breakthroughs and embed AI across its industrial ​economic machine, framing technological dominance as a core national security goal in its sharpening rivalry with the U.S.. China invests 20 percenta",
+          "score": 0.7588236331939697,
+          "numbers": [
+            "5",
+            "20",
+            "12.5",
+            "2025"
+          ]
+        },
+        {
+          "headline": "China to prioritize agriculture, rural areas with comprehens # China to prioritize agriculture, rural areas with comprehensive vitalizati...",
+          "title": "China to prioritize agriculture, rural areas with comprehensive vitalization plan in 2026: draft govt work report - China Daily",
+          "url": "https://www.chinadaily.com.cn/a/202603/05/WS69a90e9aa310d6866eb3be5b.html",
+          "snippet": "# China to prioritize agriculture, rural areas with comprehensive vitalization plan in 2026: draft govt work report. China will prioritize agriculture, rural areas, and farmers, advancing comprehensive rural vitalization in 2026, according to a draft government work report submitted Thursday to the ",
+          "score": 0.7493854761123657,
+          "numbers": [
+            "2026"
+          ]
+        },
+        {
+          "headline": "Key takeaways from China's new 5-year economic blueprint and %26utm_source%3Dfacebook.com%26utm_medium%3Dreferral&name=Key%20takeaways%20...",
+          "title": "Key takeaways from China's new 5-year economic blueprint and growth target - Greenwich Time",
+          "url": "https://www.greenwichtime.com/news/world/article/key-takeaways-from-china-s-new-5-year-economic-21956679.php",
+          "snippet": "%26utm_source%3Dfacebook.com%26utm_medium%3Dreferral&name=Key%20takeaways%20from%20China%27s%20new%205-year%20economic%20blueprint%20and%20growth%20target&description=China%20has%20set%20an%20economic%20growth%20target%20at%20the%20slowest%20since%201991%20at%20the%20opening%20of%20its%20annual%20na",
+          "score": 0.7421990633010864,
+          "numbers": [
+            "5",
+            "205",
+            "201991%",
+            "21956679"
+          ]
+        },
+        {
+          "headline": "European Union auctions 2.713 mln spot carbon permits at 68. Image 2 ReutersImage 3 Reuters. (2.713, 68.99, 2, 3)",
+          "title": "European Union auctions 2.713 mln spot carbon permits at 68.99 eur/t - TradingView",
+          "url": "https://www.tradingview.com/news/reuters.com,2026-03-05:newsml_APN7SGAI2:0-european-union-auctions-2-713-mln-spot-carbon-permits-at-68-99-eur-t/",
+          "snippet": "Image 2: ReutersImage 3: Reuters. * Image 4 * Image 5 Reuters Refinitiv JD Logistics Posts FY Profit Attributable RMB6.65 Billion. * Image 6 * Image 7 * Image 8 * Image 9 Reuters Refinitiv What if the Russian oil does the trick. * Image 10 Reuters Refinitiv RTS Technology Appoints Chew Man Fai As Ex",
+          "score": 0.7365213632583618,
+          "numbers": [
+            "2.713",
+            "68.99",
+            "2",
+            "3"
+          ]
+        },
+        {
+          "headline": "Capital investment holding steady despite record-low industr Home » Capital investment holding steady despite record-low industry outlook...",
+          "title": "Capital investment holding steady despite record-low industry outlook - Food Business News",
+          "url": "https://www.foodbusinessnews.net/articles/29919-capital-investment-holding-steady-despite-record-low-industry-outlook",
+          "snippet": "Home » Capital investment holding steady despite record-low industry outlook. # Capital investment holding steady despite record-low industry outlook. Despite bakers’ record-low outlook for their company and the commercial baking industry at large, capital investment is expected to hold steady in 20",
+          "score": 0.7279820442199707,
+          "numbers": [
+            "2026",
+            "44",
+            "45",
+            "2025"
+          ]
+        }
+      ],
+      "count": 8
+    },
+    "Robotics": {
+      "summary": "AI总结超时",
+      "items": [
+        {
+          "headline": "SFA Targets Fully Autonomous Manufacturing by 2030 Using AI Robotics is another critical component of autonomous manufacturing. (2030, 76)",
+          "title": "SFA Targets Fully Autonomous Manufacturing by 2030 Using AI and Robotics - thelec.net",
+          "url": "https://www.thelec.net/news/articleView.html?idxno=5651",
+          "snippet": "Robotics is another critical component of autonomous manufacturing. According to SFA, logistics robots account for about 76% of the company's current revenue, reflecting rapidly growing demand for automation across manufacturing and distribution sectors. The company is expanding its lineup of roboti",
+          "score": 0.22864738,
+          "numbers": [
+            "2030",
+            "76"
+          ]
+        },
+        {
+          "headline": "2026 Outlook Survey With cargo theft now costing the U.S. (2026, 4)",
+          "title": "2026 Outlook Survey: Signs of caution, but automation marches on - logisticsmgmt.com",
+          "url": "https://www.logisticsmgmt.com/article/2026_outlook_survey_signs_of_caution_but_automation_marches_on",
+          "snippet": "With cargo theft now costing the U.S. economy tens of billions annually, Congress is moving to strengthen... Global Issue: Tension and transition prevail As geopolitical instability, tariffs, and security risks become permanent features of global trade, supply chain disruption is no... Accenture: Wh",
+          "score": 0.13807808,
+          "numbers": [
+            "2026",
+            "4"
+          ]
+        },
+        {
+          "headline": "Symbotic acquires autonomous forklift company Fox Robotics a Rick Cohen, CEO of Symbotic, said the acquisition aligns with the company’s ...",
+          "title": "Symbotic acquires autonomous forklift company Fox Robotics as revenue and profitability grow - Robotics & Automation News",
+          "url": "https://roboticsandautomationnews.com/2026/03/04/symbotic-acquires-autonomous-forklift-company-fox-robotics-as-revenue-and-profitability-grow/99224/",
+          "snippet": "Rick Cohen, CEO of Symbotic, said the acquisition aligns with the company’s strategy of coordinating multiple robotic systems across the supply chain. “We recently closed the acquisition of Fox Robotics, a leader in autonomous forklift solutions,” said Cohen. “This acquisition further enhances our s",
+          "score": 0.1043223,
+          "numbers": [
+            "22.3",
+            "2026",
+            "25"
+          ]
+        },
+        {
+          "headline": "Report Auto giants increasingly pursuing more # Report Auto giants increasingly pursuing more sustainable EV supply chains By Joshua Neil...",
+          "title": "Report: Auto giants increasingly pursuing more sustainable EV supply chains - edie.net",
+          "url": "https://www.edie.net/report-auto-giants-increasingly-pursuing-more-sustainable-ev-supply-chains/?amp=true",
+          "snippet": "# Report: Auto giants increasingly pursuing more sustainable EV supply chains By Joshua Neil The 2026 Lead the Charge Leaderboard assessed 18 automakers on their sustainability strategy. It takes a specific focus on supply chains for electric vehicles (EVs). Researchers concluded that a core group o",
+          "score": 0.07777658,
+          "numbers": [
+            "2026",
+            "18",
+            "13",
+            "25"
+          ]
+        },
+        {
+          "headline": "Biodegradable yet hyperdurable robotic fingers for zero-wast Article Google Scholar 13. (13, 9, 2023, 14)",
+          "title": "Biodegradable yet hyperdurable robotic fingers for zero-waste soft electronics - Nature",
+          "url": "https://www.nature.com/articles/s41893-026-01780-4",
+          "snippet": "Article Google Scholar 13. Cikalleshi, K. et al. A printed luminescent flier inspired by plant seeds for eco-friendly physical sensing. Sci. Adv. 9, adi8492 (2023). Article Google Scholar 14. Cianchetti, M. et al. Biomedical applications of soft robotics. Nat. Rev. Mater. 3, 143–153 (2018). Article ",
+          "score": 0.046417184,
+          "numbers": [
+            "13",
+            "9",
+            "2023",
+            "14"
+          ]
+        },
+        {
+          "headline": "Tariff roundtable looks at what happens next for supply chai ## Subscribe to Logistics Management Magazine Not a subscriber? (2026, 4)",
+          "title": "Tariff roundtable looks at what happens next for supply chains - logisticsmgmt.com",
+          "url": "https://www.logisticsmgmt.com/article/tariff_roundtable_looks_at_what_happens_next_for_supply_chains/",
+          "snippet": "## Subscribe to Logistics Management Magazine Not a subscriber? Sign up today! Subscribe today. It's FREE. Find out what the world's most innovative companies are doing to improve productivity in their plants and distribution centers. Start your FREE subscription today. ### March 2026 Logistics Mana",
+          "score": 0.041264866,
+          "numbers": [
+            "2026",
+            "4"
+          ]
+        },
+        {
+          "headline": "German union suffers setback in works council election at Te UK By Urvaksh Karkaria Hyundai Hyundai Motor chases Tesla with $6 billion in...",
+          "title": "German union suffers setback in works council election at Tesla Berlin plant - Automotive News",
+          "url": "https://www.autonews.com/tesla/ane-tesla-union-vote-loss-germany-0305/",
+          "snippet": "UK By Urvaksh Karkaria Hyundai Hyundai Motor chases Tesla with $6 billion investment in massive new Korean robot, AI, data hub HG By Hans Greimel [...] # German union suffers setback in works council election at Tesla Berlin plant By Reuters News March 05, 2026 04:11 AM EST ## Featured Stories Finan",
+          "score": 0.038053043,
+          "numbers": [
+            "6",
+            "05",
+            "2026",
+            "04"
+          ]
+        },
+        {
+          "headline": "How China made lidar a mass-market sensor UK By Urvaksh Karkaria Hyundai Hyundai Motor chases Tesla with $6 billion investment in massive...",
+          "title": "How China made lidar a mass-market sensor — and why some U.S. automakers are embracing it - Automotive News",
+          "url": "https://www.autonews.com/technology/an-lidar-is-coming-to-us-after-china-surge-0305/",
+          "snippet": "UK By Urvaksh Karkaria Hyundai Hyundai Motor chases Tesla with $6 billion investment in massive new Korean robot, AI, data hub HG By Hans Greimel [...] # How China made lidar a mass-market sensor — and why some U.S. automakers are embracing it By Laurence Iliff March 05, 2026 07:00 AM EST ## Feature",
+          "score": 0.03737261,
+          "numbers": [
+            "6",
+            "05",
+            "2026",
+            "07"
+          ]
+        }
+      ],
+      "count": 8
+    },
+    "Commercial Space": {
+      "summary": "SpaceX星链发射现水母景观，助推器1080完成25次任务；HEO USA载荷在轨成像里程碑；太空SPAC活动回升；Vast获5亿美元融资。",
+      "items": [
+        {
+          "headline": "SpaceX Starlink launch creates gorgeous 'jellyfish' in preda Sometimes likened to a jellyfish given its bulbous, translucent appearance, ...",
+          "title": "SpaceX Starlink launch creates gorgeous 'jellyfish' in predawn Florida skies - Space",
+          "url": "https://www.space.com/space-exploration/launches-spacecraft/spacex-starlink-10-40-b1080-ccsfs-asog",
+          "snippet": "Sometimes likened to a jellyfish given its bulbous, translucent appearance, the effect could be seen over Florida on Wednesday after the 5:52 a.m. EST (1052 GMT) launch from Space Launch Complex 40 at Cape Canaveral Space Force Station. The Falcon 9 rocket lofted 29 Starlink satellites (Group 10-40)",
+          "score": 0.8984106,
+          "numbers": [
+            "5",
+            "52",
+            "1052",
+            "40"
+          ]
+        },
+        {
+          "headline": "In Photos The recent SpaceX launch marked the 25th space trip of Booster 1080, the first-stage rocket booster of the SpaceX Falcon (1080,...",
+          "title": "In Photos: SpaceX Rocket Launch Creates Weird 'Jellyfish' Effect Across Florida's Skies - Green Matters",
+          "url": "https://www.greenmatters.com/pn/in-photos-space-x-rocket-launch-creates-weird-jellyfish-effect-across-floridas-skies",
+          "snippet": "The recent SpaceX launch marked the 25th space trip of Booster 1080, the first-stage rocket booster of the SpaceX Falcon 9 rocket. The booster successfully landed on the droneship \"A Shortfall of Gravitas\" that was positioned off the coast of Florida in the Atlantic Ocean. The recent mission added a",
+          "score": 0.58699644,
+          "numbers": [
+            "1080",
+            "9",
+            "29",
+            "10"
+          ]
+        },
+        {
+          "headline": "On-Orbit Imagery Milestone with HEO USA's Payload Aboard Sid About HEO USA HEO USA INC. (3, 2024)",
+          "title": "On-Orbit Imagery Milestone with HEO USA's Payload Aboard Sidus Space's Multi-Mission LizzieSat-3 - Sidus Space",
+          "url": "https://investors.sidusspace.com/news-events/press-releases/detail/276/on-orbit-imagery-milestone-with-heo-usas-payload-aboard",
+          "snippet": "About HEO USA HEO USA INC. is an Australian owned, US-based small business that delivers commercial on-demand, resolved non-Earth imaging (NEI) and analytic services at scale to government, defense, and commercial customers. HEO USA leverages a distributed network of sensors consisting of Earth obse",
+          "score": 0.5234204,
+          "numbers": [
+            "3",
+            "2024"
+          ]
+        },
+        {
+          "headline": "Return of the (space) SPAC However, there are signs that activity is picking up again. (2026, 24, 2021)",
+          "title": "Return of the (space) SPAC - SpaceNews",
+          "url": "https://spacenews.com/return-of-the-space-spac/",
+          "snippet": "However, there are signs that activity is picking up again. In July, iRocket agreed to merge with a SPAC backed by former U.S. Commerce Secretary Wilbur Ross to help develop its reusable launch vehicle. And in January 2026, a SPAC chaired by Roettgen, who is also the founding partner of early-stage ",
+          "score": 0.11516223,
+          "numbers": [
+            "2026",
+            "24",
+            "2021"
+          ]
+        },
+        {
+          "headline": "Vast Secures $500M, Including $300M Series A Skip to content Thursday March 5, 2026 Waning Gibbous Webinars Events Webinars Events Busine...",
+          "title": "Vast Secures $500M, Including $300M Series A - Payload Space",
+          "url": "https://payloadspace.com/vast-secures-500m-including-300m-series-a/",
+          "snippet": "Skip to content Thursday March 5, 2026 Waning Gibbous Webinars Events Webinars Events Business Launch Civil VC/PE Military Europe Polaris All + Debris + EO + Equities + International + ISS + LEO + Moonshot Mechanics 2025 + Lunar + Opinion + Payload Pioneers 2025 + Startups + State of the Space Indus",
+          "score": 0.09877259,
+          "numbers": [
+            "500M",
+            "300M",
+            "5",
+            "2026"
+          ]
+        },
+        {
+          "headline": "PLD Space Closes €180M Series C, Eyes Flight Test This Year Turning Japanese Mitsubishi Electric’s support goes beyond funding. (180M, 5,...",
+          "title": "PLD Space Closes €180M Series C, Eyes Flight Test This Year - Payload Space",
+          "url": "https://payloadspace.com/pld-space-closes-e180m-series-c-eyes-flight-test-this-year/",
+          "snippet": "Turning Japanese: Mitsubishi Electric’s support goes beyond funding. The Japanese company can secure access to a new supply of launch capabilities to support satellite deployments across Japan and Asia. Mitsubishi appears highly interested in these deployments, and also announced yesterday an MOU wi",
+          "score": 0.06325052,
+          "numbers": [
+            "180M",
+            "5",
+            "2026",
+            "2025"
+          ]
+        },
+        {
+          "headline": "Sierra Space Closes $550M Series C Skip to content Thursday March 5, 2026 Waning Gibbous Webinars Events Webinars Events Business Launch ...",
+          "title": "Sierra Space Closes $550M Series C - Payload Space",
+          "url": "https://payloadspace.com/sierra-space-closes-550m-series-c/",
+          "snippet": "Skip to content Thursday March 5, 2026 Waning Gibbous Webinars Events Webinars Events Business Launch Civil VC/PE Military Europe Polaris All + Debris + EO + Equities + International + ISS + LEO + Moonshot Mechanics 2025 + Lunar + Opinion + Payload Pioneers 2025 + Startups + State of the Space Indus",
+          "score": 0.051082738,
+          "numbers": [
+            "550M",
+            "5",
+            "2026",
+            "2025"
+          ]
+        },
+        {
+          "headline": "The $500 Billion Bet on Commercial Moon Landings A number of businesses are creating their own lunar systems, including SpaceX, Blue Orig...",
+          "title": "The $500 Billion Bet on Commercial Moon Landings - ts-avisen.no",
+          "url": "https://ts-avisen.no/nyheter/268/the-500-billion-bet-on-commercial-moon-landings/",
+          "snippet": "A number of businesses are creating their own lunar systems, including SpaceX, Blue Origin, and Astrobotic. As part of NASA’s Artemis program, SpaceX, which is already well-known for sending humans to the International Space Station, is constructing enormous Starship vehicles that may one day transp",
+          "score": 0.039342504,
+          "numbers": [
+            "500",
+            "800",
+            "2024",
+            "2025"
+          ]
+        }
+      ],
+      "count": 8
+    }
+  }
+}
