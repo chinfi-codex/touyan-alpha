@@ -108,8 +108,13 @@ def make_natural_title(subject: str, event: str, nums: list) -> str:
     return headline if headline else 'N/A'
 
 
-def fetch_news(bucket: str, query: str, api_key: str) -> list:
-    """使用Tavily API获取新闻"""
+def fetch_news(bucket: str, query: str, api_key: str, days: int = 3) -> list:
+    """使用Tavily API获取新闻
+    
+    Args:
+        days: 时间范围（天），默认3天
+              周一取3天内，周二到周五取1天内
+    """
     headers = {
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {api_key}'
@@ -117,6 +122,7 @@ def fetch_news(bucket: str, query: str, api_key: str) -> list:
     
     body = dict(PAYLOAD_TEMPLATE)
     body['query'] = query
+    body['days'] = days  # 添加时间范围筛选
     
     req = request.Request(
         'https://api.tavily.com/search',
@@ -145,17 +151,38 @@ def fetch_news(bucket: str, query: str, api_key: str) -> list:
 
 
 def collect_all_news(api_key: str = None) -> dict:
-    """收集所有分类的新闻"""
+    """收集所有分类的新闻
+    
+    时效性规则：
+    - 周一：取3天内（因为周末无更新）
+    - 周二到周五：取24小时内（1天）
+    """
     if api_key is None:
         api_key = os.getenv('TAVILY_API_KEY', '').strip()
     
     if not api_key:
         return {'error': 'Missing TAVILY_API_KEY', 'data': {}}
     
+    # 根据星期几确定时间范围
+    today = datetime.now()
+    weekday = today.weekday()  # 0=周一, 1=周二, ..., 4=周五, 5=周六, 6=周日
+    
+    if weekday == 0:  # 周一
+        days = 3
+        time_desc = "3天内"
+    elif weekday in [1, 2, 3, 4]:  # 周二到周五
+        days = 1
+        time_desc = "24小时内"
+    else:  # 周末（周六日）
+        days = 3
+        time_desc = "3天内"
+    
+    print(f"  新闻时效性: {time_desc} (周{['一', '二', '三', '四', '五', '六', '日'][weekday]})")
+    
     all_rows = []
     for bucket, queries in QUERIES.items():
         for q in queries:
-            results = fetch_news(bucket, q, api_key)
+            results = fetch_news(bucket, q, api_key, days=days)
             all_rows.extend(results)
     
     # 去重，保留高分
