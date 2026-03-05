@@ -825,6 +825,93 @@ def render_notice_panel(items):
     """
 
 
+import requests
+
+
+def load_clippings(date: str) -> list:
+    """从Clippings API加载当天创建的文件列表，只获取clipping文件夹下的内容"""
+    try:
+        api_url = f"http://47.90.205.168:8787/files?date={date}&limit=50"
+        headers = {
+            "Authorization": "Bearer o-RQo6GJCAElSxgcNSbftAwv2rc1tGbOJIiG-BlJxyI"
+        }
+        response = requests.get(api_url, headers=headers, timeout=30)
+        if response.status_code == 200:
+            data = response.json()
+            all_files = data.get("files", [])
+            # 只保留 clipping/ 文件夹下的文件，排除子文件夹
+            # 路径格式: clipping/xxx.md (只保留一级)，排除 clipping/subfolder/xxx.md
+            filtered_files = []
+            for f in all_files:
+                path = f.get("path", "")
+                # 必须以 "clipping/" 开头，且只有一级子目录（只有一个/）
+                if path.startswith("clipping/"):
+                    # 去掉 "clipping/" 后检查是否还有/
+                    remaining = path[len("clipping/"):]
+                    if "/" not in remaining:
+                        filtered_files.append(f)
+            return filtered_files
+        else:
+            print(f"Clippings API请求失败: {response.status_code}")
+            return []
+    except Exception as e:
+        print(f"加载Clippings数据失败: {e}")
+        return []
+
+
+def load_clipping_content(file_path: str) -> str:
+    """从Clippings API加载单个文件内容"""
+    try:
+        api_url = f"http://47.90.205.168:8787/file?path={requests.utils.quote(file_path)}"
+        headers = {
+            "Authorization": "Bearer o-RQo6GJCAElSxgcNSbftAwv2rc1tGbOJIiG-BlJxyI"
+        }
+        response = requests.get(api_url, headers=headers, timeout=30)
+        if response.status_code == 200:
+            return response.text
+        else:
+            return f"[无法加载内容: HTTP {response.status_code}]"
+    except Exception as e:
+        return f"[加载失败: {str(e)[:100]}]"
+
+
+def render_clippings_section(files: list) -> str:
+    """渲染Clipping信源板块 - 平铺展示clipping文件夹下的文件"""
+    if not files:
+        return '<section id="clippings" class="panel"><h2>📎 Clipping信源</h2><div class="empty">暂无Clipping文件</div></section>'
+    
+    # 生成文件列表（平铺展示，不再按文件夹分组）
+    file_items_html = []
+    for i, file in enumerate(files):
+        path = html.escape(file.get("path", "N/A"))
+        name = html.escape(file.get("name", path.split("/")[-1] if "/" in path else path))
+        size = file.get("size", 0)
+        size_text = f"{size} bytes" if size < 1024 else f"{size/1024:.1f} KB" if size < 1024*1024 else f"{size/(1024*1024):.1f} MB"
+        
+        # 构建文件内容查看链接
+        view_url = f"http://47.90.205.168:8787/file?path={requests.utils.quote(file.get('path', ''))}"
+        
+        file_items_html.append(f"""
+        <div class="clipping-file-item">
+          <span class="file-index">{i+1}.</span>
+          <span class="file-name" title="{path}">{name}</span>
+          <span class="file-meta">{size_text}</span>
+          <a href="{view_url}" target="_blank" class="file-link">查看</a>
+        </div>
+        """)
+    
+    total_count = len(files)
+    
+    return f"""
+    <section id="clippings" class="panel">
+      <h2>📎 Clipping信源 <span>({total_count}个文件)</span></h2>
+      <div class="clipping-file-list flat">
+        {''.join(file_items_html) or "<div class='empty'>无文件</div>"}
+      </div>
+    </section>
+    """
+
+
 def load_tavily_news(out_dir: Path) -> dict:
     """加载新闻动态数据"""
     path = out_dir / "tavily_news.json"
@@ -908,6 +995,153 @@ def render_news_section(data: dict) -> str:
     """
 
 
+def render_clues_section(clues_data: dict, trade_data: dict) -> str:
+    """渲染AI线索板块（上概念、下个股）"""
+    concept_items = (clues_data or {}).get("concept_clues") or []
+    clues_meta = (clues_data or {}).get("meta") or {}
+    concept_warning = (clues_meta.get("concept_mapping_warning") or "").strip()
+    stock_items = (trade_data or {}).get("items") or []
+    if not concept_items and not stock_items:
+        return (
+            '<section id="clues" class="panel">'
+            '<h2>🤖 AI线索</h2>'
+            "<div class='empty'>暂无 AI 线索数据</div>"
+            "</section>"
+        )
+
+    concept_rows = []
+    for x in concept_items[:15]:
+        concept_name = fmt(x.get("concept_name"))
+        score = x.get("score")
+        evidence_count = int(x.get("evidence_count") or 0)
+        linked_symbols = x.get("linked_symbols") or []
+        linked_count = len(linked_symbols)
+        thesis = fmt(x.get("thesis"))
+        risk_flags = x.get("risk_flags") or []
+        risk_text = fmt("、".join(str(r) for r in risk_flags[:3]) if risk_flags else "-")
+        latest_time = fmt(x.get("latest_event_time") or "-")
+        try:
+            score_text = f"{float(score):.2f}"
+        except Exception:
+            score_text = ""
+        concept_rows.append(
+            f"<tr>"
+            f"<td><span class='concept-badge'>🧭 概念</span> {concept_name}</td>"
+            f"<td>{score_text}</td>"
+            f"<td>{evidence_count}</td>"
+            f"<td>{linked_count}</td>"
+            f"<td>{latest_time}</td>"
+            f"<td class='title'>{thesis}</td>"
+            f"<td>{risk_text}</td>"
+            f"</tr>"
+        )
+
+    direction_map = {
+        "long": ("看多", "↑", "is-long"),
+        "short": ("看空", "↓", "is-short"),
+        "neutral": ("中性", "→", "is-neutral"),
+    }
+    recommendation_map = {
+        "buy_watch": ("可关注买入", "✅", "is-buy-watch"),
+        "observe": ("继续观察", "👀", "is-observe"),
+        "reject": ("暂不参与", "⛔", "is-reject"),
+    }
+    stock_rows = []
+    for x in stock_items[:20]:
+        symbol = fmt(x.get("symbol"))
+        company = fmt(x.get("company"))
+        direction_raw = (x.get("direction") or "neutral").strip().lower()
+        recommendation_raw = (x.get("recommendation") or "observe").strip().lower()
+        direction_label, direction_icon, direction_class = direction_map.get(
+            direction_raw, ("中性", "→", "is-neutral")
+        )
+        rec_label, rec_icon, rec_class = recommendation_map.get(
+            recommendation_raw, ("继续观察", "👀", "is-observe")
+        )
+        confidence = x.get("confidence")
+        trade_score = x.get("trade_score")
+        thesis = fmt(x.get("thesis"))
+        risk_flags = x.get("risk_flags") or []
+        risk_text = fmt("、".join(str(r) for r in risk_flags[:3]) if risk_flags else "-")
+        linked_concepts = x.get("linked_concepts") or []
+        concept_text = fmt("、".join(str(c) for c in linked_concepts[:3]) if linked_concepts else "-")
+        url = (x.get("url") or "").strip()
+        link_html = f"<a href='{fmt(url)}' target='_blank'>link</a>" if url else ""
+
+        try:
+            confidence_text = f"{float(confidence):.2f}"
+        except Exception:
+            confidence_text = ""
+        try:
+            trade_score_text = f"{float(trade_score):.2f}"
+        except Exception:
+            trade_score_text = ""
+
+        stock_rows.append(
+            f"<tr>"
+            f"<td>{symbol}</td>"
+            f"<td>{company}</td>"
+            f"<td><span class='clue-badge {direction_class}'>{direction_icon} {fmt(direction_label)}</span></td>"
+            f"<td>{confidence_text}</td>"
+            f"<td>{trade_score_text}</td>"
+            f"<td><span class='clue-badge {rec_class}'>{rec_icon} {fmt(rec_label)}</span></td>"
+            f"<td>{concept_text}</td>"
+            f"<td class='title'>{thesis}</td>"
+            f"<td>{risk_text}</td>"
+            f"<td>{link_html}</td>"
+            f"</tr>"
+        )
+
+    concept_body = "\n".join(concept_rows) or "<tr><td colspan='7'>暂无概念线索</td></tr>"
+    stock_body = "\n".join(stock_rows) or "<tr><td colspan='10'>暂无个股线索</td></tr>"
+    warning_html = (
+        f"<div class='clue-warning'>⚠️ {fmt(concept_warning)}</div>" if concept_warning else ""
+    )
+    return f"""
+    <section id="clues" class="panel">
+      <h2>🤖 AI线索 <span>(概念{len(concept_items)}条 / 个股{len(stock_items)}条)</span></h2>
+      {warning_html}
+      <section class="subpanel">
+        <h3>概念线索 <span>(按事件强度与跨源共振排序)</span></h3>
+        <table>
+          <thead>
+            <tr>
+              <th>概念</th>
+              <th>共振分</th>
+              <th>证据条数</th>
+              <th>关联股票数</th>
+              <th>最新时间</th>
+              <th>核心观点</th>
+              <th>风险提示</th>
+            </tr>
+          </thead>
+          <tbody>{concept_body}</tbody>
+        </table>
+      </section>
+      <section class="subpanel">
+        <h3>个股线索 <span>(技术面门控后)</span></h3>
+        <table>
+          <thead>
+            <tr>
+              <th>代码</th>
+              <th>公司</th>
+              <th>方向</th>
+              <th>线索置信度</th>
+              <th>交易评分</th>
+              <th>建议动作</th>
+              <th>关联概念</th>
+              <th>线索观点</th>
+              <th>风险提示</th>
+              <th>URL</th>
+            </tr>
+          </thead>
+          <tbody>{stock_body}</tbody>
+        </table>
+      </section>
+    </section>
+    """
+
+
 def load_forecast_from_akshare(date):
     """使用 akshare 获取业绩预告数据"""
     try:
@@ -966,6 +1200,11 @@ def render_report(date, base_dir):
     p5w_interaction = load_json(out_dir / "p5w_interaction.json")
     tushare_forecast = load_json(out_dir / "tushare_forecast.json")
     tavily_news = load_tavily_news(out_dir)
+    clues_data = load_json(out_dir / "clues.json")
+    trade_candidates = load_json(out_dir / "trade_candidates.json")
+    
+    # 加载Clipping信源数据
+    clippings_files = load_clippings(date)
     
     # 尝试从 akshare 获取业绩预告
     akshare_forecast = load_forecast_from_akshare(date)
@@ -976,9 +1215,11 @@ def render_report(date, base_dir):
         forecast_items = tushare_forecast.get("items") or []
 
     # 分类 Tab 导航（点击可滑动到对应区域）
-    # 顺序：市场温度 -> 业绩预告 -> 机构调研 -> 互动问答 -> 公告解读
+    # 顺序：AI线索 -> 新闻动态 -> Clipping信源 -> 业绩预告 -> 机构调研 -> 互动问答 -> 公告解读
     tabs = [
+        ("🤖 AI线索", "clues"),
         ("📰 新闻动态", "news"),
+        ("📎 Clipping", "clippings"),
         ("业绩预告", "forecast"),
         ("机构调研", "relation"),
         ("互动问答", "interaction"),
@@ -992,6 +1233,10 @@ def render_report(date, base_dir):
 
     # 渲染新闻动态板块
     news_section = render_news_section(tavily_news)
+    clues_section = render_clues_section(clues_data, trade_candidates)
+    
+    # 渲染Clipping信源板块
+    clippings_section = render_clippings_section(clippings_files)
     
     # 使用新的聚合方式渲染业绩预告
     forecast_section = f'<section id="forecast">{render_forecast_panel(forecast_items)}</section>'
@@ -1755,6 +2000,145 @@ def render_report(date, base_dir):
       padding: 2px 6px;
       border-radius: 4px;
     }}
+
+    /* ============================================
+       Clipping Source Section Styles
+       ============================================ */
+    .clipping-file-list {
+      max-height: 600px;
+      overflow-y: auto;
+      transition: max-height 0.3s ease;
+      padding: 12px 20px;
+    }
+    
+    .folder-file-list.collapsed {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 20px;
+    }
+    
+    .clipping-file-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f2f5;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    
+    .clipping-file-item:last-child {
+      border-bottom: none;
+    }
+    
+    .file-index {
+      color: var(--text-tertiary);
+      font-weight: 500;
+      min-width: 24px;
+    }
+    
+    .file-name {
+      flex: 1;
+      color: var(--text-primary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .file-meta {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      background: #f0f2f5;
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    
+    .file-link {
+      font-size: 12px;
+      padding: 4px 10px;
+      background: var(--ai-bg);
+      border: 1px solid var(--ai-border);
+      border-radius: 6px;
+      color: var(--ai-text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    
+    .file-link:hover {
+      background: #e0edff;
+      text-decoration: none;
+    }
+    
+    /* ============================================
+       AI Clue Badges
+       ============================================ */
+    .clue-badge {{
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }}
+    .clue-badge.is-long {{
+      color: var(--color-up);
+      background: var(--color-up-bg);
+      border-color: rgba(242, 73, 87, 0.24);
+    }}
+    .clue-badge.is-short {{
+      color: var(--color-down);
+      background: var(--color-down-bg);
+      border-color: rgba(19, 183, 127, 0.24);
+    }}
+    .clue-badge.is-neutral {{
+      color: var(--text-secondary);
+      background: #f3f5f9;
+      border-color: #dfe3eb;
+    }}
+    .clue-badge.is-buy-watch {{
+      color: #0e7a43;
+      background: rgba(14, 122, 67, 0.10);
+      border-color: rgba(14, 122, 67, 0.25);
+    }}
+    .clue-badge.is-observe {{
+      color: #a25f00;
+      background: rgba(255, 143, 0, 0.12);
+      border-color: rgba(255, 143, 0, 0.30);
+    }}
+    .clue-badge.is-reject {{
+      color: #8b1f28;
+      background: rgba(139, 31, 40, 0.10);
+      border-color: rgba(139, 31, 40, 0.25);
+    }}
+    .concept-badge {{
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #0b4cc9;
+      background: rgba(11, 76, 201, 0.10);
+      border: 1px solid rgba(11, 76, 201, 0.25);
+      padding: 3px 8px;
+      border-radius: 999px;
+      margin-right: 8px;
+      white-space: nowrap;
+    }}
+    .clue-warning {{
+      margin: 10px 0 16px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #ffd599;
+      background: #fffbf3;
+      color: #a25f00;
+      font-size: 13px;
+      line-height: 1.5;
+    }}
     
     /* ============================================
        Mobile Optimizations
@@ -1784,7 +2168,9 @@ def render_report(date, base_dir):
     <nav class="tabs">{tabs_html}</nav>
 
     <div class="sections">
+      {clues_section}
       {news_section}
+      {clippings_section}
       {forecast_section}
       {relation_section}
       {interaction_section}

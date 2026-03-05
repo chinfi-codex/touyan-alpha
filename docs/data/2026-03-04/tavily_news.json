@@ -2,90 +2,40 @@
   "date": "2026-03-04",
   "categories": {
     "AI Industry": {
-      "summary": "OpenAI完成1100亿美元创纪录融资，亚马逊以500亿美元成最大投资方，资金将用于规模化AI等。",
+      "summary": "AI数据中心领域：美建设因许可/电力延迟下滑；SK签备忘录提速；Turner营收创新高；CoreWeave下滑，2026资本支出≥300亿。",
       "items": [
         {
-          "headline": "OpenAI blows past VC fundraising record with $110B round Amazon is the largest investor in the round, contributing $50 billion, while Nvi...",
-          "title": "OpenAI blows past VC fundraising record with $110B round - PitchBook",
-          "url": "https://pitchbook.com/news/articles/openai-blows-past-vc-fundraising-record-with-110b-round",
-          "snippet": "Amazon is the largest investor in the round, contributing $50 billion, while Nvidia and SoftBank put in $30 billion each. And the fundraising could grow even bigger, with OpenAI leaving the round open as it expects more investors to join in the coming weeks. A longtime backer of OpenAI’s chief rival",
-          "score": 0.92892635,
+          "headline": "US Data Center Construction Fell Amid Permit and Power Delay Capacity under construction fell to 5.99 gigawatts at the end of 2025 from 6...",
+          "title": "US Data Center Construction Fell Amid Permit and Power Delays - Bloomberg.com",
+          "url": "https://www.bloomberg.com/news/articles/2026-02-25/us-data-center-construction-fell-amid-permit-and-power-delays",
+          "snippet": "Capacity under construction fell to 5.99 gigawatts at the end of 2025 from 6.35 gigawatts at the end of 2024, real estate brokerage CBRE Group Inc. reported Wednesday. The construction delays and faster long-distance networks are driving development to move outside traditional data center sites like",
+          "score": 0.99793327,
           "numbers": [
-            "110B",
-            "50",
-            "30",
-            "110"
+            "5.99",
+            "2025",
+            "6.35",
+            "2024"
           ]
         },
         {
-          "headline": "OpenAI announces $110bn funding round that would value firm Big tech companies and large tech investors such as SoftBank are racing to fo...",
-          "title": "OpenAI announces $110bn funding round that would value firm at $840bn - The Guardian",
-          "url": "https://www.theguardian.com/technology/2026/feb/27/openai-110-billion-funding-round",
-          "snippet": "Big tech companies and large tech investors such as SoftBank are racing to forge partnerships with OpenAI – which is spending heavily on datacenters – betting that closer ties with the company would give them a competitive edge in the AI race. “We are entering a new phase where frontier AI moves fro",
-          "score": 0.909907,
-          "numbers": [
-            "110bn",
-            "840bn",
-            "900",
-            "50"
-          ]
-        },
-        {
-          "headline": "OpenAI raises $110B in one of the largest private funding ro Russell Brandom OpenAI has raised $110 billion in private funding, the compa...",
-          "title": "OpenAI raises $110B in one of the largest private funding rounds in history - TechCrunch",
-          "url": "https://techcrunch.com/2026/02/27/openai-raises-110b-in-one-of-the-largest-private-funding-rounds-in-history/",
-          "snippet": "Russell Brandom OpenAI has raised $110 billion in private funding, the company announced Friday morning, commencing one of the largest private funding rounds in history. The new funding consists of a $50 billion investment from Amazon as well as $30 billion each from Nvidia and SoftBank, against a $",
-          "score": 0.8587186,
-          "numbers": [
-            "110B",
-            "110",
-            "50",
-            "30"
-          ]
-        },
-        {
-          "headline": "OpenAI secures record-breaking $110B funding to “Scale AI fo artificial intelligence ### Stop talking to AI, let them talk to each other ...",
-          "title": "OpenAI secures record-breaking $110B funding to “Scale AI for everyone” - The Next Web",
-          "url": "https://thenextweb.com/news/openai-secures-record-breaking-110b-funding-to-scale-ai-for-everyone",
-          "snippet": "artificial intelligence ### Stop talking to AI, let them talk to each other: The A2A protocol [...] Only days earlier, the company launched the OpenAI Frontier Alliance with top consulting firms including BCG, McKinsey, Accenture, and Capgemini. This initiative is designed to help companies move AI ",
-          "score": 0.5544705,
-          "numbers": [
-            "110B",
-            "2026"
-          ]
-        },
-        {
-          "headline": "Battle of the AI brands It makes money from enterprise contracts with businesses, government agencies, and other organizations, as well a...",
-          "title": "Battle of the AI brands: What’s behind the bad blood between OpenAI and Anthropic - Los Angeles Times",
-          "url": "https://www.latimes.com/business/story/2026-02-26/battle-of-ai-brands-whats-behind-bad-blood-between-openai-anthropic",
-          "snippet": "It makes money from enterprise contracts with businesses, government agencies, and other organizations, as well as from paid subscriptions. Its chatbot, Claude, has fewer users than ChatGPT, but developers and businesses, including Amazon, Microsoft, and other companies, often prefer Anthropic’s too",
-          "score": 0.46490157,
-          "numbers": [
-            "14",
-            "2",
-            "000",
-            "800"
-          ]
-        },
-        {
-          "headline": "Engineering the Next Generation of Data Centers for AI Workl By combining advances in power electronics, cooling, and connectivity across...",
-          "title": "Engineering the Next Generation of Data Centers for AI Workloads - Industrial Equipment News",
-          "url": "https://www.ien.com/artificial-intelligence/article/22961754/engineering-the-next-generation-of-data-centers-for-ai-workloads",
-          "snippet": "By combining advances in power electronics, cooling, and connectivity across multiple domains, operators can build an AI infrastructure that scales not only in 2026 but also through the next wave of innovation. The data center stops being a static utility in the background. It becomes a continuously",
-          "score": 0.44811285,
+          "headline": "Data center construction fell for the first time in years as Copyright © 2026, Los Angeles Times Terms of Service Privacy Policy CA Notic...",
+          "title": "Data center construction fell for the first time in years as permits and power constrain growth - Los Angeles Times",
+          "url": "https://www.latimes.com/business/story/2026-02-25/data-center-construction-fell-for-first-time-in-years-as-permits-power-constrain-growth",
+          "snippet": "Copyright © 2026, Los Angeles Times | Terms of Service | Privacy Policy | CA Notice of Collection | Do Not Sell or Share My Personal Information Tap to enable a layout that focuses on the article. Advertisement Business # Data center construction fell for the first time in years as permits and power",
+          "score": 0.979354,
           "numbers": [
             "2026",
-            "18",
-            "17",
-            "12"
+            "2020",
+            "5.99",
+            "2025"
           ]
         },
         {
-          "headline": "MoU aims to aims to shorten AI data centre construction time Under the MOU, SK Telecom will contribute its AIDC operational expertise and...",
+          "headline": "MoU aims to aims to shorten AI data centre construction time AI-focused company SK Telecom has signed a three-party memorandum of underst...",
           "title": "MoU aims to aims to shorten AI data centre construction timelines - Developing Telecoms",
           "url": "https://www.developingtelecoms.com/telecom-technology/data-centres-networks/19887-mou-aims-to-aims-to-shorten-ai-data-centre-construction-timelines.html",
-          "snippet": "Under the MOU, SK Telecom will contribute its AIDC operational expertise and Supermicro will provide high-performance GPU servers optimised for customer-specific AI computing scenarios. Schneider Electric will deliver MEP infrastructure design and construction capabilities to reliably support large-",
-          "score": 0.43929082,
+          "snippet": "AI-focused company SK Telecom has signed a three-party memorandum of understanding (MoU) with global server manufacturer Supermicro and global mechanical, electrical and plumbing (MEP) leader Schneider Electric to develop a total solution for artificial intelligence data centres (AIDC). The agreemen",
+          "score": 0.97324073,
           "numbers": [
             "04",
             "2026",
@@ -94,23 +44,73 @@
           ]
         },
         {
-          "headline": "Silicon Triumvirate The partnership between Supermicro, NVIDIA, and VAST Data represents a maturing of the AI market from experimental te...",
-          "title": "Silicon Triumvirate: Supermicro, NVIDIA, and VAST Data Unveil the 'CNode-X' to Standardize the Enterprise AI Factory - The Chronicle-Journal",
-          "url": "http://markets.chroniclejournal.com/chroniclejournal/article/marketminute-2026-2-26-silicon-triumvirate-supermicro-nvidia-and-vast-data-unveil-the-cnode-x-to-standardize-the-enterprise-ai-factory",
-          "snippet": "The partnership between Supermicro, NVIDIA, and VAST Data represents a maturing of the AI market from experimental technology to standardized enterprise utility. The CNode-X is more than just a new server; it is a blueprint for the modern data center. By removing the friction of deployment, the trio",
-          "score": 0.41023695,
+          "headline": "Data centers propelled Turner to record $29.2B in revenue in ### Dive Brief Turner Construction reported record financials for 2025 on th...",
+          "title": "Data centers propelled Turner to record $29.2B in revenue in 2025 - Construction Dive",
+          "url": "https://www.constructiondive.com/news/turner-2025-annual-report-data-centers/813694/",
+          "snippet": "### Dive Brief: Turner Construction reported record financials for 2025 on the back of hyperscaler data center builds and marquee stadium projects. The privately held company reported $29.2 billion in revenue for 2025, a 40% increase from 2024, according to the company’s annual report released Tuesd",
+          "score": 0.97068775,
           "numbers": [
-            "26",
+            "29.2B",
+            "2025",
+            "29.2",
+            "40"
+          ]
+        },
+        {
+          "headline": "CoreWeave slides as surging losses, backlog risks overshadow The company expects capital expenditure of at least $30 billion in 2026, its...",
+          "title": "CoreWeave slides as surging losses, backlog risks overshadow small revenue beat - Reuters",
+          "url": "https://www.reuters.com/business/coreweave-beats-fourth-quarter-revenue-estimates-2026-02-26/",
+          "snippet": "The company expects capital expenditure of at least $30 billion in 2026, its co-founder and CEO Michael Intrator said on a call with analysts. Last year, its capital costs were $15.4 billion. Advertisement · Scroll to continue CoreWeave, a so-called neo-cloud that counts hyperscalers such as Microso",
+          "score": 0.9695556,
+          "numbers": [
+            "30",
             "2026",
-            "14",
-            "212GB"
+            "15.4",
+            "31"
+          ]
+        },
+        {
+          "headline": "ZTE Showcases Full-Stack AI Innovations at MWC Barcelona 202 AI Cloud, as the foundation of digital intelligence, is a key focus at ZTE's...",
+          "title": "ZTE Showcases Full-Stack AI Innovations at MWC Barcelona 2026, Creating an Intelligent Future - Developing Telecoms",
+          "url": "https://www.developingtelecoms.com/telecom-business/vendor-news/19856-zte-showcases-full-stack-ai-innovations-at-mwc-barcelona-2026-creating-an-intelligent-future.html",
+          "snippet": "AI Cloud, as the foundation of digital intelligence, is a key focus at ZTE's booth. For data centers, the Elastic AIDC solution can meet the demand for both high efficiency and flexibility. Its highly modular design enables rapid deployment, cutting construction time by 40% compared with traditional",
+          "score": 0.9241418,
+          "numbers": [
+            "2026",
+            "40",
+            "25",
+            "19"
+          ]
+        },
+        {
+          "headline": "Data Center Construction Drops Amid Record-Low Vacancies # Data Center Construction Drops Amid Record-Low Vacancies By Charlie Innis · Fe...",
+          "title": "Data Center Construction Drops Amid Record-Low Vacancies - Law360",
+          "url": "https://www.law360.com/real-estate-authority/commercial/articles/2446960/data-center-construction-drops-amid-record-low-vacancies",
+          "snippet": "# Data Center Construction Drops Amid Record-Low Vacancies By Charlie Innis · February 27, 2026, 4:01 PM EST Digital infrastructure construction in North America declined for the first time since 2020 in major markets due to project delays, while demand has driven vacancies to an all-time low rate o",
+          "score": 0.8864204,
+          "numbers": [
+            "27",
+            "2026",
+            "4",
+            "01"
+          ]
+        },
+        {
+          "headline": "AI Growth Growing protests and local resistance Coming on to the general public’s concerns environmental charity Global Action Pl (2024, ...",
+          "title": "AI Growth: UK Data Centres' Energy and Net-Zero Impact - edie.net",
+          "url": "https://www.edie.net/ai-innovation-data-centres-and-decarbonisation-can-the-uk-balance-all-three/",
+          "snippet": "Growing protests and local resistance Coming on to the general public’s concerns: environmental charity Global Action Plan is coordinating two days of protests against the expansion of data centres, citing their energy and water consumption. Campaigners argue that the unchecked construction of hyper",
+          "score": 0.684264,
+          "numbers": [
+            "2024",
+            "450"
           ]
         }
       ],
       "count": 8
     },
     "Macro": {
-      "summary": "中国制造业PMI创5年新高，工厂活动扩张提速；美国初请失业金略升至212000；下周美国就业数据受市场关注。",
+      "summary": "中国制造业PMI数据存分歧（部分称5年高、部分2月PMI49下滑）；美国关注2月ADP就业及下周非农报告。",
       "items": [
         {
           "headline": "China's factory activity expands at quickest pace in over 5 Stronger demand conditions led manufacturers to ​step up their purchasing ope...",
@@ -123,19 +123,6 @@
             "2022",
             "15",
             "2026"
-          ]
-        },
-        {
-          "headline": "US filings for jobless aid rise modestly to 212,000 as layof Earlier this month, the Labor Department reported that U.S. (212, 000, 130, ...",
-          "title": "US filings for jobless aid rise modestly to 212,000 as layoffs remain at historically healthy levels - Greenwich Time",
-          "url": "https://www.greenwichtime.com/business/article/us-filings-for-jobless-aid-rise-modestly-to-21942760.php",
-          "snippet": "Earlier this month, the Labor Department reported that U.S. employers added a surprisingly strong 130,000 jobs in January and the unemployment rate fell to 4.3% from 4.4%. However, government revisions cut 2024-2025 U.S. payrolls by hundreds of thousands, reducing the number of jobs created last yea",
-          "score": 0.9167081,
-          "numbers": [
-            "212",
-            "000",
-            "130",
-            "4.3"
           ]
         },
         {
@@ -191,37 +178,63 @@
           ]
         },
         {
-          "headline": "image - Mining.com Silver Futures $ 89.8 / ozt -6.46% Aluminum Futures $ 3142.5 / ton 2.09% Micro Gold Futures $ 5350.1 / ozt 0.07% Micro...",
-          "title": "image - Mining.com",
-          "url": "https://www.mining.com/web/aluminum-price-jumps-as-iran-conflict-puts-middle-east-supply-at-risk/image-424/",
-          "snippet": "Silver Futures $ 89.8 / ozt -6.46% Aluminum Futures $ 3142.5 / ton 2.09% Micro Gold Futures $ 5350.1 / ozt 0.07% Micro Silver Futures $ 89.84 / ozt -6.35% Platinum $ 2325.45 / ozt -3.30% Gold Futures $ 5347.9 / ozt -0.23% Copper $ 5.972 / lb -0.71% Brent Crude Oil $ 79.46 / bbl 3.19% Palladium $ 180",
-          "score": 0.49157855,
+          "headline": "Gold Has Found Footing Above $5,000 Silver Futures $ 91.65 / ozt 5.15% Aluminum Futures $ 3121.25 / ton 1.84% Micro Gold Futures $ 5226.7...",
+          "title": "Gold Has Found Footing Above $5,000 - Mining.com",
+          "url": "https://www.mining.com/gold-price-gains-on-tariff-geopolitical-risks/gold-has-found-footing-above-5000/",
+          "snippet": "Silver Futures $ 91.65 / ozt 5.15% Aluminum Futures $ 3121.25 / ton 1.84% Micro Gold Futures $ 5226.7 / ozt 1.26% Micro Silver Futures $ 91.015 / ozt 4.61% Platinum $ 2333.3 / ozt 7.03% Gold Futures $ 5226.4 / ozt 1.29% Copper $ 6.045 / lb 1.50% Brent Crude Oil $ 70.99 / bbl -0.32% Palladium $ 1870.",
+          "score": 0.38186535,
           "numbers": [
-            "89.8",
-            "6.46",
-            "3142.5",
-            "2.09"
+            "5",
+            "000",
+            "91.65",
+            "5.15"
           ]
         },
         {
-          "headline": "Gold price extends gain on US-Iran tensions Silver Futures $ 93.835 / ozt 5.34% Aluminum Futures $ 3078.25 / ton -0.40% Micro Gold Future...",
-          "title": "Gold price extends gain on US-Iran tensions - Mining.com",
-          "url": "https://www.mining.com/gold-price-extends-gain-on-us-iran-tensions/",
-          "snippet": "Silver Futures $ 93.835 / ozt 5.34% Aluminum Futures $ 3078.25 / ton -0.40% Micro Gold Futures $ 5245.4 / ozt 0.83% Micro Silver Futures $ 93.835 / ozt 5.62% Platinum $ 2361.2 / ozt 3.49% Gold Futures $ 5245 / ozt 0.83% Copper $ 6.0583 / lb 0.49% Brent Crude Oil $ 72.42 / bbl 2.09% Palladium $ 1819 ",
-          "score": 0.4434805,
+          "headline": "Under-owned and undervalued Silver Futures $ 89.325 / ozt -0.26% Aluminum Futures $ 3094.75 / ton -0.83% Micro Gold Futures $ 5212.7 / oz...",
+          "title": "Under-owned and undervalued: Why gold stocks still have room to run - Mining.com",
+          "url": "https://www.mining.com/video/under-owned-and-undervalued-why-gold-stocks-still-have-room-to-run/",
+          "snippet": "Silver Futures $ 89.325 / ozt -0.26% Aluminum Futures $ 3094.75 / ton -0.83% Micro Gold Futures $ 5212.7 / ozt 0.73% Micro Silver Futures $ 89.345 / ozt -0.72% Platinum $ 2282.9 / ozt -0.14% Gold Futures $ 5212 / ozt 0.71% Copper $ 6.0295 / lb -0.30% Brent Crude Oil $ 70.89 / bbl -0.11% Palladium $ ",
+          "score": 0.3498664,
           "numbers": [
-            "93.835",
-            "5.34",
-            "3078.25",
-            "0.40"
+            "89.325",
+            "0.26",
+            "3094.75",
+            "0.83"
+          ]
+        },
+        {
+          "headline": "MMG Sees Stronger Growth Ahead on Higher Metals Prices Silver Futures $ 83.473 / ozt -6.93% Aluminum Futures $ 3184 / ton 1.69% Micro Gol...",
+          "title": "MMG Sees Stronger Growth Ahead on Higher Metals Prices - Mining.com",
+          "url": "https://www.mining.com/web/mmg-profit-more-than-triples-on-copper-rally-strong-mine-output/mmg-sees-stronger-growth-ahead-on-higher-metals-prices/",
+          "snippet": "Silver Futures $ 83.473 / ozt -6.93% Aluminum Futures $ 3184 / ton 1.69% Micro Gold Futures $ 5123.7 / ozt -3.96% Micro Silver Futures $ 83.473 / ozt -6.74% Platinum $ 2075.5 / ozt -10.59% Gold Futures $ 5123.7 / ozt -3.97% Copper $ 5.826 / lb -2.27% Brent Crude Oil $ 82.15 / bbl 5.25% Palladium $ 1",
+          "score": 0.29940772,
+          "numbers": [
+            "83.473",
+            "6.93",
+            "3184",
+            "1.69"
           ]
         }
       ],
       "count": 8
     },
     "Robotics": {
-      "summary": "特斯拉、比亚迪部署人形机器人，宝马试点轮式款；行业热度高但仍攻基础问题，AI+机器人助解劳动力短缺。",
+      "summary": "中国人形机器人因供应链优势占先机，特斯拉、比亚迪、宝马推进应用，人形机器人行走稳定性提升。",
       "items": [
+        {
+          "headline": "Why China’s humanoid robot industry is winning the early mar “China has a more robust hardware supply chain — much of it built up through...",
+          "title": "Why China’s humanoid robot industry is winning the early market - TechCrunch",
+          "url": "https://techcrunch.com/2026/02/28/why-chinas-humanoid-robot-industry-is-winning-the-early-market/",
+          "snippet": "“China has a more robust hardware supply chain — much of it built up through the EV sector, from sensors to batteries — and the world’s strongest manufacturing base, allowing companies to iterate far faster than Western competitors,” Xu told TechCrunch. As a result, not only are Chinese robots cheap",
+          "score": 0.9549844,
+          "numbers": [
+            "36",
+            "3",
+            "7",
+            "300"
+          ]
+        },
         {
           "headline": "What’s behind the humanoid robot hype? Tesla has deployed a couple of Optimus robots within its car assembly operations, while BYD has us...",
           "title": "What’s behind the humanoid robot hype? - Automotive World",
@@ -236,22 +249,32 @@
           ]
         },
         {
-          "headline": "Why China’s humanoid robot industry is winning the early mar Yet humanoid robotics makers are still working on fundamental problems. (202...",
-          "title": "Why China’s humanoid robot industry is winning the early market - TechCrunch",
-          "url": "https://techcrunch.com/2026/02/28/why-chinas-humanoid-robot-industry-is-winning-the-early-market/",
-          "snippet": "Yet humanoid robotics makers are still working on fundamental problems. The challenge is enabling robot foundation models to predict the “next physical state” the robot will face in unpredictable environments, like how large language models predict the next word. But unlike LLMs, humanoid robotics c",
-          "score": 0.9190633,
+          "headline": "Software Development AI Robotics Skip to primary navigation Skip to primary sidebar Skip to secondary sidebar Robotics & Automation News ...",
+          "title": "Software Development AI Robotics: Engineering Intelligent Machines for the Real World - Robotics & Automation News",
+          "url": "https://roboticsandautomationnews.com/2026/02/26/software-development-ai-robotics-engineering-intelligent-machines-for-the-real-world/99093/",
+          "snippet": "Skip to primary navigation Skip to primary sidebar Skip to secondary sidebar Robotics & Automation News Where Innovation Meets Imagination # Software Development AI Robotics: Engineering Intelligent Machines for the Real World by David Edwards Software development AI robotics is transforming how int",
+          "score": 0.48235655,
+          "numbers": []
+        },
+        {
+          "headline": "Humanoid Robots Make Confident Strides Toward Walking Stabil Today More news about Technologies Latest News Humanoid Robots Make Confiden...",
+          "title": "Humanoid Robots Make Confident Strides Toward Walking Stability - Technology Org",
+          "url": "https://www.technology.org/2026/03/04/humanoid-robots-make-confident-strides-toward-walking-stability/",
+          "snippet": "Today More news about Technologies Latest News Humanoid Robots Make Confident Strides Toward Walking Stability Today Using Machine Learning to Develop Personalized Vaccines for Cancer Today Mineral sunscreen that reduces white cast developed by UCLA researchers Today Google’s Nest Cameras Can Now An",
+          "score": 0.22405586,
           "numbers": [
-            "2027",
-            "2025"
+            "295",
+            "4.8",
+            "599",
+            "122"
           ]
         },
         {
-          "headline": "BMW piloting Hexagon’s wheeled humanoid in Germany Humanoids have exploded in popularity in recent years, with more and more robotics com...",
+          "headline": "BMW piloting Hexagon’s wheeled humanoid in Germany RBR50 Winners 2024 - RBR50 Winners 2023 - RBR50 Winners 2022 - RBR50 Winners 2021 Reso...",
           "title": "BMW piloting Hexagon’s wheeled humanoid in Germany - The Robot Report",
           "url": "https://www.therobotreport.com/bmw-piloting-hexagons-wheeled-humanoid-in-germany/",
-          "snippet": "Humanoids have exploded in popularity in recent years, with more and more robotics companies releasing their own versions. However, commercial deployments have been slow so far. Hyundai Motor Group has plans to purchase thousands of Boston Dynamics’ Atlas robots in the coming years. In 2024, GXO off",
-          "score": 0.9073123,
+          "snippet": "- RBR50 Winners 2024 - RBR50 Winners 2023 - RBR50 Winners 2022 - RBR50 Winners 2021 Resources + Automated Warehouse Research Reports + Digital Issues + eBooks + Publications - Automated Warehouse - Collaborative Robotics Trends + Search Robotics Database + Videos + Webinars / Digital Events Events +",
+          "score": 0.17848319,
           "numbers": [
             "2024",
             "2023",
@@ -260,37 +283,24 @@
           ]
         },
         {
-          "headline": "Humanoid Robots Make Confident Strides Toward Walking Stabil More Latest News > Selected topics Aging research Artificial intelligence Bi...",
-          "title": "Humanoid Robots Make Confident Strides Toward Walking Stability - Technology Org",
-          "url": "https://www.technology.org/2026/03/04/humanoid-robots-make-confident-strides-toward-walking-stability/",
-          "snippet": "More Latest News > Selected topics Aging research Artificial intelligence Biometrics Brain-computer interfaces Quantum computing Robotics 122,803 science & technology articles Featured Posts (see all) Directional Sound Installation for a Phonic Contemporary Opera This fall Focusonics™ team had an op",
-          "score": 0.8774768,
-          "numbers": [
-            "122",
-            "803",
-            "3",
-            "000"
-          ]
-        },
-        {
-          "headline": "Software Development AI Robotics ### Industry Applications and Automation Across industry, AI and robotics are addressing labour shortage...",
-          "title": "Software Development AI Robotics: Engineering Intelligent Machines for the Real World - Robotics & Automation News",
-          "url": "https://roboticsandautomationnews.com/2026/02/26/software-development-ai-robotics-engineering-intelligent-machines-for-the-real-world/99093/",
-          "snippet": "### Industry Applications and Automation Across industry, AI and robotics are addressing labour shortages and operational inefficiencies. Industrial robots improve manufacturing consistency, while service robots assist in healthcare, logistics and retail. Warehouse automation is one of the fastest-g",
-          "score": 0.83867973,
+          "headline": "Deploying Physical AI for Smarter, Safer Inbound Logistics Physical AI will transform many aspects of the supply chain.",
+          "title": "Deploying Physical AI for Smarter, Safer Inbound Logistics - Inbound Logistics",
+          "url": "https://www.inboundlogistics.com/articles/deploying-physical-ai-for-smarter-safer-inbound-logistics/",
+          "snippet": "Physical AI will transform many aspects of the supply chain. Starting with a small, focused inbound logistics use case now can make your warehouse operations more efficient, accurate, and safe, as well as help your organization build the skills needed to extend Physical AI into other areas of your b",
+          "score": 0.16394038,
           "numbers": []
         },
         {
-          "headline": "AI Motion Control and Predictive Maintenance Sponsored ### Why Effective Power and Energy Management is Crucial in Automation Sponsored #...",
-          "title": "AI Motion Control and Predictive Maintenance - Automation World",
-          "url": "https://www.automationworld.com/factory/motion/video/55340054/ai-motion-control-and-predictive-maintenance",
-          "snippet": "Sponsored ### Why Effective Power and Energy Management is Crucial in Automation Sponsored ### Which Ignition Edition Is Right For Your System? ## Trending ### Beyond ISA-95: How Unified Namespace Solves Manufacturing's Data Silo Problem ### Why Humanoid Robots May Be the Wrong Bet for Industrial Au",
-          "score": 0.19682619,
+          "headline": "Software woes persist; BMW’s humanoid robot expansion Daily Drive # Software woes persist (27, 2026, 03, 33)",
+          "title": "Software woes persist; BMW’s humanoid robot expansion - Automotive News",
+          "url": "https://www.autonews.com/podcasts/daily-drive/an-daily-drive-software-woes-cuyler-owens/",
+          "snippet": "Daily Drive # Software woes persist; BMW’s humanoid robot expansion February 27, 2026 03:33 PM EST ## Featured Stories BMW BMW intensifies humanoid robot push with test project in Germany after U.S. success BMW joins automakers that are exploring humanoid robotics as the next frontier of manufacturi",
+          "score": 0.12586927,
           "numbers": [
-            "95",
-            "4",
+            "27",
             "2026",
-            "33182"
+            "03",
+            "33"
           ]
         },
         {
@@ -298,34 +308,52 @@
           "title": "BMW intensifies humanoid robot push with test project in Germany after U.S. success - Automotive News",
           "url": "https://www.autonews.com/bmw/ane-bmw-humanoid-robot-leipzig-germany-0227/",
           "snippet": "# BMW intensifies humanoid robot push with test project in Germany after U.S. success By Douglas A. Bolduc February 27, 2026 09:00 AM EST ## Featured Stories Hyundai Rise of robots pits Hyundai’s Atlas against Musk’s Optimus While the world’s attention has been fixated on Elon Musk’s model and the h",
-          "score": 0.13568954,
+          "score": 0.10134924,
           "numbers": [
             "27",
             "2026",
             "09",
             "00"
           ]
-        },
-        {
-          "headline": "Deploying Physical AI for Smarter, Safer Inbound Logistics ## Implementing Physical AI for warehouse operations Realizing the benefits of...",
-          "title": "Deploying Physical AI for Smarter, Safer Inbound Logistics - Inbound Logistics",
-          "url": "https://www.inboundlogistics.com/articles/deploying-physical-ai-for-smarter-safer-inbound-logistics/",
-          "snippet": "## Implementing Physical AI for warehouse operations Realizing the benefits of Physical AI requires extensive planning. Robots are an expensive capital investment, although it’s possible to reduce the initial cost by using robots-as-a-service that charges by the month or per picked item, which shift",
-          "score": 0.13028543,
-          "numbers": []
         }
       ],
       "count": 8
     },
     "Commercial Space": {
-      "summary": "PLD Space融1.8亿欧元扩卫星；Open Cosmos获Ka频谱、推主权卫星；NordSpace设风投；Rocket Lab因测试失败推迟Neutron首飞至2026晚。",
+      "summary": "商业航天领域：NordSpace设风投、Open Cosmos推进主权卫星/频谱，PLD Space获1.8亿欧元C轮，OQ Technology获2500万欧元债务融资。",
       "items": [
         {
-          "headline": "PLD Space raises €180M Series C to scale Miura-5 satellite l The 💜 of EU tech The rumblings from the EU tech scene, a story from our wise...",
+          "headline": "Canada’s NordSpace Opens VC Arm for Sovereign Space Investme Here be dragons Wyvern, which does EO hyperspectral imaging with its small D...",
+          "title": "Canada’s NordSpace Opens VC Arm for Sovereign Space Investments - Payload Space",
+          "url": "https://payloadspace.com/canadas-nordspace-opens-vc-arm-for-sovereign-space-investments/",
+          "snippet": "Here be dragons: Wyvern, which does EO hyperspectral imaging with its small Dragonette constellation, will get access to NordSpace’s advanced manufacturing and space systems testing facilities as part of the investment, whose amount was not disclosed. Beaming up: While Canada is a nascent player in ",
+          "score": 0.75346667,
+          "numbers": [
+            "26",
+            "2026",
+            "2025",
+            "25M"
+          ]
+        },
+        {
+          "headline": "Open Cosmos unveils vision for imagery-linked sovereign sate “Our satellites are in advanced stages of production at our new industrial f...",
+          "title": "Open Cosmos unveils vision for imagery-linked sovereign satellite connectivity - SpaceNews",
+          "url": "https://spacenews.com/open-cosmos-unveils-vision-for-imagery-linked-sovereign-satellite-connectivity/",
+          "snippet": "“Our satellites are in advanced stages of production at our new industrial facility and will be ready for launch on time,” Siquier said, adding that “the team is in place, and we’ve been working closely with our partners to move to deployment. Execution is the priority now — and soon we will turn ca",
+          "score": 0.69097626,
+          "numbers": [
+            "576",
+            "144",
+            "50",
+            "15"
+          ]
+        },
+        {
+          "headline": "PLD Space raises €180M Series C to scale Miura-5 satellite l ### What PLD Space does? (180M, 5, 2011, 1)",
           "title": "PLD Space raises €180M Series C to scale Miura-5 satellite launches - TNW | The heart of tech",
           "url": "https://thenextweb.com/news/pld-space-raises-e180m-series-c-to-scale-europes-commercial-launch-capabilities",
-          "snippet": "The 💜 of EU tech The latest rumblings from the EU tech scene, a story from our wise ol' founder Boris, and some questionable AI art. It's free, every week, in your inbox. Sign up now! Rather than manufacturing satellites, PLD Space operates as a launch services provider. Its customers include satell",
-          "score": 0.45449692,
+          "snippet": "### What PLD Space does? PLD Space is part of a small but growing cohort of European private launch companies attempting to build independent access to orbit. Founded in 2011, the company develops reusable launch systems designed to deliver small satellites into low Earth orbit. Its technology roadm",
+          "score": 0.68763,
           "numbers": [
             "180M",
             "5",
@@ -338,7 +366,7 @@
           "title": "Open Cosmos joins Europe's satellite connectivity space race - Light Reading",
           "url": "https://www.lightreading.com/satellite/open-cosmos-joins-europe-s-satellite-connectivity-space-race",
           "snippet": "Open Cosmos' most recent claim to fame is securing priority Ka-band spectrum rights in Liechtenstein in January, which it brought back into service with the launch of two LEO satellites, the first of its new communications constellation. The rights to this spectrum were previously held by Rivada Spa",
-          "score": 0.3713423,
+          "score": 0.64779824,
           "numbers": [
             "2024",
             "17",
@@ -347,80 +375,55 @@
           ]
         },
         {
-          "headline": "Canada’s NordSpace Opens VC Arm for Sovereign Space Investme Here be dragons Wyvern, which does EO hyperspectral imaging with its small D...",
-          "title": "Canada’s NordSpace Opens VC Arm for Sovereign Space Investments - Payload Space",
-          "url": "https://payloadspace.com/canadas-nordspace-opens-vc-arm-for-sovereign-space-investments/",
-          "snippet": "Here be dragons: Wyvern, which does EO hyperspectral imaging with its small Dragonette constellation, will get access to NordSpace’s advanced manufacturing and space systems testing facilities as part of the investment, whose amount was not disclosed. Beaming up: While Canada is a nascent player in ",
-          "score": 0.24398948,
+          "headline": "OQ Technology Lands €25M in EIB Venture Debt Financing The company plans to double its headcount to 100+ by the end of this year, and exp...",
+          "title": "OQ Technology Lands €25M in EIB Venture Debt Financing - Payload Space",
+          "url": "https://payloadspace.com/oq-technology-lands-e25m-in-eib-venture-debt-financing/",
+          "snippet": "The company plans to double its headcount to 100+ by the end of this year, and expects to reach a constellation of 30 sats in the next few years. The company’s long-term goal is to operate a constellation of 100 D2D payloads, both on dedicated satellites and as hosted payloads aboard partner sats. O",
+          "score": 0.23792991,
           "numbers": [
-            "2026",
-            "10M",
-            "7.1M",
-            "25M"
-          ]
-        },
-        {
-          "headline": "Open Cosmos unveils vision for imagery-linked sovereign sate “Historically, Earth Observation satellites have operated in isolation, capt...",
-          "title": "Open Cosmos unveils vision for imagery-linked sovereign satellite connectivity - SpaceNews",
-          "url": "https://spacenews.com/open-cosmos-unveils-vision-for-imagery-linked-sovereign-satellite-connectivity/",
-          "snippet": "“Historically, Earth Observation satellites have operated in isolation, capturing high-value data, but relying on ground station passes to transmit it, which can introduce delays of several hours,” Open Cosmos founder and CEO Rafel Jordà Siquier told SpaceNews. “With our inter-satellite links across",
-          "score": 0.2035812,
-          "numbers": [
-            "576",
-            "144",
-            "50",
-            "15"
-          ]
-        },
-        {
-          "headline": "Rocket Lab Delays Neutron Flight To Late 2026 After Test Fai + Aerospace - Aircraft & Propulsion - Connected Aerospace - Emerging Technol...",
-          "title": "Rocket Lab Delays Neutron Flight To Late 2026 After Test Failure - Aviation Week",
-          "url": "https://aviationweek.com/space/launch-vehicles-propulsion/rocket-lab-delays-neutron-flight-late-2026-after-test-failure",
-          "snippet": "+ Aerospace - Aircraft & Propulsion - Connected Aerospace - Emerging Technologies - Manufacturing & Supply Chain - Advanced Air Mobility - Sustainability + Air Transport - Aircraft & Propulsion - Interiors & Connectivity - Airports & Networks - Airlines & Lessors - Safety, Ops & Regulation - Mainten",
-          "score": 0.08269734,
-          "numbers": [
-            "2026",
-            "27",
-            "1"
-          ]
-        },
-        {
-          "headline": "Neutron’s First Launch Slips to Q4 Related Stories Business • Launch • Startups ## Phantom Space Acquires Vector Launch Assets Phantom Sp...",
-          "title": "Neutron’s First Launch Slips to Q4 - Payload Space",
-          "url": "https://payloadspace.com/neutrons-first-launch-slips-to-q4/",
-          "snippet": "Related Stories Business • Launch • Startups ## Phantom Space Acquires Vector Launch Assets Phantom Space just got a boatload of pre-owned toys to play with. Europe • Launch ## Orbex’s Troubles Open Opportunities for Skyrora It seems Scotland’s two launch startups—Orbex and Skyrora—are playing by Hi",
-          "score": 0.07870625,
-          "numbers": [
-            "64",
-            "5.5M",
-            "27",
+            "25M",
+            "100",
+            "30",
             "2026"
           ]
         },
         {
-          "headline": "Infinite Orbits Expands into the UK with Lúnasa Acquisition “We are looking at adding more talent [and] more opportunities into the UK, [...",
-          "title": "Infinite Orbits Expands into the UK with Lúnasa Acquisition - Payload Space",
-          "url": "https://payloadspace.com/infinite-orbits-expands-into-the-uk-with-lunasa-acquisition/",
-          "snippet": "“We are looking at adding more talent [and] more opportunities into the UK, [and] building infrastructure, attracting and catalyzing investments into the UK through private funding,” Chabi said. “So this is a new trajectory for us, which is—again—onwards and upwards.” Related Stories Business ## Ces",
-          "score": 0.07769257,
+          "headline": "Rocket Lab expands machining as NZ lifts launch cap to 1,000 acquisition +0.1% Average Historical Move acquisition In the past year, RKLB...",
+          "title": "Rocket Lab expands machining as NZ lifts launch cap to 1,000 - Stock Titan",
+          "url": "https://www.stocktitan.net/news/RKLB/rocket-lab-establishes-new-precision-machining-complex-expands-eb2kxp4k8cnw.html",
+          "snippet": "acquisition +0.1% Average Historical Move acquisition In the past year, RKLB issued 3 acquisition headlines with an average 24h move of 0.14%. Today’s manufacturing-focused deal fits the pattern of strategically important but usually modest stock reactions. Acquisition activity has progressed from p",
+          "score": 0.17981876,
           "numbers": [
-            "3",
+            "1",
+            "000",
+            "0.1",
+            "3"
+          ]
+        },
+        {
+          "headline": "Neutron’s First Launch Slips to Q4 Skip to content Friday February 27, 2026 Waxing Gibbous Webinars Events Webinars Events Business Launc...",
+          "title": "Neutron’s First Launch Slips to Q4 - Payload Space",
+          "url": "https://payloadspace.com/neutrons-first-launch-slips-to-q4/",
+          "snippet": "Skip to content Friday February 27, 2026 Waxing Gibbous Webinars Events Webinars Events Business Launch Civil VC/PE Military Europe Polaris All + Debris + EO + Equities + International + ISS + LEO + Moonshot Mechanics 2025 + Lunar + Opinion + Payload Pioneers 2025 + Startups + State of the Space Ind",
+          "score": 0.1431877,
+          "numbers": [
+            "27",
             "2026",
             "2025",
             "10M"
           ]
         },
         {
-          "headline": "Austria Commissions its First Military Sat Related Stories Europe • Startups • VC/PE ## ISPTech Raises €5.5M to Scale Green Propulsion Te...",
-          "title": "Austria Commissions its First Military Sat - Payload Space",
-          "url": "https://payloadspace.com/austria-commissions-its-first-military-sat/",
-          "snippet": "Related Stories Europe • Startups • VC/PE ## ISPTech Raises €5.5M to Scale Green Propulsion Tech Green energy is all the rage in Europe, and the trend is beginning to reach beyond the stratosphere. Europe • Satcom • Technology ## Mynaric Demos QKD Comms With COTS Tech German engineering just entered",
-          "score": 0.07391672,
+          "headline": "SpaceX launches Starlink 10-41 mission from Cape Canaveral, SpaceX launches Starlink 10-41 mission from Cape Canaveral, Florida Undo Undo...",
+          "title": "SpaceX launches Starlink 10-41 mission from Cape Canaveral, Florida - Florida Today",
+          "url": "https://www.floridatoday.com/picture-gallery/tech/science/space/2026/03/01/spacex-launches-starlink-10-41-mission-from-cape-canaveral-florida/88938125007/",
+          "snippet": "SpaceX launches Starlink 10-41 mission from Cape Canaveral, Florida Undo Undo Undo Undo Undo []( PuroClean of Melbourne Boys Athlete of the Week, Feb. 23-28 Vote at 321preps.com and floridatoday.com for the PuroClean of Melbourne Boys Athlete of the Week for Feb. 23-28, 2026.Florida Today Undo []( a",
+          "score": 0.1321896,
           "numbers": [
-            "5.5M",
-            "2",
-            "2026",
-            "2025"
+            "10",
+            "41",
+            "23",
+            "28"
           ]
         }
       ],

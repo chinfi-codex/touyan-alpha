@@ -1,0 +1,491 @@
+{
+  "meta": {
+    "date": "2026-03-04",
+    "generated_at": "2026-03-05T12:04:27.569672+00:00",
+    "provider": "kimi",
+    "dry_run": true,
+    "hard_cap_tokens": 100000,
+    "stage0": {
+      "total_input_items": 1258,
+      "stage0_candidates": 220,
+      "macro_context_count": 4
+    },
+    "stage1_kept": 220,
+    "stage2_analyzed": 61,
+    "final_clues": 12,
+    "concept_mapping_fallback": true,
+    "concept_mapping_stats": {
+      "concept_source": "unavailable",
+      "concept_library_size": 0,
+      "mapped_clue_count": 0,
+      "alias_match_enabled": true,
+      "concept_clue_count": 0
+    },
+    "concept_mapping_warning": "概念线索已跳过：AkShare concept library unavailable: both stock_board_concept_name_em and stock_board_concept_name_em_async failed"
+  },
+  "macro_context": [
+    {
+      "bucket": "AI Industry",
+      "summary": "AI数据中心领域：美建设因许可/电力延迟下滑；SK签备忘录提速；Turner营收创新高；CoreWeave下滑，2026资本支出≥300亿。"
+    },
+    {
+      "bucket": "Macro",
+      "summary": "中国制造业PMI数据存分歧（部分称5年高、部分2月PMI49下滑）；美国关注2月ADP就业及下周非农报告。"
+    },
+    {
+      "bucket": "Robotics",
+      "summary": "中国人形机器人因供应链优势占先机，特斯拉、比亚迪、宝马推进应用，人形机器人行走稳定性提升。"
+    },
+    {
+      "bucket": "Commercial Space",
+      "summary": "商业航天领域：NordSpace设风投、Open Cosmos推进主权卫星/频谱，PLD Space获1.8亿欧元C轮，OQ Technology获2500万欧元债务融资。"
+    }
+  ],
+  "concept_clues": [],
+  "items": [
+    {
+      "clue_id": "clue-0928c0542649d123",
+      "date": "2026-03-04",
+      "symbol": "301057",
+      "ts_code": "301057.SZ",
+      "company": "汇隆新材",
+      "direction": "long",
+      "thesis": "关于控股股东、实际控制人签署股份转让协议暨权益变动的提示性公告",
+      "evidence": [
+        {
+          "source": "cninfo_fulltext",
+          "fact": "关于控股股东、实际控制人签署股份转让协议暨权益变动的提示性公告"
+        }
+      ],
+      "risk_flags": [],
+      "invalidation": "若后续公告或价格行为与事件逻辑背离",
+      "horizon": "T+1~T+5",
+      "confidence": 0.642,
+      "source_context_type": "dry_run",
+      "source_context_chars": 0,
+      "source": "cninfo_fulltext",
+      "subcategory": "重大合作/投资项目",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-03-05/1224995344.PDF",
+      "event_time": "2026-03-05",
+      "review_required": true,
+      "review_status": "pending_review",
+      "status": "new",
+      "score_components": {
+        "event_strength": 0.9,
+        "cross_source": 0.32,
+        "novelty": 0.55,
+        "timeliness": 0.82,
+        "liquidity_prior": 0.55,
+        "risk_penalty": 0.0
+      },
+      "linked_concepts": []
+    },
+    {
+      "clue_id": "clue-01b7da0e4bf4702b",
+      "date": "2026-03-04",
+      "symbol": "001369",
+      "ts_code": "001369.SZ",
+      "company": "双欣环保",
+      "direction": "neutral",
+      "thesis": "关于全资子公司拟投资建设项目的公告",
+      "evidence": [
+        {
+          "source": "cninfo_fulltext",
+          "fact": "关于全资子公司拟投资建设项目的公告"
+        }
+      ],
+      "risk_flags": [],
+      "invalidation": "若后续公告或价格行为与事件逻辑背离",
+      "horizon": "T+1~T+5",
+      "confidence": 0.642,
+      "source_context_type": "dry_run",
+      "source_context_chars": 0,
+      "source": "cninfo_fulltext",
+      "subcategory": "重大合作/投资项目",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-03-05/1224995665.PDF",
+      "event_time": "2026-03-05",
+      "review_required": true,
+      "review_status": "pending_review",
+      "status": "new",
+      "score_components": {
+        "event_strength": 0.9,
+        "cross_source": 0.32,
+        "novelty": 0.55,
+        "timeliness": 0.82,
+        "liquidity_prior": 0.55,
+        "risk_penalty": 0.0
+      },
+      "linked_concepts": []
+    },
+    {
+      "clue_id": "clue-1688a0d706ade967",
+      "date": "2026-03-04",
+      "symbol": "601121",
+      "ts_code": "601121.SH",
+      "company": "宝地矿业",
+      "direction": "long",
+      "thesis": "新疆宝地矿业股份有限公司关于开设募集资金专用账户并授权签署募集资金专户存储三方及四方监管协议、办理开户事宜的公告",
+      "evidence": [
+        {
+          "source": "cninfo_fulltext",
+          "fact": "新疆宝地矿业股份有限公司关于开设募集资金专用账户并授权签署募集资金专户存储三方及四方监管协议、办理开户事宜的公告"
+        }
+      ],
+      "risk_flags": [],
+      "invalidation": "若后续公告或价格行为与事件逻辑背离",
+      "horizon": "T+1~T+5",
+      "confidence": 0.642,
+      "source_context_type": "dry_run",
+      "source_context_chars": 0,
+      "source": "cninfo_fulltext",
+      "subcategory": "重大合作/投资项目",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-03-04/1224993389.PDF",
+      "event_time": "2026-03-04",
+      "review_required": true,
+      "review_status": "pending_review",
+      "status": "new",
+      "score_components": {
+        "event_strength": 0.9,
+        "cross_source": 0.32,
+        "novelty": 0.55,
+        "timeliness": 0.82,
+        "liquidity_prior": 0.55,
+        "risk_penalty": 0.0
+      },
+      "linked_concepts": []
+    },
+    {
+      "clue_id": "clue-7075fb54962528ea",
+      "date": "2026-03-04",
+      "symbol": "601619",
+      "ts_code": "601619.SH",
+      "company": "嘉泽新能",
+      "direction": "neutral",
+      "thesis": "嘉泽新能源股份有限公司关于基础设施不动产投资信托基金（REITs）项目申请获得受理的公告",
+      "evidence": [
+        {
+          "source": "cninfo_fulltext",
+          "fact": "嘉泽新能源股份有限公司关于基础设施不动产投资信托基金（REITs）项目申请获得受理的公告"
+        }
+      ],
+      "risk_flags": [],
+      "invalidation": "若后续公告或价格行为与事件逻辑背离",
+      "horizon": "T+1~T+5",
+      "confidence": 0.642,
+      "source_context_type": "dry_run",
+      "source_context_chars": 0,
+      "source": "cninfo_fulltext",
+      "subcategory": "重大合作/投资项目",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-03-04/1224994865.PDF",
+      "event_time": "2026-03-04",
+      "review_required": true,
+      "review_status": "pending_review",
+      "status": "new",
+      "score_components": {
+        "event_strength": 0.9,
+        "cross_source": 0.32,
+        "novelty": 0.55,
+        "timeliness": 0.82,
+        "liquidity_prior": 0.55,
+        "risk_penalty": 0.0
+      },
+      "linked_concepts": []
+    },
+    {
+      "clue_id": "clue-a481de21c37538d1",
+      "date": "2026-03-04",
+      "symbol": "300708",
+      "ts_code": "300708.SZ",
+      "company": "聚灿光电",
+      "direction": "neutral",
+      "thesis": "关于调整部分募集资金投资项目实施进度的公告",
+      "evidence": [
+        {
+          "source": "cninfo_fulltext",
+          "fact": "关于调整部分募集资金投资项目实施进度的公告"
+        }
+      ],
+      "risk_flags": [],
+      "invalidation": "若后续公告或价格行为与事件逻辑背离",
+      "horizon": "T+1~T+5",
+      "confidence": 0.642,
+      "source_context_type": "dry_run",
+      "source_context_chars": 0,
+      "source": "cninfo_fulltext",
+      "subcategory": "重大合作/投资项目",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-03-04/1224995233.PDF",
+      "event_time": "2026-03-04",
+      "review_required": true,
+      "review_status": "pending_review",
+      "status": "new",
+      "score_components": {
+        "event_strength": 0.9,
+        "cross_source": 0.32,
+        "novelty": 0.55,
+        "timeliness": 0.82,
+        "liquidity_prior": 0.55,
+        "risk_penalty": 0.0
+      },
+      "linked_concepts": []
+    },
+    {
+      "clue_id": "clue-1436cfcc7157fd4a",
+      "date": "2026-03-04",
+      "symbol": "300960",
+      "ts_code": "300960.SZ",
+      "company": "通业科技",
+      "direction": "long",
+      "thesis": "关于签署《业绩承诺及补偿协议之补充协议（一）》的公告",
+      "evidence": [
+        {
+          "source": "cninfo_fulltext",
+          "fact": "关于签署《业绩承诺及补偿协议之补充协议（一）》的公告"
+        }
+      ],
+      "risk_flags": [],
+      "invalidation": "若后续公告或价格行为与事件逻辑背离",
+      "horizon": "T+1~T+5",
+      "confidence": 0.642,
+      "source_context_type": "dry_run",
+      "source_context_chars": 0,
+      "source": "cninfo_fulltext",
+      "subcategory": "重大合作/投资项目",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-03-04/1224995619.PDF",
+      "event_time": "2026-03-04",
+      "review_required": true,
+      "review_status": "pending_review",
+      "status": "new",
+      "score_components": {
+        "event_strength": 0.9,
+        "cross_source": 0.32,
+        "novelty": 0.55,
+        "timeliness": 0.82,
+        "liquidity_prior": 0.55,
+        "risk_penalty": 0.0
+      },
+      "linked_concepts": []
+    },
+    {
+      "clue_id": "clue-23934702bbc6ec90",
+      "date": "2026-03-04",
+      "symbol": "300550",
+      "ts_code": "300550.SZ",
+      "company": "和仁科技",
+      "direction": "long",
+      "thesis": "关于日常经营合同预中标的提示性公告",
+      "evidence": [
+        {
+          "source": "cninfo_fulltext",
+          "fact": "关于日常经营合同预中标的提示性公告"
+        }
+      ],
+      "risk_flags": [],
+      "invalidation": "若后续公告或价格行为与事件逻辑背离",
+      "horizon": "T+1~T+5",
+      "confidence": 0.642,
+      "source_context_type": "dry_run",
+      "source_context_chars": 0,
+      "source": "cninfo_fulltext",
+      "subcategory": "重大合作/投资项目",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-03-04/1224995132.PDF",
+      "event_time": "2026-03-04",
+      "review_required": true,
+      "review_status": "pending_review",
+      "status": "new",
+      "score_components": {
+        "event_strength": 0.9,
+        "cross_source": 0.32,
+        "novelty": 0.55,
+        "timeliness": 0.82,
+        "liquidity_prior": 0.55,
+        "risk_penalty": 0.0
+      },
+      "linked_concepts": []
+    },
+    {
+      "clue_id": "clue-598801bb339692c3",
+      "date": "2026-03-04",
+      "symbol": "002973",
+      "ts_code": "002973.SZ",
+      "company": "侨银股份",
+      "direction": "long",
+      "thesis": "关于收到约7380万元内蒙古自治区呼和浩特市新城区城区环卫一体化服务项目中标通知书的公告",
+      "evidence": [
+        {
+          "source": "cninfo_fulltext",
+          "fact": "关于收到约7380万元内蒙古自治区呼和浩特市新城区城区环卫一体化服务项目中标通知书的公告"
+        }
+      ],
+      "risk_flags": [],
+      "invalidation": "若后续公告或价格行为与事件逻辑背离",
+      "horizon": "T+1~T+5",
+      "confidence": 0.642,
+      "source_context_type": "dry_run",
+      "source_context_chars": 0,
+      "source": "cninfo_fulltext",
+      "subcategory": "重大合作/投资项目",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-03-04/1224994244.PDF",
+      "event_time": "2026-03-04",
+      "review_required": true,
+      "review_status": "pending_review",
+      "status": "new",
+      "score_components": {
+        "event_strength": 0.9,
+        "cross_source": 0.32,
+        "novelty": 0.55,
+        "timeliness": 0.82,
+        "liquidity_prior": 0.55,
+        "risk_penalty": 0.0
+      },
+      "linked_concepts": []
+    },
+    {
+      "clue_id": "clue-598ff20c3956ffcb",
+      "date": "2026-03-04",
+      "symbol": "002034",
+      "ts_code": "002034.SZ",
+      "company": "旺能环境",
+      "direction": "long",
+      "thesis": "关于收到印尼勿加泗垃圾焚烧发电项目中标通知书的公告",
+      "evidence": [
+        {
+          "source": "cninfo_fulltext",
+          "fact": "关于收到印尼勿加泗垃圾焚烧发电项目中标通知书的公告"
+        }
+      ],
+      "risk_flags": [],
+      "invalidation": "若后续公告或价格行为与事件逻辑背离",
+      "horizon": "T+1~T+5",
+      "confidence": 0.642,
+      "source_context_type": "dry_run",
+      "source_context_chars": 0,
+      "source": "cninfo_fulltext",
+      "subcategory": "重大合作/投资项目",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-03-04/1224993114.PDF",
+      "event_time": "2026-03-04",
+      "review_required": true,
+      "review_status": "pending_review",
+      "status": "new",
+      "score_components": {
+        "event_strength": 0.9,
+        "cross_source": 0.32,
+        "novelty": 0.55,
+        "timeliness": 0.82,
+        "liquidity_prior": 0.55,
+        "risk_penalty": 0.0
+      },
+      "linked_concepts": []
+    },
+    {
+      "clue_id": "clue-e3667239d67f2f99",
+      "date": "2026-03-04",
+      "symbol": "300571",
+      "ts_code": "300571.SZ",
+      "company": "平治信息",
+      "direction": "long",
+      "thesis": "中标候选人公示的提示性公告",
+      "evidence": [
+        {
+          "source": "cninfo_fulltext",
+          "fact": "中标候选人公示的提示性公告"
+        }
+      ],
+      "risk_flags": [],
+      "invalidation": "若后续公告或价格行为与事件逻辑背离",
+      "horizon": "T+1~T+5",
+      "confidence": 0.642,
+      "source_context_type": "dry_run",
+      "source_context_chars": 0,
+      "source": "cninfo_fulltext",
+      "subcategory": "重大合作/投资项目",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-03-04/1224995171.PDF",
+      "event_time": "2026-03-04",
+      "review_required": true,
+      "review_status": "pending_review",
+      "status": "new",
+      "score_components": {
+        "event_strength": 0.9,
+        "cross_source": 0.32,
+        "novelty": 0.55,
+        "timeliness": 0.82,
+        "liquidity_prior": 0.55,
+        "risk_penalty": 0.0
+      },
+      "linked_concepts": []
+    },
+    {
+      "clue_id": "clue-d5e52f5810dc864e",
+      "date": "2026-03-04",
+      "symbol": "300708",
+      "ts_code": "300708.SZ",
+      "company": "聚灿光电",
+      "direction": "neutral",
+      "thesis": "中信证券股份有限公司关于聚灿光电科技股份有限公司调整部分募集资金投资项目实施进度的核查意见",
+      "evidence": [
+        {
+          "source": "cninfo_fulltext",
+          "fact": "中信证券股份有限公司关于聚灿光电科技股份有限公司调整部分募集资金投资项目实施进度的核查意见"
+        }
+      ],
+      "risk_flags": [],
+      "invalidation": "若后续公告或价格行为与事件逻辑背离",
+      "horizon": "T+1~T+5",
+      "confidence": 0.642,
+      "source_context_type": "dry_run",
+      "source_context_chars": 0,
+      "source": "cninfo_fulltext",
+      "subcategory": "重大合作/投资项目",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-03-04/1224995232.PDF",
+      "event_time": "2026-03-04",
+      "review_required": true,
+      "review_status": "pending_review",
+      "status": "new",
+      "score_components": {
+        "event_strength": 0.9,
+        "cross_source": 0.32,
+        "novelty": 0.55,
+        "timeliness": 0.82,
+        "liquidity_prior": 0.55,
+        "risk_penalty": 0.0
+      },
+      "linked_concepts": []
+    },
+    {
+      "clue_id": "clue-1cb6dec46a1e47de",
+      "date": "2026-03-04",
+      "symbol": "688578.SH",
+      "ts_code": "688578.SH",
+      "company": "艾力斯",
+      "direction": "neutral",
+      "thesis": "预计:净利润59000",
+      "evidence": [
+        {
+          "source": "tushare_forecast",
+          "fact": "业绩预告 688578.SH"
+        }
+      ],
+      "risk_flags": [],
+      "invalidation": "若后续公告或价格行为与事件逻辑背离",
+      "horizon": "T+1~T+5",
+      "confidence": 0.621,
+      "source_context_type": "dry_run",
+      "source_context_chars": 0,
+      "source": "tushare_forecast",
+      "subcategory": "业绩预告",
+      "url": "https://tushare.pro",
+      "event_time": "20260304",
+      "review_required": true,
+      "review_status": "pending_review",
+      "status": "new",
+      "score_components": {
+        "event_strength": 0.84,
+        "cross_source": 0.32,
+        "novelty": 0.55,
+        "timeliness": 0.82,
+        "liquidity_prior": 0.55,
+        "risk_penalty": 0.0
+      },
+      "linked_concepts": []
+    }
+  ]
+}

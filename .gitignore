@@ -3,3 +3,4 @@ adapters/__pycache__/
 *.pyc
 .env
 output/
+state/
