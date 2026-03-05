@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import concurrent.futures
 import html
 import json
 import os
@@ -172,7 +173,6 @@ def generate_company_ai_summary(company_name: str, items: list) -> str:
     
     try:
         import openai
-        import concurrent.futures
         
         api_key = "7c45a349-5a95-4885-a7b6-df6ed599ed5e"
         base_url = "https://ark.cn-beijing.volces.com/api/v3"
