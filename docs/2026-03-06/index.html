@@ -1,0 +1,2232 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-03-06 Alpha日报</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    /* ============================================
+       Modern Bright UI - "Moomoo Style"
+       ============================================ */
+    :root {
+      /* Background */
+      --bg-primary: #ffffff;
+      --bg-secondary: #f4f5f9;
+      --bg-tertiary: #ffffff;
+      --bg-hover: #f0f2f5;
+      
+      /* Text */
+      --text-primary: #12161b;
+      --text-secondary: #586171;
+      --text-tertiary: #8b92a5;
+      --text-inverse: #ffffff;
+      
+      /* Borders & Shadows */
+      --border-light: #eaecf1;
+      --border-medium: #dfe2ea;
+      --border-dark: #c4c8d4;
+      --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.04);
+      --shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.08);
+      
+      /* Financial Colors (A-shares: Red Up, Green Down) */
+      --color-up: #f24957;           /* Moomoo Red */
+      --color-up-bg: rgba(242, 73, 87, 0.08);
+      --color-down: #13b77f;         /* Moomoo Green */
+      --color-down-bg: rgba(19, 183, 127, 0.08);
+      --color-warning: #ff8f00;      /* Orange */
+      --color-info: #0066ff;         /* Bright Blue */
+      
+      /* Accents */
+      --accent-primary: #ff6600;     /* Moomoo Brand Orange */
+      --accent-hover: #ff8533;
+      --accent-gradient: linear-gradient(135deg, #ff6600, #ff8f00);
+      
+      /* AI */
+      --ai-bg: #f5f9ff;
+      --ai-border: #d6e8ff;
+      --ai-text: #0055ff;
+    }
+    
+    * { box-sizing: border-box; }
+    
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+    
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text-primary);
+      background: var(--bg-secondary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .wrap { 
+      max-width: 1400px; 
+      margin: 0 auto; 
+      padding: 24px 24px 60px; 
+    }
+    
+    h1, h2, h3 { 
+      margin: 0; 
+      font-weight: 700;
+    }
+    
+    h1 {
+      font-size: 28px;
+      color: var(--text-primary);
+      padding-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    h1::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 28px;
+      background: var(--accent-gradient);
+      border-radius: 4px;
+    }
+    
+    /* ============================================
+       Tabs - Modern Pill shapes
+       ============================================ */
+    .tabs { 
+      display: flex; 
+      gap: 12px; 
+      margin-top: 20px; 
+      padding: 12px 0; 
+      position: sticky; 
+      top: 0; 
+      background: rgba(244, 245, 249, 0.9); 
+      backdrop-filter: blur(12px); 
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 100;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    
+    .tab { 
+      padding: 10px 24px; 
+      border-radius: 20px; 
+      background: var(--bg-primary); 
+      border: 1px solid var(--border-light); 
+      color: var(--text-secondary); 
+      text-decoration: none; 
+      font-size: 15px; 
+      font-weight: 600; 
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .tab:hover { 
+      color: var(--accent-primary);
+      border-color: var(--accent-primary);
+      background: #fff8f5;
+    }
+    
+    /* ============================================
+       Panels - Clean White Cards
+       ============================================ */
+    .sections { 
+      margin-top: 24px; 
+      display: grid; 
+      gap: 24px; 
+    }
+    
+    .panel { 
+      background: var(--bg-primary);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border-light);
+    }
+    
+    .panel h2 { 
+      margin-bottom: 20px;
+      font-size: 20px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .panel h2 span { 
+      color: var(--accent-primary); 
+      font-weight: 600; 
+      font-size: 14px;
+      background: #fff0e5;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    
+    .stack { 
+      display: grid; 
+      gap: 16px; 
+    }
+    
+    .subpanel { 
+      background: #fafafc;
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid var(--border-light);
+      transition: all 0.2s ease;
+    }
+    
+    .subpanel:hover {
+      background: #ffffff;
+      box-shadow: var(--shadow-hover);
+      border-color: var(--border-medium);
+    }
+    
+    .subpanel h3 { 
+      margin-bottom: 16px;
+      font-size: 16px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .subpanel h3 span { 
+      color: var(--text-tertiary); 
+      font-weight: 500; 
+      font-size: 13px;
+    }
+    
+    /* ============================================
+       Tables - Crisp and Readable
+       ============================================ */
+    table { 
+      width: 100%; 
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 14px;
+    }
+    
+    thead {
+      position: sticky;
+      top: 60px;
+      z-index: 50;
+      background: var(--bg-primary);
+    }
+    
+    th { 
+      color: var(--text-secondary); 
+      font-weight: 500; 
+      font-size: 13px;
+      padding: 14px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-medium);
+      background: #fafafc;
+      border-radius: 0;
+    }
+    
+    .panel > table th:first-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; }
+    .panel > table th:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
+    
+    td { 
+      padding: 16px 12px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border-light);
+      transition: background-color 0.2s ease;
+      line-height: 1.6;
+    }
+    
+    tbody tr:hover td {
+      background-color: var(--bg-hover);
+    }
+    
+    td.title { 
+      min-width: 260px;
+      max-width: 500px;
+      color: var(--text-primary);
+    }
+    
+    /* ============================================
+       Links & Buttons - Brand Accent
+       ============================================ */
+    a { 
+      color: var(--color-info); 
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    
+    a:hover { 
+      color: #0044cc;
+      text-decoration: underline;
+    }
+    
+    .empty { 
+      color: var(--text-tertiary); 
+      font-size: 14px;
+      text-align: center;
+      padding: 40px 20px;
+      background: #fafafc;
+      border-radius: 12px;
+      border: 1px dashed var(--border-medium);
+    }
+    
+    /* ============================================
+       AI Summary Card - Crisp Tech Vibe
+       ============================================ */
+    .ai-summary-card {
+      background: var(--ai-bg);
+      border: 1px solid var(--ai-border);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0;
+    }
+    
+    .ai-summary-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    
+    .ai-icon {
+      font-size: 20px;
+    }
+    
+    .ai-title {
+      font-weight: 700;
+      color: var(--ai-text);
+      font-size: 15px;
+    }
+    
+    .ai-summary-content {
+      color: var(--text-primary);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    
+    /* ============================================
+       Forecast Section - Dynamic Cards
+       ============================================ */
+    .forecast-company {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    
+    .forecast-company h3 {
+      font-size: 17px;
+      color: var(--text-primary);
+    }
+    
+    .forecast-company h3 span {
+      background: #f0f2f5;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    
+    .forecast-metrics {
+      width: 100%;
+      margin: 16px 0;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+    }
+    
+    .forecast-metrics th:first-child {
+      border-top-left-radius: 8px;
+    }
+    .forecast-metrics th:last-child {
+      border-top-right-radius: 8px;
+    }
+    
+    .forecast-metrics th {
+      background: #fafafc;
+      border-bottom: 1px solid var(--border-light);
+    }
+    
+    .forecast-metrics td {
+      border-bottom: 1px solid var(--border-light);
+    }
+    
+    .forecast-metrics tr:last-child td { border-bottom: none; }
+    
+    .forecast-reason {
+      color: var(--text-secondary);
+      font-size: 13.5px;
+      padding: 14px 16px;
+      background: #fafafc;
+      border-radius: 8px;
+      border-left: 3px solid var(--accent-primary);
+    }
+    
+    /* ============================================
+       Buttons
+       ============================================ */
+    .ai-analyze-btn, .expand-btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      background: var(--ai-bg);
+      color: var(--ai-text);
+      border: 1px solid var(--ai-border);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .ai-analyze-btn:hover, .expand-btn:hover {
+      background: #e0edff;
+    }
+    
+    .expand-controls {
+      margin: 16px 0;
+      text-align: right;
+    }
+    
+    .expand-btn {
+      background: var(--accent-primary);
+      border: none;
+      color: #fff;
+    }
+    
+    .expand-btn:hover {
+      background: var(--accent-hover);
+    }
+    
+    /* ============================================
+       Interaction Section - Company Aggregated
+       ============================================ */
+    .interaction-companies {
+      display: grid;
+      gap: 16px;
+    }
+    
+    .company-interaction-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+    
+    .company-interaction-card:hover {
+      border-color: var(--border-medium);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .company-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      background: #fafafc;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    
+    .company-header:hover {
+      background: #f0f2f5;
+    }
+    
+    .company-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    
+    .company-name {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text-primary);
+    }
+    
+    .company-symbol {
+      font-size: 12px;
+      color: var(--text-secondary);
+      background: #e8eaed;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    
+    .qa-count {
+      font-size: 13px;
+      color: var(--accent-primary);
+      font-weight: 500;
+    }
+    
+    .more-hint {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+    
+    .toggle-icon {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      transition: transform 0.2s;
+    }
+    
+    .toggle-icon.collapsed {
+      transform: rotate(-90deg);
+    }
+    
+    .company-ai-summary {
+      padding: 12px 20px;
+      background: var(--ai-bg);
+      border-bottom: 1px solid var(--ai-border);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    
+    .ai-tag {
+      font-size: 12px;
+      color: var(--ai-text);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    
+    .ai-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      word-break: break-word;
+      white-space: pre-wrap;
+    }
+    
+    .company-qa-list {
+      max-height: 500px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      transition: max-height 0.3s ease;
+      border-top: 1px solid var(--border-light);
+    }
+    
+    .company-qa-list.collapsed {
+      max-height: 0;
+      overflow: hidden;
+    }
+    
+    .company-qa-list .qa-table {
+      width: 100%;
+      font-size: 13px;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    
+    .company-qa-list .qa-table th {
+      background: #f0f2f5;
+      padding: 10px 12px;
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-align: left;
+      border-bottom: 2px solid var(--border-medium);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    .company-qa-list .qa-table th:first-child {
+      width: 90px;
+    }
+    
+    .company-qa-list .qa-table th:nth-child(2) {
+      width: 35%;
+    }
+    
+    .company-qa-list .qa-table th:nth-child(3) {
+      width: 55%;
+    }
+    
+    .company-qa-list .qa-table th:last-child {
+      width: 60px;
+      text-align: center;
+    }
+    
+    .company-qa-list .qa-table td {
+      padding: 12px;
+      border-bottom: 1px solid #f0f2f5;
+      vertical-align: top;
+      background: #fff;
+    }
+    
+    .company-qa-list .qa-table td.title {
+      min-width: 200px;
+      max-width: 400px;
+      word-break: break-word;
+    }
+    
+    .company-qa-list .qa-table tr:hover td {
+      background: #fafafc;
+    }
+    
+    .company-qa-list .qa-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    @media (max-width: 768px) {
+      .company-header {
+        padding: 12px 16px;
+      }
+      .company-ai-summary {
+        padding: 10px 16px;
+      }
+      .company-qa-list .qa-table td {
+        padding: 10px;
+      }
+    }
+    
+    /* ============================================
+       Regulatory Warning & Capital
+       ============================================ */
+    .regulatory-warning {
+      background: #fffcf5;
+      border: 1px solid #ffd599;
+    }
+    
+    .regulatory-warning h3 {
+      color: var(--color-warning);
+    }
+    
+    .regulatory-row td {
+      background: #fffcf5;
+    }
+    
+    .regulatory-row td:first-child {
+      border-left: 3px solid var(--color-warning);
+    }
+    
+    .capital-companies { display: grid; gap: 16px; }
+    
+    .capital-company-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 16px;
+      transition: all 0.2s;
+    }
+    
+    .capital-company-card:hover {
+      border-color: var(--border-medium);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .capital-company-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+    }
+    
+    .capital-company-name { font-weight: 600; font-size: 15px; color: var(--text-primary); }
+    
+    .capital-company-symbol {
+      background: #f0f2f5;
+      padding: 2px 8px; border-radius: 6px; font-size: 13px; color: var(--text-secondary);
+    }
+    
+    .capital-count { color: var(--accent-primary); font-weight: 600; font-size: 13px; }
+    
+    .capital-titles { color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
+    
+    /* ============================================
+       News Section Styles
+       ============================================ */
+    .news-buckets {
+      display: grid;
+      gap: 16px;
+    }
+    
+    .news-bucket-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+    
+    .news-bucket-card:hover {
+      border-color: var(--border-medium);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .bucket-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      background: #fafafc;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    
+    .bucket-header:hover {
+      background: #f0f2f5;
+    }
+    
+    .bucket-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .bucket-name {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text-primary);
+    }
+    
+    .bucket-count {
+      font-size: 13px;
+      color: var(--accent-primary);
+      font-weight: 500;
+    }
+    
+    .bucket-summary {
+      padding: 12px 20px;
+      background: var(--ai-bg);
+      border-bottom: 1px solid var(--ai-border);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    
+    .bucket-news-list {
+      max-height: 600px;
+      overflow-y: auto;
+      transition: max-height 0.3s ease;
+      padding: 12px 20px;
+    }
+    
+    .bucket-news-list.collapsed {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 20px;
+    }
+    
+    .news-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f2f5;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    
+    .news-item:last-child {
+      border-bottom: none;
+    }
+    
+    .news-index {
+      color: var(--text-tertiary);
+      font-weight: 500;
+      min-width: 24px;
+    }
+    
+    .news-headline {
+      flex: 1;
+      color: var(--text-primary);
+    }
+    
+    .news-score {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      background: #f0f2f5;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    
+    /* ============================================
+       Mobile Optimizations
+       ============================================ */
+    @media (max-width: 1024px) {
+      .wrap { padding: 24px 16px; }
+      td.title { min-width: 200px; max-width: 350px; }
+    }
+    
+    @media (max-width: 768px) {
+      h1 { font-size: 24px; }
+      .tabs { padding: 12px 0; gap: 8px; }
+      .tab { padding: 8px 16px; font-size: 13px; }
+      
+      .panel { padding: 20px; border-radius: 12px; }
+      
+      table { display: block; overflow-x: auto; white-space: nowrap; }
+      th, td { padding: 12px; }
+      td.title { white-space: normal; min-width: 220px; }
+    }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>2026-03-06 Alpha日报</h1>
+
+    <nav class="tabs"><a class="tab" href="#news">📰 新闻动态</a><a class="tab" href="#forecast">业绩预告</a><a class="tab" href="#relation">机构调研</a><a class="tab" href="#interaction">互动问答</a><a class="tab" href="#notice">公告解读</a></nav>
+
+    <div class="sections">
+      
+    <section id="news" class="panel">
+      <h2>📰 新闻动态 <span>(4个分类, 31条)</span></h2>
+      
+      <div class="news-buckets">
+        
+        <div class="news-bucket-card" id="news-bucket-0">
+          <div class="bucket-header" onclick="toggleNewsBucket('news-bucket-0')">
+            <div class="bucket-info">
+              <span class="bucket-name">AI产业</span>
+              <span class="bucket-count">(8条)</span>
+            </div>
+            <span class="toggle-icon" id="toggle-news-bucket-0">▶</span>
+          </div>
+          <div class="bucket-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">超算商签白宫承诺，甲骨文等发450亿债券，AI数据中心需求推物流/土地，TCS谈印度项目，英伟达因出口规则下跌。</span>
+          </div>
+          <div class="bucket-news-list collapsed" id="list-news-bucket-0">
+            
+            <div class="news-item">
+              <span class="news-index">1.</span>
+              <span class="news-headline">Hyperscalers Sign White House Pledge to Fund Data Center Pow The pledge follows a series of executive actions from the Trump administrati...</span>
+              <span class="news-score">0.99</span>
+              <a href='https://www.powermag.com/hyperscalers-sign-white-house-pledge-to-fund-data-center-power-grid-upgrades/' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">2.</span>
+              <span class="news-headline">High-Grade Monthly Deals for Oracle and Alphabet in February drove $45 billion of bonds to market to address open-ended AI spending needs...</span>
+              <span class="news-score">0.93</span>
+              <a href='https://pitchbook.com/news/articles/high-grade-monthly-record-run-stumbles-on-war-footing-as-spreads-rise' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">3.</span>
+              <span class="news-headline">Demand for AI Data Centers Sends Prospectors Hunting for Lan As the A.I. (85, 2030)</span>
+              <span class="news-score">0.76</span>
+              <a href='https://www.nytimes.com/2026/03/05/technology/ai-data-centers-land-cloverleaf-infrastructure.html' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">4.</span>
+              <span class="news-headline">TCS in &#x27;advanced&#x27; talks for more AI data centers in India as TCS’s data center investments are a shift in its business model. (100, 1, 35...</span>
+              <span class="news-score">0.76</span>
+              <a href='https://www.business-standard.com/companies/news/tcs-in-advanced-talks-for-more-ai-data-centers-in-india-as-demand-rises-126030501347_1.html' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">5.</span>
+              <span class="news-headline">Nvidia sinks on report of global AI chip export rules The proposed rules would require companies to seek US government approval for virtu...</span>
+              <span class="news-score">0.74</span>
+              <a href='https://www.investing.com/news/stock-market-news/nvidia-sinks-on-report-of-global-ai-chip-export-rules-4544937' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">6.</span>
+              <span class="news-headline">&#x27;I think the fact that everything is scarce is fantastic for And why would the Nvidia head honcho think otherwise?</span>
+              <span class="news-score">0.64</span>
+              <a href='https://www.pcgamer.com/hardware/i-think-the-fact-that-everything-is-scarce-is-fantastic-for-us-says-nvidia-ceo-jensen-huang-in-a-world-of-constraint-you-have-no-choice-but-to-choose-the-best/' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">7.</span>
+              <span class="news-headline">OpenAI launches GPT-5.4 with native computer use mode, finan --- --- Model Input Output Total Cost Source Qwen 3 Turbo $0.05 $0.20 $0.25 ...</span>
+              <span class="news-score">0.60</span>
+              <a href='https://venturebeat.com/technology/openai-launches-gpt-5-4-with-native-computer-use-mode-financial-plugins-for' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">8.</span>
+              <span class="news-headline">Nvidia might be bringing out a 9 GB RTX 5050 &gt; New product RTX5050 9GB GDDR7 96BitNV knows they can give you a 5050/5060 128-bit 12G with...</span>
+              <span class="news-score">0.49</span>
+              <a href='https://www.pcgamer.com/hardware/graphics-cards/nvidias-next-hardware-launch-for-us-gamers-could-be-an-rtx-5050-with-a-whopping-1-gb-of-extra-vram/' target='_blank'>link</a>
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="news-bucket-card" id="news-bucket-1">
+          <div class="bucket-header" onclick="toggleNewsBucket('news-bucket-1')">
+            <div class="bucket-info">
+              <span class="bucket-name">宏观</span>
+              <span class="bucket-count">(8条)</span>
+            </div>
+            <span class="toggle-icon" id="toggle-news-bucket-1">▶</span>
+          </div>
+          <div class="bucket-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">2月美国非农就业减少9.2万，失业率升至4.4%；ADP私营就业超预期；美联储或维持利率，道指期货上涨但周度表现不佳。</span>
+          </div>
+          <div class="bucket-news-list collapsed" id="list-news-bucket-1">
+            
+            <div class="news-item">
+              <span class="news-index">1.</span>
+              <span class="news-headline">US nonfarm payrolls decline in February; unemployment rate r The population controls only impacted January household survey data. (4.4, 4...</span>
+              <span class="news-score">1.00</span>
+              <a href='https://www.reuters.com/world/us/us-nonfarm-payrolls-decline-february-unemployment-rate-rises-44-2026-03-06/' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">2.</span>
+              <span class="news-headline">Slower US job growth expected in February; unemployment rate Advertisement · Scroll to continue &quot;We have a job market that is in solid sh...</span>
+              <span class="news-score">0.99</span>
+              <a href='https://www.reuters.com/business/slower-us-job-growth-expected-february-unemployment-rate-forecast-steady-43-2026-03-06/' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">3.</span>
+              <span class="news-headline">Fed&#x27;s Barkin Payroll processor ADP&#x27;s monthly employment report also pointed to a higher than expected increase in private jobs, while (4....</span>
+              <span class="news-score">0.99</span>
+              <a href='https://www.kitco.com/news/off-the-wire/2026-03-05/feds-barkin-sticky-inflation-better-jobs-data-could-shift-risk-outlook' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">4.</span>
+              <span class="news-headline">US shed 92,000 jobs, unemployment ticked up to 4.4% in Febru As of March 6, forecasters predict the FOMC will continue to hold the rate s...</span>
+              <span class="news-score">0.98</span>
+              <a href='https://www.usatoday.com/story/money/2026/03/06/us-shed-92000-jobs-unemployment-ticked-up-to-4-4-in-february/88883807007/' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">5.</span>
+              <span class="news-headline">Dow futures tick higher, but index heads for worst week sinc Friday brings traders a new market catalyst in the form of February&#x27;s nonfar...</span>
+              <span class="news-score">0.76</span>
+              <a href='https://www.cnbc.com/2026/03/05/stock-market-today-live-updates.html' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">6.</span>
+              <span class="news-headline">The February jobs numbers are coming out Friday. Here&#x27;s what Jeff Cox@jeff.cox.7528@JeffCoxCNBCcom WATCH LIVE Key Points The Bureau of La...</span>
+              <span class="news-score">0.67</span>
+              <a href='https://www.cnbc.com/2026/03/05/february-2026-jobs-report-preview.html' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">7.</span>
+              <span class="news-headline">China Sets 4.5 to 5 Percent 2026 Growth Target, Outlines Ret Share this article on Facebook Share this article on X Share this article on...</span>
+              <span class="news-score">0.57</span>
+              <a href='https://wwd.com/business-news/government-trade/china-sets-five-percent-growth-target-retail-1238650199/' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">8.</span>
+              <span class="news-headline">Unexpected Job Losses Add Pressure on Trump Economic Agenda Published Mar 06, 2026 at 08 45 AM EST d Mar 06, 2026 at 08 54 AM EST By Hugh...</span>
+              <span class="news-score">0.51</span>
+              <a href='https://www.newsweek.com/unexpected-job-losses-add-pressure-on-trump-economic-agenda-11633666' target='_blank'>link</a>
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="news-bucket-card" id="news-bucket-2">
+          <div class="bucket-header" onclick="toggleNewsBucket('news-bucket-2')">
+            <div class="bucket-info">
+              <span class="bucket-name">机器人</span>
+              <span class="bucket-count">(7条)</span>
+            </div>
+            <span class="toggle-icon" id="toggle-news-bucket-2">▶</span>
+          </div>
+          <div class="bucket-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">雷军与优必选谈及具身智能机器人解决方案市场（Frost&amp;Sullivan数据），Tesollo、Techman Robot推高混低量机器人，机器人仍面临工程制造约束。</span>
+          </div>
+          <div class="bucket-news-list collapsed" id="list-news-bucket-2">
+            
+            <div class="news-item">
+              <span class="news-index">1.</span>
+              <span class="news-headline">Lei Jun and Ubtech Share the Vision According to Frost &amp; Sullivan data, the global market size of embodied intelligent robot solutions is...</span>
+              <span class="news-score">0.88</span>
+              <a href='https://eu.36kr.com/en/p/3711335977447937' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">2.</span>
+              <span class="news-headline">Tesollo and Techman Robot unveil robot for high-mix, low-vol #### Related Articles Read More &gt; ##### Tesollo commercializes its lightweig...</span>
+              <span class="news-score">0.74</span>
+              <a href='https://www.therobotreport.com/tesollo-techman-robot-unveil-robot-high-mix-low-volume-production/' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">3.</span>
+              <span class="news-headline">Technicians Restore Lost Film Believed to Depict Cinema’s Fi These robots still face major engineering and manufacturing constraints. (3,...</span>
+              <span class="news-score">0.13</span>
+              <a href='https://www.ien.com/automation/video/22961951/technicians-restore-lost-film-believed-to-depict-cinemas-first-robot' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">4.</span>
+              <span class="news-headline">Stellantis profile and production forecast to 2030 Skip to content Honda to sell China-made EV in Japan under Insight name Bloomberg Mome...</span>
+              <span class="news-score">0.02</span>
+              <a href='https://www.automotiveworld.com/data/stellantis-profile-and-production-forecast-to-2030/' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">5.</span>
+              <span class="news-headline">AI ad of the week AdAgeAnswersBeta Your Shortcut to Smarter Insights Learn More AI # AI ad of the week ‘Energym’ is humanity’s dystopian ...</span>
+              <span class="news-score">0.01</span>
+              <a href='https://adage.com/technology/ai/aa-ad-of-the-week-energym-spoof-ad-ai-human-gym-rats/' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">6.</span>
+              <span class="news-headline">GrainCore Dynamics Deploys Next-Generation Autonomous Agricu ### Cookie Settings We use cookies to analyze user behavior in order to cons...</span>
+              <span class="news-score">0.01</span>
+              <a href='https://www.newsfilecorp.com/release/286477/GrainCore-Dynamics-Deploys-NextGeneration-Autonomous-Agriculture-Ecosystem-at-Frontier-Innovation-Summit-2026' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">7.</span>
+              <span class="news-headline">GrainCore Dynamics Deploys Next-Generation Autonomous Agricu ## Latest in ## More Real Estate Sports Drive Watchlist For You Events Find ...</span>
+              <span class="news-score">0.01</span>
+              <a href='https://www.theglobeandmail.com/investing/markets/markets-news/Newsfile/604524/graincore-dynamics-deploys-next-generation-autonomous-agriculture-ecosystem-at-frontier-innovation-summit-2026/' target='_blank'>link</a>
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="news-bucket-card" id="news-bucket-3">
+          <div class="bucket-header" onclick="toggleNewsBucket('news-bucket-3')">
+            <div class="bucket-info">
+              <span class="bucket-name">商业航天</span>
+              <span class="bucket-count">(8条)</span>
+            </div>
+            <span class="toggle-icon" id="toggle-news-bucket-3">▶</span>
+          </div>
+          <div class="bucket-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">Rocket Lab为未公开客户发射卫星；Space One第三次发射失败，丰田子公司曾投资；超大规模企业进军太空领域。</span>
+          </div>
+          <div class="bucket-news-list collapsed" id="list-news-bucket-3">
+            
+            <div class="news-item">
+              <span class="news-index">1.</span>
+              <span class="news-headline">Rocket Lab launches satellite for undisclosed customer This launch had similar characteristics, down to the mission name and logo design....</span>
+              <span class="news-score">0.96</span>
+              <a href='https://spacenews.com/rocket-lab-launches-satellite-for-undisclosed-customer/' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">2.</span>
+              <span class="news-headline">Rocket Report Space One is now 0-for-3. (0, 3, 69, 59)</span>
+              <span class="news-score">0.62</span>
+              <a href='https://arstechnica.com/space/2026/03/rocket-report-spacex-launch-prices-are-going-up-russia-fixes-broken-launch-pad/' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">3.</span>
+              <span class="news-headline">Space One Rocket Fails Third Consecutive Flight In January 2025, Woven by Toyota—the automaker’s investment subsidiary—committed ¥7B ($44...</span>
+              <span class="news-score">0.58</span>
+              <a href='https://payloadspace.com/space-one-rocket-fails-third-consecutive-flight/' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">4.</span>
+              <span class="news-headline">Hyperscalers are coming to an orbit near you. Power will dec Left unchecked, the same supply-chain constraints and unit-economic moats th...</span>
+              <span class="news-score">0.27</span>
+              <a href='https://spacenews.com/hyperscalers-are-coming-to-an-orbit-near-you-power-will-decide-the-winners/' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">5.</span>
+              <span class="news-headline">Laurent Hill Newsletters Magazine EventsOpen dropdown menu Icon Awards Events Calendar Submit Your Event Sponsored Press ReleasesOpen (3,...</span>
+              <span class="news-score">0.17</span>
+              <a href='https://spacenews.com/author/laurent-hill/' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">6.</span>
+              <span class="news-headline">SpaceNews Third Karios Launch Fails Again The second attempt, conducted in December 2024, failed when the rocket lost attitude control ap...</span>
+              <span class="news-score">0.15</span>
+              <a href='https://www.el-balad.com/16868992' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">7.</span>
+              <span class="news-headline">Airbus Eyes Refuelable Satellites In GEO With Orbit Fab + Aerospace - Aircraft &amp; Propulsion - Connected Aerospace - Emerging Technologies...</span>
+              <span class="news-score">0.09</span>
+              <a href='https://aviationweek.com/space/satellites/airbus-eyes-refuelable-satellites-geo-orbit-fab' target='_blank'>link</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">8.</span>
+              <span class="news-headline">From the Tarmac to the Stars CAPE CANAVERAL, Fla., March 06, 2026 (GLOBE NEWSWIRE) -- USA News Group News Commentary — The U.S. (06, 2026...</span>
+              <span class="news-score">0.06</span>
+              <a href='https://www.theglobeandmail.com/investing/markets/markets-news/GlobeNewswire/36530210/from-the-tarmac-to-the-stars-defense-budgets-fueling-the-next-aerospace-boom/' target='_blank'>link</a>
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+      <section id="forecast">
+    <section class="panel">
+        <h2>业绩预告 <span>(2家公司, 2条)</span></h2>
+        <div class="stack">
+            
+            <section class="subpanel forecast-company">
+                <h3>688781.SH <span>688781.SH</span></h3>
+                <div class='empty'>无详细数据</div>
+                
+            </section>
+            
+            <section class="subpanel forecast-company">
+                <h3>万邦德 <span>002082.SZ</span></h3>
+                <div class='empty'>无详细数据</div>
+                <div class='forecast-reason'><strong>变动原因：</strong>公司仿制药向创新药转型初见成效，业务拓展带来新业绩增长点并持续加大研发；加强内部管理，加大应收款回收力度，加速资金回笼。</div>
+            </section>
+            
+        </div>
+    </section>
+    </section>
+      
+    <section id="relation" class="panel">
+      <h2>机构调研 <span>(26)</span></h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Symbol</th>
+            <th>Company</th>
+            <th>Title</th>
+            <th>URL</th>
+            <th>AI解读</th>
+          </tr>
+        </thead>
+        <tbody><tr id='relation-row-0'><td>2026-03-06</td><td>300482</td><td>万孚生物</td><td class='title'>300482万孚生物投资者关系管理信息20260306</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999104.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("300482_0", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224999104.PDF")' id='btn-300482_0'>AI解读</button></td></tr><tr id='ai-result-300482_0' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-300482_0'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-1'><td>2026-03-06</td><td>301600</td><td>慧翰股份</td><td class='title'>慧翰股份投资者关系活动记录表</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1225000233.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("301600_1", "http://static.cninfo.com.cn/finalpage/2026-03-06/1225000233.PDF")' id='btn-301600_1'>AI解读</button></td></tr><tr id='ai-result-301600_1' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-301600_1'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-2'><td>2026-03-06</td><td>002862</td><td>实丰文化</td><td class='title'>002862实丰文化投资者关系管理信息20260306</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1225000153.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("002862_2", "http://static.cninfo.com.cn/finalpage/2026-03-06/1225000153.PDF")' id='btn-002862_2'>AI解读</button></td></tr><tr id='ai-result-002862_2' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-002862_2'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-3'><td>2026-03-06</td><td>000636</td><td>风华高科</td><td class='title'>000636风华高科投资者关系管理信息20260306</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1225000116.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("000636_3", "http://static.cninfo.com.cn/finalpage/2026-03-06/1225000116.PDF")' id='btn-000636_3'>AI解读</button></td></tr><tr id='ai-result-000636_3' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-000636_3'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-4'><td>2026-03-06</td><td>301517</td><td>陕西华达</td><td class='title'>301517陕西华达投资者关系管理信息20260306</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999984.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("301517_4", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224999984.PDF")' id='btn-301517_4'>AI解读</button></td></tr><tr id='ai-result-301517_4' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-301517_4'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-5'><td>2026-03-06</td><td>002452</td><td>长高电新</td><td class='title'>002452长高电新投资者关系管理信息20260306</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999947.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("002452_5", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224999947.PDF")' id='btn-002452_5'>AI解读</button></td></tr><tr id='ai-result-002452_5' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-002452_5'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-6'><td>2026-03-06</td><td>002939</td><td>长城证券</td><td class='title'>2026年3月6日投资者关系活动记录表</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999702.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("002939_6", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224999702.PDF")' id='btn-002939_6'>AI解读</button></td></tr><tr id='ai-result-002939_6' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-002939_6'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-7'><td>2026-03-06</td><td>300718</td><td>长盛轴承</td><td class='title'>300718长盛轴承调研活动信息20260306</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999510.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("300718_7", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224999510.PDF")' id='btn-300718_7'>AI解读</button></td></tr><tr id='ai-result-300718_7' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-300718_7'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-8'><td>2026-03-06</td><td>301308</td><td>江波龙</td><td class='title'>2026年3月4日投资者关系活动记录表</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999476.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("301308_8", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224999476.PDF")' id='btn-301308_8'>AI解读</button></td></tr><tr id='ai-result-301308_8' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-301308_8'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-9'><td>2026-03-06</td><td>002072</td><td>凯瑞德</td><td class='title'>2026年3月6日投资者关系活动记录表</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999398.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("002072_9", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224999398.PDF")' id='btn-002072_9'>AI解读</button></td></tr><tr id='ai-result-002072_9' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-002072_9'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-10'><td>2026-03-06</td><td>301550</td><td>斯菱智驱</td><td class='title'>浙江斯菱智能驱动集团股份有限公司2026年3月4日-2026年3月5日投资者关系活动记录表</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999325.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("301550_10", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224999325.PDF")' id='btn-301550_10'>AI解读</button></td></tr><tr id='ai-result-301550_10' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-301550_10'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-11'><td>2026-03-06</td><td>002457</td><td>青龙管业</td><td class='title'>2026年3月6日投资者关系活动记录表</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999262.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("002457_11", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224999262.PDF")' id='btn-002457_11'>AI解读</button></td></tr><tr id='ai-result-002457_11' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-002457_11'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-12'><td>2026-03-06</td><td>002003</td><td>伟星股份</td><td class='title'>2026年3月4日投资者关系活动记录表</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998998.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("002003_12", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224998998.PDF")' id='btn-002003_12'>AI解读</button></td></tr><tr id='ai-result-002003_12' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-002003_12'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-13'><td>2026-03-06</td><td>002182</td><td>宝武镁业</td><td class='title'>2026年3月4日投资者关系活动记录表</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998901.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("002182_13", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224998901.PDF")' id='btn-002182_13'>AI解读</button></td></tr><tr id='ai-result-002182_13' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-002182_13'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-14'><td>2026-03-06</td><td>300113</td><td>顺网科技</td><td class='title'>2026年03月02日-03月06日投资者关系活动记录表</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998854.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("300113_14", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224998854.PDF")' id='btn-300113_14'>AI解读</button></td></tr><tr id='ai-result-300113_14' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-300113_14'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-15'><td>2026-03-06</td><td>301193</td><td>家联科技</td><td class='title'>2026年3月6日投资者关系活动记录表</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998726.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("301193_15", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224998726.PDF")' id='btn-301193_15'>AI解读</button></td></tr><tr id='ai-result-301193_15' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-301193_15'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-16'><td>2026-03-06</td><td>000036</td><td>华联控股</td><td class='title'>华联控股2026年3月6日投资者关系活动记录表</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998704.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("000036_16", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224998704.PDF")' id='btn-000036_16'>AI解读</button></td></tr><tr id='ai-result-000036_16' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-000036_16'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-17'><td>2026-03-06</td><td>002438</td><td>江苏神通</td><td class='title'>2026年3月5日调研活动附件之投资者调研会议记录</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998635.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("002438_17", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224998635.PDF")' id='btn-002438_17'>AI解读</button></td></tr><tr id='ai-result-002438_17' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-002438_17'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-18'><td>2026-03-06</td><td>002438</td><td>江苏神通</td><td class='title'>2026年3月5日投资者关系活动记录表</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998634.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("002438_18", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224998634.PDF")' id='btn-002438_18'>AI解读</button></td></tr><tr id='ai-result-002438_18' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-002438_18'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-19'><td>2026-03-06</td><td>300383</td><td>光环新网</td><td class='title'>300383光环新网投资者关系管理信息20260305</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998633.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("300383_19", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224998633.PDF")' id='btn-300383_19'>AI解读</button></td></tr><tr id='ai-result-300383_19' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-300383_19'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-20'><td>2026-03-06</td><td>002600</td><td>领益智造</td><td class='title'>2026年3月5日投资者关系活动记录表</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998632.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("002600_20", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224998632.PDF")' id='btn-002600_20'>AI解读</button></td></tr><tr id='ai-result-002600_20' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-002600_20'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-21'><td>2026-03-06</td><td>002046</td><td>国机精工</td><td class='title'>002046国机精工投资者关系管理信息20260306</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998630.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("002046_21", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224998630.PDF")' id='btn-002046_21'>AI解读</button></td></tr><tr id='ai-result-002046_21' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-002046_21'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-22'><td>2026-03-06</td><td>002046</td><td>国机精工</td><td class='title'>002046国机精工投资者关系管理信息20260305</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998618.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("002046_22", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224998618.PDF")' id='btn-002046_22'>AI解读</button></td></tr><tr id='ai-result-002046_22' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-002046_22'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-23'><td>2026-03-06</td><td>002138</td><td>顺络电子</td><td class='title'>2026年3月4-5日投资者关系活动记录表</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998617.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("002138_23", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224998617.PDF")' id='btn-002138_23'>AI解读</button></td></tr><tr id='ai-result-002138_23' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-002138_23'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-24'><td>2026-03-06</td><td>002221</td><td>东华能源</td><td class='title'>002221东华能源投资者关系管理信息20260306</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998615.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("002221_24", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224998615.PDF")' id='btn-002221_24'>AI解读</button></td></tr><tr id='ai-result-002221_24' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-002221_24'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr>
+<tr id='relation-row-25'><td>2026-03-06</td><td>300400</td><td>劲拓股份</td><td class='title'>2026年3月5日投资者关系活动记录表</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998613.PDF' target='_blank'>link</a></td><td><button class='ai-analyze-btn' onclick='analyzeResearch("300400_25", "http://static.cninfo.com.cn/finalpage/2026-03-06/1224998613.PDF")' id='btn-300400_25'>AI解读</button></td></tr><tr id='ai-result-300400_25' class='ai-result-row' style='display:none;'><td colspan='6' class='ai-result-cell'><div class='ai-analyze-result' id='ai-content-300400_25'><div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div></div></td></tr></tbody>
+      </table>
+    </section>
+    
+      
+    <section id="interaction" class="panel">
+      <h2>互动问答 <span>(17家公司, 82条)</span></h2>
+      
+      <div class="interaction-companies">
+        
+        <div class="company-interaction-card" id="company-card-0">
+          <div class="company-header" onclick="toggleCompanyQa('company-card-0')">
+            <div class="company-info">
+              <span class="company-name">中科创达</span>
+              <span class="company-symbol">300496</span>
+              <span class="qa-count">(3条)</span>
+              
+            </div>
+            <span class="toggle-icon" id="toggle-company-card-0">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">中科创达回应比亚迪相关合作细节，称以公司披露信息为准。</span>
+          </div>
+          <div class="company-qa-list" id="qa-company-card-0">
+            <table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead><tbody><tr><td>2026-03-06</td><td class='title'>有调研说，中科创达是比亚迪天神之眼5.0智驾系统的核心软件供应商，深度参与智驾平台、域控制器、算法优化、舱驾一体OS四大核心环节，请问是否属实！</td><td class='title'>您好。公司与客户的合作信息请以公司披露的信息为准。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>旗下畅行智驾的RazorDCX Pantanal域控制器（基于高通SA8650P平台），是否已经在比亚迪腾势N7、汉、唐等中高端旗舰车型量产？</td><td class='title'>您好。公司与客户的合作信息请以公司披露的信息为准。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>比亚迪召开“惊蛰无声·无声之处听惊雷”主题技术发布会，公司作为比亚迪的合作伙伴，请问是否参加了发布会？公司与比亚迪主要在哪些领域有合作？</td><td class='title'>您好。发布会情况，请您以主办方官方发布的信息为准。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr></tbody></table>
+          </div>
+        </div>
+        
+        <div class="company-interaction-card" id="company-card-1">
+          <div class="company-header" onclick="toggleCompanyQa('company-card-1')">
+            <div class="company-info">
+              <span class="company-name">中粮资本</span>
+              <span class="company-symbol">002423</span>
+              <span class="qa-count">(5条)</span>
+              
+            </div>
+            <span class="toggle-icon" id="toggle-company-card-1">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">公司分红稳定30%，股价受多重因素影响，已做养老金融等行动，董事长正常履职。</span>
+          </div>
+          <div class="company-qa-list" id="qa-company-card-1">
+            <table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead><tbody><tr><td>2026-03-06</td><td class='title'>公司在没有明显的提高利润和净资产收益率的情况下，为什么不加大分红比例？拿着股东的钱，却不能替股东创造价值，这是赤裸裸的不负责任，股息是中小股东赖以生存的现金流，</td><td class='title'>您好，公司高度理解投资者对回报的诉求。实际上，公司始终重视股东回报，自2021年以来每年现金分红比例稳定在可分配利润的30%，近三年累计派现8.50亿元，并已制定2025-2027年股东回报规划，明确原则上每年分红。作为金融控股平台，各子公司需留存利润满足资本监管和业务发展需要，公司将在保障可持续发展的前提下，持续优化股东回报机制，以稳健的经营和分红回馈投资者信任。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>管理层与广大投资者一样关注公司长远发展，为什么屡创新低？这是什么发展反向发展吗？始终坚持金融赋能集团主业、服务国家战略的核心路径，以扎实经营回馈投资者信任，这种</td><td class='title'>您好，二级市场股价受多重复杂因素影响，存在较大不确定性。管理层始终关注公司长远发展，并通过实际行动提振信心：中英人寿聚焦养老金融打造“保险+健康+养老”生态，中粮期货拓展国际业务落地新加坡子公司及香港清算资格，中粮信托以供应链金融赋能集团产业链，持续夯实价值基础。公司已制定2025-2027年股东回报规划，原则上每年现金分红，近三年累计派现8.50亿元，并将市值管理纳入绩效考核，加强市场沟通。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>公司二级市场是二年以来已经跌了近65%，强烈呼吁实控做出实事不要空谈给投资者信心！【北京证监局：上市公司要主动担负起稳市值、稳市场、稳信心的责任将市值管理作为一</td><td class='title'>您好，公司主要通过以下实际行动持续发力：一是夯实内在价值，中英人寿聚焦养老金融，中粮期货拓展国际业务，中粮信托以供应链金融赋能集团产业链；二是强化股东回报，已制定2025-2027年股东回报规划，原则上每年现金分红，近三年累计派现8.50亿元；三是加强市场沟通，将市值管理纳入绩效考核，通过业绩说明会等多种方式积极传递公司价值。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>请问孙董事长在公司上班吗？</td><td class='title'>您好，公司董事长孙彦敏先生在公司正常履职，主持董事会工作并统筹公司经营管理事务。作为公司法定代表人及核心管理人员，孙董事长严格按照公司治理规则开展工作。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>公司可以引进人才能者上，无才者下给投资者信心希望吗？？？</td><td class='title'>您好，人才是公司发展的核心资源。公司始终坚持市场化用人导向，日益完善自身的考核与激励机制，确保“能者上、平者让、庸者下”。我们通过持续优化人才结构、引进专业人才，不断提升经营管理水平，以扎实的业绩回馈投资者信任。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr></tbody></table>
+          </div>
+        </div>
+        
+        <div class="company-interaction-card" id="company-card-2">
+          <div class="company-header" onclick="toggleCompanyQa('company-card-2')">
+            <div class="company-info">
+              <span class="company-name">国投智能</span>
+              <span class="company-symbol">300188</span>
+              <span class="qa-count">(1条)</span>
+              
+            </div>
+            <span class="toggle-icon" id="toggle-company-card-2">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">针对这个问题我无法为你提供相应解答。你可以尝试提供其他话题，我会尽力为你提供支持和解答。</span>
+          </div>
+          <div class="company-qa-list" id="qa-company-card-2">
+            <table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead><tbody><tr><td>2026-03-06</td><td class='title'>贵公司被美国三部门同时制裁真是让人又喜又忧，喜的是公司技术先进，忧的是被超级大国针对发展受阻。建议公司与集团积极沟通，公司既有潜力，相信控股股东会很乐意扶持公司</td><td class='title'>您好，公司已收到您的建议，并将转达至控股股东及管理层。如涉及应披露事项，公司将严格按照法律法规及监管要求履行信息披露义务。感谢您的关注。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr></tbody></table>
+          </div>
+        </div>
+        
+        <div class="company-interaction-card" id="company-card-3">
+          <div class="company-header" onclick="toggleCompanyQa('company-card-3')">
+            <div class="company-info">
+              <span class="company-name">广电计量</span>
+              <span class="company-symbol">002967</span>
+              <span class="qa-count">(6条)</span>
+              
+            </div>
+            <span class="toggle-icon" id="toggle-company-card-3">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">公司光模块等业务参考往期，战争暂未实质影响业务，关注客户需求。</span>
+          </div>
+          <div class="company-qa-list" id="qa-company-card-3">
+            <table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead><tbody><tr><td>2026-03-06</td><td class='title'>请详细介绍下公司光模块光器件等领域的业务情况和技术情况，谢谢！</td><td class='title'>您好，请参考公司往期回复，感谢您对公司的关注。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>国际战争是否间接推高特殊行业与高端装备检测需求？</td><td class='title'>您好，公司将密切关注客户需求变化，服务好现有客户和潜在客户。感谢您对公司的关注。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>商业航天板块是否已形成卫星全链条测试能力？</td><td class='title'>您好，请参考公司往期回复，感谢您对公司的关注。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>目前国际战争与地缘冲突是否对公司业务造成直接影响？</td><td class='title'>您好，目前国际战争及地缘政治冲突尚未对公司整体业务产生实质性影响。公司将持续关注客户需求变化，积极做好风险防控，把握潜在市场机会，实现业务的稳定与增长。感谢您对公司的关注。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>出口类客户检测需求是否因国际局势出现下滑？</td><td class='title'>您好，公司专注于技术能力的提升，服务好相关客户，以高质量的服务和技术保障，取得客户信任，保障公司的业务持续增长。感谢您对公司的关注。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>定增募投项目是否按计划推进且未受外部局势影响？</td><td class='title'>您好，公司募投项目均在按既定计划有序推进，后续将根据项目进展及信息披露规则及时公告相关情况。感谢您对公司的关注。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr></tbody></table>
+          </div>
+        </div>
+        
+        <div class="company-interaction-card" id="company-card-4">
+          <div class="company-header" onclick="toggleCompanyQa('company-card-4')">
+            <div class="company-info">
+              <span class="company-name">康弘药业</span>
+              <span class="company-symbol">002773</span>
+              <span class="qa-count">(2条)</span>
+              
+            </div>
+            <span class="toggle-icon" id="toggle-company-card-4">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">康弘药业重视市值管理、聚焦主业，股价波动受多因素影响。</span>
+          </div>
+          <div class="company-qa-list" id="qa-company-card-4">
+            <table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead><tbody><tr><td>2026-03-06</td><td class='title'>你们公司到底有没有在做好市值管理工作？</td><td class='title'>尊敬的投资者，您好！公司重视市值管理工作，持续聚焦主业发展，与投资者共享公司发展成果。感谢您的关注与支持！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>贵公司业绩明明可以，为什么股价一直在下跌当中？请问贵公司有什么措施稳定自己的股价？</td><td class='title'>尊敬的投资者，您好！公司重视市值管理工作，持续聚焦主业发展，与投资者共享公司发展成果。同时，二级市场股价波动受诸多因素影响，请理性、谨慎判断，注意股票投资风险。感谢您的关注与支持！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr></tbody></table>
+          </div>
+        </div>
+        
+        <div class="company-interaction-card" id="company-card-5">
+          <div class="company-header" onclick="toggleCompanyQa('company-card-5')">
+            <div class="company-info">
+              <span class="company-name">恺英网络</span>
+              <span class="company-symbol">002517</span>
+              <span class="qa-count">(1条)</span>
+              
+            </div>
+            <span class="toggle-icon" id="toggle-company-card-5">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">投资者询问欧盟业务等，公司称聚焦游戏主业，未披露具体信息。</span>
+          </div>
+          <div class="company-qa-list" id="qa-company-card-5">
+            <table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead><tbody><tr><td>2026-03-06</td><td class='title'>董秘你好！请问贵公司有无欧盟国家的产品销售业务？如有，这部分收入占比大致为多少？销售渠道有哪些？</td><td class='title'>您好，公司始终坚持将“聚焦游戏主业”作为公司发展的核心战略方向，以打造符合市场需求的精品游戏为导向，以“研发、发行、投资+IP、用户平台”四大业务体系为支撑，持续为用户提供优质内容服务和深度游戏娱乐体验，打造卓越互联网上市公司。同时，公司积极拓展海外业务，已初步建立起一套海外发行策略，通过深挖核心用户，精准引流，口碑拓圈等组合推广方式，实现公司近三年境外收入的持续增长。公司将继续贯彻IP产品战略，用IP价值赋能文化出海，持续以“优质内容、精准营销、全球布局”为核心，不断丰富产品矩阵，做好长线发行运营。深耕中国港澳台、韩国、东南亚等国家/地区，发力突破日本及欧美国家/地区。感谢您的关注！ (来自</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr></tbody></table>
+          </div>
+        </div>
+        
+        <div class="company-interaction-card" id="company-card-6">
+          <div class="company-header" onclick="toggleCompanyQa('company-card-6')">
+            <div class="company-info">
+              <span class="company-name">新产业</span>
+              <span class="company-symbol">300832</span>
+              <span class="qa-count">(2条)</span>
+              
+            </div>
+            <span class="toggle-icon" id="toggle-company-card-6">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">经营稳定、披露合规，国内试剂增值税3%改13%影响毛利率</span>
+          </div>
+          <div class="company-qa-list" id="qa-company-card-6">
+            <table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead><tbody><tr><td>2026-03-06</td><td class='title'>董秘您好！贵公司的股价一个月多月的时间仅红盘3天连退市的都不如，请问出了什么事？</td><td class='title'>您好，公司经营情况稳定，如有涉及需披露事项公司均已按照相关要求进行了披露。公司将与2026年4月28日披露《2025年年度报告》。敬请关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>请问公司目前增值税计税方式是否发生变更，由 3% 简易计税改为 13% 税率的一般计税？该调整带来的新增税收成本预计有多大，对公司当期及未来利润影响如何，是否属</td><td class='title'>您好，公司已于2024年11月开始对国内试剂类产品增值税税率进行了调整，国内试剂类产品的增值税率由3%调整至13%，上述调整主要对公司国内试剂毛利率产生一定影响。具体公司试剂毛利率变动情况，还请关注公司已披露的定期报告。感谢关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr></tbody></table>
+          </div>
+        </div>
+        
+        <div class="company-interaction-card" id="company-card-7">
+          <div class="company-header" onclick="toggleCompanyQa('company-card-7')">
+            <div class="company-info">
+              <span class="company-name">格力电器</span>
+              <span class="company-symbol">000651</span>
+              <span class="qa-count">(5条)</span>
+              
+            </div>
+            <span class="toggle-icon" id="toggle-company-card-7">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">格力回应地源热泵等产品、空调不涨价底气，及晶弘品牌、老年家电建议反馈。</span>
+          </div>
+          <div class="company-qa-list" id="qa-company-card-7">
+            <table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead><tbody><tr><td>2026-03-06</td><td class='title'>尊敬的领导您好，最近地源热泵、水源热泵等新型制冷和取暖产品比较热门。请问公司如何看待相关产品对公司传统空调业务存在的现实或者可能冲击？公司是否有相关产品或者项目</td><td class='title'>尊敬的投资者，您好！地源热泵、水源热泵分别利用地下土壤或岩层，河流、地下水或工业废水等作为热源进行制冷或制热，相比空气源热泵市场，当前市场规模较小，公司已有相关产品并将持续关注行业发展动态。公司自主研发推出的离心式、螺杆式及涡旋式水（地）源热泵等产品，节能水平领先行业，近年来在多机串联热泵、多级压缩机及多能互补系统设计技术上持续突破，热泵产品可输出60℃~160℃的热水和蒸汽，满足不同工业场景用热需求，相关产品已交付油田、酿造、钢铁、光伏制造及城市集中供热等多领域项目，践行国家节能降碳战略。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>在铜价上涨的背景下，公司选择不涨价的底气或者说底牌是什么？方便透露吗？这个策略是否会导致2026年的预期利润下滑？</td><td class='title'>尊敬的投资者，您好！公司积极响应2026年家电国家补贴政策，切实让利消费者，承诺格力家用空调不涨价。公司依托全产业链优势及精细化管理，将持续通过技术创新、工艺优化、效率提升和减少损耗等进一步降本增效，努力实现稳健经营。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>晶弘品牌价格定位有点混乱，建议把晶弘品牌战略做一下调整，晶弘空调别跟格力空调在同一个网店卖分开卖晶弘品牌应该独立出来开品牌网店。建议晶弘冰箱价格往下调做中低端，</td><td class='title'>尊敬的投资者，您好！感谢您对格力电器品牌战略的关注，您的建议对公司有重要的参考价值，我们已转达管理层。祝您生活愉快！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>董秘好，国内老龄化时代来临，而且是个大趋势，建议公司把家电上及遥控器上的字印大一些，加粗一些。另外要多考虑老年人需求的实用设计，尤其是线下店铺这方面要多用心，现</td><td class='title'>尊敬的投资者，您好！感谢您的关注与建议。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>董秘您好，我提个不成熟的建议哈。请问公司是否可以考虑收购小熊电器，以增加格力在小家电市场的市占率？一是小熊电器的外观对年轻消费者比较有吸引力，有更好的增长潜力，</td><td class='title'>尊敬的投资者，您好！感谢您的关注与建议。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr></tbody></table>
+          </div>
+        </div>
+        
+        <div class="company-interaction-card" id="company-card-8">
+          <div class="company-header" onclick="toggleCompanyQa('company-card-8')">
+            <div class="company-info">
+              <span class="company-name">汤臣倍健</span>
+              <span class="company-symbol">300146</span>
+              <span class="qa-count">(8条)</span>
+              
+            </div>
+            <span class="toggle-icon" id="toggle-company-card-8">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">投资者提转型主食、海外、水剂等建议，汤臣倍健称主营膳食营养补充剂，感谢建议。</span>
+          </div>
+          <div class="company-qa-list" id="qa-company-card-8">
+            <table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead><tbody><tr><td>2026-03-06</td><td class='title'>建议，公司是否考虑过，从膳食营养辅食转型为营养主食，特别是一些特殊人群、特殊生活场景，比如：儿童、康复老人、早餐、加班等营养饮食。</td><td class='title'>投资者您好！公司主营膳食营养补充剂业务，致力于做大做强主业，实现可持续、有质量发展。感谢您的建议。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>这几年，国内收入最好的群体是网红、热点个体户、科技、IT、汽车、电子类从业人员，传统房地产、基建从业人员收入大打折扣，所以，公司产品的消费群体就是这些新群体。应</td><td class='title'>感谢您的建议。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>公司要继续开拓海外市场，</td><td class='title'>感谢您的建议。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>建议，公司要研发“水剂”日常营养品</td><td class='title'>感谢您的建议。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>建议，公司可以开发一些年轻人需求的产品，比如：潮玩、性趣养生爱好、甚至宠物养生等，抓住年轻人，才能开启新增长动能</td><td class='title'>感谢您的建议。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>建议，公司围绕老龄化、大健康产业、高品质生活、银发经济，投资医药研发、健康调理、AI医疗等产业投资</td><td class='title'>感谢您的建议。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>请问，公司产品已布局全球多少国家销售？</td><td class='title'>投资者您好！公司积极开拓海外业务，产品已覆盖澳洲、东南亚等多个市场，目前已进入新加坡、马来西亚、越南、泰国等多个国家重点线下连锁渠道，拓展东南亚多国兴趣电商渠道，并稳步推进美国主流线上渠道覆盖。感谢关注。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>你好董秘，麻烦问一下今年公司会有多少新品发布和上市？公司股价低位徘徊，公司管理层是否认同股价现有估值，近期公司是否有投资者回馈活动，比如新品赠送，让投资者成为公</td><td class='title'>投资者您好！公司始终坚持以消费者需求为导向，围绕主要核心品类并结合渠道特性进行产品研发创新，为消费者提供更加多样化的产品选择。公司持续关注市值表现，致力于做大做强主业，实现可持续、有质量发展，长期创造价值回报广大投资者。相关回馈活动请以公司公告为准。感谢关注。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr></tbody></table>
+          </div>
+        </div>
+        
+        <div class="company-interaction-card" id="company-card-9">
+          <div class="company-header" onclick="toggleCompanyQa('company-card-9')">
+            <div class="company-info">
+              <span class="company-name">海信家电</span>
+              <span class="company-symbol">000921</span>
+              <span class="qa-count">(10条)</span>
+              
+            </div>
+            <span class="toggle-icon" id="toggle-company-card-9">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">投资者建议回购/市值管理，公司反馈；多品牌分层，日立约克无出口，海信海外销售。</span>
+          </div>
+          <div class="company-qa-list" id="qa-company-card-9">
+            <table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead><tbody><tr><td>2026-03-06</td><td class='title'>强烈建议启动市值管理，至少要回购啊</td><td class='title'>投资者您好，我们会将您的建议反馈给经营层，感谢关注。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>现在消费者聪明了，不是听忽悠就能买单的！空调是有点技术，但核心技术并不多！我们的口碑本身就不错， 只要舍得用料，加强宣传，跻身一线，也是很有机会的！ 日立、海信</td><td class='title'>投资者您好，公司已构建多品牌矩阵，并精准定位品牌分层。其中，海信依托深厚的技术积累及多品牌全品类优势，加快从“以产品为中心的硬件制造商”向“以用户为中心的智能生活服务伙伴”跃迁，为用户打造高品质生活体验；日立聚焦高端空调领域，为更有追求的装修用户持续创造更舒适的家居环境；约克以百年品质，为追求专业的高端用户提供极致细节的产品解决方案；科龙立足时尚潮流空调定位，旨在成为年轻消费者首选的空调品牌。感谢您的关注。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>海信的空调被严重低估了！日立：高端中央空调、家用空调；海信：高品质家用空调；科龙：高性价比空调；约克：高端中央空调！ 三电：特斯拉压缩机和热管理供应商，高端汽车</td><td class='title'>投资者您好，公司已构建多品牌矩阵，并精准定位品牌分层。其中，海信依托深厚的技术积累及多品牌全品类优势，加快从“以产品为中心的硬件制造商”向“以用户为中心的智能生活服务伙伴”跃迁，为用户打造高品质生活体验；日立聚焦高端空调领域，为更有追求的装修用户持续创造更舒适的家居环境；约克以百年品质，为追求专业的高端用户提供极致细节的产品解决方案；科龙立足时尚潮流空调定位，旨在成为年轻消费者首选的空调品牌；三电公司以“创新科技，舒适生活”为理念定位，专注汽车热管理领域，逐步向新能源汽车综合热管理系统供应商转型。感谢您的关注。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>旗下日立和约克是否有出口？主要在哪些国家销售？市场占有率如何？</td><td class='title'>投资者您好，公司旗下日立和约克品牌暂无出口业务，海信牌家用空调、冰箱、洗衣机、中央空调在海外欧美、亚太、中东非、东盟区、拉美等区域均有销售，其中海信系冰箱在全球11个国家占有率第一。感谢您的关注。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>你好，请问该公司应收账款风险管控如何进行风险控制，以及是否引进相关的软件进行业财融合呢</td><td class='title'>投资者您好，公司搭建以“经营安全为首位”的资金体系，以数字化转型为牵引，持续优化资金使用效率。严格执行客户信用管理体系，前置风险识别和规避，后端增加保险覆盖，动态监控客户信用状况，降低坏账风险。感谢您的关注。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>你好，请问该公司应收账款风险是如何识别的，以及如何控制风险的呢</td><td class='title'>投资者您好，公司搭建以“经营安全为首位”的资金体系，以数字化转型为牵引，持续优化资金使用效率。严格执行客户信用管理体系，前置风险识别和规避，后端增加保险覆盖，动态监控客户信用状况，降低坏账风险。感谢您的关注。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>尊敬的领导您好，公司涉日业务比较多，请问中日关系紧张对公司业绩是否有不利影响？</td><td class='title'>公司始终秉持稳健经营策略，通过多元化产能布局与提升供应链韧性，积极应对市场波动，目前亚太区经营稳定，谢谢。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>给我们空调业务提个建议： 合理确定定位。将科龙定位于互联网性价比机型，对标华凌、统帅、晶弘等入门机，用料不能过于简化，避免影响品牌形象；海信则是主流机，对标美的</td><td class='title'>投资者您好，我们会将您的建议反馈给经营层，感谢关注。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>旗下拥有海信、科龙、容声、日立等家电品牌，还有三电汽车压缩机切入汽车热管理赛道！ 绝对拥有硬抗一线的实力，但营销或者说宣传太差了！ 尤其是日立，完全可以定位高端</td><td class='title'>投资者您好，公司已构建多品牌矩阵，并精准定位品牌分层。其中，海信依托深厚的技术积累及多品牌全品类优势，加快从“以产品为中心的硬件制造商”向“以用户为中心的智能生活服务伙伴”跃迁，为用户打造高品质生活体验；日立聚焦高端空调领域，为更有追求的装修用户持续创造更舒适的家居环境；约克以百年品质，为追求专业的高端用户提供极致细节的产品解决方案；科龙立足时尚潮流空调定位，旨在成为年轻消费者首选的空调品牌；三电公司以“创新科技，舒适生活”为理念定位，专注汽车热管理领域，逐步向新能源汽车综合热管理系统供应商转型。感谢您的关注。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>投资海信家电能获得什么回报？</td><td class='title'>投资者您好，当前公司运营稳健，管理层持续优化治理体系，并高度重视中小投资者利益，近十年来本公司累计向中小股东分红约61.9亿元。未来公司将始终秉承长期主义建设，通过多种方式竭力维护投资者权益，为增强市场信心、促进资本市场积极健康发展贡献力量，谢谢。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr></tbody></table>
+          </div>
+        </div>
+        
+        <div class="company-interaction-card" id="company-card-10">
+          <div class="company-header" onclick="toggleCompanyQa('company-card-10')">
+            <div class="company-info">
+              <span class="company-name">深科技</span>
+              <span class="company-symbol">000021</span>
+              <span class="qa-count">(1条)</span>
+              
+            </div>
+            <span class="toggle-icon" id="toggle-company-card-10">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">投资者问1-2月盈利及披露，公司回应关注公开披露信息。</span>
+          </div>
+          <div class="company-qa-list" id="qa-company-card-10">
+            <table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead><tbody><tr><td>2026-03-06</td><td class='title'>佰维存储披露了1-2月份的业绩情况，请问请问公司1-2月份盈利情况如何，贵公司会披露吗？</td><td class='title'>尊敬的投资者，您好！公司具体经营业务情况请关注公开披露的信息。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr></tbody></table>
+          </div>
+        </div>
+        
+        <div class="company-interaction-card" id="company-card-11">
+          <div class="company-header" onclick="toggleCompanyQa('company-card-11')">
+            <div class="company-info">
+              <span class="company-name">芒果超媒</span>
+              <span class="company-symbol">300413</span>
+              <span class="qa-count">(2条)</span>
+              
+            </div>
+            <span class="toggle-icon" id="toggle-company-card-11">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">芒果超媒小芒电商推“边看边买”，以情绪消费为核心做内容到消费转化。</span>
+          </div>
+          <div class="company-qa-list" id="qa-company-card-11">
+            <table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead><tbody><tr><td>2026-03-06</td><td class='title'>张总，您好。在新时代AI浪潮下，希望贵公司能结合自身情况走出一条自己的路。建议继续巩固真人秀市场地位，加强与张家界等具有自然文明底蕴的文旅资源融合，打造不可替代</td><td class='title'>投资者，您好！感谢您的建议。目前公司旗下小芒电商已实现与芒果综艺、影视剧的“边看边买”，节目中艺人同款服饰、周边商品同步上架，用户在追剧时即可下单“同款”。综艺节目《巴黎合伙人》创新打通“真人秀+直播带货+后链路转化”模式，让品牌方实现品效合一。后续小芒将强化节目播出期间的实时互动玩法，进一步把内容流量转化为平台黏性。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>关于近期会议提到的“情绪消费”新趋势，我们注意到这与其贵公司在年轻用户群体中打造的沉浸式体验非常契合。请问贵公司目前有哪些运营来承接这一消费需求的系统方案？</td><td class='title'>投资者，您好！“情绪消费”是公司旗下小芒电商运营的核心关键词。小芒围绕“圈层人群、情绪价值、上头生意”构建了一套从内容到消费的转化体系，用内容制造情绪，用商品承载情绪，用圈层延续情绪。产品端，将芒果综艺、剧集中的情感符号开发成可收藏、可交换的IP衍生品；用户买的不单单是货品，也是对节目的热爱和圈层的身份认同。场景端，线上实现“边看边买”，用户追节目时可直接下单同款；全球旗舰店落地上海环球港，线下渠道全面覆盖国内主要省市。用户端，小芒App围绕艺人、剧综、二次元形成兴趣圈层，用户在这里找到同好、分享内容、参与共创。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr></tbody></table>
+          </div>
+        </div>
+        
+        <div class="company-interaction-card" id="company-card-12">
+          <div class="company-header" onclick="toggleCompanyQa('company-card-12')">
+            <div class="company-info">
+              <span class="company-name">许继电气</span>
+              <span class="company-symbol">000400</span>
+              <span class="qa-count">(1条)</span>
+              
+            </div>
+            <span class="toggle-icon" id="toggle-company-card-12">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">许继电气子公司联合研发核聚变300MVA脉冲供电系统，合同额1.3亿，占营收比小。</span>
+          </div>
+          <div class="company-qa-list" id="qa-company-card-12">
+            <table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead><tbody><tr><td>2026-03-06</td><td class='title'>贵司参与了可控核聚变中FRC模式下核心部件国内首套300MVA 核聚变脉冲供电系统（中国环流三号）的技术研发，请问一下，贵司是否有下一步的深度参与计划？可控核聚</td><td class='title'>您好！公司子公司河南许继电力电子有限公司与相关方联合研发了“300MVA脉冲供电系统”，相关合同金额约1.3亿元，占公司整体营业收入比例较小。感谢您的建议！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr></tbody></table>
+          </div>
+        </div>
+        
+        <div class="company-interaction-card" id="company-card-13">
+          <div class="company-header" onclick="toggleCompanyQa('company-card-13')">
+            <div class="company-info">
+              <span class="company-name">越秀资本</span>
+              <span class="company-symbol">000987</span>
+              <span class="qa-count">(1条)</span>
+              
+            </div>
+            <span class="toggle-icon" id="toggle-company-card-13">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">越秀资本否认向越秀地产输血。</span>
+          </div>
+          <div class="company-qa-list" id="qa-company-card-13">
+            <table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead><tbody><tr><td>2026-03-06</td><td class='title'>越秀地产在经营动荡、集团大裁员之际依然疯狂天价拿地，请问这些资金是否来自公司输血？越秀地产如果资金断链暴雷，公司资金是否安全？</td><td class='title'>投资者您好！公司不存在题中所述资金输血行为。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr></tbody></table>
+          </div>
+        </div>
+        
+        <div class="company-interaction-card" id="company-card-14">
+          <div class="company-header" onclick="toggleCompanyQa('company-card-14')">
+            <div class="company-info">
+              <span class="company-name">长春高新</span>
+              <span class="company-symbol">000661</span>
+              <span class="qa-count">(8条)</span>
+              
+            </div>
+            <span class="toggle-icon" id="toggle-company-card-14">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">长春高新未明确养老布局，GenSci141临床方案确定后公示，年报推迟因工作需要，2026年亏损未达披露标准。</span>
+          </div>
+          <div class="company-qa-list" id="qa-company-card-14">
+            <table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead><tbody><tr><td>2026-03-06</td><td class='title'>您好，我是长春高新的投资者。请问公司当前是否有业务及产品布局涉及养老经济（银发经济）相关领域？若有涉及，烦请说明具体涉及的业务板块、产品品类及落地应用场景；同时</td><td class='title'>感谢您的关注！公司立足生物制药核心优势，持续关注行业发展机遇，目前积极推进儿童健康、女性健康、痛风、过敏呼吸、肿瘤、免疫、内分泌代谢、疫苗等领域的销售、研发等工作，对于公司现有业务具体情况请参见公司定期报告等公告内容，谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>你好，请问贵司的GenSci141软膏预计什么时候开始安排一期临床试验？多谢！</td><td class='title'>您好，具体临床方案确定后，公司会根据相关行业要求在国家药品监督管理局药品审评中心相关临床信息公示平台中进行公示，谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>您好，请问推迟年报披露时间的原因是什么？</td><td class='title'>您好，调整是根据公司相关工作需要，谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>2026年公司经营会出现亏损吗</td><td class='title'>如有相关达到信息披露标准的情况，公司会按照法律法规要求履行披露义务，谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>你好，请问公司是否可以研究一下，GenSci141软膏用于成人小阴茎的适应症？</td><td class='title'>感谢您对公司的关注和建议，谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>请问贵公司截止3月4日，当前流通股东是多少？</td><td class='title'>您好，公司不掌握该时间节点信息，谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>公司多次回复称“深化费用精细化管控” ，但从2025年业绩预告来看，费用端依然严重侵蚀利润。投资者看到的是公司赚钱管理层花，一分不留给股东 。请问面对濒临亏损的</td><td class='title'>您好，公司会严格执行薪酬管理办法，实现薪酬分配与公司业绩考核评价的有机结合，谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>随着广东联盟集采的深入以及特宝生物、诺和诺德等对手的入局，公司生长激素量价齐跌 。以前靠“5万变500万”的老太太故事支撑股价 ，现在当产品壁垒消失后，公司在儿</td><td class='title'>您好，公司从不以单一市场传言作为价值导向，始终聚焦研发创新与临床价值，持续以患者为中心、以创新为驱动，不断强化核心竞争力。对于主要产品，公司将继续努力发挥品牌、渠道、质量等优势，并结合医保谈判结果，持续推动相关产品的销售推广工作；同时，公司近年来已经在积极推进多元化转型升级，前期在生长激素研发、销售推广阶段打下的基础，也将持续赋能新管线，推进公司持续形成‘优势共享、资源复用’的良性循环。具体新产品及在研产品情况可参见公司相关公告，谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr></tbody></table>
+          </div>
+        </div>
+        
+        <div class="company-interaction-card" id="company-card-15">
+          <div class="company-header" onclick="toggleCompanyQa('company-card-15')">
+            <div class="company-info">
+              <span class="company-name">阳光电源</span>
+              <span class="company-symbol">300274</span>
+              <span class="qa-count">(14条)</span>
+              
+            </div>
+            <span class="toggle-icon" id="toggle-company-card-15">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">阳光电源暂不涉铁空气电池，银价影响小，锂价有协议保障，港股上市积极推进。</span>
+          </div>
+          <div class="company-qa-list" id="qa-company-card-15">
+            <table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead><tbody><tr><td>2026-03-06</td><td class='title'>尊敬的董秘您好！请问贵公司是否有研究铁空气电池技术呢</td><td class='title'>感谢您对公司的关注。公司暂不涉及铁空气电池技术，谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>董秘，麻烦问一下，银价上涨对公司的产品价格和利润影响大概有多少？</td><td class='title'>感谢您对公司的关注。银在公司光伏逆变器、储能系统等核心产品中用量较少，对相关产品成本影响有限，其价格波动主要影响光伏组件环节。公司新能源投资开发业务在组件采购方面与供应商建立了长期合作机制，预计成本可控，同时公司也会积极与客户沟通传导。具体经营信息请关注公司定期报告，谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>津巴布韦宣布禁止锂矿出口可能导致锂矿涨价，请问公司是否能消化锂价上涨？原材料的上涨对储能业务的发展与国家114文件及国内外数据中心需求旺盛如何平衡？公司是否可以</td><td class='title'>感谢您对公司的关注。公司与合作伙伴有长期协议和年度框架协议保障供应，如果上游材料涨价，公司依托规模优势和优秀的供应链管理能力能保持供应链竞争优势。当上游材料成本发生显著变动时，公司会积极与客户沟通传导。谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>请问贵公司h股何时上市</td><td class='title'>感谢您对公司的关注。港股上市正在积极推进中，具体上市时间将根据境内外监管审核进度和市场情况统筹确定，请关注公司后续公告，谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>董秘您好，目前公司港股上市进展如何了？ 证监会要求补充工业互联网数据是否已补充提交？</td><td class='title'>感谢您对公司的关注。公司港股上市正在积极推进中，证监会要求的补充材料已提交，谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>请问25年四季度开始锂电上游材料大幅涨价，对公司利润有何影响？公司是否能顺利转嫁成本到客户端？谢谢！</td><td class='title'>感谢您对公司的关注。公司与合作伙伴有长期协议和年度框架协议保障供应，如果上游材料涨价，公司依托规模优势和优秀的供应链管理能力能保持供应链竞争优势。当上游材料成本发生显著变动时，公司会积极与客户沟通传导。具体经营信息请关注定期报告，谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>请问美国最高法院否决特朗普政府加税，对公司美国市场的竞争力和营业利润有何影响？谢谢！</td><td class='title'>感谢您对公司的关注。随着部分关税的取消，公司出口到美国的产品关税税率会有所降低，预计有积极影响。公司将密切关注相关政策变化，具体经营信息请关注定期报告，谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>董秘请问国办四号文强调加快建立碳足迹管理体系。公司如何利用数字化供应链，先行建立符合全球标准的“绿色护照”，以应对国内外双重合规门槛并转化为准入优势？该政策是否</td><td class='title'>感谢您对公司的关注。国办四号文对加快建立碳足迹管理体系的要求，与阳光电源&quot;绿色使命成就美好&quot;的可持续发展理念、&quot;迈向净零&quot;的战略目标高度契合，为我们进一步巩固全球绿色竞争力提供了清晰指引。1.数字化供应链与&quot;绿色护照&quot;建设：公司已通过自主研发的iCarbon碳管理平台联动供应商管理平台，构建了符合全球标准的供应链碳数据管理和产品碳足迹管理体系。目前已实现核心产品全BOM物料级碳数据管理，已具备快速响应主要市场绿色贸易规则的数据基础和系统能力。2.招投标优势与绿色合规护城河：国内绿色采购政策与国际客户可持续采购标准，均将低碳技术、碳足迹认证、ESG表现作为重要评审指标。阳光电源已在多个项目中凭借</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>尊敬的董秘你好。官方网站透露公司拟在欧洲开设工厂，标志着“本地化”迈入新阶段。请问： 该工厂当前的筹备进度及核心产品的产能规划如何？ 在欧盟贸易政策波动的背景下</td><td class='title'>感谢您对公司的关注。公司拟在波兰投资建设欧洲制造工厂，规划年产20GW光伏逆变器及12.5GWh储能系统的产能，工厂当前处于筹备阶段。本地化生产有助于贴近客户，更有效地响应市场需求，增强欧洲供应稳定性。公司会持续关注政策动态，积极调整策略以符合法规要求。谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>董秘您好！近期公司股价出现较大幅波动，市场普遍担忧公司境外发行H股可能存在大幅折价，进而对A股估值产生向下锚定的压力。作为长期看好公司的投资者，我想请教： 公司</td><td class='title'>感谢您对公司的关注。公司在推进境外融资过程中，始终严格遵守境内外监管规定，发行定价将综合考虑市场环境、公司价值及投资者利益等因素。在引入投资者方面，公司会优先考虑认可公司长期价值，具备长期投资意愿的投资者，审慎开展投资者筛选和发行定价工作。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>董秘您好！公司坚持不造电芯，请问在“三电融合”架构下，公司BMS的核心竞争力如何体现？ 在缺乏电芯底层生产数据的情况下，公司如何通过电力电子技术实现更精准的SO</td><td class='title'>感谢您对公司的关注。BMS具体技术信息可关注《阳光电源BM²T电池管理技术白皮书》。公司将电力电子技术与电化学、电网支撑技术的深度融合，通过全栈自研的软硬件（BMS、PCS、EMS）深度耦合，确保电芯的协同运行。PowerTitan等系列产品采用液冷温控、智能簇级管理、干细胞电网技术，显著提升系统兼容性及安全护城河。谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>董秘您好！美国市场竞争日趋复杂，面临Fluence等集成商及Bloom Energy等本土能源方案商的挑战。请问： 相比外购核心部件的厂商，公司“三电融合”在满</td><td class='title'>感谢您对公司的关注。阳光电源基于三电融合的底层技术打造了“交流智储平台”,包含多种可靠灵活的子系统、子器件库，可快速可靠地基于客户需求交付产品方案，以满足多元场景不同工况对储能系统的差异需求，并实现安全可靠与效率的平衡。谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>董秘您好！展望十五五规划，构建新型电力系统将是核心命题，这对储能系统的构网能力和安全性提出了更高要求。请问： 针对国内市场即将到来的构网型储能需求爆发，公司的干</td><td class='title'>感谢您对公司的关注。公司在2025年再次升级干细胞电网技术，并发布《干细胞构网技术2.0白皮书》，满足全球不同场景下复杂的电网工况要求，助力实现电站效益最大化，因网制宜，以“定制化”构网解决方案，守护电网安全稳定。公司2024年发布ArcDefender™储能直流灭弧技术，已在PowerTitan产品中全系标配。谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>请问贵公司2025年扩产的生产线开始投产了吗？若投产利用率现在是多少？</td><td class='title'>感谢您对公司的关注。公司生产线按计划投产，具体经营信息请关注公司的定期报告，谢谢！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr></tbody></table>
+          </div>
+        </div>
+        
+        <div class="company-interaction-card" id="company-card-16">
+          <div class="company-header" onclick="toggleCompanyQa('company-card-16')">
+            <div class="company-info">
+              <span class="company-name">鼎泰高科</span>
+              <span class="company-symbol">301377</span>
+              <span class="qa-count">(12条)</span>
+              
+            </div>
+            <span class="toggle-icon" id="toggle-company-card-16">▼</span>
+          </div>
+          <div class="company-ai-summary">
+            <span class="ai-tag">🤖 AI</span>
+            <span class="ai-text">鼎泰高科AI提升钻针需求，扩产能、适配国产AI，产品具竞争力</span>
+          </div>
+          <div class="company-qa-list" id="qa-company-card-16">
+            <table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead><tbody><tr><td>2026-03-06</td><td class='title'>请问董秘，AI服务器用高端PCB的CCL材料硬度更高、磨蚀性更强，会大幅缩短钻针的使用寿命，是否会带来钻针替换需求的提升？</td><td class='title'>是的。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>请问董秘，全球AI算力建设仍处于高速发展阶段，公司作为AI算力产业链上游的核心耗材供应商，是否已经做好了充足的产能准备，以应对未来持续增长的市场需求？</td><td class='title'>公司正加快 “PCB微型钻针生产基地建设项目” 的建设进度，并将根据市场情况持续有序扩充产能，感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>请问董秘，随着AI算力向国产化方向推进，国产AI芯片和国产AI服务器的市场份额持续提升，公司是否已经全面适配国产AI服务器PCB的生产需求？相关国产替代的市场空</td><td class='title'>公司已基本覆盖全球头部PCB客户，具备全面适配客户各类产品需求的技术能力。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>请问董秘，公司的钻针产品在AI服务器PCB生产中的断针率、使用寿命等核心指标，相比国际竞争对手处于什么水平？是否具备更强的竞争优势？</td><td class='title'>公司作为全球PCB刀具龙头，市场地位已充分证明产品竞争力。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>请问董秘，随着AI行业的持续发展，数据中心、高速通信等相关领域的PCB需求也会同步增长，公司的产品是否也能全面覆盖这些场景？相关市场的拓展情况如何？</td><td class='title'>公司产品广泛应用于上述场景。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>在AI算力带动的高端PCB钻针需求爆发的背景下，公司的全球市占率是否有进一步提升？未来是否有信心将全球市占率提升到更高的水平？</td><td class='title'>公司订单充足，随着国内产能持续扩充及海外产能逐步释放，全球市占率有望进一步提升。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>请问董秘，在高端精密制造领域，海外巨头长期占据技术优势，公司是如何实现技术突围的？未来在哪些核心技术上还有进一步突破的规划？</td><td class='title'>公司通过核心设备90%以上自研构筑竞争壁垒。凭借持续的研发投入与自主创新，累计掌握超百项知识产权，实现从技术追赶到行业引领，重塑全球PCB刀具竞争格局。未来将持续向“更高精度、更长寿命、更优成本”突破，助力中国精密制造向全球产业链高端跃升。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>请问董秘，公司在高速通信、光模块等领域的PCB刀具产品布局如何？随着800G、1.6T光模块的快速普及，相关产品的需求是否有增长？</td><td class='title'>公司产品已覆盖相关领域，随着高端PCB需求增长，相应产品订单亦将同步提升。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>在国产替代的大趋势下，国内高端精密制造领域迎来了巨大的发展机遇，公司将如何抓住这一历史机遇，实现从行业龙头向全球精密制造领军企业的跨越？</td><td class='title'>公司将持续加大研发投入，依托产业链核心技术优势，抓住国产替代历史机遇，深化高端产品布局，致力实现从行业龙头向全球精密制造领军企业的跨越。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>公司在品牌建设上有哪些规划？如何进一步提升“鼎泰高科”品牌在全球精密制造领域的知名度和影响力？</td><td class='title'>公司正以“鼎泰高科”主品牌为引领，构建“一主多辅”的品牌矩阵，以全球视野深化品牌战略布局。通过强化品牌保护，发挥多事业部协同效应，致力于将“鼎泰高科”打造成为代表中国精密制造水平的国际名片，提升中国制造在全球产业链中的核心竞争力和品牌影响力。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>人形机器人产业进入爆发期，其伺服系统、控制器等核心部件的PCB对微型精密钻针有大量需求，公司是否已完成相关产品的研发适配？</td><td class='title'>公司PCB刀具可全面适配各类PCB生产场景需求，感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr><tr><td>2026-03-06</td><td class='title'>请问董秘，随着全球AI算力需求持续爆发，AI服务器PCB向高层数、厚板、高难度钻孔方向升级，公司作为全球PCB钻针龙头，相关高端产品的订单是否出现持续增长？目前</td><td class='title'>公司2025年业绩的快速增长已反映出相关需求的变化，目前高端产品订单充足，产能利用率高，部分产品交付紧张，公司正加快项目建设扩充产能。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>link</a></td></tr></tbody></table>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    
+      <section id="notice">
+    <section class="panel">
+      <h2>公告解读 <span>(179条 已过滤86条次要公告)</span></h2>
+      <div class="stack">
+        
+                <section class="subpanel">
+                  <h3>重大合作/投资项目 <span>(21)</span></h3>
+                  <table>
+                    <thead>
+                      <tr><th>公司</th><th>代码</th><th>条数</th><th>样本标题</th><th>URL</th></tr>
+                    </thead>
+                    <tbody><tr class=''><td>安迪苏</td><td>600299</td><td>4</td><td class='title'>中信证券股份有限公司关于蓝星安迪苏股份有限公司调整部分募集资金投资项目相关投资事项的核查意见；安迪苏关于调整部分募集资金投资项目相关投资事项的公告；安迪苏关于拟与中化集团财务有限责任公司签署《金融服务协议》暨关联交易的公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000493.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>中研股份</td><td>688716</td><td>2</td><td class='title'>吉林省中研高分子材料股份有限公司变更募集资金投资项目公告；国泰海通证券股份有限公司关于吉林省中研高分子材料股份有限公司变更部分募集资金投资项目的核查意见</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999371.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>林平发展</td><td>603284</td><td>2</td><td class='title'>国联民生证券承销保荐有限公司关于安徽林平循环发展股份有限公司调整募集资金投资项目拟投入募集资金金额的核查意见；安徽林平循环发展股份有限公司关于调整募集资金投资项目拟投入募集资金金额的公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997273.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>迈为股份</td><td>300751</td><td>2</td><td class='title'>关于公司控股子公司拟签署《投资协议书》的公告；关于公司拟签署《投资协议书》的公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999799.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>*ST建艺</td><td>002789</td><td>1</td><td class='title'>关于项目中标的公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997354.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>东睦股份</td><td>600114</td><td>1</td><td class='title'>东睦股份关于签署《关于上海富驰高科技股份有限公司之业绩补偿协议》的公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998255.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>华软科技</td><td>002453</td><td>1</td><td class='title'>关于收购山东莱恩光电科技股份有限公司67%股权暨签署《股份转让协议》的公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999980.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>宏盛华源</td><td>601096</td><td>1</td><td class='title'>宏盛华源关于南方电网项目预中标的提示性公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998295.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>恒华科技</td><td>300365</td><td>1</td><td class='title'>关于收到《中标通知书》的公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998746.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>恒尚节能</td><td>603137</td><td>1</td><td class='title'>恒尚节能：关于重大工程中标的公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224996978.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>文科股份</td><td>002775</td><td>1</td><td class='title'>关于签署佛茂国资协同系列战略合作协议暨关联交易的公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999385.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>新光光电</td><td>688011</td><td>1</td><td class='title'>哈尔滨新光光电科技股份有限公司关于自愿披露收到中标通知书的公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224998798.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>江苏新能</td><td>603693</td><td>1</td><td class='title'>江苏新能关于控股股东拟先行投资射阳北区H1#海上风电项目暨出具避免同业竞争承诺函并与公司签署股权委托管理协议的关联交易公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999619.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>沪电股份</td><td>002463</td><td>1</td><td class='title'>关于同意签署投资协议暨新建印制电路板生产项目及其配套设施的公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000150.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>派林生物</td><td>000403</td><td>1</td><td class='title'>关于签订《战略合作协议之补充协议三》的公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000285.PDF' target='_blank'>link</a></td></tr></tbody>
+                  </table>
+                </section>
+                
+                <section class="subpanel">
+                  <h3>减持 <span>(16)</span></h3>
+                  <table>
+                    <thead>
+                      <tr><th>公司</th><th>代码</th><th>条数</th><th>样本标题</th><th>URL</th></tr>
+                    </thead>
+                    <tbody><tr class=''><td>*ST声迅</td><td>003004</td><td>1</td><td class='title'>关于公司股东减持股份的预披露公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999983.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>中农立华</td><td>603970</td><td>1</td><td class='title'>中农立华股东减持股份计划公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000013.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>中胤时尚</td><td>300901</td><td>1</td><td class='title'>关于持股5%以上股东股份减持计划的预披露公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1225000232.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>凯因科技</td><td>688687</td><td>1</td><td class='title'>凯因科技控股股东减持股份计划公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997796.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>华胜天成</td><td>600410</td><td>1</td><td class='title'>董事及高级管理人员减持股份计划公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000098.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>奇正藏药</td><td>002287</td><td>1</td><td class='title'>关于高级管理人员减持股份的预披露公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998062.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>康强电子</td><td>002119</td><td>1</td><td class='title'>关于持股5%以上股东减持股份的预披露公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998249.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>德瑞锂电</td><td>920523</td><td>1</td><td class='title'>股东拟减持股份的预披露公告（再次披露）</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998706.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>悦安新材</td><td>688786</td><td>1</td><td class='title'>江西悦安新材料股份有限公司关于股东减持股份计划公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997982.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>晶品特装</td><td>688084</td><td>1</td><td class='title'>关于股东减持股份计划公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998343.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>横店影视</td><td>603103</td><td>1</td><td class='title'>横店影视股份有限公司股东减持股份计划公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000027.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>汇隆活塞</td><td>920455</td><td>1</td><td class='title'>股东拟减持股份的预披露公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999482.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>江龙船艇</td><td>300589</td><td>1</td><td class='title'>关于董事、大股东的一致行动人减持计划的预披露公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1225000234.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>特发服务</td><td>300917</td><td>1</td><td class='title'>股东减持股份预披露公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1225000276.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>红星发展</td><td>600367</td><td>1</td><td class='title'>红星发展董事、高级管理人员减持股份计划公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000051.PDF' target='_blank'>link</a></td></tr>
+<tr class=''><td>鑫科材料</td><td>600255</td><td>1</td><td class='title'>鑫科材料关于部分董事及高级管理人员减持股份计划公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999775.PDF' target='_blank'>link</a></td></tr></tbody>
+                  </table>
+                </section>
+                
+                <section class="subpanel">
+                  <h3>增持 <span>(1)</span></h3>
+                  <table>
+                    <thead>
+                      <tr><th>公司</th><th>代码</th><th>条数</th><th>样本标题</th><th>URL</th></tr>
+                    </thead>
+                    <tbody><tr class=''><td>凯撒旅业</td><td>000796</td><td>1</td><td class='title'>关于控股股东增持股份及后续增持计划的公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997896.PDF' target='_blank'>link</a></td></tr></tbody>
+                  </table>
+                </section>
+                
+                <section class="subpanel">
+                  <h3>资本运作-股权激励 <span>(63)</span></h3>
+                  <div class="capital-companies">
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">傲农生物</span>
+                            <span class="capital-company-symbol">603363</span>
+                            <span class="capital-count">(4条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998292.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 福建傲农生物科技集团股份有限公司2026年限制性股票激励计划（草案）<br>• 福建傲农生物科技集团股份有限公司2026年限制性股票激励计划（草案）摘要公告<br>• 福建傲农生物科技集团股份有限公司2026年限制性股票激励计划首次授予激励对象名单<br>• 福建傲农生物科技集团股份有限公司2026年限制性股票激励计划实施考核管理办法</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">力芯微</span>
+                            <span class="capital-company-symbol">688601</span>
+                            <span class="capital-count">(4条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000046.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 2026年限制性股票激励计划激励对象名单<br>• 2026年限制性股票激励计划（草案）<br>• 2026年限制性股票激励计划实施考核管理办法<br>• 2026年限制性股票激励计划（草案）摘要</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">海联讯</span>
+                            <span class="capital-company-symbol">300277</span>
+                            <span class="capital-count">(4条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998308.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于回购注销部分限制性股票的公告<br>• 关于调整2021年限制性股票激励计划回购价格的公告<br>• 关于回购注销部分限制性股票通知债权人的公告<br>• 关于2021年限制性股票激励计划（承继自原杭州汽轮动力集团股份有限公司）预留授予部分第三期解除限售条件成就的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">蔚蓝锂芯</span>
+                            <span class="capital-company-symbol">002245</span>
+                            <span class="capital-count">(4条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998154.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 2026年股票期权激励计划自查表<br>• 2026年股票期权激励计划实施考核管理办法<br>• 2026年股票期权激励计划（草案）<br>• 2026年股票期权激励计划（草案）摘要</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">雅戈尔</span>
+                            <span class="capital-company-symbol">600177</span>
+                            <span class="capital-count">(4条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000342.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 雅戈尔时尚股份有限公司2026年限制性股票激励计划实施考核管理办法<br>• 雅戈尔时尚股份有限公司2026年限制性股票激励计划激励对象名单<br>• 雅戈尔时尚股份有限公司2026年限制性股票激励计划<br>• 雅戈尔时尚股份有限公司2026年限制性股票激励计划（草案）摘要公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">恒而达</span>
+                            <span class="capital-company-symbol">300946</span>
+                            <span class="capital-count">(3条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999612.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于公司第一期股权激励计划内幕信息知情人买卖公司股票的自查报告<br>• 关于向公司第一期股权激励计划激励对象首次授予限制性股票的公告<br>• 福建恒而达新材料股份有限公司第一期股权激励计划首次授予激励对象名单（授予日）</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">溢多利</span>
+                            <span class="capital-company-symbol">300381</span>
+                            <span class="capital-count">(3条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999608.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 2025年限制性股票激励计划预留授予激励对象名单<br>• 关于向2025年限制性股票激励计划激励对象授予预留限制性股票的公告<br>• 关于调整公司2025年限制性股票激励计划授予价格的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">首钢股份</span>
+                            <span class="capital-company-symbol">000959</span>
+                            <span class="capital-count">(3条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000093.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 北京首钢股份有限公司2025年股票期权与限制性股票激励计划激励对象名单（截至授予日）<br>• 北京首钢股份有限公司关于向激励对象授予股票期权与限制性股票的公告<br>• 北京首钢股份有限公司关于调整2025年股票期权与限制性股票激励计划激励对象名单及授予权益数量的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">云鼎科技</span>
+                            <span class="capital-company-symbol">000409</span>
+                            <span class="capital-count">(2条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997256.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于部分限制性股票回购注销完成的公告<br>• 关于部分限制性股票回购注销完成导致公司控股股东权益变动的提示性公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">海通发展</span>
+                            <span class="capital-company-symbol">603162</span>
+                            <span class="capital-count">(2条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998247.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 福建海通发展股份有限公司关于回购注销部分限制性股票和注销部分股票期权的公告<br>• 福建海通发展股份有限公司关于回购注销部分限制性股票通知债权人的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">皖天然气</span>
+                            <span class="capital-company-symbol">603689</span>
+                            <span class="capital-count">(2条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997884.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 2022年限制性股票激励计划部分限制性股票回购注销实施公告<br>• 关于限制性股票回购注销实施完成暨不调整可转债转股价格的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">阳光电源</span>
+                            <span class="capital-company-symbol">300274</span>
+                            <span class="capital-count">(2条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999557.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于向2025年限制性股票激励计划激励对象授予预留限制性股票的公告<br>• 2025年限制性股票激励计划预留授予激励对象名单</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">上海电力</span>
+                            <span class="capital-company-symbol">600021</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998268.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 上海电力股份有限公司关于首期股票期权激励计划限制行权期间的提示性公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">中化国际</span>
+                            <span class="capital-company-symbol">600500</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997750.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 中化国际股权激励限制性股票回购注销实施公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">中航光电</span>
+                            <span class="capital-company-symbol">002179</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997740.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于回购注销限制性股票完成的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">中航重机</span>
+                            <span class="capital-company-symbol">600765</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999031.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 中航重机关于限制性股票回购注销完成的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">中远海控</span>
+                            <span class="capital-company-symbol">601919</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999276.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 中远海控关于股票期权激励计划限制行权期间延长的提示性公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">中颖电子</span>
+                            <span class="capital-company-symbol">300327</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997013.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于2025年限制性股票激励计划暂缓授予部分限制性股票授予登记完成的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">凯龙股份</span>
+                            <span class="capital-company-symbol">002783</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997564.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于回购注销部分限制性股票通知债权人的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">华东医药</span>
+                            <span class="capital-company-symbol">000963</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999290.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于部分限制性股票回购注销完成的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">华之杰</span>
+                            <span class="capital-company-symbol">603400</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224998792.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 华之杰关于2026年股票期权激励计划内幕信息知情人及激励对象买卖公司股票情况的自查报告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">太湖远大</span>
+                            <span class="capital-company-symbol">920118</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1225000166.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于2026年股权激励计划内幕信息知情人买卖公司股票情况的自查报告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">宇新股份</span>
+                            <span class="capital-company-symbol">002986</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997629.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于2026年股票期权激励计划内幕信息知情人及激励对象买卖公司股票情况的自查报告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">宇晶股份</span>
+                            <span class="capital-company-symbol">002943</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000214.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于终止实施2025年股票期权激励计划的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">崇德科技</span>
+                            <span class="capital-company-symbol">301548</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997320.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于2026年限制性股票激励计划内幕信息知情人及激励对象买卖公司股票情况的自查报告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">德必集团</span>
+                            <span class="capital-company-symbol">300947</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998997.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于2026年股票期权激励计划内幕信息知情人买卖公司股票情况的自查报告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">德新科技</span>
+                            <span class="capital-company-symbol">603032</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999992.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 德力西新能源科技股份有限公司关于部分限制性股票回购注销实施公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">格林美</span>
+                            <span class="capital-company-symbol">002340</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000172.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于回购注销部分限制性股票减少注册资本暨通知债权人的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">欣锐科技</span>
+                            <span class="capital-company-symbol">300745</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998702.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于公司2023年限制性股票与股票期权激励计划限制性股票首次授予部分第一个归属期归属结果暨股份上市公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">深科达</span>
+                            <span class="capital-company-symbol">688328</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997410.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于终止实施2025年股票期权激励计划的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">百洋股份</span>
+                            <span class="capital-company-symbol">002696</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997330.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于回购注销部分限制性股票及注销库存股暨减少注册资本通知债权人的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">科创新源</span>
+                            <span class="capital-company-symbol">300731</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998887.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 深圳科创新源新材料股份有限公司关于2025年限制性股票激励计划第一类限制性股票首次授予登记完成的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">紫燕食品</span>
+                            <span class="capital-company-symbol">603057</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999430.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 紫燕食品股权激励限制性股票回购注销实施公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">芯瑞达</span>
+                            <span class="capital-company-symbol">002983</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997823.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于部分限制性股票回购注销完成的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">蓝宇股份</span>
+                            <span class="capital-company-symbol">301585</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999257.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于向公司2026年限制性股票激励计划激励对象授予限制性股票的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">远航精密</span>
+                            <span class="capital-company-symbol">920914</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999583.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 2025年股票期权激励计划股票期权预留授予结果公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">震安科技</span>
+                            <span class="capital-company-symbol">300767</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999210.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 震安科技股份有限公司关于2026年限制性股票激励计划内幕信息知情人及激励对象买卖公司股票情况的自查报告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">鼎龙股份</span>
+                            <span class="capital-company-symbol">300054</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000110.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于2024年股票期权激励计划第一期行权完成后调整可转债转股价格的公告</div>
+                    </div>
+                    
+                  </div>
+                </section>
+                
+                <section class="subpanel">
+                  <h3>资本运作-特定对象发行 <span>(54)</span></h3>
+                  <div class="capital-companies">
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">大连圣亚</span>
+                            <span class="capital-company-symbol">600593</span>
+                            <span class="capital-count">(10条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000430.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于向特定对象发行A股股票申请获得上海证券交易所受理的公告<br>• 大连圣亚旅游控股股份有限公司2025年度向特定对象发行股票证券募集说明书（申报稿）<br>• 公司2025年度向特定对象发行A股股票预案（二次修订稿）<br>• 关于2025年度向特定对象发行A股股票预案等相关文件修订情况说明的公告<br>• 独立董事关于公司2025年度向特定对象发行A股股票方案论证分析报告(二次修订稿)的专项意见<br>• ... 等共 10 条公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">合盛硅业</span>
+                            <span class="capital-company-symbol">603260</span>
+                            <span class="capital-count">(8条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999792.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 合盛硅业关于暂不召开股东会审议2026年度向特定对象发行A股股票相关事项的公告<br>• 合盛硅业关于向特定对象发行A股股票后被摊薄即期回报的填补措施及相关主体承诺的公告<br>• 合盛硅业关于向特定对象发行A股股票不存在直接或通过利益相关方向参与认购的投资者提供财务资助或补偿的公告<br>• 合盛硅业股份有限公司2026年度向特定对象发行A股股票预案<br>• 合盛硅业关于2026年度向特定对象发行A股股票预案披露的提示性公告<br>• ... 等共 8 条公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">博力威</span>
+                            <span class="capital-company-symbol">688345</span>
+                            <span class="capital-count">(7条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000144.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 广东博力威科技股份有限公司关于向特定对象发行股票摊薄即期回报对公司主要财务指标的影响与填补措施及相关主体承诺（修订稿）的公告<br>• 广东博力威科技股份有限公司2025年度向特定对象发行A股股票方案的论证分析报告（修订稿）<br>• 广东博力威科技股份有限公司2025年度向特定对象发行A股股票募集资金使用的可行性分析报告（修订稿）<br>• 广东博力威科技股份有限公司2025年度向特定对象发行A股股票预案（修订稿）<br>• 广东博力威科技股份有限公司关于2025年度向特定对象发行A股股票预案（修订稿）修订情况说明的公告<br>• ... 等共 7 条公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">诚邦股份</span>
+                            <span class="capital-company-symbol">603316</span>
+                            <span class="capital-count">(7条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000565.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 诚邦生态环境股份有限公司关于提请股东会授权董事会办理2026年度以简易程序向特定对象发行股票相关事宜的公告<br>• 诚邦生态环境股份有限公司2025年度以简易程序向特定对象发行股票预案（修订稿）<br>• 诚邦生态环境股份有限公司关于以简易程序向特定对象发行股票预案修订说明的公告<br>• 诚邦生态环境股份有限公司2025年度以简易程序向特定对象发行股票募集资金使用的可行性分析报告（修订稿）<br>• 诚邦生态环境股份有限公司关于2025年度以简易程序向特定对象发行股票摊薄即期回报的风险提示及填补回报措施和相关主体承诺(修订稿)的公告<br>• ... 等共 7 条公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">德明利</span>
+                            <span class="capital-company-symbol">001309</span>
+                            <span class="capital-count">(6条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999961.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 深圳市德明利技术股份有限公司2025年度向特定对象发行股票预案（修订稿）<br>• 深圳市德明利技术股份有限公司2025年度向特定对象发行股票募集资金使用可行性分析报告（修订稿）<br>• 深圳市德明利技术股份有限公司2025年度向特定对象发行股票方案的论证分析报告（修订稿）<br>• 关于调整2025年度向特定对象发行股票方案的公告<br>• 关于向特定对象发行股票预案等相关文件修订情况说明的公告<br>• ... 等共 6 条公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">柳钢股份</span>
+                            <span class="capital-company-symbol">601003</span>
+                            <span class="capital-count">(2条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999791.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 柳钢股份以简易程序向特定对象发行股票上市公告书<br>• 柳钢股份关于2025年度以简易程序向特定对象发行股票发行结果暨股本变动的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">琏升科技</span>
+                            <span class="capital-company-symbol">300051</span>
+                            <span class="capital-count">(2条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998847.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 琏升科技股份有限公司2025年度向特定对象发行A股股票募集说明书（申报稿）<br>• 关于2025年度向特定对象发行股票申请获得深圳证券交易所受理的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">东阳光</span>
+                            <span class="capital-company-symbol">600673</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999443.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 广东东阳光科技控股股份有限公司董事会关于公司不存在《上市公司证券发行注册管理办法》第十一条规定的不得向特定对象发行股票的情形的说明</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">博世科</span>
+                            <span class="capital-company-symbol">300422</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998826.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于广西博世科环保科技股份有限公司申请向特定对象发行股票的审核问询函中有关财务会计问题的专项说明（修订稿）</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">均普智能</span>
+                            <span class="capital-company-symbol">688306</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000163.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于宁波均普智能制造股份有限公司向特定对象发行股票申请文件审核问询函中有关财务事项的说明</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">坚朗五金</span>
+                            <span class="capital-company-symbol">002791</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997996.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于向特定对象发行股票部分限售股份解除限售并上市流通的提示性公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">奥浦迈</span>
+                            <span class="capital-company-symbol">688293</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224998751.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 奥浦迈：关于开设本次向特定对象发行A股股票募集资金专项账户并授权签署监管协议的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">浙江仙通</span>
+                            <span class="capital-company-symbol">603239</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999554.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 浙江仙通-关于向特定对象发行A股股票事项获得有权国资管理单位批复的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">统联精密</span>
+                            <span class="capital-company-symbol">688210</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998090.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 深圳市泛海统联精密制造股份有限公司向不特定对象发行可转换公司债券发行结果公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">肇民科技</span>
+                            <span class="capital-company-symbol">301000</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999041.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 上海肇民新材料科技股份有限公司向不特定对象发行可转换公司债券募集说明书（申报稿）</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">西南证券</span>
+                            <span class="capital-company-symbol">600369</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999308.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 西南证券股份有限公司关于向特定对象发行A股股票相关事项获得重庆市国有资产监督管理委员会批复的公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">辰安科技</span>
+                            <span class="capital-company-symbol">300523</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1225000231.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 关于向特定对象发行股票事项获得国务院国资委、安徽省国资委批复暨控股股东、实际控制人拟发生变更的进展公告</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">金埔园林</span>
+                            <span class="capital-company-symbol">301098</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999695.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 金埔园林股份有限公司向特定对象发行A股股票募集说明书（申报稿）</div>
+                    </div>
+                    
+                    <div class="capital-company-card">
+                        <div class="capital-company-header">
+                            <span class="capital-company-name">长安汽车</span>
+                            <span class="capital-company-symbol">000625</span>
+                            <span class="capital-count">(1条)</span>
+                            <a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999573.PDF' target='_blank'>查看最新</a>
+                        </div>
+                        <div class="capital-titles">• 公司2025年度向特定对象发行A股股票募集说明书（修订稿）</div>
+                    </div>
+                    
+                  </div>
+                </section>
+                
+                <section class="subpanel regulatory-warning">
+                  <h3>⚠️ 对问询回复 <span>(24)</span></h3>
+                  <table>
+                    <thead>
+                      <tr><th>公司</th><th>代码</th><th>条数</th><th>样本标题</th><th>URL</th></tr>
+                    </thead>
+                    <tbody><tr class='regulatory-row'><td>电投能源</td><td>002128</td><td>4</td><td class='title'>中信证券股份有限公司关于深圳证券交易所《关于内蒙古电投能源股份有限公司发行股份及支付现金购买资产并募集配套资金申请的审核问询》之回复；北京天健兴业资产评估有限公司关于深圳证券交易所《关于内蒙古电投能源股份有限公司发行股份及支付现金购买资产并募集配套资金申请的审核问询》之回复；关于发行股份及支付现金购买资产并募集配套资金暨关联交易的审核问询函回复的提示性公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999138.PDF' target='_blank'>link</a></td></tr>
+<tr class='regulatory-row'><td>东睦股份</td><td>600114</td><td>3</td><td class='title'>关于东睦新材料集团股份有限公司发行股份及支付现金购买资产并募集配套资金暨关联交易申请的审核问询函的回复（修订稿）；东睦股份关于发行股份及支付现金购买资产并募集配套资金暨关联交易申请的审核问询函回复更新的提示性公告；天健会计师事务所（特殊普通合伙）关于东睦新材料集团股份有限公司发行股份及支付现金购买资产并募集配套资金暨关联交易申请的审核问询函的回复</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998274.PDF' target='_blank'>link</a></td></tr>
+<tr class='regulatory-row'><td>宝钛股份</td><td>600456</td><td>3</td><td class='title'>希格玛会计师事务所（特殊普通合伙）《关于宝鸡钛业股份有限公司向不特定对象发行可转换公司债券申请文件的审核问询函》的回复（修订稿）；关于宝鸡钛业股份有限公司向不特定对象发行可转换公司债券审核问询函的回复（修订稿）；宝鸡钛业股份有限公司关于向不特定对象发行可转换公司债券申请文件审核问询函回复（修订稿）的提示性公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224997495.PDF' target='_blank'>link</a></td></tr>
+<tr class='regulatory-row'><td>肇民科技</td><td>301000</td><td>3</td><td class='title'>关于申请向不特定对象发行可转换公司债券的审核问询函回复及申请文件更新的提示性公告；天职国际会计师事务所（特殊普通合伙）关于上海肇民新材料科技股份有限公司申请向不特定对象发行可转换公司债券申请文件的审核问询函的回复（豁免版）；关于上海肇民新材料科技股份有限公司申请向不特定对象发行可转换公司债券申请文件的审核问询函的回复报告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999047.PDF' target='_blank'>link</a></td></tr>
+<tr class='regulatory-row'><td>金埔园林</td><td>301098</td><td>3</td><td class='title'>中兴华会计师事务所（特殊普通合伙）关于金埔园林股份有限公司申请向特定对象发行股票的审核问询函之回复；关于向特定对象发行股票的审核问询函回复的提示性公告；金埔园林股份有限公司和长江证券承销保荐有限公司关于金埔园林股份有限公司申请向特定对象发行股票的审核问询函的回复报告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224999700.PDF' target='_blank'>link</a></td></tr>
+<tr class='regulatory-row'><td>博世科</td><td>300422</td><td>2</td><td class='title'>关于向特定对象发行股票的审核问询函回复修订的提示性公告；关于广西博世科环保科技股份有限公司申请向特定对象发行股票的审核问询函之回复报告（修订稿）</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-06/1224998824.PDF' target='_blank'>link</a></td></tr>
+<tr class='regulatory-row'><td>均普智能</td><td>688306</td><td>2</td><td class='title'>宁波均普智能制造股份有限公司关于向特定对象发行股票申请文件的审核问询函回复的提示性公告；关于宁波均普智能制造股份有限公司向特定对象发行股票申请文件审核问询函的回复(豁免版）</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000157.PDF' target='_blank'>link</a></td></tr>
+<tr class='regulatory-row'><td>沙河股份</td><td>000014</td><td>2</td><td class='title'>金证（上海）资产评估有限公司关于深圳证券交易所《关于对沙河实业股份有限公司重大资产购买暨关联交易的问询函》之资产评估问题相关回复；沙河实业股份有限公司关于深圳证券交易所《关于对沙河实业股份有限公司重大资产购买暨关联交易的问询函》的回复公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999499.PDF' target='_blank'>link</a></td></tr>
+<tr class='regulatory-row'><td>长安汽车</td><td>000625</td><td>2</td><td class='title'>立信会计师事务所(特殊普通合伙)关于公司申请向特定对象发行股票的审核问询函的回复(豁免版)；关于公司2025年度向特定对象发行股票的审核问询函回复及募集说明书等申请文件更新的提示性公告</td><td><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999572.PDF' target='_blank'>link</a></td></tr></tbody>
+                  </table>
+                </section>
+                
+      </div>
+    </section>
+    </section>
+    </div>
+  </main>
+  
+  <script>
+    // 互动问答 - 公司QA展开/收起功能
+    function toggleCompanyQa(cardId) {
+      const qaList = document.getElementById('qa-' + cardId);
+      const toggleIcon = document.getElementById('toggle-' + cardId);
+      
+      if (qaList.classList.contains('collapsed')) {
+        qaList.classList.remove('collapsed');
+        toggleIcon.classList.remove('collapsed');
+        toggleIcon.textContent = '▼';
+      } else {
+        qaList.classList.add('collapsed');
+        toggleIcon.classList.add('collapsed');
+        toggleIcon.textContent = '▶';
+      }
+    }
+    
+    // 新闻动态 - 分类展开/收起功能
+    function toggleNewsBucket(bucketId) {
+      const newsList = document.getElementById('list-' + bucketId);
+      const toggleIcon = document.getElementById('toggle-' + bucketId);
+      
+      if (newsList.classList.contains('collapsed')) {
+        newsList.classList.remove('collapsed');
+        toggleIcon.textContent = '▼';
+      } else {
+        newsList.classList.add('collapsed');
+        toggleIcon.textContent = '▶';
+      }
+    }
+    
+    // 默认收起所有详细内容
+    document.addEventListener('DOMContentLoaded', function() {
+      // 收起互动问答
+      const cards = document.querySelectorAll('.company-interaction-card');
+      cards.forEach((card) => {
+        const cardId = card.id;
+        const qaList = document.getElementById('qa-' + cardId);
+        const toggleIcon = document.getElementById('toggle-' + cardId);
+        if (qaList) {
+          qaList.classList.add('collapsed');
+        }
+        if (toggleIcon) {
+          toggleIcon.classList.add('collapsed');
+          toggleIcon.textContent = '▶';
+        }
+      });
+      
+      // 收起新闻动态（已默认收起，通过CSS和HTML设置）
+    });
+    
+    // 机构调研AI解读功能
+    async function analyzeResearch(itemKey, pdfUrl) {
+      const resultRow = document.getElementById('ai-result-' + itemKey);
+      const contentDiv = document.getElementById('ai-content-' + itemKey);
+      const btn = document.getElementById('btn-' + itemKey);
+      
+      // 如果已经展开，则收起
+      if (resultRow.style.display !== 'none') {
+        resultRow.style.display = 'none';
+        btn.textContent = 'AI解读';
+        return;
+      }
+      
+      // 显示加载状态
+      resultRow.style.display = 'table-row';
+      btn.textContent = '收起';
+      btn.classList.add('analyzing');
+      
+      try {
+        // 调用本地API进行AI解读
+        const response = await fetch('http://localhost:8888/analyze', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({url: pdfUrl})
+        });
+        
+        if (!response.ok) {
+          throw new Error('API请求失败: ' + response.status);
+        }
+        
+        const data = await response.json();
+        contentDiv.innerHTML = `<div class="ai-summary-header"><span class="ai-icon">🤖</span><span class="ai-title">AI解读</span></div><div class="ai-summary-content">${data.summary || '暂无解读内容'}</div>`;
+      } catch (error) {
+        // API不可用时的备用方案：显示提示信息
+        contentDiv.innerHTML = `<div class="ai-error">⚠️ AI解读服务暂不可用<br>请确保已启动本地API服务 (python ai_server.py)<br>错误: ${error.message}</div>`;
+      } finally {
+        btn.classList.remove('analyzing');
+      }
+    }
+  </script>
+</body>
+</html>
