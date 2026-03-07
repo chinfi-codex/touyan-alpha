@@ -1,13 +1,210 @@
 #!/usr/bin/env python3
 import argparse
 import concurrent.futures
+import hashlib
 import html
 import json
 import os
+import time
 from collections import defaultdict
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urlencode, urlparse
+from urllib.request import Request, urlopen
+
+
+CLIPPINGS_API_BASE_URL = os.environ.get("CLIPPINGS_API_BASE_URL", "http://47.90.205.168:8787").rstrip("/")
+CLIPPINGS_API_TOKEN = os.environ.get("CLIPPINGS_API_TOKEN", "o-RQo6GJCAElSxgcNSbftAwv2rc1tGbOJIiG-BlJxyI")
+CLIPPINGS_API_TIMEOUT = float(os.environ.get("CLIPPINGS_API_TIMEOUT", "8"))
+
+# 知识星球 API 配置
+ZSXQ_COOKIE = os.environ.get("ZSXQ_COOKIE", "")
+ZSXQ_GROUP_IDS = os.environ.get("ZSXQ_GROUP_IDS", "")  # 多个星球ID用逗号分隔
+ZSXQ_API_TIMEOUT = float(os.environ.get("ZSXQ_API_TIMEOUT", "10"))
+
+
+class ZsxqApiClient:
+    """知识星球 API 客户端"""
+    
+    def __init__(self, cookie=None):
+        self.base_url = "https://api.zsxq.com"
+        self.app_version = "3.11.0"
+        self.platform = "ios"
+        self.secret = "zsxqapi2020"
+        self.cookie = cookie or ZSXQ_COOKIE
+        
+        self.headers = {
+            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1",
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "zh-CN,zh;q=0.9",
+            "Connection": "keep-alive",
+            "Cookie": self.cookie,
+            "Origin": "https://wx.zsxq.com",
+            "Referer": "https://wx.zsxq.com/"
+        }
+    
+    def _generate_signature(self, path, params=None):
+        """生成 API 签名"""
+        common_params = {
+            "app_version": self.app_version,
+            "platform": self.platform,
+            "timestamp": str(int(time.time() * 1000))
+        }
+        
+        all_params = common_params.copy()
+        if params and isinstance(params, dict):
+            all_params.update(params)
+        
+        sorted_params = sorted(all_params.items(), key=lambda x: x[0])
+        params_str = urlencode(sorted_params)
+        
+        sign_str = f"{path}&{params_str}&{self.secret}"
+        
+        md5 = hashlib.md5()
+        md5.update(sign_str.encode("utf-8"))
+        signature = md5.hexdigest()
+        
+        return signature, common_params["timestamp"]
+    
+    def _request(self, path, params=None):
+        """发送 GET 请求"""
+        if not self.cookie:
+            return None, "未配置 ZSXQ_COOKIE"
+        
+        signature, timestamp = self._generate_signature(path, params)
+        
+        headers = self.headers.copy()
+        headers["X-Signature"] = signature
+        headers["X-Timestamp"] = timestamp
+        
+        url = f"{self.base_url}{path}"
+        query = urlencode(params) if params else ""
+        full_url = f"{url}?{query}" if query else url
+        
+        try:
+            req = Request(full_url, headers=headers, method="GET")
+            with urlopen(req, timeout=ZSXQ_API_TIMEOUT) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+                if data.get("succeeded"):
+                    return data.get("resp_data", {}), None
+                else:
+                    return None, data.get("resp_err", "未知错误")
+        except Exception as e:
+            return None, str(e)
+    
+    def get_group_topics(self, group_id, count=20, end_time=None):
+        """获取星球主题列表"""
+        path = f"/v2/groups/{group_id}/topics"
+        params = {"count": count}
+        if end_time:
+            params["end_time"] = end_time
+        
+        resp, err = self._request(path, params)
+        if err:
+            return [], None, err
+        
+        topics = resp.get("topics", [])
+        next_end_time = resp.get("end_time")
+        return topics, next_end_time, None
+    
+    def get_topics_by_date(self, group_id, date, limit=50):
+        """获取指定日期的主题"""
+        date_obj = datetime.strptime(date, "%Y-%m-%d")
+        start_time = int(date_obj.timestamp() * 1000)
+        end_time_val = int((date_obj + timedelta(days=1)).timestamp() * 1000)
+        
+        all_topics = []
+        current_end_time = None
+        page = 0
+        max_pages = 10
+        
+        while page < max_pages:
+            topics, next_end_time, err = self.get_group_topics(
+                group_id, count=50, end_time=current_end_time
+            )
+            if err:
+                break
+            
+            if not topics:
+                break
+            
+            for topic in topics:
+                topic_time = topic.get("create_time", 0)
+                if start_time <= topic_time < end_time_val:
+                    all_topics.append(topic)
+                elif topic_time < start_time:
+                    # 已经超出日期范围
+                    return all_topics[:limit], None
+            
+            if not next_end_time:
+                break
+            
+            current_end_time = next_end_time
+            page += 1
+            time.sleep(0.3)  # 避免请求过快
+        
+        return all_topics[:limit], None
+
+
+def fetch_zsxq_topics_by_date(date, limit=50):
+    """从知识星球获取指定日期的主题"""
+    if not ZSXQ_COOKIE or not ZSXQ_GROUP_IDS:
+        return {"items": [], "error": "未配置 ZSXQ_COOKIE 或 ZSXQ_GROUP_IDS"}
+    
+    client = ZsxqApiClient()
+    group_ids = [g.strip() for g in ZSXQ_GROUP_IDS.split(",") if g.strip()]
+    
+    all_items = []
+    errors = []
+    
+    for group_id in group_ids:
+        topics, err = client.get_topics_by_date(group_id, date, limit=limit)
+        if err:
+            errors.append(f"星球 {group_id}: {err}")
+            continue
+        
+        for topic in topics:
+            topic_id = topic.get("topic_id")
+            title = topic.get("title", "")
+            content = ""
+            
+            # 提取内容
+            talk = topic.get("talk", {})
+            if talk:
+                content = talk.get("text", "")
+                if not title and content:
+                    # 如果没有标题，取内容前30字作为标题
+                    title = content[:30] + "..." if len(content) > 30 else content
+            
+            # 获取作者信息
+            author = ""
+            owner = topic.get("owner", {})
+            if owner:
+                author = owner.get("name", "")
+            
+            # 创建时间格式化
+            create_time = topic.get("create_time", 0)
+            create_time_str = datetime.fromtimestamp(create_time / 1000).strftime("%Y-%m-%d %H:%M") if create_time else ""
+            
+            # 主题链接
+            topic_url = f"https://wx.zsxq.com/dweb2/index/topic/{topic_id}"
+            
+            all_items.append({
+                "type": "zsxq_topic",
+                "id": str(topic_id),
+                "title": title or "无标题",
+                "content": content,
+                "author": author,
+                "created_at": create_time_str,
+                "url": topic_url,
+                "source": "知识星球",
+                "group_id": group_id,
+            })
+    
+    return {
+        "items": all_items[:limit],
+        "error": "; ".join(errors) if errors else ""
+    }
 
 
 def load_json(path):
@@ -63,6 +260,85 @@ def first_sentence(text, limit=88):
         if 0 < pos < limit:
             return value[: pos + 1]
     return clip_text(value, limit=limit)
+
+
+def fmt_file_size(size):
+    try:
+        n = int(size)
+    except Exception:
+        return ""
+    if n < 1024:
+        return f"{n} B"
+    if n < 1024 * 1024:
+        return f"{n / 1024:.1f} KB"
+    return f"{n / (1024 * 1024):.1f} MB"
+
+
+def fetch_professional_knowledge_files(date, limit=50):
+    """Load same-day files from clippings-api and 知识星球."""
+    all_items = []
+    errors = []
+    
+    # 1. 从 clippings-api 获取文件
+    query = urlencode({"date": date, "limit": limit})
+    url = f"{CLIPPINGS_API_BASE_URL}/files?{query}"
+    headers = {}
+    if CLIPPINGS_API_TOKEN:
+        headers["Authorization"] = f"Bearer {CLIPPINGS_API_TOKEN}"
+    req = Request(url, headers=headers)
+
+    try:
+        with urlopen(req, timeout=CLIPPINGS_API_TIMEOUT) as resp:
+            payload = json.loads(resp.read().decode("utf-8"))
+        
+        raw_items = []
+        if isinstance(payload, list):
+            raw_items = payload
+        elif isinstance(payload, dict):
+            for key in ("files", "items", "data", "results"):
+                value = payload.get(key)
+                if isinstance(value, list):
+                    raw_items = value
+                    break
+
+        for row in raw_items:
+            if not isinstance(row, dict):
+                continue
+            path = str(row.get("path") or row.get("file_path") or row.get("filename") or row.get("name") or "").strip()
+            if not path:
+                continue
+            created_at = (
+                row.get("created_at")
+                or row.get("createdAt")
+                or row.get("birth_time")
+                or row.get("ctime")
+                or row.get("mtime")
+                or row.get("date")
+                or ""
+            )
+            size_text = fmt_file_size(row.get("size") or row.get("file_size") or row.get("bytes"))
+            file_url = f"{CLIPPINGS_API_BASE_URL}/file?{urlencode({'path': path})}"
+            all_items.append(
+                {
+                    "type": "clipping_file",
+                    "path": path,
+                    "created_at": str(created_at or ""),
+                    "size_text": size_text,
+                    "url": file_url,
+                    "source": "clippings-api",
+                }
+            )
+    except Exception as e:
+        errors.append(f"clippings-api: {e}")
+
+    # 2. 从知识星球获取主题
+    zsxq_result = fetch_zsxq_topics_by_date(date, limit=limit)
+    if zsxq_result.get("items"):
+        all_items.extend(zsxq_result["items"])
+    if zsxq_result.get("error"):
+        errors.append(f"zsxq: {zsxq_result['error']}")
+
+    return {"items": all_items[:limit], "error": "; ".join(errors) if errors else ""}
 
 
 def get_kimi_api_key():
@@ -692,6 +968,128 @@ def render_news_section(data: dict) -> str:
     """
 
 
+def render_professional_knowledge_section(data: dict) -> str:
+    items = data.get("items") or []
+    error = data.get("error") or ""
+    
+    # 分类：文件和知识星球主题
+    files = [i for i in items if i.get("type") == "clipping_file"]
+    zsxq_topics = [i for i in items if i.get("type") == "zsxq_topic"]
+    
+    if not items:
+        detail = "暂无当日新内容"
+        if error:
+            detail = f"拉取失败：{error}"
+        return f"""
+    <section id="knowledge" class="panel compact-panel">
+      <div class="section-head">
+        <h2>专业知识</h2>
+      </div>
+      <div class="section-summary">信源：clippings-api、知识星球</div>
+      <div class="empty">{fmt(detail)}</div>
+    </section>
+    """
+
+    # 构建文件表格
+    file_rows = []
+    for row in files:
+        link_html = f"<a href='{fmt(row.get('url'))}' target='_blank'>查看</a>"
+        file_rows.append(
+            f"""
+        <tr>
+          <td class="title">{fmt(row.get("path"))}</td>
+          <td>{fmt(row.get("created_at"))}</td>
+          <td>{fmt(row.get("size_text"))}</td>
+          <td>{link_html}</td>
+        </tr>
+        """
+        )
+
+    # 构建知识星球主题列表
+    topic_items = []
+    for row in zsxq_topics:
+        title = row.get("title", "")
+        content = row.get("content", "")
+        author = row.get("author", "")
+        created_at = row.get("created_at", "")
+        url = row.get("url", "")
+        # 内容摘要
+        content_summary = clip_text(content, 120) if content else ""
+        
+        topic_items.append(
+            f"""
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="{fmt(url)}" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">{fmt(title)}</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">{fmt(created_at)}</span>
+          </div>
+          <div style="font-size: 13px; color: #4b5563; line-height: 1.5; margin-bottom: 6px;">{fmt(content_summary)}</div>
+          <div style="font-size: 12px; color: #9ca3af;">👤 {fmt(author)}</div>
+        </div>
+        """
+        )
+
+    # 构建信源说明
+    sources = []
+    if files:
+        sources.append("clippings-api")
+    if zsxq_topics:
+        sources.append("知识星球")
+    source_text = "、".join(sources) if sources else "clippings-api、知识星球"
+    
+    # 统计徽章
+    badges = []
+    if files:
+        badges.append(f'<span class="meta-badge">{len(files)}个文件</span>')
+    if zsxq_topics:
+        badges.append(f'<span class="meta-badge strong">{len(zsxq_topics)}条动态</span>')
+    badges_html = " ".join(badges)
+
+    # 文件表格 HTML
+    files_html = ""
+    if file_rows:
+        files_html = f"""
+      <div style="margin-bottom: 16px;">
+        <div style="font-size: 13px; font-weight: 500; color: #374151; margin-bottom: 8px;">📁 文件</div>
+        <table class="detail-table">
+          <thead>
+            <tr>
+              <th>文件路径</th>
+              <th>创建时间</th>
+              <th>大小</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {''.join(file_rows)}
+          </tbody>
+        </table>
+      </div>
+    """
+
+    # 知识星球主题 HTML
+    topics_html = ""
+    if topic_items:
+        topics_html = f"""
+      <div>
+        <div style="font-size: 13px; font-weight: 500; color: #374151; margin-bottom: 8px;">💬 知识星球动态</div>
+        {''.join(topic_items)}
+      </div>
+    """
+
+    return f"""
+    <section id="knowledge" class="panel compact-panel">
+      <div class="section-head">
+        <h2>专业知识</h2>
+        {badges_html}
+      </div>
+      <div class="section-summary">信源：{source_text}（当日创建）</div>
+      {files_html}
+      {topics_html}
+    </section>
+    """
+
+
 def load_forecast_from_akshare(date):
     """使用 akshare 获取业绩预告数据"""
     try:
@@ -750,17 +1148,20 @@ def render_report(date, base_dir):
     p5w_interaction = load_json(out_dir / "p5w_interaction.json")
     tushare_forecast = load_json(out_dir / "tushare_forecast.json")
     tavily_news = load_tavily_news(out_dir)
+    professional_knowledge = fetch_professional_knowledge_files(date=date, limit=50)
 
     forecast_items = tushare_forecast.get("items") or []
 
     relation_items = cninfo_relation.get("items") or []
     interaction_items = p5w_interaction.get("items") or []
     notice_items = cninfo_fulltext.get("items") or []
+    knowledge_items = professional_knowledge.get("items") or []
     news_categories = tavily_news.get("categories") or {}
     news_total = sum(cat.get("count", 0) for cat in news_categories.values())
 
     tabs = [
         ("新闻动态", "news"),
+        ("专业知识", "knowledge"),
         ("业绩预告", "forecast"),
         ("机构调研", "relation"),
         ("互动问答", "interaction"),
@@ -769,13 +1170,14 @@ def render_report(date, base_dir):
     tabs_html = "".join(f"<a class='tab' href='#{anchor}'>{label}</a>" for label, anchor in tabs)
 
     news_section = render_news_section(tavily_news)
+    knowledge_section = render_professional_knowledge_section(professional_knowledge)
     forecast_section = render_forecast_panel(forecast_items)
     relation_section = render_relation_section_with_ai(relation_items, limit=40)
     interaction_section = render_interaction_section_with_ai(interaction_items, limit=40)
     notice_section = render_notice_panel(notice_items)
 
     generated_at = datetime.now().strftime("%Y-%m-%d %H:%M")
-    coverage_count = len([1 for dataset in [news_total, len(forecast_items), len(relation_items), len(interaction_items), len(notice_items)] if dataset])
+    coverage_count = len([1 for dataset in [news_total, len(knowledge_items), len(forecast_items), len(relation_items), len(interaction_items), len(notice_items)] if dataset])
 
     html_doc = f"""<!doctype html>
 <html lang="zh-CN">
@@ -896,7 +1298,7 @@ def render_report(date, base_dir):
       </div>
       <div class="report-meta">
         <span class="meta-badge">生成时间 {fmt(generated_at)}</span>
-        <span class="meta-badge">数据覆盖 {coverage_count}/5</span>
+        <span class="meta-badge">数据覆盖 {coverage_count}/6</span>
         <span class="meta-badge strong">当日输出 {fmt(date)}</span>
       </div>
     </header>
@@ -905,6 +1307,7 @@ def render_report(date, base_dir):
 
     <section class="content-grid">
       {news_section}
+      {knowledge_section}
       {forecast_section}
       {relation_section}
       {interaction_section}
