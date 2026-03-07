@@ -47,6 +47,24 @@ def fmt_pct(v):
         return str(v)
 
 
+def clip_text(text, limit=120):
+    value = " ".join(str(text or "").split())
+    if len(value) <= limit:
+        return value
+    return value[: max(0, limit - 1)].rstrip() + "…"
+
+
+def first_sentence(text, limit=88):
+    value = " ".join(str(text or "").split())
+    if not value:
+        return ""
+    for sep in ("。", "；", ";", ".", "！", "!", "？", "?"):
+        pos = value.find(sep)
+        if 0 < pos < limit:
+            return value[: pos + 1]
+    return clip_text(value, limit=limit)
+
+
 def get_kimi_api_key():
     """从环境变量或 .env 文件获取 Kimi API key"""
     # 首先尝试从环境变量获取
@@ -154,150 +172,105 @@ def _is_shareholder_question(text: str) -> bool:
 
 
 def generate_company_ai_summary(company_name: str, items: list) -> str:
-    """为单个公司生成AI总结（20秒超时）"""
+    """Build a short local summary without remote AI calls."""
     if not items:
-        return "暂无问答数据"
-    
-    # 准备数据
-    content_parts = []
-    for item in items[:8]:  # 限制前8条，减少处理时间
-        question = item.get("title", "")
-        answer = item.get("summary", "")
-        if question:
-            content_parts.append(f"问：{question[:60]}\n答：{answer[:80] if answer else '未回复'}")
-    
-    if not content_parts:
-        return "暂无可总结内容"
-    
-    prompt_text = f"总结【{company_name}】的投资者问答要点（限40字）：\n" + "\n".join(content_parts[:4])
-    
-    try:
-        import openai
-        
-        api_key = "7c45a349-5a95-4885-a7b6-df6ed599ed5e"
-        base_url = "https://ark.cn-beijing.volces.com/api/v3"
-        model_id = "ep-20260103112951-vxd7j"
-        
-        def _call_api():
-            client = openai.OpenAI(api_key=api_key, base_url=base_url, timeout=25)
-            completion = client.chat.completions.create(
-                model=model_id,
-                messages=[
-                    {"role": "system", "content": "你是金融分析师，用简洁中文总结投资者问答的核心要点，控制在40字以内。"},
-                    {"role": "user", "content": prompt_text},
-                ],
-                temperature=0,
-                max_tokens=80,
-            )
-            if hasattr(completion, "choices") and completion.choices:
-                return completion.choices[0].message.content.strip()
-            return "AI总结失败"
-        
-        # 设置20秒超时
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            future = executor.submit(_call_api)
-            return future.result(timeout=20)
-            
-    except concurrent.futures.TimeoutError:
-        return "AI总结超时"
-    except Exception as e:
-        return f"AI总结失败: {str(e)[:30]}"
+        return "??????"
+
+    topics = []
+    for item in items[:4]:
+        question = clip_text(item.get("title") or "", 28)
+        answer = clip_text(item.get("summary") or "", 36)
+        fragment = question or answer
+        if answer and question:
+            fragment = f"{question}?{answer}"
+        if fragment:
+            topics.append(fragment)
+
+    if not topics:
+        return "???????"
+    return clip_text("?".join(topics), 90)
 
 
 def render_interaction_section_with_ai(items, limit=100):
-    """渲染互动问答区域 - 按公司聚合，剔除股东数问题"""
-    
-    # 1. 剔除股东数相关问题
+    """Render grouped interaction Q&A with compact accordion blocks."""
+
     filtered_items = []
-    excluded_count = 0
     for item in (items or []):
-        question = item.get("title", "")
-        answer = item.get("summary", "")
-        combined_text = f"{question} {answer}"
-        
-        if _is_shareholder_question(combined_text):
-            excluded_count += 1
-            continue
-        filtered_items.append(item)
-    
-    # 2. 按公司聚合
-    from collections import defaultdict
+        combined_text = f"{item.get('title', '')} {item.get('summary', '')}"
+        if not _is_shareholder_question(combined_text):
+            filtered_items.append(item)
+
     companies = defaultdict(list)
     for item in filtered_items:
         company = item.get("company") or item.get("symbol") or "未知公司"
         companies[company].append(item)
-    
-    # 3. 为每个公司生成子区域
-    company_cards = []
-    for idx, (company_name, company_items) in enumerate(sorted(companies.items())):
+
+    cards = []
+    ordered_companies = sorted(companies.items(), key=lambda kv: (-len(kv[1]), kv[0]))
+    for idx, (company_name, company_items) in enumerate(ordered_companies):
         symbol = company_items[0].get("symbol", "")
-        card_id = f"company-card-{idx}"
-        
-        # 生成公司AI总结（20秒超时）
-        print(f"  生成AI总结: {company_name}...")
+        card_id = f"interaction-{idx}"
         ai_summary = generate_company_ai_summary(company_name, company_items)
-        print(f"    完成: {ai_summary[:30]}...")
-        
-        # 生成该公司的问题列表（可展开）
-        qa_rows = []
-        for q_idx, item in enumerate(company_items[:20]):  # 每公司最多显示20条
-            question = fmt(item.get("title"))
-            answer = fmt(item.get("summary"))
+        teaser = clip_text(ai_summary, limit=80)
+
+        rows = []
+        for item in company_items[:20]:
             link = (item.get("url") or "").strip()
-            link_html = f"<a href='{fmt(link)}' target='_blank'>link</a>" if link else ""
-            
-            qa_rows.append(
-                f"<tr>"
+            link_html = f"<a href='{fmt(link)}' target='_blank'>原文</a>" if link else ""
+            rows.append(
+                "<tr>"
                 f"<td>{fmt(item.get('date'))}</td>"
-                f"<td class='title'>{question}</td>"
-                f"<td class='title'>{answer}</td>"
+                f"<td class='title'>{fmt(item.get('title'))}</td>"
+                f"<td class='title'>{fmt(clip_text(item.get('summary'), 140))}</td>"
                 f"<td>{link_html}</td>"
-                f"</tr>"
+                "</tr>"
             )
-        
-        qa_table = (
-            "<table class='qa-table'><thead><tr><th>Date</th><th>Question</th><th>Answer</th><th>URL</th></tr></thead>"
-            f"<tbody>{''.join(qa_rows)}</tbody></table>"
-            if qa_rows else "<div class='empty'>无问答数据</div>"
+
+        more_count = max(0, len(company_items) - 20)
+        more_hint = f"<span class='meta-badge subtle'>+{more_count}</span>" if more_count else ""
+        detail_html = (
+            "<table class='detail-table qa-table'>"
+            "<thead><tr><th>日期</th><th>问题</th><th>摘要</th><th>链接</th></tr></thead>"
+            f"<tbody>{''.join(rows)}</tbody></table>"
+            if rows
+            else "<div class='empty'>暂无互动问答数据</div>"
         )
-        
-        # 超过5条显示计数
-        more_count = len(company_items) - 20 if len(company_items) > 20 else 0
-        more_hint = f"<span class='more-hint'>还有 {more_count} 条...</span>" if more_count > 0 else ""
-        
-        # AI总结处理换行
-        ai_summary_html = html.escape(ai_summary).replace('\n', '<br>')
-        
-        company_cards.append(f"""
-        <div class="company-interaction-card" id="{card_id}">
-          <div class="company-header" onclick="toggleCompanyQa('{card_id}')">
-            <div class="company-info">
-              <span class="company-name">{fmt(company_name)}</span>
-              <span class="company-symbol">{fmt(symbol)}</span>
-              <span class="qa-count">({len(company_items)}条)</span>
+
+        cards.append(
+            f"""
+        <article class="accordion-block interaction-block" id="{card_id}">
+          <button class="accordion-trigger" type="button" data-target="{card_id}-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">{fmt(company_name)}</span>
+              <span class="meta-badge">{fmt(symbol)}</span>
+              <span class="meta-badge strong">{len(company_items)}问</span>
               {more_hint}
+            </span>
+            <span class="accordion-summary">{fmt(teaser)}</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="{card_id}-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">AI</span>
+              <div class="inline-summary-text clamp-3">{fmt(ai_summary)}</div>
             </div>
-            <span class="toggle-icon" id="toggle-{card_id}">▼</span>
+            {detail_html}
           </div>
-          <div class="company-ai-summary">
-            <span class="ai-tag">🤖 AI</span>
-            <span class="ai-text">{ai_summary_html}</span>
-          </div>
-          <div class="company-qa-list" id="qa-{card_id}">
-            {qa_table}
-          </div>
-        </div>
-        """)
-    
+        </article>
+        """
+        )
+
     total_companies = len(companies)
-    total_filtered = len(filtered_items)
-    
+    total_items = len(filtered_items)
     return f"""
-    <section id="interaction" class="panel">
-      <h2>互动问答 <span>({total_companies}家公司, {total_filtered}条)</span></h2>
-      
-      <div class="interaction-companies">
-        {''.join(company_cards) or "<div class='empty'>无互动问答数据</div>"}
+    <section id="interaction" class="panel compact-panel">
+      <div class="section-head">
+        <h2>互动问答</h2>
+        <span class="meta-badge strong">{total_companies}家公司 / {total_items}条</span>
+      </div>
+      <div class="section-summary">按公司聚合展示，默认折叠明细，仅保留核心摘要与问答数。</div>
+      <div class="accordion-list">
+        {''.join(cards) or "<div class='empty'>暂无互动问答数据</div>"}
       </div>
     </section>
     """
@@ -342,192 +315,136 @@ def is_excluded_subcategory(sub):
 
 
 def optimize_reason_with_ai(reason_text, company_name=""):
-    """使用豆包AI优化变动原因文本"""
-    if not reason_text or len(reason_text) < 20:
-        return reason_text
-    
-    try:
-        import openai
-        
-        api_key = "7c45a349-5a95-4885-a7b6-df6ed599ed5e"
-        base_url = "https://ark.cn-beijing.volces.com/api/v3"
-        model_id = "ep-20260103112951-vxd7j"
-        
-        company_info = f"【{company_name}】" if company_name else ""
-        prompt = f"""请对以下业绩预告变动原因进行简洁总结，要求：
-1. 保留核心关键信息（业务增长原因、市场因素、政策影响等）
-2. 去除重复和冗余表述
-3. 控制在80字以内
-4. 使用简洁专业的金融语言
-
-{company_info}变动原因：
-{reason_text[:500]}
-
-请直接输出总结内容，不要添加任何前缀或解释："""
-        
-        messages = [
-            {"role": "system", "content": "你是专业的金融分析师，擅长提炼和总结业绩预告的关键信息。"},
-            {"role": "user", "content": prompt},
-        ]
-        
-        client = openai.OpenAI(api_key=api_key, base_url=base_url)
-        completion = client.chat.completions.create(
-            model=model_id,
-            messages=messages,
-            temperature=0,
-            top_p=0.8,
-            max_tokens=150,
-        )
-        
-        if hasattr(completion, "choices") and completion.choices:
-            result = completion.choices[0].message.content.strip()
-            # 去除可能的引号
-            result = result.strip('"').strip("'").strip()
-            return result if result else reason_text[:100]
-        return reason_text[:100]
-    except Exception as e:
-        # AI优化失败，返回原文截断版
-        return reason_text[:100] + "..." if len(reason_text) > 100 else reason_text
+    """Local fallback summary for forecast reasons."""
+    if not reason_text:
+        return ""
+    summary = " ".join(str(reason_text).split())
+    return clip_text(summary, 100)
 
 
 def render_forecast_panel(items):
-    """渲染业绩预告面板，按公司聚合"""
-    # 按公司分组
+    """Render compact forecast section grouped by company."""
     grouped = defaultdict(list)
     for item in items or []:
-        company = (item.get("company") or "").strip() or (item.get("symbol") or "").strip() or "未识别公司"
+        company = (item.get("company") or "").strip() or (item.get("symbol") or "").strip() or "未知公司"
         grouped[company].append(item)
-    
-    company_blocks = []
-    for company, company_items in sorted(grouped.items()):
-        # 获取公司代码
-        symbol = ""
-        for x in company_items:
-            if x.get("symbol"):
-                symbol = x.get("symbol")
-                break
-        
-        # 收集该公司的所有预测指标
+
+    ordered_companies = sorted(grouped.items(), key=lambda kv: (-len(kv[1]), kv[0]))
+    top_company = ordered_companies[0][0] if ordered_companies else None
+    blocks = []
+
+    for idx, (company, company_items) in enumerate(ordered_companies):
+        symbol = next((x.get("symbol") for x in company_items if x.get("symbol")), "")
+        card_id = f"forecast-{idx}"
+        seen_reasons = set()
+        reason_parts = []
         metrics_rows = []
-        seen_reasons = set()  # 用于去重变动原因
-        all_reasons = []
-        
+
         for item in company_items:
             forecast_type = item.get("forecast_type", "")
             performance_change = item.get("performance_change", "")
             forecast_value = item.get("forecast_value", "")
             change_reason = item.get("change_reason", "")
-            
             if forecast_type and performance_change:
                 metrics_rows.append(
-                    f"<tr>"
+                    "<tr>"
                     f"<td>{fmt(forecast_type)}</td>"
                     f"<td class='title'>{fmt(performance_change)}</td>"
                     f"<td>{fmt(forecast_value)}</td>"
-                    f"</tr>"
+                    "</tr>"
                 )
-            
-            # 收集变动原因（去重）
             if change_reason and change_reason not in seen_reasons:
                 seen_reasons.add(change_reason)
-                all_reasons.append(change_reason)
-        
-        # 构建指标表格
-        if metrics_rows:
-            metrics_table = f"""
-            <table class="forecast-metrics">
-                <thead>
-                    <tr><th>预测指标</th><th>业绩变动</th><th>预测数值</th></tr>
-                </thead>
-                <tbody>{''.join(metrics_rows)}</tbody>
-            </table>
-            """
-        else:
-            metrics_table = "<div class='empty'>无详细数据</div>"
-        
-        # 变动原因（使用AI优化）
-        reasons_html = ""
-        if all_reasons:
-            reasons_combined = "；".join(all_reasons)
-            # 使用AI优化变动原因
-            optimized_reason = optimize_reason_with_ai(reasons_combined, company)
-            reasons_html = f"<div class='forecast-reason'><strong>变动原因：</strong>{fmt(optimized_reason)}</div>"
-        
-        company_blocks.append(
-            f"""
-            <section class="subpanel forecast-company">
-                <h3>{fmt(company)} <span>{fmt(symbol)}</span></h3>
-                {metrics_table}
-                {reasons_html}
-            </section>
-            """
+                reason_parts.append(change_reason)
+
+        optimized_reason = ""
+        if reason_parts:
+            optimized_reason = optimize_reason_with_ai("；".join(reason_parts), company)
+        summary_text = clip_text(optimized_reason or "暂无核心变动原因", 96)
+        detail_table = (
+            "<table class='detail-table forecast-metrics'>"
+            "<thead><tr><th>预测指标</th><th>业绩变动</th><th>预测数值</th></tr></thead>"
+            f"<tbody>{''.join(metrics_rows)}</tbody></table>"
+            if metrics_rows
+            else "<div class='empty'>暂无详细业绩指标</div>"
         )
-    
-    if not company_blocks:
-        company_blocks.append("<section class='subpanel'><div class='empty'>暂无业绩预告数据</div></section>")
-    
+
+        expanded = False
+        blocks.append(
+            f"""
+        <article class="accordion-block forecast-block" id="{card_id}">
+          <button class="accordion-trigger" type="button" data-target="{card_id}-body" aria-expanded="{'true' if expanded else 'false'}">
+            <span class="accordion-main">
+              <span class="accordion-title">{fmt(company)}</span>
+              <span class="meta-badge">{fmt(symbol)}</span>
+              <span class="meta-badge strong">{len(company_items)}项</span>
+            </span>
+            <span class="accordion-summary">{fmt(summary_text)}</span>
+            <span class="accordion-icon{' is-open' if expanded else ''}" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body{' open' if expanded else ' collapsed'}" id="{card_id}-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">原因</span>
+              <div class="inline-summary-text clamp-3">{fmt(optimized_reason or '暂无核心变动原因')}</div>
+            </div>
+            {detail_table}
+          </div>
+        </article>
+        """
+        )
+
     total_companies = len(grouped)
     total_items = len(items or [])
     return f"""
-    <section class="panel">
-        <h2>业绩预告 <span>({total_companies}家公司, {total_items}条)</span></h2>
-        <div class="stack">
-            {''.join(company_blocks)}
-        </div>
+    <section id="forecast" class="panel compact-panel">
+      <div class="section-head">
+        <h2>业绩预告</h2>
+        <span class="meta-badge strong">{total_companies}家公司 / {total_items}条</span>
+      </div>
+      <div class="section-summary">默认全部折叠，点击展开查看详情，减少纵向占用。</div>
+      <div class="accordion-list">
+        {''.join(blocks) or "<div class='empty'>暂无业绩预告数据</div>"}
+      </div>
     </section>
     """
 
 
 def render_relation_section_with_ai(items, limit=40):
-    """渲染机构调研区域，带AI解读按钮"""
+    """Render compact relation table with merged action column."""
     rows_html = []
     display_items = top_items(items, limit=limit)
-    
+
     for idx, item in enumerate(display_items):
-        row_id = f"relation-row-{idx}"
         symbol = fmt(item.get('symbol'))
         company = fmt(item.get('company'))
+        company_label = f"{company} <span class='inline-symbol'>{symbol}</span>" if symbol else company
         date = fmt(item.get('date'))
         title = fmt(item.get('title'))
         url = (item.get('url') or "").strip()
-        
-        # 生成唯一的标识符用于AI解读
-        item_key = f"{symbol}_{idx}"
-        
-        link_html = f"<a href='{fmt(url)}' target='_blank'>link</a>" if url else ""
-        
+        item_key = f"relation_{idx}"
+        link_html = f"<a href='{fmt(url)}' target='_blank'>原文</a>" if url else ""
+
         rows_html.append(
-            f"<tr id='{row_id}'>"
+            "<tr>"
             f"<td>{date}</td>"
-            f"<td>{symbol}</td>"
-            f"<td>{company}</td>"
+            f"<td class='title'>{company_label}</td>"
             f"<td class='title'>{title}</td>"
-            f"<td>{link_html}</td>"
-            f"<td><button class='ai-analyze-btn' onclick='analyzeResearch(\"{item_key}\", \"{fmt(url)}\")' id='btn-{item_key}'>AI解读</button></td>"
-            f"</tr>"
-            f"<tr id='ai-result-{item_key}' class='ai-result-row' style='display:none;'>"
-            f"<td colspan='6' class='ai-result-cell'>"
-            f"<div class='ai-analyze-result' id='ai-content-{item_key}'>"
-            f"<div class='ai-loading'><span class='ai-icon'>🤖</span> 正在分析PDF内容...</div>"
-            f"</div></td></tr>"
+            f"<td><div class='action-group'>{link_html}</div></td>"
+            "</tr>"
         )
-    
-    body = "\n".join(rows_html) or "<tr><td colspan='6'>无数据</td></tr>"
+
+    body = "\n".join(rows_html) or "<tr><td colspan='4'>暂无机构调研数据</td></tr>"
     total = len(items or [])
-    
     return f"""
-    <section id="relation" class="panel">
-      <h2>机构调研 <span>({total})</span></h2>
-      <table>
+    <section id="relation" class="panel compact-panel">
+      <div class="section-head">
+        <h2>机构调研</h2>
+        <span class="meta-badge strong">{total}条</span>
+      </div>
+      <div class="section-summary">保留表格形态，压缩为日期、公司、标题、操作四列。</div>
+      <table class="detail-table relation-table">
         <thead>
-          <tr>
-            <th>Date</th>
-            <th>Symbol</th>
-            <th>Company</th>
-            <th>Title</th>
-            <th>URL</th>
-            <th>AI解读</th>
-          </tr>
+          <tr><th>日期</th><th>公司</th><th>标题</th><th>操作</th></tr>
         </thead>
         <tbody>{body}</tbody>
       </table>
@@ -536,9 +453,7 @@ def render_relation_section_with_ai(items, limit=40):
 
 
 def render_notice_panel(items):
-    """渲染公告解读面板，按指定顺序和特殊样式展示"""
-    # 定义分类排序权重（数字越小越靠前）
-    # 顺序：重大合作/投资 > 增减持 > 监管函 > 回复函 > 资本运作
+    """Render compact notice section grouped by category and company."""
     category_order = {
         "重大合作": 0,
         "重大合作/投资项目": 0,
@@ -562,264 +477,126 @@ def render_notice_panel(items):
         "配股": 4,
         "可转债": 4,
     }
-    
-    # 判断是否为监管函类
+
     def is_regulatory(sub):
-        regulatory_keywords = ["监管", "问询", "关注函", "警示", "立案", "调查", "处罚"]
-        return any(kw in sub for kw in regulatory_keywords)
-    
-    # 判断是否为资本运作类
+        return any(kw in sub for kw in ["监管", "问询", "关注函", "警示", "立案", "调查", "处罚"])
+
     def is_capital_operation(sub):
-        capital_keywords = ["资本运作", "增发", "定向", "配股", "可转债", "发行", "融资", "募投", "募资"]
-        return any(kw in sub for kw in capital_keywords)
-    
-    # 判断公告是否应被剔除（根据标题内容）
+        return any(kw in sub for kw in ["资本运作", "增发", "定向", "配股", "可转债", "发行", "融资", "募投", "募资"])
+
     def should_exclude_item(item):
         title = (item.get("title") or "").strip()
         subcategory = (item.get("subcategory") or "").strip()
-        
-        # 1. 增持/减持类：只保留预披露/计划类，剔除进度/结果类
+
         if "增持" in subcategory or "减持" in subcategory:
-            # 只保留这些关键词
             plan_keywords = ["预披露", "计划", "方案", "提示性公告", "拟减持", "拟增持"]
-            # 剔除这些关键词
-            progress_keywords = [
-                "结果", "完成", "完毕", "实施完成", "期限届满",
-                "进展", "实施进展", "减持进展", "增持进展",
-                "触及1%", "触及5%", "达到1%", "达到5%",
-                "权益变动", "简式权益变动", "详式权益变动",
-                "提前终止", "终止", "届满暨实施", "届满",
-            ]
-            
-            # 如果包含进度关键词，剔除
+            progress_keywords = ["结果", "完成", "完毕", "实施完成", "期限届满", "进展", "实施进展", "减持进展", "增持进展", "触及1%", "触及5%", "达到1%", "达到5%", "权益变动", "简式权益变动", "详式权益变动", "提前终止", "终止", "届满暨实施"]
             if any(kw in title for kw in progress_keywords):
-                return True, "增减持非计划类"
-            # 如果不包含计划关键词，也剔除
+                return True
             if not any(kw in title for kw in plan_keywords):
-                return True, "增减持非预披露"
-        
-        # 2. 资本运作类：剔除中介机构意见
-        if is_capital_operation(subcategory) or "资本运作" in subcategory:
-            # 剔除券商、律所、会计师等中介机构文件
-            intermediary_keywords = [
-                "核查意见",
-                "保荐机构",
-                "保荐人",
-                "保荐书",
-                "发行保荐书",
-                "上市保荐书",
-                "主办券商",
-                "独立财务顾问",
-                "法律意见书",
-                "律师",
-                "律师事务所",
-                "审计报告",
-                "验资报告",
-                "验资",
-                "验证报告",
-                "会计师",
-                "会计师事务所",
-                "合规性报告",
-                "合规性之法律意见",
-                "发行过程和认购对象合规性",
-                "信用评级报告",
-                "评级报告",
-                "资信评级",
-            ]
+                return True
+
+        if is_capital_operation(subcategory):
+            intermediary_keywords = ["核查意见", "保荐机构", "保荐人", "发行保荐书", "上市保荐书", "主办券商", "独立财务顾问", "法律意见书", "律师", "律师事务所", "审计报告", "验资报告", "验资", "验证报告", "会计师", "会计师事务所", "合规性报告", "合规性之法律意见", "发行过程和认购对象合规性", "信用评级报告", "评级报告", "资信评级"]
             if any(kw in title for kw in intermediary_keywords):
-                return True, "剔除中介机构文件"
-        
-        # 3. 剔除募集资金内部结构调整类公告（非重大事项）
-        trivial_capital_keywords = [
-            "调整募集资金投资项目内部结构",
-            "调整募投项目",
-            "募集资金专户存储",
-            "募集资金三方监管",
-            "募集资金置换",
-            "闲置募集资金现金管理",
-            "募集资金临时补充流动资金",
-            "募集资金归还",
-        ]
-        for kw in trivial_capital_keywords:
-            if kw in title:
-                return True, f"剔除琐碎资金调整: {kw}"
-        
-        # 4. 员工持股计划只保留激励预案（剔除实施进展、解锁等）
+                return True
+
+        trivial_capital_keywords = ["调整募集资金投资项目内部结构", "调整募投项目", "募集资金专户存储", "募集资金三方监管", "募集资金置换", "闲置募集资金现金管理", "募集资金临时补充流动资金", "募集资金归还"]
+        if any(kw in title for kw in trivial_capital_keywords):
+            return True
+
         if "员工持股" in subcategory or "员工持股" in title:
-            # 只保留预案类，剔除其他
             if not any(kw in title for kw in ["预案", "计划草案", "计划摘要"]):
-                return True, "员工持股非预案类"
-        
-        # 5. 问询回复类剔除券商意见（保留监管机构和公司问答）
+                return True
+
         if "回复" in subcategory or "回复" in title:
-            # 剔除券商/保荐机构的核查意见
-            if any(kw in title for kw in [
-                "核查意见",
-                "保荐机构",
-                "保荐人",
-                "主办券商",
-                "独立财务顾问",
-                "会计师回复",
-                "律师回复",
-                "中介机构",
-            ]):
-                return True, "剔除中介机构意见"
-        
-        return False, ""
-    
-    # 按分类分组
+            if any(kw in title for kw in ["核查意见", "保荐机构", "保荐人", "主办券商", "独立财务顾问", "会计师回复", "律师回复", "中介机构"]):
+                return True
+
+        return False
+
     grouped = defaultdict(lambda: defaultdict(list))
     excluded_count = 0
     for item in items or []:
         sub = (item.get("subcategory") or "").strip()
         if not sub or is_other_subcategory(sub) or is_excluded_subcategory(sub):
             continue
-        
-        # 应用新的过滤规则
-        should_exclude, reason = should_exclude_item(item)
-        if should_exclude:
+        if should_exclude_item(item):
             excluded_count += 1
             continue
-        
-        company = (item.get("company") or "").strip() or (item.get("symbol") or "").strip() or "未识别公司"
+        company = (item.get("company") or "").strip() or (item.get("symbol") or "").strip() or "未知公司"
         grouped[sub][company].append(item)
-    
-    def get_sort_key(item):
-        """获取排序键"""
-        subcategory = item[0]
-        # 先按权重排序，没有的放最后
-        weight = category_order.get(subcategory, 999)
-        # 再按总数排序（多的在前）
-        total_count = sum(len(v) for v in item[1].values())
-        return (weight, -total_count, subcategory)
-    
-    sub_blocks = []
-    sorted_categories = sorted(grouped.items(), key=get_sort_key)
-    
-    for subcategory, company_map in sorted_categories:
-        # 判断分类类型
+
+    def get_sort_key(entry):
+        subcategory = entry[0]
+        total_count = sum(len(v) for v in entry[1].values())
+        return (category_order.get(subcategory, 999), -total_count, subcategory)
+
+    blocks = []
+    for idx, (subcategory, company_map) in enumerate(sorted(grouped.items(), key=get_sort_key)):
+        block_id = f"notice-{idx}"
+        total_count = sum(len(v) for v in company_map.values())
         is_regulatory_cat = is_regulatory(subcategory)
         is_capital_cat = is_capital_operation(subcategory)
-        
-        # 监管函类添加警示样式
-        warning_icon = "⚠️ " if is_regulatory_cat else ""
-        subpanel_class = "subpanel regulatory-warning" if is_regulatory_cat else "subpanel"
-        
-        # 资本运作类：按公司聚合为子区域
-        if is_capital_cat:
-            company_cards = []
-            ordered_companies = sorted(
-                company_map.items(),
-                key=lambda kv: (-len(kv[1]), kv[0]),
-            )
-            
-            for company, company_items in ordered_companies:
-                symbol = ""
-                for x in company_items:
-                    if x.get("symbol"):
-                        symbol = x.get("symbol")
-                        break
-                
-                # 收集所有标题
-                all_titles = "<br>".join([f"• {fmt((x.get('title') or '').strip())}" for x in company_items[:5]])
-                if len(company_items) > 5:
-                    all_titles += f"<br>• ... 等共 {len(company_items)} 条公告"
-                
-                latest_url = ""
-                for x in company_items:
-                    if x.get("url"):
-                        latest_url = x.get("url")
-                        break
-                link_html = f"<a href='{fmt(latest_url)}' target='_blank'>查看最新</a>" if latest_url else ""
-                
-                company_cards.append(
-                    f"""
-                    <div class="capital-company-card">
-                        <div class="capital-company-header">
-                            <span class="capital-company-name">{fmt(company)}</span>
-                            <span class="capital-company-symbol">{fmt(symbol)}</span>
-                            <span class="capital-count">({len(company_items)}条)</span>
-                            {link_html}
-                        </div>
-                        <div class="capital-titles">{all_titles}</div>
-                    </div>
-                    """
-                )
-            
-            body = "".join(company_cards) or "<div class='empty'>无数据</div>"
-            sub_blocks.append(
-                f"""
-                <section class="{subpanel_class}">
-                  <h3>{warning_icon}{fmt(subcategory)} <span>({sum(len(v) for v in company_map.values())})</span></h3>
-                  <div class="capital-companies">
-                    {body}
-                  </div>
-                </section>
-                """
-            )
-        
-        else:
-            # 其他分类：保持表格形式
-            rows = []
-            ordered_companies = sorted(
-                company_map.items(),
-                key=lambda kv: (-len(kv[1]), kv[0]),
-            )
-            
-            for company, company_items in ordered_companies:
-                symbol = ""
-                for x in company_items:
-                    if x.get("symbol"):
-                        symbol = x.get("symbol")
-                        break
-                
-                sample_titles = "；".join((x.get("title") or "").strip() for x in company_items[:3])
-                latest_url = ""
-                for x in company_items:
-                    if x.get("url"):
-                        latest_url = x.get("url")
-                        break
-                link_html = f"<a href='{fmt(latest_url)}' target='_blank'>link</a>" if latest_url else ""
-                
-                # 监管函类行添加警示样式
-                row_class = "regulatory-row" if is_regulatory_cat else ""
-                rows.append(
-                    f"<tr class='{row_class}'>"
-                    f"<td>{fmt(company)}</td>"
-                    f"<td>{fmt(symbol)}</td>"
-                    f"<td>{len(company_items)}</td>"
-                    f"<td class='title'>{fmt(sample_titles)}</td>"
-                    f"<td>{link_html}</td>"
-                    f"</tr>"
-                )
+        header_note = "监管类优先关注" if is_regulatory_cat else ("资本运作按公司聚合" if is_capital_cat else "默认展示前 5 个公司项")
 
-            body = "\n".join(rows) or "<tr><td colspan='5'>无数据</td></tr>"
-            sub_blocks.append(
+        ordered_companies = sorted(company_map.items(), key=lambda kv: (-len(kv[1]), kv[0]))
+        company_rows = []
+        for company, company_items in ordered_companies[:5]:
+            symbol = next((x.get("symbol") for x in company_items if x.get("symbol")), "")
+            latest_url = next((x.get("url") for x in company_items if x.get("url")), "")
+            link_html = f"<a href='{fmt(latest_url)}' target='_blank'>原文</a>" if latest_url else ""
+            titles = [clip_text((x.get("title") or "").strip(), 56) for x in company_items[:3]]
+            preview = "；".join([t for t in titles if t]) or "暂无标题"
+            row_class = "notice-company-row regulatory" if is_regulatory_cat else "notice-company-row"
+            company_rows.append(
                 f"""
-                <section class="{subpanel_class}">
-                  <h3>{warning_icon}{fmt(subcategory)} <span>({sum(len(v) for v in company_map.values())})</span></h3>
-                  <table>
-                    <thead>
-                      <tr><th>公司</th><th>代码</th><th>条数</th><th>样本标题</th><th>URL</th></tr>
-                    </thead>
-                    <tbody>{body}</tbody>
-                  </table>
-                </section>
-                """
+            <div class="{row_class}">
+              <div class="notice-company-main">
+                <span class="accordion-title">{fmt(company)}</span>
+                <span class="meta-badge">{fmt(symbol)}</span>
+                <span class="meta-badge strong">{len(company_items)}条</span>
+              </div>
+              <div class="notice-company-text">{fmt(preview)}</div>
+              <div class="notice-company-link">{link_html}</div>
+            </div>
+            """
             )
 
-    if not sub_blocks:
-        sub_blocks.append("<section class='subpanel'><h3>公告解读</h3><div class='empty'>无非「其他」公告</div></section>")
+        extra_count = max(0, len(ordered_companies) - 5)
+        extra_html = f"<div class='section-footnote'>另有 {extra_count} 家公司未展开</div>" if extra_count else ""
+        blocks.append(
+            f"""
+        <article class="accordion-block notice-block{' regulatory-warning' if is_regulatory_cat else ''}" id="{block_id}">
+          <button class="accordion-trigger" type="button" data-target="{block_id}-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">{fmt(subcategory)}</span>
+              <span class="meta-badge strong">{total_count}条</span>
+            </span>
+            <span class="accordion-summary">{fmt(header_note)}</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="{block_id}-body">
+            <div class="company-list">
+              {''.join(company_rows) or "<div class='empty'>暂无公告数据</div>"}
+            </div>
+            {extra_html}
+          </div>
+        </article>
+        """
+        )
 
     total = sum(len(v) for companies in grouped.values() for v in companies.values())
-    original_count = len([i for i in (items or []) if not is_other_subcategory((i.get("subcategory") or "").strip())])
-    filtered_info = f" 已过滤{excluded_count}条次要公告" if excluded_count > 0 else ""
-    
+    filtered_info = f"已过滤 {excluded_count} 条低价值公告" if excluded_count > 0 else "按分类和公司聚合展示"
     return f"""
-    <section class="panel">
-      <h2>公告解读 <span>({total}条{filtered_info})</span></h2>
-      <div class="stack">
-        {''.join(sub_blocks)}
+    <section id="notice" class="panel compact-panel">
+      <div class="section-head">
+        <h2>公告解读</h2>
+        <span class="meta-badge strong">{total}条</span>
+      </div>
+      <div class="section-summary">{fmt(filtered_info)}</div>
+      <div class="accordion-list">
+        {''.join(blocks) or "<div class='empty'>暂无公告解读数据</div>"}
       </div>
     </section>
     """
@@ -837,71 +614,78 @@ def load_tavily_news(out_dir: Path) -> dict:
 
 
 def render_news_section(data: dict) -> str:
-    """渲染新闻动态板块 - 按分类聚合展示"""
-    if not data or not data.get('categories'):
-        return '<section id="news" class="panel"><h2>📰 新闻动态</h2><div class="empty">暂无新闻数据</div></section>'
-    
-    categories = data.get('categories', {})
-    
-    # 分类名称映射（中文）
+    """Render compact news buckets with summary-first accordion."""
+    if not data or not data.get("categories"):
+        return '<section id="news" class="panel compact-panel"><div class="section-head"><h2>新闻动态</h2></div><div class="empty">暂无新闻数据</div></section>'
+
+    categories = data.get("categories", {})
     name_mapping = {
-        'AI Industry': 'AI产业',
-        'Macro': '宏观',
-        'Robotics': '机器人',
-        'Commercial Space': '商业航天'
+        "AI Industry": "AI产业",
+        "Macro": "宏观",
+        "Robotics": "机器人",
+        "Commercial Space": "商业航天",
     }
-    
+
     bucket_cards = []
     for idx, (bucket, cat_data) in enumerate(categories.items()):
-        bucket_id = f"news-bucket-{idx}"
+        bucket_id = f"news-{idx}"
         cn_name = name_mapping.get(bucket, bucket)
-        summary = cat_data.get('summary', '暂无总结')
-        items = cat_data.get('items', [])
-        count = cat_data.get('count', 0)
-        
-        # 生成新闻列表
+        summary = cat_data.get("summary", "暂无总结")
+        items = cat_data.get("items", [])
+        count = cat_data.get("count", 0)
+        teaser = first_sentence(summary, limit=88)
+        expanded = False
+
         news_items_html = []
         for i, item in enumerate(items):
-            headline = html.escape(item.get('headline', 'N/A'))
-            url = item.get('url', '')
-            url_html = f"<a href='{html.escape(url)}' target='_blank'>link</a>" if url else ""
-            score = item.get('score', 0)
-            
-            news_items_html.append(f"""
+            headline = html.escape(item.get("headline", "N/A"))
+            url = item.get("url", "")
+            url_html = f"<a href='{html.escape(url)}' target='_blank'>原文</a>" if url else ""
+            score = item.get("score", 0)
+            news_items_html.append(
+                f"""
             <div class="news-item">
-              <span class="news-index">{i+1}.</span>
+              <span class="news-index">{i + 1}</span>
               <span class="news-headline">{headline}</span>
               <span class="news-score">{score:.2f}</span>
               {url_html}
             </div>
-            """)
-        
-        bucket_cards.append(f"""
-        <div class="news-bucket-card" id="{bucket_id}">
-          <div class="bucket-header" onclick="toggleNewsBucket('{bucket_id}')">
-            <div class="bucket-info">
-              <span class="bucket-name">{cn_name}</span>
-              <span class="bucket-count">({count}条)</span>
+            """
+            )
+
+        bucket_cards.append(
+            f"""
+        <article class="accordion-block news-block" id="{bucket_id}">
+          <button class="accordion-trigger" type="button" data-target="{bucket_id}-body" aria-expanded="{'true' if expanded else 'false'}">
+            <span class="accordion-main">
+              <span class="accordion-title">{fmt(cn_name)}</span>
+              <span class="meta-badge strong">{count}条</span>
+            </span>
+            <span class="accordion-summary">{fmt(teaser)}</span>
+            <span class="accordion-icon{' is-open' if expanded else ''}" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body{' open' if expanded else ' collapsed'}" id="{bucket_id}-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">AI</span>
+              <div class="inline-summary-text clamp-3">{fmt(summary)}</div>
             </div>
-            <span class="toggle-icon" id="toggle-{bucket_id}">▶</span>
+            <div class="news-list">
+              {''.join(news_items_html) or "<div class='empty'>暂无新闻</div>"}
+            </div>
           </div>
-          <div class="bucket-summary">
-            <span class="ai-tag">🤖 AI</span>
-            <span class="ai-text">{html.escape(summary)}</span>
-          </div>
-          <div class="bucket-news-list collapsed" id="list-{bucket_id}">
-            {''.join(news_items_html) or "<div class='empty'>暂无新闻</div>"}
-          </div>
-        </div>
-        """)
-    
-    total_count = sum(c.get('count', 0) for c in categories.values())
-    
+        </article>
+        """
+        )
+
+    total_count = sum(c.get("count", 0) for c in categories.values())
     return f"""
-    <section id="news" class="panel">
-      <h2>📰 新闻动态 <span>({len(categories)}个分类, {total_count}条)</span></h2>
-      
-      <div class="news-buckets">
+    <section id="news" class="panel compact-panel">
+      <div class="section-head">
+        <h2>新闻动态</h2>
+        <span class="meta-badge strong">{len(categories)}类 / {total_count}条</span>
+      </div>
+      <div class="section-summary">按主题聚合，默认展开首个分类，其余保留单行 AI 摘要。</div>
+      <div class="accordion-list">
         {''.join(bucket_cards) or "<div class='empty'>暂无新闻动态数据</div>"}
       </div>
     </section>
@@ -966,45 +750,32 @@ def render_report(date, base_dir):
     p5w_interaction = load_json(out_dir / "p5w_interaction.json")
     tushare_forecast = load_json(out_dir / "tushare_forecast.json")
     tavily_news = load_tavily_news(out_dir)
-    
-    # 尝试从 akshare 获取业绩预告
-    akshare_forecast = load_forecast_from_akshare(date)
-    if akshare_forecast:
-        forecast_items = akshare_forecast
-    else:
-        # 回退到本地数据
-        forecast_items = tushare_forecast.get("items") or []
 
-    # 分类 Tab 导航（点击可滑动到对应区域）
-    # 顺序：市场温度 -> 业绩预告 -> 机构调研 -> 互动问答 -> 公告解读
+    forecast_items = tushare_forecast.get("items") or []
+
+    relation_items = cninfo_relation.get("items") or []
+    interaction_items = p5w_interaction.get("items") or []
+    notice_items = cninfo_fulltext.get("items") or []
+    news_categories = tavily_news.get("categories") or {}
+    news_total = sum(cat.get("count", 0) for cat in news_categories.values())
+
     tabs = [
-        ("📰 新闻动态", "news"),
+        ("新闻动态", "news"),
         ("业绩预告", "forecast"),
         ("机构调研", "relation"),
         ("互动问答", "interaction"),
         ("公告解读", "notice"),
     ]
+    tabs_html = "".join(f"<a class='tab' href='#{anchor}'>{label}</a>" for label, anchor in tabs)
 
-    tabs_html = "".join(
-        f"""<a class="tab" href="#{anchor}">{label}</a>"""
-        for label, anchor in tabs
-    )
-
-    # 渲染新闻动态板块
     news_section = render_news_section(tavily_news)
-    
-    # 使用新的聚合方式渲染业绩预告
-    forecast_section = f'<section id="forecast">{render_forecast_panel(forecast_items)}</section>'
+    forecast_section = render_forecast_panel(forecast_items)
+    relation_section = render_relation_section_with_ai(relation_items, limit=40)
+    interaction_section = render_interaction_section_with_ai(interaction_items, limit=40)
+    notice_section = render_notice_panel(notice_items)
 
-    # 机构调研使用自定义渲染，添加AI解读按钮
-    relation_section = render_relation_section_with_ai(cninfo_relation.get("items") or [], limit=40)
-
-    # 互动问答区域（带AI总结）
-    interaction_section = render_interaction_section_with_ai(
-        p5w_interaction.get("items") or [], limit=40
-    )
-
-    notice_section = f'<section id="notice">{render_notice_panel(cninfo_fulltext.get("items") or [])}</section>'
+    generated_at = datetime.now().strftime("%Y-%m-%d %H:%M")
+    coverage_count = len([1 for dataset in [news_total, len(forecast_items), len(relation_items), len(interaction_items), len(notice_items)] if dataset])
 
     html_doc = f"""<!doctype html>
 <html lang="zh-CN">
@@ -1012,876 +783,163 @@ def render_report(date, base_dir):
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{fmt(date)} Alpha日报</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <style>
-    /* ============================================
-       Modern Bright UI - "Moomoo Style"
-       ============================================ */
     :root {{
-      /* Background */
-      --bg-primary: #ffffff;
-      --bg-secondary: #f4f5f9;
-      --bg-tertiary: #ffffff;
-      --bg-hover: #f0f2f5;
-      
-      /* Text */
-      --text-primary: #12161b;
-      --text-secondary: #586171;
-      --text-tertiary: #8b92a5;
-      --text-inverse: #ffffff;
-      
-      /* Borders & Shadows */
-      --border-light: #eaecf1;
-      --border-medium: #dfe2ea;
-      --border-dark: #c4c8d4;
-      --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.04);
-      --shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.08);
-      
-      /* Financial Colors (A-shares: Red Up, Green Down) */
-      --color-up: #f24957;           /* Moomoo Red */
-      --color-up-bg: rgba(242, 73, 87, 0.08);
-      --color-down: #13b77f;         /* Moomoo Green */
-      --color-down-bg: rgba(19, 183, 127, 0.08);
-      --color-warning: #ff8f00;      /* Orange */
-      --color-info: #0066ff;         /* Bright Blue */
-      
-      /* Accents */
-      --accent-primary: #ff6600;     /* Moomoo Brand Orange */
-      --accent-hover: #ff8533;
-      --accent-gradient: linear-gradient(135deg, #ff6600, #ff8f00);
-      
-      /* AI */
-      --ai-bg: #f5f9ff;
-      --ai-border: #d6e8ff;
-      --ai-text: #0055ff;
+      --bg: #eef1f5;
+      --panel: #ffffff;
+      --panel-soft: #f7f8fb;
+      --line: #dde3eb;
+      --line-strong: #cdd5df;
+      --text: #161c24;
+      --muted: #667085;
+      --muted-2: #8a94a6;
+      --accent: #ff6a00;
+      --accent-soft: #fff2e8;
+      --ai-bg: #f4f8ff;
+      --ai-border: #d7e5ff;
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+      --shadow-soft: 0 4px 12px rgba(15, 23, 42, 0.04);
+      --warn-bg: #fff8ec;
+      --warn-line: #ffd8a8;
     }}
-    
+
     * {{ box-sizing: border-box; }}
-    
-    html {{
-      scroll-behavior: smooth;
-      scroll-padding-top: 80px;
-    }}
-    
-    body {{
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      color: var(--text-primary);
-      background: var(--bg-secondary);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }}
-    
-    .wrap {{ 
-      max-width: 1400px; 
-      margin: 0 auto; 
-      padding: 24px 24px 60px; 
-    }}
-    
-    h1, h2, h3 {{ 
-      margin: 0; 
-      font-weight: 700;
-    }}
-    
-    h1 {{
-      font-size: 28px;
-      color: var(--text-primary);
-      padding-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }}
-    
-    h1::before {{
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 28px;
-      background: var(--accent-gradient);
-      border-radius: 4px;
-    }}
-    
-    /* ============================================
-       Tabs - Modern Pill shapes
-       ============================================ */
-    .tabs {{ 
-      display: flex; 
-      gap: 12px; 
-      margin-top: 20px; 
-      padding: 12px 0; 
-      position: sticky; 
-      top: 0; 
-      background: rgba(244, 245, 249, 0.9); 
-      backdrop-filter: blur(12px); 
-      -webkit-backdrop-filter: blur(12px);
-      z-index: 100;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }}
+    html {{ scroll-behavior: smooth; scroll-padding-top: 68px; }}
+    body {{ margin: 0; background: linear-gradient(180deg, #f7f8fa 0%, var(--bg) 220px); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }}
+    a {{ color: #0b63ce; text-decoration: none; }}
+    a:hover {{ text-decoration: underline; }}
+    button {{ font: inherit; }}
+    .wrap {{ max-width: 1440px; margin: 0 auto; padding: 16px 16px 32px; }}
+    .report-header {{ display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding: 4px 0 10px; border-bottom: 1px solid rgba(205,213,223,.75); }}
+    .report-title-wrap {{ display: grid; gap: 6px; }}
+    .report-kicker {{ display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }}
+    .report-kicker::before {{ content: ''; width: 8px; height: 8px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 0 4px rgba(255,106,0,.12); }}
+    h1 {{ margin: 0; font-size: 24px; line-height: 1.1; }}
+    .report-subtitle {{ color: var(--muted); font-size: 13px; }}
+    .report-meta {{ display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }}
+    .meta-badge {{ display: inline-flex; align-items: center; gap: 6px; min-height: 24px; padding: 0 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel-soft); color: var(--muted); font-size: 12px; white-space: nowrap; }}
+    .meta-badge.strong {{ background: var(--accent-soft); border-color: #ffd0b2; color: #ad4d00; font-weight: 600; }}
+    .meta-badge.subtle {{ color: var(--muted-2); }}
+    .tabs {{ display: flex; gap: 8px; margin-top: 12px; padding: 8px 0; position: sticky; top: 0; z-index: 20; overflow-x: auto; background: rgba(238,241,245,.92); backdrop-filter: blur(10px); }}
     .tabs::-webkit-scrollbar {{ display: none; }}
-    
-    .tab {{ 
-      padding: 10px 24px; 
-      border-radius: 20px; 
-      background: var(--bg-primary); 
-      border: 1px solid var(--border-light); 
-      color: var(--text-secondary); 
-      text-decoration: none; 
-      font-size: 15px; 
-      font-weight: 600; 
-      transition: all 0.2s ease;
-      white-space: nowrap;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-    }}
-    .tab:hover {{ 
-      color: var(--accent-primary);
-      border-color: var(--accent-primary);
-      background: #fff8f5;
-    }}
-    
-    /* ============================================
-       Panels - Clean White Cards
-       ============================================ */
-    .sections {{ 
-      margin-top: 24px; 
-      display: grid; 
-      gap: 24px; 
-    }}
-    
-    .panel {{ 
-      background: var(--bg-primary);
-      border-radius: 16px;
-      padding: 28px;
-      box-shadow: var(--shadow-card);
-      border: 1px solid var(--border-light);
-    }}
-    
-    .panel h2 {{ 
-      margin-bottom: 20px;
-      font-size: 20px;
-      color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }}
-    
-    .panel h2 span {{ 
-      color: var(--accent-primary); 
-      font-weight: 600; 
-      font-size: 14px;
-      background: #fff0e5;
-      padding: 4px 12px;
-      border-radius: 20px;
-    }}
-    
-    .stack {{ 
-      display: grid; 
-      gap: 16px; 
-    }}
-    
-    .subpanel {{ 
-      background: #fafafc;
-      border-radius: 12px;
-      padding: 20px;
-      border: 1px solid var(--border-light);
-      transition: all 0.2s ease;
-    }}
-    
-    .subpanel:hover {{
-      background: #ffffff;
-      box-shadow: var(--shadow-hover);
-      border-color: var(--border-medium);
-    }}
-    
-    .subpanel h3 {{ 
-      margin-bottom: 16px;
-      font-size: 16px;
-      color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }}
-    
-    .subpanel h3 span {{ 
-      color: var(--text-tertiary); 
-      font-weight: 500; 
-      font-size: 13px;
-    }}
-    
-    /* ============================================
-       Tables - Crisp and Readable
-       ============================================ */
-    table {{ 
-      width: 100%; 
-      border-collapse: separate;
-      border-spacing: 0;
-      font-size: 14px;
-    }}
-    
-    thead {{
-      position: sticky;
-      top: 60px;
-      z-index: 50;
-      background: var(--bg-primary);
-    }}
-    
-    th {{ 
-      color: var(--text-secondary); 
-      font-weight: 500; 
-      font-size: 13px;
-      padding: 14px 12px;
-      text-align: left;
-      border-bottom: 1px solid var(--border-medium);
-      background: #fafafc;
-      border-radius: 0;
-    }}
-    
-    .panel > table th:first-child {{ border-top-left-radius: 8px; border-bottom-left-radius: 8px; }}
-    .panel > table th:last-child {{ border-top-right-radius: 8px; border-bottom-right-radius: 8px; }}
-    
-    td {{ 
-      padding: 16px 12px;
-      text-align: left;
-      vertical-align: top;
-      border-bottom: 1px solid var(--border-light);
-      transition: background-color 0.2s ease;
-      line-height: 1.6;
-    }}
-    
-    tbody tr:hover td {{
-      background-color: var(--bg-hover);
-    }}
-    
-    td.title {{ 
-      min-width: 260px;
-      max-width: 500px;
-      color: var(--text-primary);
-    }}
-    
-    /* ============================================
-       Links & Buttons - Brand Accent
-       ============================================ */
-    a {{ 
-      color: var(--color-info); 
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.2s;
-    }}
-    
-    a:hover {{ 
-      color: #0044cc;
-      text-decoration: underline;
-    }}
-    
-    .empty {{ 
-      color: var(--text-tertiary); 
-      font-size: 14px;
-      text-align: center;
-      padding: 40px 20px;
-      background: #fafafc;
-      border-radius: 12px;
-      border: 1px dashed var(--border-medium);
-    }}
-    
-    /* ============================================
-       AI Summary Card - Crisp Tech Vibe
-       ============================================ */
-    .ai-summary-card {{
-      background: var(--ai-bg);
-      border: 1px solid var(--ai-border);
-      border-radius: 12px;
-      padding: 20px;
-      margin: 16px 0;
-    }}
-    
-    .ai-summary-header {{
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
-    }}
-    
-    .ai-icon {{
-      font-size: 20px;
-    }}
-    
-    .ai-title {{
-      font-weight: 700;
-      color: var(--ai-text);
-      font-size: 15px;
-    }}
-    
-    .ai-summary-content {{
-      color: var(--text-primary);
-      font-size: 14px;
-      line-height: 1.7;
-    }}
-    
-    /* ============================================
-       Forecast Section - Dynamic Cards
-       ============================================ */
-    .forecast-company {{
-      background: var(--bg-primary);
-      border: 1px solid var(--border-light);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-    }}
-    
-    .forecast-company h3 {{
-      font-size: 17px;
-      color: var(--text-primary);
-    }}
-    
-    .forecast-company h3 span {{
-      background: #f0f2f5;
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 12px;
-      color: var(--text-secondary);
-    }}
-    
-    .forecast-metrics {{
-      width: 100%;
-      margin: 16px 0;
-      border: 1px solid var(--border-light);
-      border-radius: 8px;
-    }}
-    
-    .forecast-metrics th:first-child {{
-      border-top-left-radius: 8px;
-    }}
-    .forecast-metrics th:last-child {{
-      border-top-right-radius: 8px;
-    }}
-    
-    .forecast-metrics th {{
-      background: #fafafc;
-      border-bottom: 1px solid var(--border-light);
-    }}
-    
-    .forecast-metrics td {{
-      border-bottom: 1px solid var(--border-light);
-    }}
-    
-    .forecast-metrics tr:last-child td {{ border-bottom: none; }}
-    
-    .forecast-reason {{
-      color: var(--text-secondary);
-      font-size: 13.5px;
-      padding: 14px 16px;
-      background: #fafafc;
-      border-radius: 8px;
-      border-left: 3px solid var(--accent-primary);
-    }}
-    
-    /* ============================================
-       Buttons
-       ============================================ */
-    .ai-analyze-btn, .expand-btn {{
-      padding: 8px 16px;
-      border-radius: 6px;
-      background: var(--ai-bg);
-      color: var(--ai-text);
-      border: 1px solid var(--ai-border);
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }}
-    
-    .ai-analyze-btn:hover, .expand-btn:hover {{
-      background: #e0edff;
-    }}
-    
-    .expand-controls {{
-      margin: 16px 0;
-      text-align: right;
-    }}
-    
-    .expand-btn {{
-      background: var(--accent-primary);
-      border: none;
-      color: #fff;
-    }}
-    
-    .expand-btn:hover {{
-      background: var(--accent-hover);
-    }}
-    
-    /* ============================================
-       Interaction Section - Company Aggregated
-       ============================================ */
-    .interaction-companies {{
-      display: grid;
-      gap: 16px;
-    }}
-    
-    .company-interaction-card {{
-      background: #ffffff;
-      border: 1px solid var(--border-light);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: all 0.2s ease;
-    }}
-    
-    .company-interaction-card:hover {{
-      border-color: var(--border-medium);
-      box-shadow: var(--shadow-hover);
-    }}
-    
-    .company-header {{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 20px;
-      background: #fafafc;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.2s;
-    }}
-    
-    .company-header:hover {{
-      background: #f0f2f5;
-    }}
-    
-    .company-info {{
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }}
-    
-    .company-name {{
-      font-weight: 600;
-      font-size: 15px;
-      color: var(--text-primary);
-    }}
-    
-    .company-symbol {{
-      font-size: 12px;
-      color: var(--text-secondary);
-      background: #e8eaed;
-      padding: 2px 8px;
-      border-radius: 4px;
-    }}
-    
-    .qa-count {{
-      font-size: 13px;
-      color: var(--accent-primary);
-      font-weight: 500;
-    }}
-    
-    .more-hint {{
-      font-size: 12px;
-      color: var(--text-tertiary);
-    }}
-    
-    .toggle-icon {{
-      font-size: 12px;
-      color: var(--text-tertiary);
-      transition: transform 0.2s;
-    }}
-    
-    .toggle-icon.collapsed {{
-      transform: rotate(-90deg);
-    }}
-    
-    .company-ai-summary {{
-      padding: 12px 20px;
-      background: var(--ai-bg);
-      border-bottom: 1px solid var(--ai-border);
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }}
-    
-    .ai-tag {{
-      font-size: 12px;
-      color: var(--ai-text);
-      font-weight: 600;
-      white-space: nowrap;
-    }}
-    
-    .ai-text {{
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      word-break: break-word;
-      white-space: pre-wrap;
-    }}
-    
-    .company-qa-list {{
-      max-height: 500px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      transition: max-height 0.3s ease;
-      border-top: 1px solid var(--border-light);
-    }}
-    
-    .company-qa-list.collapsed {{
-      max-height: 0;
-      overflow: hidden;
-    }}
-    
-    .company-qa-list .qa-table {{
-      width: 100%;
-      font-size: 13px;
-      border-collapse: collapse;
-      table-layout: fixed;
-    }}
-    
-    .company-qa-list .qa-table th {{
-      background: #f0f2f5;
-      padding: 10px 12px;
-      font-weight: 600;
-      font-size: 12px;
-      color: var(--text-secondary);
-      text-align: left;
-      border-bottom: 2px solid var(--border-medium);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }}
-    
-    .company-qa-list .qa-table th:first-child {{
-      width: 90px;
-    }}
-    
-    .company-qa-list .qa-table th:nth-child(2) {{
-      width: 35%;
-    }}
-    
-    .company-qa-list .qa-table th:nth-child(3) {{
-      width: 55%;
-    }}
-    
-    .company-qa-list .qa-table th:last-child {{
-      width: 60px;
-      text-align: center;
-    }}
-    
-    .company-qa-list .qa-table td {{
-      padding: 12px;
-      border-bottom: 1px solid #f0f2f5;
-      vertical-align: top;
-      background: #fff;
-    }}
-    
-    .company-qa-list .qa-table td.title {{
-      min-width: 200px;
-      max-width: 400px;
-      word-break: break-word;
-    }}
-    
-    .company-qa-list .qa-table tr:hover td {{
-      background: #fafafc;
-    }}
-    
-    .company-qa-list .qa-table tr:last-child td {{
-      border-bottom: none;
-    }}
-    
+    .tab {{ display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.92); color: var(--muted); font-size: 13px; font-weight: 600; white-space: nowrap; }}
+    .tab:hover {{ border-color: #ffc59b; color: #a74b00; background: #fff7f1; text-decoration: none; }}
+    .content-grid {{ display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 14px; }}
+    .panel {{ background: var(--panel); border: 1px solid rgba(221,227,235,.95); border-radius: 12px; box-shadow: var(--shadow); padding: 16px; }}
+    .compact-panel {{ scroll-margin-top: 72px; }}
+    .section-head {{ display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 8px; }}
+    h2 {{ margin: 0; font-size: 17px; line-height: 1.2; }}
+    .section-summary {{ margin-bottom: 10px; color: var(--muted); font-size: 12px; line-height: 1.45; }}
+    .accordion-list {{ display: grid; gap: 10px; }}
+    .accordion-block {{ border: 1px solid var(--line); border-radius: 10px; background: var(--panel-soft); overflow: hidden; }}
+    .accordion-trigger {{ width: 100%; border: 0; padding: 11px 12px; background: transparent; display: grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto; align-items: center; gap: 10px; text-align: left; cursor: pointer; }}
+    .accordion-main {{ display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0; }}
+    .accordion-title {{ font-size: 14px; font-weight: 700; color: var(--text); }}
+    .accordion-summary {{ min-width: 0; color: var(--muted); font-size: 12px; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }}
+    .accordion-icon {{ color: var(--muted-2); font-size: 12px; transition: transform .2s ease; }}
+    .accordion-icon.is-open {{ transform: rotate(180deg); }}
+    .accordion-body {{ border-top: 1px solid var(--line); padding: 12px; background: #fff; }}
+    .accordion-body.collapsed {{ display: none; }}
+    .accordion-body.open {{ display: block; }}
+    .inline-summary {{ display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: start; padding: 10px 12px; margin-bottom: 10px; border: 1px solid var(--ai-border); border-radius: 10px; background: var(--ai-bg); }}
+    .inline-summary-label {{ display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 22px; padding: 0 8px; border-radius: 999px; background: #fff; color: #2452b6; font-size: 11px; font-weight: 700; }}
+    .inline-summary-text {{ color: var(--text); font-size: 13px; line-height: 1.55; white-space: pre-wrap; word-break: break-word; }}
+    .clamp-3 {{ display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }}
+    .detail-table {{ width: 100%; border-collapse: collapse; font-size: 13px; }}
+    .detail-table thead th {{ position: sticky; top: 68px; z-index: 5; background: #f7f8fb; color: var(--muted); font-size: 12px; font-weight: 600; text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line-strong); }}
+    .detail-table td {{ padding: 9px 10px; border-bottom: 1px solid #edf1f5; vertical-align: top; line-height: 1.5; }}
+    .detail-table tr:last-child td {{ border-bottom: 0; }}
+    .detail-table td.title {{ max-width: 0; }}
+    .detail-table tbody tr:hover td {{ background: #fbfcfd; }}
+    .inline-symbol {{ color: var(--muted-2); font-size: 12px; margin-left: 6px; }}
+    .action-group {{ display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }}
+
+    .news-list {{ display: grid; gap: 2px; }}
+    .news-item {{ display: grid; grid-template-columns: 20px minmax(0, 1fr) auto auto; gap: 8px; align-items: start; padding: 7px 0; border-bottom: 1px solid #edf1f5; font-size: 12px; }}
+    .news-item:last-child {{ border-bottom: 0; }}
+    .news-index {{ color: var(--muted-2); }}
+    .news-headline {{ color: var(--text); line-height: 1.45; }}
+    .news-score {{ display: inline-flex; align-items: center; height: 20px; padding: 0 6px; border-radius: 999px; background: #f0f3f6; color: var(--muted); font-size: 11px; }}
+    .company-list {{ display: grid; gap: 8px; }}
+    .notice-company-row {{ display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) auto; gap: 10px; align-items: start; padding: 10px 0; border-bottom: 1px solid #edf1f5; }}
+    .notice-company-row:last-child {{ border-bottom: 0; }}
+    .notice-company-row.regulatory {{ padding-left: 10px; border-left: 3px solid #f59e0b; }}
+    .notice-company-main {{ display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }}
+    .notice-company-text {{ color: var(--muted); font-size: 12px; line-height: 1.5; }}
+    .notice-company-link {{ text-align: right; white-space: nowrap; }}
+    .section-footnote {{ margin-top: 8px; color: var(--muted-2); font-size: 12px; }}
+    .regulatory-warning {{ background: linear-gradient(180deg, var(--warn-bg), #fff); border-color: var(--warn-line); }}
+    .empty {{ padding: 20px 14px; border: 1px dashed var(--line-strong); border-radius: 10px; background: #fafbfd; color: var(--muted-2); text-align: center; font-size: 13px; }}
+
     @media (max-width: 768px) {{
-      .company-header {{
-        padding: 12px 16px;
-      }}
-      .company-ai-summary {{
-        padding: 10px 16px;
-      }}
-      .company-qa-list .qa-table td {{
-        padding: 10px;
-      }}
+      .wrap {{ padding: 14px 12px 28px; }}
+      .report-header {{ align-items: flex-start; flex-direction: column; }}
+      .report-meta {{ justify-content: flex-start; }}
+      h1 {{ font-size: 22px; }}
+      .panel {{ padding: 14px; }}
+      .accordion-trigger {{ grid-template-columns: 1fr auto; }}
+      .accordion-summary {{ grid-column: 1 / -1; white-space: normal; }}
+      .news-item {{ grid-template-columns: 20px minmax(0, 1fr); }}
+      .notice-company-row {{ grid-template-columns: 1fr; }}
+      .detail-table {{ display: block; overflow-x: auto; white-space: nowrap; }}
+      .detail-table td.title, .detail-table th {{ white-space: normal; }}
     }}
-    
-    /* ============================================
-       Regulatory Warning & Capital
-       ============================================ */
-    .regulatory-warning {{
-      background: #fffcf5;
-      border: 1px solid #ffd599;
-    }}
-    
-    .regulatory-warning h3 {{
-      color: var(--color-warning);
-    }}
-    
-    .regulatory-row td {{
-      background: #fffcf5;
-    }}
-    
-    .regulatory-row td:first-child {{
-      border-left: 3px solid var(--color-warning);
-    }}
-    
-    .capital-companies {{ display: grid; gap: 16px; }}
-    
-    .capital-company-card {{
-      background: #ffffff;
-      border: 1px solid var(--border-light);
-      border-radius: 12px;
-      padding: 16px;
-      transition: all 0.2s;
-    }}
-    
-    .capital-company-card:hover {{
-      border-color: var(--border-medium);
-      box-shadow: var(--shadow-hover);
-    }}
-    
-    .capital-company-header {{
-      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
-    }}
-    
-    .capital-company-name {{ font-weight: 600; font-size: 15px; color: var(--text-primary); }}
-    
-    .capital-company-symbol {{
-      background: #f0f2f5;
-      padding: 2px 8px; border-radius: 6px; font-size: 13px; color: var(--text-secondary);
-    }}
-    
-    .capital-count {{ color: var(--accent-primary); font-weight: 600; font-size: 13px; }}
-    
-    .capital-titles {{ color: var(--text-secondary); font-size: 14px; line-height: 1.7; }}
-    
-    /* ============================================
-       News Section Styles
-       ============================================ */
-    .news-buckets {{
-      display: grid;
-      gap: 16px;
-    }}
-    
-    .news-bucket-card {{
-      background: #ffffff;
-      border: 1px solid var(--border-light);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: all 0.2s ease;
-    }}
-    
-    .news-bucket-card:hover {{
-      border-color: var(--border-medium);
-      box-shadow: var(--shadow-hover);
-    }}
-    
-    .bucket-header {{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 20px;
-      background: #fafafc;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.2s;
-    }}
-    
-    .bucket-header:hover {{
-      background: #f0f2f5;
-    }}
-    
-    .bucket-info {{
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }}
-    
-    .bucket-name {{
-      font-weight: 600;
-      font-size: 15px;
-      color: var(--text-primary);
-    }}
-    
-    .bucket-count {{
-      font-size: 13px;
-      color: var(--accent-primary);
-      font-weight: 500;
-    }}
-    
-    .bucket-summary {{
-      padding: 12px 20px;
-      background: var(--ai-bg);
-      border-bottom: 1px solid var(--ai-border);
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }}
-    
-    .bucket-news-list {{
-      max-height: 600px;
-      overflow-y: auto;
-      transition: max-height 0.3s ease;
-      padding: 12px 20px;
-    }}
-    
-    .bucket-news-list.collapsed {{
-      max-height: 0;
-      overflow: hidden;
-      padding: 0 20px;
-    }}
-    
-    .news-item {{
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      padding: 10px 0;
-      border-bottom: 1px solid #f0f2f5;
-      font-size: 13px;
-      line-height: 1.6;
-    }}
-    
-    .news-item:last-child {{
-      border-bottom: none;
-    }}
-    
-    .news-index {{
-      color: var(--text-tertiary);
-      font-weight: 500;
-      min-width: 24px;
-    }}
-    
-    .news-headline {{
-      flex: 1;
-      color: var(--text-primary);
-    }}
-    
-    .news-score {{
-      font-size: 11px;
-      color: var(--text-tertiary);
-      background: #f0f2f5;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }}
-    
-    /* ============================================
-       Mobile Optimizations
-       ============================================ */
-    @media (max-width: 1024px) {{
-      .wrap {{ padding: 24px 16px; }}
-      td.title {{ min-width: 200px; max-width: 350px; }}
-    }}
-    
-    @media (max-width: 768px) {{
-      h1 {{ font-size: 24px; }}
-      .tabs {{ padding: 12px 0; gap: 8px; }}
-      .tab {{ padding: 8px 16px; font-size: 13px; }}
-      
-      .panel {{ padding: 20px; border-radius: 12px; }}
-      
-      table {{ display: block; overflow-x: auto; white-space: nowrap; }}
-      th, td {{ padding: 12px; }}
-      td.title {{ white-space: normal; min-width: 220px; }}
-    }}
-</style>
+  </style>
 </head>
 <body>
   <main class="wrap">
-    <h1>{fmt(date)} Alpha日报</h1>
+    <header class="report-header">
+      <div class="report-title-wrap">
+        <span class="report-kicker">Alpha Daily</span>
+        <h1>{fmt(date)} Alpha日报</h1>
+        <div class="report-subtitle">先总览后下钻：压缩空白，优先呈现高价值模块。</div>
+      </div>
+      <div class="report-meta">
+        <span class="meta-badge">生成时间 {fmt(generated_at)}</span>
+        <span class="meta-badge">数据覆盖 {coverage_count}/5</span>
+        <span class="meta-badge strong">当日输出 {fmt(date)}</span>
+      </div>
+    </header>
 
     <nav class="tabs">{tabs_html}</nav>
 
-    <div class="sections">
+    <section class="content-grid">
       {news_section}
       {forecast_section}
       {relation_section}
       {interaction_section}
       {notice_section}
-    </div>
+    </section>
   </main>
-  
+
   <script>
-    // 互动问答 - 公司QA展开/收起功能
-    function toggleCompanyQa(cardId) {{
-      const qaList = document.getElementById('qa-' + cardId);
-      const toggleIcon = document.getElementById('toggle-' + cardId);
-      
-      if (qaList.classList.contains('collapsed')) {{
-        qaList.classList.remove('collapsed');
-        toggleIcon.classList.remove('collapsed');
-        toggleIcon.textContent = '▼';
-      }} else {{
-        qaList.classList.add('collapsed');
-        toggleIcon.classList.add('collapsed');
-        toggleIcon.textContent = '▶';
-      }}
+    function setAccordionState(trigger, expanded) {{
+      const targetId = trigger.getAttribute('data-target');
+      const body = document.getElementById(targetId);
+      const icon = trigger.querySelector('.accordion-icon');
+      if (!body) return;
+      trigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      body.classList.toggle('collapsed', !expanded);
+      body.classList.toggle('open', expanded);
+      if (icon) icon.classList.toggle('is-open', expanded);
     }}
-    
-    // 新闻动态 - 分类展开/收起功能
-    function toggleNewsBucket(bucketId) {{
-      const newsList = document.getElementById('list-' + bucketId);
-      const toggleIcon = document.getElementById('toggle-' + bucketId);
-      
-      if (newsList.classList.contains('collapsed')) {{
-        newsList.classList.remove('collapsed');
-        toggleIcon.textContent = '▼';
-      }} else {{
-        newsList.classList.add('collapsed');
-        toggleIcon.textContent = '▶';
-      }}
-    }}
-    
-    // 默认收起所有详细内容
-    document.addEventListener('DOMContentLoaded', function() {{
-      // 收起互动问答
-      const cards = document.querySelectorAll('.company-interaction-card');
-      cards.forEach((card) => {{
-        const cardId = card.id;
-        const qaList = document.getElementById('qa-' + cardId);
-        const toggleIcon = document.getElementById('toggle-' + cardId);
-        if (qaList) {{
-          qaList.classList.add('collapsed');
-        }}
-        if (toggleIcon) {{
-          toggleIcon.classList.add('collapsed');
-          toggleIcon.textContent = '▶';
-        }}
-      }});
-      
-      // 收起新闻动态（已默认收起，通过CSS和HTML设置）
-    }});
-    
-    // 机构调研AI解读功能
-    async function analyzeResearch(itemKey, pdfUrl) {{
-      const resultRow = document.getElementById('ai-result-' + itemKey);
-      const contentDiv = document.getElementById('ai-content-' + itemKey);
-      const btn = document.getElementById('btn-' + itemKey);
-      
-      // 如果已经展开，则收起
-      if (resultRow.style.display !== 'none') {{
-        resultRow.style.display = 'none';
-        btn.textContent = 'AI解读';
-        return;
-      }}
-      
-      // 显示加载状态
-      resultRow.style.display = 'table-row';
-      btn.textContent = '收起';
-      btn.classList.add('analyzing');
-      
-      try {{
-        // 调用本地API进行AI解读
-        const response = await fetch('http://localhost:8888/analyze', {{
-          method: 'POST',
-          headers: {{'Content-Type': 'application/json'}},
-          body: JSON.stringify({{url: pdfUrl}})
+
+    function bindAccordions() {{
+      document.querySelectorAll('.accordion-trigger').forEach((trigger) => {{
+        trigger.addEventListener('click', () => {{
+          const expanded = trigger.getAttribute('aria-expanded') === 'true';
+          setAccordionState(trigger, !expanded);
         }});
-        
-        if (!response.ok) {{
-          throw new Error('API请求失败: ' + response.status);
-        }}
-        
-        const data = await response.json();
-        contentDiv.innerHTML = `<div class="ai-summary-header"><span class="ai-icon">🤖</span><span class="ai-title">AI解读</span></div><div class="ai-summary-content">${{data.summary || '暂无解读内容'}}</div>`;
-      }} catch (error) {{
-        // API不可用时的备用方案：显示提示信息
-        contentDiv.innerHTML = `<div class="ai-error">⚠️ AI解读服务暂不可用<br>请确保已启动本地API服务 (python ai_server.py)<br>错误: ${{error.message}}</div>`;
-      }} finally {{
-        btn.classList.remove('analyzing');
-      }}
+      }});
     }}
+
+    document.addEventListener('DOMContentLoaded', function() {{
+      bindAccordions();
+      document.querySelectorAll('.accordion-trigger').forEach((trigger) => {{
+        setAccordionState(trigger, trigger.getAttribute('aria-expanded') === 'true');
+      }});
+    }});
+
   </script>
 </body>
 </html>
