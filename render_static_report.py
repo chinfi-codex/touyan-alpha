@@ -1,210 +1,14 @@
 #!/usr/bin/env python3
 import argparse
 import concurrent.futures
-import hashlib
 import html
 import json
 import os
-import time
 from collections import defaultdict
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
-from urllib.parse import urlencode, urlparse
-from urllib.request import Request, urlopen
+from urllib.parse import urlparse
 
-
-CLIPPINGS_API_BASE_URL = os.environ.get("CLIPPINGS_API_BASE_URL", "http://47.90.205.168:8787").rstrip("/")
-CLIPPINGS_API_TOKEN = os.environ.get("CLIPPINGS_API_TOKEN", "o-RQo6GJCAElSxgcNSbftAwv2rc1tGbOJIiG-BlJxyI")
-CLIPPINGS_API_TIMEOUT = float(os.environ.get("CLIPPINGS_API_TIMEOUT", "8"))
-
-# 知识星球 API 配置
-ZSXQ_COOKIE = os.environ.get("ZSXQ_COOKIE", "")
-ZSXQ_GROUP_IDS = os.environ.get("ZSXQ_GROUP_IDS", "")  # 多个星球ID用逗号分隔
-ZSXQ_API_TIMEOUT = float(os.environ.get("ZSXQ_API_TIMEOUT", "10"))
-
-
-class ZsxqApiClient:
-    """知识星球 API 客户端"""
-    
-    def __init__(self, cookie=None):
-        self.base_url = "https://api.zsxq.com"
-        self.app_version = "3.11.0"
-        self.platform = "ios"
-        self.secret = "zsxqapi2020"
-        self.cookie = cookie or ZSXQ_COOKIE
-        
-        self.headers = {
-            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1",
-            "Accept": "application/json, text/plain, */*",
-            "Accept-Language": "zh-CN,zh;q=0.9",
-            "Connection": "keep-alive",
-            "Cookie": self.cookie,
-            "Origin": "https://wx.zsxq.com",
-            "Referer": "https://wx.zsxq.com/"
-        }
-    
-    def _generate_signature(self, path, params=None):
-        """生成 API 签名"""
-        common_params = {
-            "app_version": self.app_version,
-            "platform": self.platform,
-            "timestamp": str(int(time.time() * 1000))
-        }
-        
-        all_params = common_params.copy()
-        if params and isinstance(params, dict):
-            all_params.update(params)
-        
-        sorted_params = sorted(all_params.items(), key=lambda x: x[0])
-        params_str = urlencode(sorted_params)
-        
-        sign_str = f"{path}&{params_str}&{self.secret}"
-        
-        md5 = hashlib.md5()
-        md5.update(sign_str.encode("utf-8"))
-        signature = md5.hexdigest()
-        
-        return signature, common_params["timestamp"]
-    
-    def _request(self, path, params=None):
-        """发送 GET 请求"""
-        if not self.cookie:
-            return None, "未配置 ZSXQ_COOKIE"
-        
-        signature, timestamp = self._generate_signature(path, params)
-        
-        headers = self.headers.copy()
-        headers["X-Signature"] = signature
-        headers["X-Timestamp"] = timestamp
-        
-        url = f"{self.base_url}{path}"
-        query = urlencode(params) if params else ""
-        full_url = f"{url}?{query}" if query else url
-        
-        try:
-            req = Request(full_url, headers=headers, method="GET")
-            with urlopen(req, timeout=ZSXQ_API_TIMEOUT) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-                if data.get("succeeded"):
-                    return data.get("resp_data", {}), None
-                else:
-                    return None, data.get("resp_err", "未知错误")
-        except Exception as e:
-            return None, str(e)
-    
-    def get_group_topics(self, group_id, count=20, end_time=None):
-        """获取星球主题列表"""
-        path = f"/v2/groups/{group_id}/topics"
-        params = {"count": count}
-        if end_time:
-            params["end_time"] = end_time
-        
-        resp, err = self._request(path, params)
-        if err:
-            return [], None, err
-        
-        topics = resp.get("topics", [])
-        next_end_time = resp.get("end_time")
-        return topics, next_end_time, None
-    
-    def get_topics_by_date(self, group_id, date, limit=50):
-        """获取指定日期的主题"""
-        date_obj = datetime.strptime(date, "%Y-%m-%d")
-        start_time = int(date_obj.timestamp() * 1000)
-        end_time_val = int((date_obj + timedelta(days=1)).timestamp() * 1000)
-        
-        all_topics = []
-        current_end_time = None
-        page = 0
-        max_pages = 10
-        
-        while page < max_pages:
-            topics, next_end_time, err = self.get_group_topics(
-                group_id, count=50, end_time=current_end_time
-            )
-            if err:
-                break
-            
-            if not topics:
-                break
-            
-            for topic in topics:
-                topic_time = topic.get("create_time", 0)
-                if start_time <= topic_time < end_time_val:
-                    all_topics.append(topic)
-                elif topic_time < start_time:
-                    # 已经超出日期范围
-                    return all_topics[:limit], None
-            
-            if not next_end_time:
-                break
-            
-            current_end_time = next_end_time
-            page += 1
-            time.sleep(0.3)  # 避免请求过快
-        
-        return all_topics[:limit], None
-
-
-def fetch_zsxq_topics_by_date(date, limit=50):
-    """从知识星球获取指定日期的主题"""
-    if not ZSXQ_COOKIE or not ZSXQ_GROUP_IDS:
-        return {"items": [], "error": "未配置 ZSXQ_COOKIE 或 ZSXQ_GROUP_IDS"}
-    
-    client = ZsxqApiClient()
-    group_ids = [g.strip() for g in ZSXQ_GROUP_IDS.split(",") if g.strip()]
-    
-    all_items = []
-    errors = []
-    
-    for group_id in group_ids:
-        topics, err = client.get_topics_by_date(group_id, date, limit=limit)
-        if err:
-            errors.append(f"星球 {group_id}: {err}")
-            continue
-        
-        for topic in topics:
-            topic_id = topic.get("topic_id")
-            title = topic.get("title", "")
-            content = ""
-            
-            # 提取内容
-            talk = topic.get("talk", {})
-            if talk:
-                content = talk.get("text", "")
-                if not title and content:
-                    # 如果没有标题，取内容前30字作为标题
-                    title = content[:30] + "..." if len(content) > 30 else content
-            
-            # 获取作者信息
-            author = ""
-            owner = topic.get("owner", {})
-            if owner:
-                author = owner.get("name", "")
-            
-            # 创建时间格式化
-            create_time = topic.get("create_time", 0)
-            create_time_str = datetime.fromtimestamp(create_time / 1000).strftime("%Y-%m-%d %H:%M") if create_time else ""
-            
-            # 主题链接
-            topic_url = f"https://wx.zsxq.com/dweb2/index/topic/{topic_id}"
-            
-            all_items.append({
-                "type": "zsxq_topic",
-                "id": str(topic_id),
-                "title": title or "无标题",
-                "content": content,
-                "author": author,
-                "created_at": create_time_str,
-                "url": topic_url,
-                "source": "知识星球",
-                "group_id": group_id,
-            })
-    
-    return {
-        "items": all_items[:limit],
-        "error": "; ".join(errors) if errors else ""
-    }
 
 
 def load_json(path):
@@ -274,70 +78,31 @@ def fmt_file_size(size):
     return f"{n / (1024 * 1024):.1f} MB"
 
 
-def fetch_professional_knowledge_files(date, limit=50):
-    """Load same-day files from clippings-api and 知识星球."""
+def load_professional_knowledge(out_dir: Path, date: str, limit=50):
+    """从输出目录加载专业知识数据（clippings 和 知识星球）"""
     all_items = []
     errors = []
     
-    # 1. 从 clippings-api 获取文件
-    query = urlencode({"date": date, "limit": limit})
-    url = f"{CLIPPINGS_API_BASE_URL}/files?{query}"
-    headers = {}
-    if CLIPPINGS_API_TOKEN:
-        headers["Authorization"] = f"Bearer {CLIPPINGS_API_TOKEN}"
-    req = Request(url, headers=headers)
-
-    try:
-        with urlopen(req, timeout=CLIPPINGS_API_TIMEOUT) as resp:
-            payload = json.loads(resp.read().decode("utf-8"))
-        
-        raw_items = []
-        if isinstance(payload, list):
-            raw_items = payload
-        elif isinstance(payload, dict):
-            for key in ("files", "items", "data", "results"):
-                value = payload.get(key)
-                if isinstance(value, list):
-                    raw_items = value
-                    break
-
-        for row in raw_items:
-            if not isinstance(row, dict):
-                continue
-            path = str(row.get("path") or row.get("file_path") or row.get("filename") or row.get("name") or "").strip()
-            if not path:
-                continue
-            created_at = (
-                row.get("created_at")
-                or row.get("createdAt")
-                or row.get("birth_time")
-                or row.get("ctime")
-                or row.get("mtime")
-                or row.get("date")
-                or ""
-            )
-            size_text = fmt_file_size(row.get("size") or row.get("file_size") or row.get("bytes"))
-            file_url = f"{CLIPPINGS_API_BASE_URL}/file?{urlencode({'path': path})}"
-            all_items.append(
-                {
-                    "type": "clipping_file",
-                    "path": path,
-                    "created_at": str(created_at or ""),
-                    "size_text": size_text,
-                    "url": file_url,
-                    "source": "clippings-api",
-                }
-            )
-    except Exception as e:
-        errors.append(f"clippings-api: {e}")
-
-    # 2. 从知识星球获取主题
-    zsxq_result = fetch_zsxq_topics_by_date(date, limit=limit)
-    if zsxq_result.get("items"):
-        all_items.extend(zsxq_result["items"])
-    if zsxq_result.get("error"):
-        errors.append(f"zsxq: {zsxq_result['error']}")
-
+    # 1. 加载 clippings 数据
+    clippings_file = out_dir / date / "clippings.json"
+    if clippings_file.exists():
+        try:
+            data = json.loads(clippings_file.read_text(encoding="utf-8"))
+            items = data.get("items", [])
+            all_items.extend(items[:limit])
+        except Exception as e:
+            errors.append(f"clippings: {e}")
+    
+    # 2. 加载知识星球数据
+    zsxq_file = out_dir / date / "zsxq.json"
+    if zsxq_file.exists():
+        try:
+            data = json.loads(zsxq_file.read_text(encoding="utf-8"))
+            items = data.get("items", [])
+            all_items.extend(items[:limit])
+        except Exception as e:
+            errors.append(f"zsxq: {e}")
+    
     return {"items": all_items[:limit], "error": "; ".join(errors) if errors else ""}
 
 
@@ -1148,7 +913,7 @@ def render_report(date, base_dir):
     p5w_interaction = load_json(out_dir / "p5w_interaction.json")
     tushare_forecast = load_json(out_dir / "tushare_forecast.json")
     tavily_news = load_tavily_news(out_dir)
-    professional_knowledge = fetch_professional_knowledge_files(date=date, limit=50)
+    professional_knowledge = load_professional_knowledge(out_dir, date, limit=50)
 
     forecast_items = tushare_forecast.get("items") or []
 

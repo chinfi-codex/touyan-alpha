@@ -65,6 +65,22 @@ def run_collect(date, base_dir, sources=""):
     except Exception as e:
         summary["tavily_news"] = f"error: {str(e)[:100]}"
 
+    # 收集知识星球数据
+    try:
+        from adapters.zsxq import save_zsxq_data
+        zsxq_ok = save_zsxq_data(date, base_dir / "output")
+        summary["zsxq"] = "ok" if zsxq_ok else "failed"
+    except Exception as e:
+        summary["zsxq"] = f"error: {str(e)[:100]}"
+
+    # 收集 clippings 数据
+    try:
+        from adapters.clippings import save_clippings_data
+        clippings_ok = save_clippings_data(date, base_dir / "output")
+        summary["clippings"] = "ok" if clippings_ok else "failed"
+    except Exception as e:
+        summary["clippings"] = f"error: {str(e)[:100]}"
+
     (out_dir / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     return summary
 
