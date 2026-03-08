@@ -233,7 +233,7 @@ def generate_company_ai_summary(company_name: str, items: list) -> str:
 
 
 def render_interaction_section_with_ai(items, limit=100):
-    """Render grouped interaction Q&A with compact accordion blocks."""
+    """Render grouped interaction Q&A with compact accordion blocks (AI summary removed)."""
 
     filtered_items = []
     for item in (items or []):
@@ -251,8 +251,6 @@ def render_interaction_section_with_ai(items, limit=100):
     for idx, (company_name, company_items) in enumerate(ordered_companies):
         symbol = company_items[0].get("symbol", "")
         card_id = f"interaction-{idx}"
-        ai_summary = generate_company_ai_summary(company_name, company_items)
-        teaser = clip_text(ai_summary, limit=80)
 
         rows = []
         for item in company_items[:20]:
@@ -287,14 +285,9 @@ def render_interaction_section_with_ai(items, limit=100):
               <span class="meta-badge strong">{len(company_items)}问</span>
               {more_hint}
             </span>
-            <span class="accordion-summary">{fmt(teaser)}</span>
             <span class="accordion-icon" aria-hidden="true">&#9662;</span>
           </button>
           <div class="accordion-body collapsed" id="{card_id}-body">
-            <div class="inline-summary">
-              <span class="inline-summary-label">AI</span>
-              <div class="inline-summary-text clamp-3">{fmt(ai_summary)}</div>
-            </div>
             {detail_html}
           </div>
         </article>
@@ -309,7 +302,6 @@ def render_interaction_section_with_ai(items, limit=100):
         <h2>互动问答</h2>
         <span class="meta-badge strong">{total_companies}家公司 / {total_items}条</span>
       </div>
-      <div class="section-summary">按公司聚合展示，默认折叠明细，仅保留核心摘要与问答数。</div>
       <div class="accordion-list">
         {''.join(cards) or "<div class='empty'>暂无互动问答数据</div>"}
       </div>
@@ -364,87 +356,107 @@ def optimize_reason_with_ai(reason_text, company_name=""):
 
 
 def render_forecast_panel(items):
-    """Render compact forecast section grouped by company."""
-    grouped = defaultdict(list)
-    for item in items or []:
-        company = (item.get("company") or "").strip() or (item.get("symbol") or "").strip() or "未知公司"
-        grouped[company].append(item)
+    """Render forecast as a table: 股票名称, 变动幅度, 变动原因, 公告日期. Highlight >= 30%."""
+    if not items:
+        return """
+    <section id="forecast" class="panel compact-panel">
+      <div class="section-head"><h2>业绩预告</h2></div>
+      <div class="empty">暂无业绩预告数据</div>
+    </section>
+    """
 
-    ordered_companies = sorted(grouped.items(), key=lambda kv: (-len(kv[1]), kv[0]))
-    top_company = ordered_companies[0][0] if ordered_companies else None
-    blocks = []
+    def parse_change_value(item):
+        """Extract max change percentage from item."""
+        for key in ["change_range_max", "change_range_min", "p_change_max", "p_change_min"]:
+            val = item.get(key)
+            if val is not None:
+                try:
+                    return float(val)
+                except (ValueError, TypeError):
+                    continue
+        raw = item.get("raw", {})
+        for key in ["p_change_max", "p_change_min"]:
+            val = raw.get(key)
+            if val is not None:
+                try:
+                    return float(val)
+                except (ValueError, TypeError):
+                    continue
+        return 0.0
 
-    for idx, (company, company_items) in enumerate(ordered_companies):
-        symbol = next((x.get("symbol") for x in company_items if x.get("symbol")), "")
-        card_id = f"forecast-{idx}"
-        seen_reasons = set()
-        reason_parts = []
-        metrics_rows = []
+    def format_change_display(item):
+        """Format change range as string."""
+        min_val = item.get("change_range_min") or item.get("p_change_min")
+        max_val = item.get("change_range_max") or item.get("p_change_max")
+        if min_val is None or max_val is None:
+            raw = item.get("raw", {})
+            min_val = min_val or raw.get("p_change_min")
+            max_val = max_val or raw.get("p_change_max")
+        try:
+            min_val = float(min_val) if min_val is not None else None
+            max_val = float(max_val) if max_val is not None else None
+        except (ValueError, TypeError):
+            return "-"
+        if min_val is not None and max_val is not None:
+            if abs(min_val - max_val) < 0.1:
+                return f"{min_val:.1f}%"
+            return f"{min_val:.1f}% ~ {max_val:.1f}%"
+        elif max_val is not None:
+            return f"{max_val:.1f}%"
+        elif min_val is not None:
+            return f"{min_val:.1f}%"
+        return "-"
 
-        for item in company_items:
-            forecast_type = item.get("forecast_type", "")
-            performance_change = item.get("performance_change", "")
-            forecast_value = item.get("forecast_value", "")
-            change_reason = item.get("change_reason", "")
-            if forecast_type and performance_change:
-                metrics_rows.append(
-                    "<tr>"
-                    f"<td>{fmt(forecast_type)}</td>"
-                    f"<td class='title'>{fmt(performance_change)}</td>"
-                    f"<td>{fmt(forecast_value)}</td>"
-                    "</tr>"
-                )
-            if change_reason and change_reason not in seen_reasons:
-                seen_reasons.add(change_reason)
-                reason_parts.append(change_reason)
+    def get_change_reason(item):
+        """Get change reason from item."""
+        reason = item.get("change_reason", "")
+        if not reason:
+            raw = item.get("raw", {})
+            reason = raw.get("change_reason", "")
+        return clip_text(reason, 120) if reason else "-"
 
-        optimized_reason = ""
-        if reason_parts:
-            optimized_reason = optimize_reason_with_ai("；".join(reason_parts), company)
-        summary_text = clip_text(optimized_reason or "暂无核心变动原因", 96)
-        detail_table = (
-            "<table class='detail-table forecast-metrics'>"
-            "<thead><tr><th>预测指标</th><th>业绩变动</th><th>预测数值</th></tr></thead>"
-            f"<tbody>{''.join(metrics_rows)}</tbody></table>"
-            if metrics_rows
-            else "<div class='empty'>暂无详细业绩指标</div>"
+    rows_html = []
+    for item in items:
+        company = item.get("company") or item.get("symbol") or "未知公司"
+        change_display = format_change_display(item)
+        change_val = parse_change_value(item)
+        reason = get_change_reason(item)
+        date = item.get("date") or item.get("ann_date") or "-"
+        highlight_class = "forecast-highlight" if abs(change_val) >= 30 else ""
+        rows_html.append(
+            f"<tr class='{highlight_class}'>"
+            f"<td class='title'>{fmt(company)}</td>"
+            f"<td class='change-col'>{fmt(change_display)}</td>"
+            f"<td class='reason-col'>{fmt(reason)}</td>"
+            f"<td class='date-col'>{fmt(date)}</td>"
+            "</tr>"
         )
 
-        expanded = False
-        blocks.append(
-            f"""
-        <article class="accordion-block forecast-block" id="{card_id}">
-          <button class="accordion-trigger" type="button" data-target="{card_id}-body" aria-expanded="{'true' if expanded else 'false'}">
-            <span class="accordion-main">
-              <span class="accordion-title">{fmt(company)}</span>
-              <span class="meta-badge">{fmt(symbol)}</span>
-              <span class="meta-badge strong">{len(company_items)}项</span>
-            </span>
-            <span class="accordion-summary">{fmt(summary_text)}</span>
-            <span class="accordion-icon{' is-open' if expanded else ''}" aria-hidden="true">&#9662;</span>
-          </button>
-          <div class="accordion-body{' open' if expanded else ' collapsed'}" id="{card_id}-body">
-            <div class="inline-summary">
-              <span class="inline-summary-label">原因</span>
-              <div class="inline-summary-text clamp-3">{fmt(optimized_reason or '暂无核心变动原因')}</div>
-            </div>
-            {detail_table}
-          </div>
-        </article>
-        """
-        )
-
-    total_companies = len(grouped)
-    total_items = len(items or [])
+    total = len(items)
+    high_count = sum(1 for item in items if abs(parse_change_value(item)) >= 30)
+    high_badge = f'<span class="meta-badge" style="background:#fff2e8;color:#ad4d00;border-color:#ffd0b2;">{high_count}条高变动</span>' if high_count > 0 else ''
+    
     return f"""
     <section id="forecast" class="panel compact-panel">
       <div class="section-head">
         <h2>业绩预告</h2>
-        <span class="meta-badge strong">{total_companies}家公司 / {total_items}条</span>
+        <span class="meta-badge strong">{total}条</span>
+        {high_badge}
       </div>
-      <div class="section-summary">默认全部折叠，点击展开查看详情，减少纵向占用。</div>
-      <div class="accordion-list">
-        {''.join(blocks) or "<div class='empty'>暂无业绩预告数据</div>"}
+      <div class="table-wrap">
+        <table class="detail-table forecast-table">
+          <thead>
+            <tr>
+              <th>股票名称</th>
+              <th>变动幅度</th>
+              <th>变动原因</th>
+              <th>公告日期</th>
+            </tr>
+          </thead>
+          <tbody>
+            {''.join(rows_html) or '<tr><td colspan="4">暂无数据</td></tr>'}
+          </tbody>
+        </table>
       </div>
     </section>
     """
@@ -482,7 +494,6 @@ def render_relation_section_with_ai(items, limit=40):
         <h2>机构调研</h2>
         <span class="meta-badge strong">{total}条</span>
       </div>
-      <div class="section-summary">保留表格形态，压缩为日期、公司、标题、操作四列。</div>
       <table class="detail-table relation-table">
         <thead>
           <tr><th>日期</th><th>公司</th><th>标题</th><th>操作</th></tr>
@@ -542,6 +553,12 @@ def render_notice_panel(items):
             if any(kw in title for kw in intermediary_keywords):
                 return True
 
+        # 重大合作分类：过滤券商/研报/分析报告类
+        if subcategory in ["重大合作", "重大合作/投资项目", "合作项目", "投资项目"]:
+            broker_keywords = ["券商", "证券", "研报", "研究报告", "分析报告", "点评报告", "行业研究", "市场分析", "投资分析", "策略报告", "晨会报告", "研报摘要", "分析师", "证券研究所"]
+            if any(kw in title for kw in broker_keywords):
+                return True
+
         trivial_capital_keywords = ["调整募集资金投资项目内部结构", "调整募投项目", "募集资金专户存储", "募集资金三方监管", "募集资金置换", "闲置募集资金现金管理", "募集资金临时补充流动资金", "募集资金归还"]
         if any(kw in title for kw in trivial_capital_keywords):
             return True
@@ -552,6 +569,21 @@ def render_notice_panel(items):
 
         if "回复" in subcategory or "回复" in title:
             if any(kw in title for kw in ["核查意见", "保荐机构", "保荐人", "主办券商", "独立财务顾问", "会计师回复", "律师回复", "中介机构"]):
+                return True
+            # 对问询回复：移除券商、证券公司意见
+            if "问询" in subcategory or "问询函" in title:
+                broker_keywords = ["券商", "证券公司", "证券研究所", "分析师意见", "券商意见", "证券意见"]
+                if any(kw in title for kw in broker_keywords):
+                    return True
+
+        # 股权激励：移除回购注销、提示性公告、名单、考核办法等
+        if subcategory == "股权激励" or "股权激励" in title or "限制性股票" in title:
+            equity_excluded = [
+                "回购注销完成", "回购注销部分限制性股票减少注册资本", "通知债权人",
+                "提示性公告", "激励对象名单", "考核管理办法", "实施考核管理办法",
+                "回购注销", "减资公告", "债权申报"
+            ]
+            if any(kw in title for kw in equity_excluded):
                 return True
 
         return False
@@ -578,12 +610,10 @@ def render_notice_panel(items):
         block_id = f"notice-{idx}"
         total_count = sum(len(v) for v in company_map.values())
         is_regulatory_cat = is_regulatory(subcategory)
-        is_capital_cat = is_capital_operation(subcategory)
-        header_note = "监管类优先关注" if is_regulatory_cat else ("资本运作按公司聚合" if is_capital_cat else "默认展示前 5 个公司项")
 
         ordered_companies = sorted(company_map.items(), key=lambda kv: (-len(kv[1]), kv[0]))
         company_rows = []
-        for company, company_items in ordered_companies[:5]:
+        for company, company_items in ordered_companies:
             symbol = next((x.get("symbol") for x in company_items if x.get("symbol")), "")
             latest_url = next((x.get("url") for x in company_items if x.get("url")), "")
             link_html = f"<a href='{fmt(latest_url)}' target='_blank'>原文</a>" if latest_url else ""
@@ -604,8 +634,7 @@ def render_notice_panel(items):
             """
             )
 
-        extra_count = max(0, len(ordered_companies) - 5)
-        extra_html = f"<div class='section-footnote'>另有 {extra_count} 家公司未展开</div>" if extra_count else ""
+        extra_html = ""
         blocks.append(
             f"""
         <article class="accordion-block notice-block{' regulatory-warning' if is_regulatory_cat else ''}" id="{block_id}">
@@ -614,7 +643,6 @@ def render_notice_panel(items):
               <span class="accordion-title">{fmt(subcategory)}</span>
               <span class="meta-badge strong">{total_count}条</span>
             </span>
-            <span class="accordion-summary">{fmt(header_note)}</span>
             <span class="accordion-icon" aria-hidden="true">&#9662;</span>
           </button>
           <div class="accordion-body collapsed" id="{block_id}-body">
@@ -628,14 +656,12 @@ def render_notice_panel(items):
         )
 
     total = sum(len(v) for companies in grouped.values() for v in companies.values())
-    filtered_info = f"已过滤 {excluded_count} 条低价值公告" if excluded_count > 0 else "按分类和公司聚合展示"
     return f"""
     <section id="notice" class="panel compact-panel">
       <div class="section-head">
         <h2>公告解读</h2>
         <span class="meta-badge strong">{total}条</span>
       </div>
-      <div class="section-summary">{fmt(filtered_info)}</div>
       <div class="accordion-list">
         {''.join(blocks) or "<div class='empty'>暂无公告解读数据</div>"}
       </div>
@@ -667,6 +693,18 @@ def render_news_section(data: dict) -> str:
         "Commercial Space": "商业航天",
     }
 
+    def format_summary_with_newlines(summary: str) -> str:
+        """将分号分隔的摘要转换为多行格式，每条新闻单独一行"""
+        if not summary:
+            return "暂无总结"
+        # 按分号分隔，过滤空项
+        parts = [p.strip() for p in str(summary).split("；") if p.strip()]
+        if not parts:
+            return fmt(summary)
+        # 每条新闻一行，前面加小圆点
+        formatted = "\n".join(f"• {p}" for p in parts)
+        return fmt(formatted)
+
     bucket_cards = []
     for idx, (bucket, cat_data) in enumerate(categories.items()):
         bucket_id = f"news-{idx}"
@@ -674,21 +712,23 @@ def render_news_section(data: dict) -> str:
         summary = cat_data.get("summary", "暂无总结")
         items = cat_data.get("items", [])
         count = cat_data.get("count", 0)
+        # teaser仍使用第一句
         teaser = first_sentence(summary, limit=88)
         expanded = False
+
+        # 格式化summary，多条新闻换行显示
+        formatted_summary = format_summary_with_newlines(summary)
 
         news_items_html = []
         for i, item in enumerate(items):
             headline = html.escape(item.get("headline", "N/A"))
             url = item.get("url", "")
             url_html = f"<a href='{html.escape(url)}' target='_blank'>原文</a>" if url else ""
-            score = item.get("score", 0)
             news_items_html.append(
                 f"""
             <div class="news-item">
               <span class="news-index">{i + 1}</span>
               <span class="news-headline">{headline}</span>
-              <span class="news-score">{score:.2f}</span>
               {url_html}
             </div>
             """
@@ -708,7 +748,7 @@ def render_news_section(data: dict) -> str:
           <div class="accordion-body{' open' if expanded else ' collapsed'}" id="{bucket_id}-body">
             <div class="inline-summary">
               <span class="inline-summary-label">AI</span>
-              <div class="inline-summary-text clamp-3">{fmt(summary)}</div>
+              <div class="inline-summary-text">{formatted_summary}</div>
             </div>
             <div class="news-list">
               {''.join(news_items_html) or "<div class='empty'>暂无新闻</div>"}
@@ -725,7 +765,6 @@ def render_news_section(data: dict) -> str:
         <h2>新闻动态</h2>
         <span class="meta-badge strong">{len(categories)}类 / {total_count}条</span>
       </div>
-      <div class="section-summary">按主题聚合，默认展开首个分类，其余保留单行 AI 摘要。</div>
       <div class="accordion-list">
         {''.join(bucket_cards) or "<div class='empty'>暂无新闻动态数据</div>"}
       </div>
@@ -1029,6 +1068,12 @@ def render_report(date, base_dir):
     .news-index {{ color: var(--muted-2); }}
     .news-headline {{ color: var(--text); line-height: 1.45; }}
     .news-score {{ display: inline-flex; align-items: center; height: 20px; padding: 0 6px; border-radius: 999px; background: #f0f3f6; color: var(--muted); font-size: 11px; }}
+    .forecast-table {{ width: 100%; }}
+    .forecast-table .change-col {{ white-space: nowrap; text-align: center; }}
+    .forecast-table .reason-col {{ max-width: 400px; }}
+    .forecast-table .date-col {{ white-space: nowrap; text-align: center; }}
+    .forecast-table tr.forecast-highlight {{ background: linear-gradient(90deg, #fff8ec 0%, #fff 100%); }}
+    .forecast-table tr.forecast-highlight td.change-col {{ color: #d94841; font-weight: 600; }}
     .company-list {{ display: grid; gap: 8px; }}
     .notice-company-row {{ display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) auto; gap: 10px; align-items: start; padding: 10px 0; border-bottom: 1px solid #edf1f5; }}
     .notice-company-row:last-child {{ border-bottom: 0; }}
@@ -1065,7 +1110,6 @@ def render_report(date, base_dir):
       <div class="report-title-wrap">
         <span class="report-kicker">Alpha Daily</span>
         <h1>{fmt(date)} Alpha日报</h1>
-        <div class="report-subtitle">先总览后下钻：压缩空白，优先呈现高价值模块。</div>
       </div>
       <div class="report-meta">
         <span class="meta-badge">生成时间 {fmt(generated_at)}</span>
