@@ -13,7 +13,4 @@ ADAPTERS = [
     cninfo_relation,
     p5w_interaction,
     tushare_forecast,
-    tavily_news,
-    zsxq,
-    clippings,
 ]
