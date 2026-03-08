@@ -913,7 +913,8 @@ def render_report(date, base_dir):
     p5w_interaction = load_json(out_dir / "p5w_interaction.json")
     tushare_forecast = load_json(out_dir / "tushare_forecast.json")
     tavily_news = load_tavily_news(out_dir)
-    professional_knowledge = load_professional_knowledge(out_dir, date, limit=50)
+    # load_professional_knowledge expects the output root, not output/<date>.
+    professional_knowledge = load_professional_knowledge(base_dir / "output", date, limit=50)
 
     forecast_items = tushare_forecast.get("items") or []
 

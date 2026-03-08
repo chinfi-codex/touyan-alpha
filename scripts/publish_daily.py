@@ -2,6 +2,7 @@
 import argparse
 import datetime as dt
 import json
+import re
 import shutil
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -13,6 +14,7 @@ ACTIONS_URL = f"https://github.com/{REPO}/actions/workflows/{WORKFLOW_FILE}"
 RUNS_API_URL = f"https://api.github.com/repos/{REPO}/actions/workflows/{WORKFLOW_FILE}/runs?per_page=14"
 SH_TZ = ZoneInfo("Asia/Shanghai")
 UTC_TZ = ZoneInfo("UTC")
+DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
 def cst_today() -> str:
@@ -23,20 +25,69 @@ def ensure_parent(p: Path) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
 
 
+def _safe_load_json(path: Path) -> dict:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
+
+
+def build_days_from_docs(docs_dir: Path) -> dict:
+    days = {}
+    data_root = docs_dir / "data"
+    if not data_root.exists():
+        return days
+
+    for day_dir in sorted(data_root.iterdir()):
+        if not day_dir.is_dir():
+            continue
+        date = day_dir.name
+        if not DATE_RE.match(date):
+            continue
+
+        summary_path = day_dir / "summary.json"
+        summary = _safe_load_json(summary_path)
+        counts = summary.get("counts") if isinstance(summary.get("counts"), dict) else {}
+        errors = summary.get("errors") if isinstance(summary.get("errors"), dict) else {}
+        days[date] = {
+            "counts": counts,
+            "errors": errors,
+            "page": f"{date}/index.html",
+        }
+    return days
+
+
 def load_manifest(path: Path) -> dict:
     base = {"updated_at": dt.datetime.now(UTC_TZ).isoformat(), "days": {}}
+    docs_dir = path.parent
+    docs_days = build_days_from_docs(docs_dir)
+
     if not path.exists():
+        if docs_days:
+            base["days"] = docs_days
         return base
+
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except Exception:
+        if docs_days:
+            base["days"] = docs_days
         return base
     if not isinstance(data, dict):
+        if docs_days:
+            base["days"] = docs_days
         return base
     if not isinstance(data.get("days"), dict):
         data["days"] = {}
     if not data.get("updated_at"):
         data["updated_at"] = base["updated_at"]
+
+    # Self-heal: merge missing days from docs/data if manifest was partially truncated.
+    for date, day in docs_days.items():
+        if date not in data["days"]:
+            data["days"][date] = day
+
     return data
 
 

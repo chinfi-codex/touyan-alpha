@@ -20,7 +20,9 @@
     "业绩预告": 1
   },
   "excluded_counts_by_rule": {},
-  "errors": {},
+  "errors": {
+    "tavily_news": "adapter missing collect()"
+  },
   "tavily_news": "ok",
   "zsxq": "ok",
   "clippings": "ok"

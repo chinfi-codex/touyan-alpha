@@ -19,6 +19,15 @@ def _parse_sources(raw):
     return {x.strip() for x in raw.split(",") if x.strip()}
 
 
+def _load_output_json(path):
+    if not path.exists():
+        return {}
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
 def run_collect(date, base_dir, sources=""):
     out_dir = base_dir / "output" / date
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -67,6 +76,9 @@ def run_collect(date, base_dir, sources=""):
     try:
         news_ok = save_news_data(date, base_dir / "output")
         summary["tavily_news"] = "ok" if news_ok else "failed"
+        news_json = _load_output_json(out_dir / "tavily_news.json")
+        categories = news_json.get("categories") if isinstance(news_json.get("categories"), dict) else {}
+        summary["counts"]["tavily_news"] = sum(int((v or {}).get("count") or 0) for v in categories.values() if isinstance(v, dict))
     except Exception as e:
         summary["tavily_news"] = f"error: {str(e)[:100]}"
 
@@ -75,6 +87,8 @@ def run_collect(date, base_dir, sources=""):
         from adapters.zsxq import save_zsxq_data
         zsxq_ok = save_zsxq_data(date, base_dir / "output")
         summary["zsxq"] = "ok" if zsxq_ok else "failed"
+        zsxq_json = _load_output_json(out_dir / "zsxq.json")
+        summary["counts"]["zsxq"] = int(zsxq_json.get("count") or 0)
     except Exception as e:
         summary["zsxq"] = f"error: {str(e)[:100]}"
 
@@ -83,6 +97,8 @@ def run_collect(date, base_dir, sources=""):
         from adapters.clippings import save_clippings_data
         clippings_ok = save_clippings_data(date, base_dir / "output")
         summary["clippings"] = "ok" if clippings_ok else "failed"
+        clippings_json = _load_output_json(out_dir / "clippings.json")
+        summary["counts"]["clippings"] = int(clippings_json.get("count") or 0)
     except Exception as e:
         summary["clippings"] = f"error: {str(e)[:100]}"
 
