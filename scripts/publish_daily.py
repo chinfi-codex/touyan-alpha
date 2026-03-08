@@ -98,11 +98,11 @@ def build_index_html(manifest: dict, entries: list[dict], summary: dict) -> str:
     .page-header{{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:4px 0 10px;border-bottom:1px solid rgba(205,213,223,.75)}} .title-wrap{{display:grid;gap:6px}} .kicker{{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}} .kicker::before{{content:'';width:8px;height:8px;border-radius:999px;background:var(--accent);box-shadow:0 0 0 4px rgba(255,106,0,.12)}} h1{{margin:0;font-size:24px;line-height:1.1}} .subtitle{{color:var(--muted);font-size:13px;line-height:1.6;max-width:58ch}}
     .meta-row{{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}} .meta-badge{{display:inline-flex;align-items:center;gap:6px;min-height:24px;padding:0 10px;border:1px solid var(--line);border-radius:999px;background:var(--panel-soft);color:var(--muted);font-size:12px;white-space:nowrap}} .meta-badge.strong{{background:var(--accent-soft);border-color:#ffd0b2;color:#ad4d00;font-weight:600}}
     .actions{{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}} .action-link{{display:inline-flex;align-items:center;height:36px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.92);color:var(--muted);font-size:13px;font-weight:600;white-space:nowrap}} .action-link:hover{{border-color:#ffc59b;color:#a74b00;background:#fff7f1;text-decoration:none}}
-    .content{{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}} .panel{{background:var(--panel);border:1px solid rgba(221,227,235,.95);border-radius:12px;box-shadow:var(--shadow);padding:16px}} .section-head{{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px}} h2{{margin:0;font-size:17px;line-height:1.2}} .section-summary{{margin-bottom:10px;color:var(--muted);font-size:12px;line-height:1.45}}
+    .content{{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:14px;margin-top:14px;align-items:start}} .panel{{background:var(--panel);border:1px solid rgba(221,227,235,.95);border-radius:12px;box-shadow:var(--shadow);padding:16px}} .section-head{{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px}} h2{{margin:0;font-size:17px;line-height:1.2}} .section-summary{{margin-bottom:10px;color:var(--muted);font-size:12px;line-height:1.45}}
     .status-list{{display:grid;gap:10px}} .status-row{{display:grid;grid-template-columns:104px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--panel-soft)}} .status-date{{font-family:var(--mono);font-size:13px;color:var(--muted)}} .status-main{{display:grid;gap:4px;min-width:0}} .status-title{{font-size:14px;font-weight:700;color:var(--text)}} .status-note{{font-size:12px;color:var(--muted);line-height:1.5}}
     .status-pill{{display:inline-flex;align-items:center;justify-content:center;min-height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap;border:1px solid var(--line)}} .status-pill.success{{background:#edf9f1;border-color:#c8ebd4;color:var(--ok)}} .status-pill.failure{{background:#fff1f0;border-color:#ffc9c5;color:var(--bad)}} .status-pill.warning{{background:var(--warn-bg);border-color:var(--warn-line);color:#ad6800}} .status-pill.running{{background:#eef4ff;border-color:#cfe0ff;color:var(--run)}} .status-pill.neutral{{background:var(--panel-soft);border-color:var(--line);color:var(--muted)}}
-    .table-wrap{{overflow:auto;border-radius:10px}} table{{width:100%;border-collapse:collapse;min-width:760px;font-size:13px}} thead th{{background:#f7f8fb;color:var(--muted);font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line-strong)}} td{{padding:9px 10px;border-bottom:1px solid #edf1f5;vertical-align:top;line-height:1.5}} tr:last-child td{{border-bottom:0}} tbody tr:hover td{{background:#fbfcfd}} .mono{{font-family:var(--mono)}} .link-strong{{font-weight:600}} .footer-note{{margin-top:8px;color:var(--muted-2);font-size:12px}}
-    .hidden{{display:none!important}} @media (max-width:768px){{.wrap{{padding:14px 12px 28px}} .page-header{{align-items:flex-start;flex-direction:column}} .meta-row{{justify-content:flex-start}} h1{{font-size:22px}} .panel{{padding:14px}} .status-row{{grid-template-columns:1fr}} table{{min-width:620px}}}}
+    .table-wrap{{overflow:auto;border-radius:10px}} table{{width:100%;border-collapse:collapse;min-width:540px;font-size:13px}} thead th{{background:#f7f8fb;color:var(--muted);font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line-strong)}} td{{padding:9px 10px;border-bottom:1px solid #edf1f5;vertical-align:top;line-height:1.5}} tr:last-child td{{border-bottom:0}} tbody tr:hover td{{background:#fbfcfd}} .mono{{font-family:var(--mono)}} .link-strong{{font-weight:600}} .footer-note{{margin-top:8px;color:var(--muted-2);font-size:12px}}
+    .hidden{{display:none!important}} @media (max-width:980px){{.content{{grid-template-columns:1fr}}}} @media (max-width:768px){{.wrap{{padding:14px 12px 28px}} .page-header{{align-items:flex-start;flex-direction:column}} .meta-row{{justify-content:flex-start}} h1{{font-size:22px}} .panel{{padding:14px}} .status-row{{grid-template-columns:1fr}} table{{min-width:520px}}}}
   </style>
 </head>
 <body>
@@ -140,7 +140,7 @@ def build_index_html(manifest: dict, entries: list[dict], summary: dict) -> str:
         <div>
           <div class="table-wrap">
             <table>
-              <thead><tr><th>日期</th><th>日报入口</th><th>内容条数</th><th>提醒</th><th>主要内容</th></tr></thead>
+              <thead><tr><th>日期</th><th>链接</th><th>主要内容</th></tr></thead>
               <tbody id="reports-table-body"></tbody>
             </table>
           </div>
@@ -281,12 +281,10 @@ def build_index_html(manifest: dict, entries: list[dict], summary: dict) -> str:
             <tr>
               <td class="mono strong">${{esc(entry.date)}}</td>
               <td><a class="link-strong" href="./${{esc(entry.page)}}">打开日报</a></td>
-              <td class="mono">${{fmtNum(entry.count_total)}}</td>
-              <td class="mono">${{entry.error_count ? `发现 ${{fmtNum(entry.error_count)}} 条提醒` : "正常"}}</td>
               <td>${{esc(topSources(entry.counts).join(" / ") || "暂无")}}</td>
             </tr>
           `).join("")
-        : `<tr><td colspan="5" class="muted">暂无已发布日报</td></tr>`;
+        : `<tr><td colspan="3" class="muted">暂无已发布日报</td></tr>`;
     }}
 
     function renderRunFallback() {{
