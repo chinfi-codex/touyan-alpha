@@ -83,7 +83,8 @@ class ZsxqApiClient:
                 if data.get("succeeded"):
                     return data.get("resp_data", {}), None
                 else:
-                    return None, data.get("resp_err", "未知错误")
+                    err_msg = data.get("error") or data.get("resp_err") or "未知错误"
+                    return None, err_msg
         except Exception as e:
             return None, str(e)
     
@@ -113,6 +114,17 @@ class ZsxqApiClient:
         next_end_time = resp.get("end_time")
         return topics, next_end_time, None
     
+    def _parse_create_time(self, create_time_str):
+        """解析 ISO 8601 格式的时间字符串为毫秒时间戳"""
+        if not create_time_str:
+            return 0
+        try:
+            # 处理格式: 2026-03-07T20:26:18.143+0800
+            dt = datetime.fromisoformat(create_time_str.replace('+0800', '+08:00'))
+            return int(dt.timestamp() * 1000)
+        except:
+            return 0
+
     def get_topics_by_date(self, group_id, date, limit=50):
         """获取指定日期的主题"""
         date_obj = datetime.strptime(date, "%Y-%m-%d")
@@ -126,7 +138,7 @@ class ZsxqApiClient:
         
         while page < max_pages:
             topics, next_end_time, err = self.get_group_topics(
-                group_id, count=50, end_time=current_end_time
+                group_id, count=20, end_time=current_end_time
             )
             if err:
                 break
@@ -135,7 +147,7 @@ class ZsxqApiClient:
                 break
             
             for topic in topics:
-                topic_time = topic.get("create_time", 0)
+                topic_time = self._parse_create_time(topic.get("create_time", ""))
                 if start_time <= topic_time < end_time_val:
                     all_topics.append(topic)
                 elif topic_time < start_time:
@@ -173,8 +185,12 @@ def parse_topic(topic):
         author = owner.get("name", "")
     
     # 创建时间格式化
-    create_time = topic.get("create_time", 0)
-    create_time_str = datetime.fromtimestamp(create_time / 1000).strftime("%Y-%m-%d %H:%M") if create_time else ""
+    create_time = topic.get("create_time", "")
+    try:
+        dt = datetime.fromisoformat(create_time.replace('+0800', '+08:00'))
+        create_time_str = dt.strftime("%Y-%m-%d %H:%M")
+    except:
+        create_time_str = create_time[:16] if create_time else ""
     
     # 主题链接
     topic_url = f"https://wx.zsxq.com/dweb2/index/topic/{topic_id}"
