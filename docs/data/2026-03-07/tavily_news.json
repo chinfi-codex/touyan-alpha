@@ -2,7 +2,7 @@
   "date": "2026-03-07",
   "categories": {
     "AI Industry": {
-      "summary": "AI驱动全球数据中心建设加速，超算商签白宫承诺，甲骨文等发450亿债，土地争夺激烈，偏远项目用福利招工人。",
+      "summary": "全球数据中心建设加速，超大规模厂商签白宫承诺；甲骨文等发450亿债券，OpenAI与Anthropic竞争，AI数据中心需求促寻土地。",
       "items": [
         {
           "headline": "The case for building modular, repeatable data centers The pace of data center construction is accelerating across the world. (400, 10, 1...",
@@ -44,6 +44,19 @@
           ]
         },
         {
+          "headline": "For OpenAI and Anthropic, the Competition Is Deeply Personal OpenAI created the fastest-growing consumer app in tech history, held more t...",
+          "title": "For OpenAI and Anthropic, the Competition Is Deeply Personal - The New York Times",
+          "url": "https://www.nytimes.com/2026/03/07/technology/openai-anthropic-pentagon-rivalry.html",
+          "snippet": "OpenAI created the fastest-growing consumer app in tech history, held more than $100 billion in the bank and teamed up with the world’s most powerful computing giants. But companies are always rising and falling in Silicon Valley. In just a few months, Anthropic, OpenAI’s smaller rival, has added th",
+          "score": 0.9059898,
+          "numbers": [
+            "100",
+            "19",
+            "9",
+            "1"
+          ]
+        },
+        {
           "headline": "Demand for AI Data Centers Sends Prospectors Hunting for Lan As the A.I. (85, 2030)",
           "title": "Demand for AI Data Centers Sends Prospectors Hunting for Land and Power - The New York Times",
           "url": "https://www.nytimes.com/2026/03/05/technology/ai-data-centers-land-cloverleaf-infrastructure.html",
@@ -52,6 +65,19 @@
           "numbers": [
             "85",
             "2030"
+          ]
+        },
+        {
+          "headline": "AI’s giants Anthropic scored 7.4, thanks to net revenue retention above 140% and an 80% enterprise mix, though it has a dependence o (7.4...",
+          "title": "AI’s giants: Mostly priced on promise - PitchBook",
+          "url": "https://pitchbook.com/news/articles/ais-giants-mostly-priced-on-promise",
+          "snippet": "Anthropic scored 7.4, thanks to net revenue retention above 140% and an 80% enterprise mix, though it has a dependence on third-party cloud infrastructure. A late-February Pentagon standoff over AI safeguards validated its governance optionality score, with the resulting ban not impairing its core e",
+          "score": 0.7446563,
+          "numbers": [
+            "7.4",
+            "140",
+            "80",
+            "32"
           ]
         },
         {
@@ -68,98 +94,61 @@
           ]
         },
         {
-          "headline": "AI Industry Pledge to Fund Data Center Power Costs Major tech companies, including Amazon, Google, Microsoft, OpenAI, Meta, Oracle, and x...",
-          "title": "AI Industry Pledge to Fund Data Center Power Costs - Startup Ecosystem Canada",
-          "url": "https://www.startupecosystem.ca/news/ai-industry-pledge-to-fund-data-center-power-costs/",
-          "snippet": "Major tech companies, including Amazon, Google, Microsoft, OpenAI, Meta, Oracle, and xAI, have signed the Ratepayer Protection Pledge under the Trump administration. This pledge commits these companies to fund the generation and transmission infrastructure required for the power needs of their expan",
-          "score": 0.46101677,
+          "headline": "Anthropic CEO apologizes for leaked memo calling OpenAI staf See full bio Latest in AI --- Finance Lorem ipsum dolor sit amet, consectetu...",
+          "title": "Anthropic CEO apologizes for leaked memo calling OpenAI staff 'gullible,' confirms risk designation - Fortune",
+          "url": "https://fortune.com/2026/03/06/anthropic-openai-ceo-apologizes-leaked-memo-supply-chain-risk-designation/",
+          "snippet": "See full bio Latest in AI --- Finance Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam By Fortune Editors October 20, 2025 Finance Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmo",
+          "score": 0.63522243,
           "numbers": [
+            "20",
             "2025",
+            "6",
             "2026"
-          ]
-        },
-        {
-          "headline": "Nvidia and AMD Stock Dip as U.S. Drafts Global AI Chip Expor [Premium ### GOOGL vs. (7, 500, 1.3, 3)",
-          "title": "Nvidia and AMD Stock Dip as U.S. Drafts Global AI Chip Export Permits - TipRanks",
-          "url": "https://www.tipranks.com/news/nvidia-and-amd-stock-dip-as-u-s-drafts-global-ai-chip-export-permits",
-          "snippet": "[Premium ### GOOGL vs. AMZN vs. MSFT: Which ‘Magnificent 7’ Stock Offers the Highest Upside? Shalu Saraf4h ago AMZNMSFT](/news/googl-vs-amzn-vs-msft-which-magnificent-7-stock-offers-the-highest-upside-according-to-wall-street \"AMZN | MSFT | GOOGL\") [Premium ### Netflix Stock (NASDAQ:NFLX) Slips Desp",
-          "score": 0.36398646,
-          "numbers": [
-            "7",
-            "500",
-            "1.3",
-            "3"
-          ]
-        },
-        {
-          "headline": "Nvidia and AMD Stocks Drop after Report of New U.S. Rules Re [Premium ### Oracle Stock (ORCL) Punished on Reports Its Scrapping Plans for...",
-          "title": "Nvidia and AMD Stocks Drop after Report of New U.S. Rules Requiring Approval for AI Chip Exports - TipRanks",
-          "url": "https://www.tipranks.com/news/nvidia-and-amd-stocks-drop-after-report-of-new-u-s-rules-requiring-approval-for-ai-chip-exports",
-          "snippet": "[Premium ### Oracle Stock (ORCL) Punished on Reports Its Scrapping Plans for a Data Center Expansion Joel Baglole4h ago METANVDA](/news/oracle-stock-orcl-punished-on-reports-its-scrapping-plans-for-a-data-center-expansion \"META | NVDA | ORCL\") [Premium ### “We Didn’t Know What We Didn’t Know” Ford S",
-          "score": 0.33561262,
-          "numbers": [
-            "100",
-            "2026",
-            "3",
-            "2"
           ]
         }
       ],
       "count": 8
     },
     "Macro": {
-      "summary": "美国2月非农就业下降，就业增长预期放缓但劳动力市场稳定，ADP私营就业超预期；美伊战争持续，投资者应对，核心PCE受关注。",
+      "summary": "油价周涨21%，美国2月就业数据不佳；中国设2026年4.5-5%增长目标；美伊局势延续，就业数据引关注。",
       "items": [
         {
-          "headline": "US nonfarm payrolls decline in February; unemployment rate r The population controls only impacted January household survey data. (4.4, 4...",
-          "title": "US nonfarm payrolls decline in February; unemployment rate rises to 4.4% - Reuters",
-          "url": "https://www.reuters.com/world/us/us-nonfarm-payrolls-decline-february-unemployment-rate-rises-44-2026-03-06/",
-          "snippet": "The population controls only impacted January household survey data. That means the month-over-month levels of household employment, unemployment and labor force among other metrics are not directly comparable. The unemployment rate was at 4.3% in January. Despite the rise last ​month, the jobless r",
-          "score": 0.9966234,
+          "headline": "Oil Prices Have Climbed 21% This Week Brent crude was trading at $88.92 per barrel at the time of writing and West Texas Intermediate was...",
+          "title": "Oil Prices Have Climbed 21% This Week - Crude Oil Prices Today | OilPrice.com",
+          "url": "https://oilprice.com/Latest-Energy-News/World-News/Oil-Set-for-16-Weekly-Gain-on-Middle-East-Disruption.html",
+          "snippet": "Brent crude was trading at $88.92 per barrel at the time of writing and West Texas Intermediate was changing hands for $85.65 per barrel, after on Thursday the U.S. Treasury Department said it would issue sanction waivers for commodity trading companies to start selling Russian oil sitting on tanker",
+          "score": 0.936285,
           "numbers": [
-            "4.4",
-            "4.3",
+            "21",
+            "88.92",
+            "85.65",
+            "9.5"
+          ]
+        },
+        {
+          "headline": "‘Overwhelmingly disappointing’ job losses mar February Skip to main content CONTINUE TO SITE ➞ An article from BLS jobs report # ‘Overwhe...",
+          "title": "‘Overwhelmingly disappointing’ job losses mar February - HR Dive",
+          "url": "https://www.hrdive.com/news/disappointing-job-losses-mar-february/814039/",
+          "snippet": "Skip to main content CONTINUE TO SITE ➞ An article from BLS jobs report # ‘Overwhelmingly disappointing’ job losses mar February The latest jobs report indicates that the market has essentially had zero net job creation over the past six months, economists said. Published March 6, 2026 Kathryn Moody",
+          "score": 0.56690645,
+          "numbers": [
+            "6",
+            "2026",
+            "92",
+            "000"
+          ]
+        },
+        {
+          "headline": "China Sets 4.5 to 5 Percent 2026 Growth Target, Outlines Ret Share this article on Facebook Share this article on X Share this article on...",
+          "title": "China Sets 4.5 to 5 Percent 2026 Growth Target, Outlines Retail Playbook - WWD",
+          "url": "https://wwd.com/business-news/government-trade/china-sets-five-percent-growth-target-retail-1238650199/",
+          "snippet": "Share this article on Facebook Share this article on X Share this article on Google Preferred Share this article on Pin It Share this article on Flipboard Share this article on Tumblr Share this article on Reddit Share this article on LinkedIn Share this article on WhatsApp Share this article on Ema",
+          "score": 0.56575525,
+          "numbers": [
             "4.5",
-            "92"
-          ]
-        },
-        {
-          "headline": "Slower US job growth expected in February; unemployment rate Advertisement · Scroll to continue \"We have a job market that is in solid sh...",
-          "title": "Slower US job growth expected in February; unemployment rate forecast steady at 4.3% - Reuters",
-          "url": "https://www.reuters.com/business/slower-us-job-growth-expected-february-unemployment-rate-forecast-steady-43-2026-03-06/",
-          "snippet": "Advertisement · Scroll to continue \"We have a job market that is in solid shape, but it's not as good as it was in 2023 and ⁠2024,\" said Gus Faucher, chief economist at PNC Financial. \"The war just creates additional uncertainty, businesses are already cautious, and maybe they become even more cauti",
-          "score": 0.9920002,
-          "numbers": [
-            "4.3",
-            "2023",
-            "2024",
-            "59"
-          ]
-        },
-        {
-          "headline": "Fed's Barkin Payroll processor ADP's monthly employment report also pointed to a higher than expected increase in private jobs, while (4....",
-          "title": "Fed's Barkin: Sticky inflation, better jobs data could shift the risk outlook for the Fed - BBG TV - KITCO",
-          "url": "https://www.kitco.com/news/off-the-wire/2026-03-05/feds-barkin-sticky-inflation-better-jobs-data-could-shift-risk-outlook",
-          "snippet": "Payroll processor ADP's monthly employment report also pointed to a higher than expected increase in private jobs, while a Chicago Federal Reserve estimate, based on a combination of official statistics and private data, put the February unemployment rate unchanged at 4.3%. Apollo chief economist To",
-          "score": 0.9918121,
-          "numbers": [
-            "4.3",
-            "15",
-            "83",
-            "130"
-          ]
-        },
-        {
-          "headline": "US labor market holding steady; worker productivity still st Economists continued to estimate the core Personal Consumption Expenditures ...",
-          "title": "US labor market holding steady; worker productivity still strong in Q4 - KITCO",
-          "url": "https://www.kitco.com/news/off-the-wire/2026-03-05/us-labor-market-holding-steady-worker-productivity-still-strong-q4",
-          "snippet": "Economists continued to estimate the core Personal Consumption Expenditures price index increased by as much as 0.5% in January, which would translate into a year-on-year increase of 3.1%. Core PCE inflation increased ​0.4% in December and advanced 3.0% year-on-year. It is one of the PCE inflation m",
-          "score": 0.9890131,
-          "numbers": [
-            "0.5",
-            "3.1",
-            "0.4",
-            "3.0"
+            "5",
+            "2026",
+            "4"
           ]
         },
         {
@@ -167,7 +156,7 @@
           "title": "Investors brace for what's next as U.S.-Iran war stretches into second week - CNBC",
           "url": "https://www.cnbc.com/2026/03/06/stock-market-next-week-outlook-for-march-9-13-2026.html",
           "snippet": "war with Iran. But they both will inform the direction of future trends, especially if there's any upside surprise. Stocks tumbled in February after the latest producer price index showed unexpectedly hot wholesale prices, adding sticky inflation to the list of investors' recent preoccupations. Head",
-          "score": 0.9826909,
+          "score": 0.559411,
           "numbers": [
             "2.4",
             "2.3",
@@ -180,7 +169,7 @@
           "title": "US jobs data forces gaze back from Mideast mayhem to AI 'doom' - Reuters",
           "url": "https://www.reuters.com/markets/us/us-jobs-data-forces-gaze-back-mideast-mayhem-ai-doom-2026-03-05/",
           "snippet": "Advertisement · Scroll to continue Friday's U.S. non-farm payrolls and unemployment figures for February will bring those concerns to the forefront ‌of investors' minds once again, and depending on the details, perhaps to the top of policymakers' agendas as well. The median consensus in a Reuters po",
-          "score": 0.9686196,
+          "score": 0.55565286,
           "numbers": [
             "59",
             "000",
@@ -188,36 +177,49 @@
           ]
         },
         {
-          "headline": "US jobless claims filings unchanged from previous week at 21 Last month, the Labor Department reported that U.S. (213, 000, 130, 4.3)",
-          "title": "US jobless claims filings unchanged from previous week at 213,000 as layoffs remain low - AP News",
-          "url": "https://apnews.com/article/unemployment-benefits-jobless-claims-layoffs-labor-0347cbb2214f8449c5181d38e000df54",
-          "snippet": "Last month, the Labor Department reported that U.S. employers added a surprisingly strong 130,000 jobs in January and the unemployment rate fell to 4.3% from 4.4%. However, government revisions cut 2024-2025 U.S. payrolls by hundreds of thousands, reducing the number of jobs created last year to jus",
-          "score": 0.9588471,
+          "headline": "US labor market holding steady; worker productivity still st The number of people receiving unemployment benefits after an initial week o...",
+          "title": "US labor market holding steady; worker productivity still strong in Q4 - KITCO",
+          "url": "https://www.kitco.com/news/off-the-wire/2026-03-05/us-labor-market-holding-steady-worker-productivity-still-strong-q4",
+          "snippet": "The number of people receiving unemployment benefits after an initial week of aid, a proxy for hiring, increased 46,000 to a seasonally adjusted 1.868 million during the week ended February 21, the claims report showed. The data does not include unemployed recent college graduates, whose lack of or ",
+          "score": 0.49582586,
           "numbers": [
-            "213",
+            "46",
             "000",
-            "130",
-            "4.3"
+            "1.868",
+            "21"
           ]
         },
         {
-          "headline": "Treasury yields move higher as investors continue to digest Sawdah Bhaimiya WATCH LIVE In this article US10Y US2Y TLT IEF SHY U.S. (2, 47...",
-          "title": "Treasury yields move higher as investors continue to digest Iran war - CNBC",
-          "url": "https://www.cnbc.com/2026/03/05/us-treasury-yields-investors-fears-around-us-iran-war.html",
-          "snippet": "Sawdah Bhaimiya WATCH LIVE In this article US10Y US2Y TLT IEF SHY U.S. Treasury yields moved higher on Thursday as investors continued to digest the U.S.-Iran war. At 2:47 a.m. ET, the benchmark 10-year Treasury yield was up 4 basis points to 4.12%. The 30-year Treasury bond also added more than 4 b",
-          "score": 0.7839885,
+          "headline": "Fed's Barkin Payroll processor ADP's monthly employment report also pointed to a higher than expected increase in private jobs, while (4....",
+          "title": "Fed's Barkin: Sticky inflation, better jobs data could shift the risk outlook for the Fed - BBG TV - KITCO",
+          "url": "https://www.kitco.com/news/off-the-wire/2026-03-05/feds-barkin-sticky-inflation-better-jobs-data-could-shift-risk-outlook",
+          "snippet": "Payroll processor ADP's monthly employment report also pointed to a higher than expected increase in private jobs, while a Chicago Federal Reserve estimate, based on a combination of official statistics and private data, put the February unemployment rate unchanged at 4.3%. Apollo chief economist To",
+          "score": 0.4787,
           "numbers": [
-            "2",
-            "47",
-            "10",
-            "4"
+            "4.3",
+            "15",
+            "83",
+            "401k"
+          ]
+        },
+        {
+          "headline": "Beijing has set its most unambitious growth target in decade Pedro Pardo Afp Getty Images China's has set its lowest growth target in dec...",
+          "title": "Beijing has set its most unambitious growth target in decades. Here's why - CNBC",
+          "url": "https://www.cnbc.com/2026/03/06/china-economy-gdp-growth-target-lowest-in-decades-tariffs-deflation-.html",
+          "snippet": "Pedro Pardo | Afp | Getty Images China's has set its lowest growth target in decades, acknowledging domestic challenges and pointing to global uncertainty, while keeping some stimulus measures in place to counter a possible ramp up in external shocks. Beijing on Thursday announced its GDP growth tar",
+          "score": 0.47373086,
+          "numbers": [
+            "2026",
+            "4.5",
+            "5",
+            "1.3"
           ]
         }
       ],
       "count": 8
     },
     "Robotics": {
-      "summary": "人形机器人领域动态：Agility更名，Apptronik Apollo展灵巧性；雷军与优必选有愿景，Tesollo&Techman推混线机器人，SFA目标2030全自主制造。",
+      "summary": "人形机器人领域动态多：Agility更名，雷军与优必选共话，Tesollo等发高混低量机器人，SFA拟2030全自主制造，Apptronik Apollo显灵巧。",
       "items": [
         {
           "headline": "Humanoid developer Agility Robotics rebrands Agility is an early pioneer in the humanoid market, but the company now has intense competit...",
@@ -322,14 +324,27 @@
       "count": 8
     },
     "Commercial Space": {
-      "summary": "Rocket Lab多次发射卫星（或涉美军成像），Space One火箭连续三次发射失败，美空军实验室授BlackSky 9900万美元合同。",
+      "summary": "Rocket Lab为疑似美军事客户发射卫星；Space One火箭第三次失败；美空军授BlackSky9900万合同；Airbus拟用Orbit Fab搞GEO可加油卫星。",
       "items": [
+        {
+          "headline": "Rocket Lab launches satellite for undisclosed customer Skip to content Covering the business and politics of space Sign In Home / Rocket ...",
+          "title": "Rocket Lab launches satellite for undisclosed customer - SpaceNews",
+          "url": "https://spacenews.com/rocket-lab-launches-satellite-for-undisclosed-customer/",
+          "snippet": "Skip to content Covering the business and politics of space Sign In Home / Rocket Lab launches satellite for undisclosed customer Posted inLaunch # Rocket Lab launches satellite for undisclosed customer by Jeff Foust Share on X (Opens in new window) X Share on LinkedIn (Opens in new window) LinkedIn",
+          "score": 0.39026722,
+          "numbers": [
+            "5",
+            "26",
+            "3",
+            "2026"
+          ]
+        },
         {
           "headline": "Rocket Lab Launches What's Likely a US Military Imaging Sate Rocket Lab successfully launched an unnamed satellite into orbit aboard its ...",
           "title": "Rocket Lab Launches What's Likely a US Military Imaging Satellite - Yahoo",
           "url": "https://www.yahoo.com/news/articles/rocket-lab-launches-whats-likely-185915912.html",
           "snippet": "Rocket Lab successfully launched an unnamed satellite into orbit aboard its Electron rocket, speculated to be part of BlackSky's Gen-3 satellite constellation for Earth imaging at a high resolution. The launch took place from Rocket Lab's New Zealand facility as part of a mission for a confidential ",
-          "score": 0.99187535,
+          "score": 0.3175114,
           "numbers": [
             "3",
             "292",
@@ -338,37 +353,11 @@
           ]
         },
         {
-          "headline": "Rocket Lab launches satellite for undisclosed customer This launch had similar characteristics, down to the mission name and logo design....",
-          "title": "Rocket Lab launches satellite for undisclosed customer - SpaceNews",
-          "url": "https://spacenews.com/rocket-lab-launches-satellite-for-undisclosed-customer/",
-          "snippet": "This launch had similar characteristics, down to the mission name and logo design. In a Feb. 26 earnings call, Brian O’Toole, chief executive of BlackSky, said his company’s next Gen-3 satellite was being prepared for launch. “We are on track to further expand the constellation throughout 2026 with ",
-          "score": 0.95695716,
-          "numbers": [
-            "26",
-            "3",
-            "2026",
-            "5"
-          ]
-        },
-        {
-          "headline": "Rocket Lab Launches What's Likely a US Military Imaging Sate Rocket Lab's Electron rocket launched from its New Zealand launch facility i...",
-          "title": "Rocket Lab Launches What's Likely a US Military Imaging Satellite - extremetech.com",
-          "url": "https://www.extremetech.com/aerospace/rocket-lab-launches-whats-likely-a-us-military-imaging-satellite",
-          "snippet": "Rocket Lab's Electron rocket launched from its New Zealand launch facility in the early hours of March 6 local time, as part of the mission \"Insight at Speed is a Friend Indeed.\" The launch was kept hidden from the press until just before it happened, with Rocket Lab explaining that its payload was ",
-          "score": 0.9032942,
-          "numbers": [
-            "6",
-            "292",
-            "1",
-            "2"
-          ]
-        },
-        {
           "headline": "Space One Rocket Fails Third Consecutive Flight In January 2025, Woven by Toyota—the automaker’s investment subsidiary—committed ¥7B ($44...",
           "title": "Space One Rocket Fails Third Consecutive Flight - Payload Space",
           "url": "https://payloadspace.com/space-one-rocket-fails-third-consecutive-flight/",
           "snippet": "In January 2025, Woven by Toyota—the automaker’s investment subsidiary—committed ¥7B ($44M) to Interstellar’s Series F. In June, Honda conducted a launch and landing test of an experimental reusable rocket. This week, Mitsubishi Electric was the lead investor on Spanish launch startup PLD Space’s €1",
-          "score": 0.58130306,
+          "score": 0.24846168,
           "numbers": [
             "2025",
             "7B",
@@ -381,46 +370,56 @@
           "title": "Air Force lab awards BlackSky contract worth up to $99 million for large optical satellite payload - SpaceNews",
           "url": "https://spacenews.com/air-force-lab-awards-blacksky-contract-worth-up-to-99-million-for-large-optical-satellite-payload/",
           "snippet": "## Wide-area satellite imaging BlackSky has been exploring similar capabilities as part of its own satellite roadmap. The company last year said it plans to develop a wide-area Earth observation satellite designed to capture large regions of the planet for applications such as country-scale mapping ",
-          "score": 0.53704137,
+          "score": 0.23903875,
           "numbers": [
             "99",
-            "2027"
+            "2027",
+            "6",
+            "3"
           ]
         },
         {
-          "headline": "NASA’s DART Mission Still Advancing Earth Planetary Defense NASA Targeting March 6 For Artemis II Launch Commercial Space Stations Could ...",
-          "title": "NASA’s DART Mission Still Advancing Earth Planetary Defense - Aviation Week",
-          "url": "https://aviationweek.com/space/space-exploration/nasas-dart-mission-still-advancing-earth-planetary-defense",
-          "snippet": "NASA Targeting March 6 For Artemis II Launch Commercial Space Stations Could Host Simulated Human Mars Trip Second Practice Countdown For Artemis II Underway [...] NASA ## Subscription Required NASA’s DART Mission Still Advancing Earth Planetary Defense is published in Aerospace Daily & Defense Repo",
-          "score": 0.13296424,
+          "headline": "Airbus Eyes Refuelable Satellites In GEO With Orbit Fab Sustainability + Space - Launch Vehicles & Propulsion - Commercial Space - Space ...",
+          "title": "Airbus Eyes Refuelable Satellites In GEO With Orbit Fab - Aviation Week",
+          "url": "https://aviationweek.com/space/satellites/airbus-eyes-refuelable-satellites-geo-orbit-fab",
+          "snippet": "- Sustainability + Space - Launch Vehicles & Propulsion - Commercial Space - Space Exploration - Satellites - Budget, Policy & Regulation - Operations & Safety + Business Aviation - Aircraft & Propulsion - Interiors & Connectivity - Airports, FBOs & Suppliers - Flight Deck - Safety, Ops & Regulation",
+          "score": 0.20683034,
+          "numbers": []
+        },
+        {
+          "headline": "Rocket Lab Launches What's Likely a US Military Imaging Sate 1. (1, 2, 2026, 3)",
+          "title": "Rocket Lab Launches What's Likely a US Military Imaging Satellite - extremetech.com",
+          "url": "https://www.extremetech.com/aerospace/rocket-lab-launches-whats-likely-a-us-military-imaging-satellite",
+          "snippet": "1. Home > 2. Aerospace # Rocket Lab Launches What's Likely a US Military Imaging Satellite It's supposed to be a secret, but the Wiki page has already been updated. By Jon Martindale Share on Facebook (opens in a new window) Share on X (opens in a new window) Share on Reddit (opens in a new window) ",
+          "score": 0.17009436,
           "numbers": [
-            "6"
+            "1",
+            "2",
+            "2026",
+            "3"
           ]
         },
         {
-          "headline": "In Photos The recent SpaceX launch marked the 25th space trip of Booster 1080, the first-stage rocket booster of the SpaceX Falcon (1080,...",
-          "title": "In Photos: SpaceX Rocket Launch Creates Weird 'Jellyfish' Effect Across Florida's Skies - Green Matters",
-          "url": "https://www.greenmatters.com/pn/in-photos-space-x-rocket-launch-creates-weird-jellyfish-effect-across-floridas-skies",
-          "snippet": "The recent SpaceX launch marked the 25th space trip of Booster 1080, the first-stage rocket booster of the SpaceX Falcon 9 rocket. The booster successfully landed on the droneship \"A Shortfall of Gravitas\" that was positioned off the coast of Florida in the Atlantic Ocean. The recent mission added a",
-          "score": 0.123059906,
-          "numbers": [
-            "1080",
-            "9",
-            "29",
-            "10"
-          ]
-        },
-        {
-          "headline": "Vast Secures $500M, Including $300M Series A Skip to content Thursday March 5, 2026 Waning Gibbous Webinars Events Webinars Events Busine...",
+          "headline": "Vast Secures $500M, Including $300M Series A Series A deets Balerion Space Ventures led the round, which also included participation from...",
           "title": "Vast Secures $500M, Including $300M Series A - Payload Space",
           "url": "https://payloadspace.com/vast-secures-500m-including-300m-series-a/",
-          "snippet": "Skip to content Thursday March 5, 2026 Waning Gibbous Webinars Events Webinars Events Business Launch Civil VC/PE Military Europe Polaris All + Debris + EO + Equities + International + ISS + LEO + Moonshot Mechanics 2025 + Lunar + Opinion + Payload Pioneers 2025 + Startups + State of the Space Indus",
-          "score": 0.09877259,
+          "snippet": "Series A deets: Balerion Space Ventures led the round, which also included participation from IQT, Qatar Investment Authority, Mitsui & Co. Ltd., MUFG, Nikon Corporation, Stellar Ventures, Space Capital, and Earthrise Ventures—as well as Jed McCaleb, Vast’s founder. “The low-Earth orbit economy is a",
+          "score": 0.16234049,
           "numbers": [
             "500M",
             "300M",
             "5",
             "2026"
+          ]
+        },
+        {
+          "headline": "NASA’s DART Mission Still Advancing Earth Planetary Defense Sustainability + Space - Launch Vehicles & Propulsion - Commercial Space - Sp...",
+          "title": "NASA’s DART Mission Still Advancing Earth Planetary Defense - Aviation Week",
+          "url": "https://aviationweek.com/space/space-exploration/nasas-dart-mission-still-advancing-earth-planetary-defense",
+          "snippet": "- Sustainability + Space - Launch Vehicles & Propulsion - Commercial Space - Space Exploration - Satellites - Budget, Policy & Regulation - Operations & Safety + Business Aviation - Aircraft & Propulsion - Interiors & Connectivity - Airports, FBOs & Suppliers - Flight Deck - Safety, Ops & Regulation",
+          "score": 0.15933539,
+          "numbers": [
+            "6"
           ]
         }
       ],
