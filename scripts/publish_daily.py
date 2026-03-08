@@ -4,10 +4,11 @@ import datetime as dt
 import json
 import shutil
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 
 def cst_today() -> str:
-    return (dt.datetime.utcnow() + dt.timedelta(hours=8)).strftime("%Y-%m-%d")
+    return dt.datetime.now(ZoneInfo("Asia/Shanghai")).strftime("%Y-%m-%d")
 
 
 def ensure_parent(p: Path) -> None:
@@ -47,17 +48,17 @@ def main() -> None:
 
     # update manifest
     manifest_path = docs / "manifest.json"
-    manifest = {"updated_at": dt.datetime.now(dt.timezone.utc).isoformat(), "days": {}}
+    manifest = {"updated_at": dt.datetime.now(ZoneInfo("UTC")).isoformat(), "days": {}}
     if manifest_path.exists():
         try:
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
             if "days" not in manifest or not isinstance(manifest["days"], dict):
                 manifest["days"] = {}
         except Exception:
-            manifest = {"updated_at": dt.datetime.now(dt.timezone.utc).isoformat(), "days": {}}
+            manifest = {"updated_at": dt.datetime.now(ZoneInfo("UTC")).isoformat(), "days": {}}
 
     s = json.loads(summary.read_text(encoding="utf-8"))
-    manifest["updated_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
+    manifest["updated_at"] = dt.datetime.now(ZoneInfo("UTC")).isoformat()
     manifest["days"][date] = {
         "counts": s.get("counts") or {},
         "errors": s.get("errors") or {},

@@ -3,6 +3,7 @@ import argparse
 import datetime as dt
 import json
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from adapters import ADAPTERS
 from adapters.tavily_news import save_news_data
@@ -87,7 +88,7 @@ def run_collect(date, base_dir, sources=""):
 
 def main():
     ap = argparse.ArgumentParser(description="投研alpha：按日期聚合抓取信源")
-    ap.add_argument("--date", default=dt.date.today().strftime("%Y-%m-%d"), help="抓取日期 YYYY-MM-DD")
+    ap.add_argument("--date", default=dt.datetime.now(ZoneInfo("Asia/Shanghai")).strftime("%Y-%m-%d"), help="抓取日期 YYYY-MM-DD")
     ap.add_argument("--sources", default="", help="仅运行指定源，逗号分隔")
     ap.add_argument("--project-dir", default=str(Path(__file__).resolve().parent), help="项目目录")
     args = ap.parse_args()
