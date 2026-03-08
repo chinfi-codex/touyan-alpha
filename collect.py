@@ -36,13 +36,17 @@ def run_collect(date, base_dir, sources=""):
         src = _adapter_source(adapter)
         if selected and src not in selected:
             continue
+        collect_fn = getattr(adapter, "collect", None)
+        if not callable(collect_fn):
+            summary["errors"][src] = "adapter missing collect()"
+            continue
 
         # 公告、机构调研、业绩预告带次日窗口
         # 互动易只筛选当天日期
         if src in ("cninfo_fulltext", "cninfo_relation", "tushare_forecast"):
-            result = adapter.collect(date, include_next_day=True)
+            result = collect_fn(date, include_next_day=True)
         else:
-            result = adapter.collect(date)
+            result = collect_fn(date)
 
         src = result["source"]
         (out_dir / (src + ".json")).write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
