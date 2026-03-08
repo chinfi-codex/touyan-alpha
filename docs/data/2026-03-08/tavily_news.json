@@ -1,0 +1,429 @@
+{
+  "date": "2026-03-08",
+  "categories": {
+    "AI Industry": {
+      "summary": "AI行业：全球数据中心建设加速， hyperscalers签白宫承诺；美拟管制AI芯片致Nvidia/AMD股价跌，Nvidia投40亿升级数据中心，OpenAI与Anthropic竞争加剧。",
+      "items": [
+        {
+          "headline": "The case for building modular, repeatable data centers The pace of data center construction is accelerating across the world. (400, 10, 1...",
+          "title": "The case for building modular, repeatable data centers - Construction Dive",
+          "url": "https://www.constructiondive.com/news/data-centers-modular-construction-sap/814106/",
+          "snippet": "The pace of data center construction is accelerating across the world. There’s OpenAI’s $400 billion Stargate initiative, which will add 10 gigawatts of data center capacity with partners Oracle and SoftBank, alongside Amazon’s $100 billion global data center expansion effort. Moody’s projects $3 tr",
+          "score": 0.99915075,
+          "numbers": [
+            "400",
+            "10",
+            "100",
+            "3"
+          ]
+        },
+        {
+          "headline": "Hyperscalers Sign White House Pledge to Fund Data Center Pow The pledge follows a series of executive actions from the Trump administrati...",
+          "title": "Hyperscalers Sign White House Pledge to Fund Data Center Power, Grid Upgrades - POWER Magazine",
+          "url": "https://www.powermag.com/hyperscalers-sign-white-house-pledge-to-fund-data-center-power-grid-upgrades/",
+          "snippet": "The pledge follows a series of executive actions from the Trump administration to address energy supply constraints since January 2025. A grid security executive order signed in April 2025 is credited by the White House with preserving 17,000 MW of generation that would otherwise have faced retireme",
+          "score": 0.9939964,
+          "numbers": [
+            "2025",
+            "17",
+            "000",
+            "300"
+          ]
+        },
+        {
+          "headline": "Nvidia and AMD Stock Dip as U.S. Drafts Global AI Chip Expor Small Orders Buying up to 1,000 of Nvidia’s GB300 chips would likely involve...",
+          "title": "Nvidia and AMD Stock Dip as U.S. Drafts Global AI Chip Export Permits - TipRanks",
+          "url": "https://www.tipranks.com/news/nvidia-and-amd-stock-dip-as-u-s-drafts-global-ai-chip-export-permits",
+          "snippet": "Small Orders: Buying up to 1,000 of Nvidia’s latest GB300 chips would likely involve a simple review. Large Clusters: Companies building bigger data centers would need preclearance and might have to show their business models or allow U.S. officials to visit their sites. Massive Projects: For giant ",
+          "score": 0.98215127,
+          "numbers": [
+            "1",
+            "000",
+            "200",
+            "05"
+          ]
+        },
+        {
+          "headline": "Tech stocks today ## Nvidia invests $4 billion in Coherent, Lumentum to advance next-gen AI data centers Nvidia (NVDA) said it struck two...",
+          "title": "Tech stocks today: Nvidia stops H200 chip production, Anthropic restarts talks with Pentagon - Yahoo Finance",
+          "url": "https://finance.yahoo.com/news/live/tech-stocks-today-nvidia-stops-h200-chip-production-anthropic-restarts-talks-with-pentagon-135928945.html",
+          "snippet": "## Nvidia invests $4 billion in Coherent, Lumentum to advance next-gen AI data centers Nvidia (NVDA) said it struck two strategic partnerships with photonics companies Coherent (COHR) and Lumentum (LITE) on Monday in an effort to develop and secure access to state-of-the-art optics technology for th",
+          "score": 0.9755769,
+          "numbers": [
+            "4",
+            "2",
+            "100",
+            "30"
+          ]
+        },
+        {
+          "headline": "For OpenAI and Anthropic, the Competition Is Deeply Personal OpenAI created the fastest-growing consumer app in tech history, held more t...",
+          "title": "For OpenAI and Anthropic, the Competition Is Deeply Personal - The New York Times",
+          "url": "https://www.nytimes.com/2026/03/07/technology/openai-anthropic-pentagon-rivalry.html",
+          "snippet": "OpenAI created the fastest-growing consumer app in tech history, held more than $100 billion in the bank and teamed up with the world’s most powerful computing giants. But companies are always rising and falling in Silicon Valley. In just a few months, Anthropic, OpenAI’s smaller rival, has added th",
+          "score": 0.9059898,
+          "numbers": [
+            "100",
+            "19",
+            "9",
+            "1"
+          ]
+        },
+        {
+          "headline": "Nvidia and AMD Stocks Drop after Report of New U.S. Rules Re ## What the Draft Rules Would Do The proposed framework would position the U...",
+          "title": "Nvidia and AMD Stocks Drop after Report of New U.S. Rules Requiring Approval for AI Chip Exports - TipRanks",
+          "url": "https://www.tipranks.com/news/nvidia-and-amd-stocks-drop-after-report-of-new-u-s-rules-requiring-approval-for-ai-chip-exports",
+          "snippet": "## What the Draft Rules Would Do The proposed framework would position the U.S. government as a “gatekeeper” for advanced AI chips, including Nvidia’s GB300 and AMD’s MI‑series chips. The complexity of the approval process would depend on the size of the computing cluster a customer wants to build. ",
+          "score": 0.8840393,
+          "numbers": [
+            "1",
+            "000",
+            "200",
+            "05"
+          ]
+        },
+        {
+          "headline": "Nvidia Is Reportedly Planning To Launch a New Version of Its A post on X by user @Zed\\_\\_Wang, addressing the leaks, claims that the RTX ...",
+          "title": "Nvidia Is Reportedly Planning To Launch a New Version of Its GeForce RTX 5050 GPU With (Barely) More VRAM - IGN India",
+          "url": "https://in.ign.com/tech/254887/news/nvidia-is-reportedly-planning-to-launch-a-new-version-of-its-geforce-rtx-5050-gpu-with-barely-more-v",
+          "snippet": "A post on X by user @Zed\\_\\_Wang, addressing the leaks, claims that the RTX 5050 with increased VRAM will feature 96-bit memory instead of the 128-bit memory on the current RTX 5050. It also states that the new version will include 28 Gbps GDDR7 memory. > New product: RTX5050 9GB GDDR7 96Bit > NV kn",
+          "score": 0.86431044,
+          "numbers": [
+            "5050",
+            "96",
+            "128",
+            "28"
+          ]
+        },
+        {
+          "headline": "Demand for AI Data Centers Sends Prospectors Hunting for Lan As the A.I. (85, 2030)",
+          "title": "Demand for AI Data Centers Sends Prospectors Hunting for Land and Power - The New York Times",
+          "url": "https://www.nytimes.com/2026/03/05/technology/ai-data-centers-land-cloverleaf-infrastructure.html",
+          "snippet": "As the A.I. boom enters its fourth year, Mr. Janous and his team have become modern-day land men. They work at the intersection of utility companies and tech giants, securing the power and sites necessary for the hundreds of billions of dollars of data centers being built across the country. Their p",
+          "score": 0.7577944,
+          "numbers": [
+            "85",
+            "2030"
+          ]
+        }
+      ],
+      "count": 8
+    },
+    "Macro": {
+      "summary": "美国2月非农就业下降，ADP私企就业超预期；劳动力市场稳定但生产力弱，投资者关注美伊战争，经济学家预估核心PCE。",
+      "items": [
+        {
+          "headline": "US nonfarm payrolls decline in February; unemployment rate r The population controls only impacted January household survey data. (4.4, 4...",
+          "title": "US nonfarm payrolls decline in February; unemployment rate rises to 4.4% - Reuters",
+          "url": "https://www.reuters.com/world/us/us-nonfarm-payrolls-decline-february-unemployment-rate-rises-44-2026-03-06/",
+          "snippet": "The population controls only impacted January household survey data. That means the month-over-month levels of household employment, unemployment and labor force among other metrics are not directly comparable. The unemployment rate was at 4.3% in January. Despite the rise last ​month, the jobless r",
+          "score": 0.9966234,
+          "numbers": [
+            "4.4",
+            "4.3",
+            "4.5",
+            "92"
+          ]
+        },
+        {
+          "headline": "Slower US job growth expected in February; unemployment rate Advertisement · Scroll to continue \"We have a job market that is in solid sh...",
+          "title": "Slower US job growth expected in February; unemployment rate forecast steady at 4.3% - Reuters",
+          "url": "https://www.reuters.com/business/slower-us-job-growth-expected-february-unemployment-rate-forecast-steady-43-2026-03-06/",
+          "snippet": "Advertisement · Scroll to continue \"We have a job market that is in solid shape, but it's not as good as it was in 2023 and ⁠2024,\" said Gus Faucher, chief economist at PNC Financial. \"The war just creates additional uncertainty, businesses are already cautious, and maybe they become even more cauti",
+          "score": 0.9920002,
+          "numbers": [
+            "4.3",
+            "2023",
+            "2024",
+            "59"
+          ]
+        },
+        {
+          "headline": "Fed's Barkin Payroll processor ADP's monthly employment report also pointed to a higher than expected increase in private jobs, while (4....",
+          "title": "Fed's Barkin: Sticky inflation, better jobs data could shift the risk outlook for the Fed - BBG TV - KITCO",
+          "url": "https://www.kitco.com/news/off-the-wire/2026-03-05/feds-barkin-sticky-inflation-better-jobs-data-could-shift-risk-outlook",
+          "snippet": "Payroll processor ADP's monthly employment report also pointed to a higher than expected increase in private jobs, while a Chicago Federal Reserve estimate, based on a combination of official statistics and private data, put the February unemployment rate unchanged at 4.3%. Apollo chief economist To",
+          "score": 0.9918121,
+          "numbers": [
+            "4.3",
+            "15",
+            "83",
+            "130"
+          ]
+        },
+        {
+          "headline": "US labor market holding steady; worker productivity still st Economists continued to estimate the core Personal Consumption Expenditures ...",
+          "title": "US labor market holding steady; worker productivity still strong in Q4 - KITCO",
+          "url": "https://www.kitco.com/news/off-the-wire/2026-03-05/us-labor-market-holding-steady-worker-productivity-still-strong-q4",
+          "snippet": "Economists continued to estimate the core Personal Consumption Expenditures price index increased by as much as 0.5% in January, which would translate into a year-on-year increase of 3.1%. Core PCE inflation increased ​0.4% in December and advanced 3.0% year-on-year. It is one of the PCE inflation m",
+          "score": 0.9890131,
+          "numbers": [
+            "0.5",
+            "3.1",
+            "0.4",
+            "3.0"
+          ]
+        },
+        {
+          "headline": "Investors brace for what's next as U.S.-Iran war stretches i war with Iran. (2.4, 2.3, 3.0, 92)",
+          "title": "Investors brace for what's next as U.S.-Iran war stretches into second week - CNBC",
+          "url": "https://www.cnbc.com/2026/03/06/stock-market-next-week-outlook-for-march-9-13-2026.html",
+          "snippet": "war with Iran. But they both will inform the direction of future trends, especially if there's any upside surprise. Stocks tumbled in February after the latest producer price index showed unexpectedly hot wholesale prices, adding sticky inflation to the list of investors' recent preoccupations. Head",
+          "score": 0.9826909,
+          "numbers": [
+            "2.4",
+            "2.3",
+            "3.0",
+            "92"
+          ]
+        },
+        {
+          "headline": "US jobs data forces gaze back from Mideast mayhem to AI 'doo Advertisement · Scroll to continue Friday's U.S. (59, 000, 4.3)",
+          "title": "US jobs data forces gaze back from Mideast mayhem to AI 'doom' - Reuters",
+          "url": "https://www.reuters.com/markets/us/us-jobs-data-forces-gaze-back-mideast-mayhem-ai-doom-2026-03-05/",
+          "snippet": "Advertisement · Scroll to continue Friday's U.S. non-farm payrolls and unemployment figures for February will bring those concerns to the forefront ‌of investors' minds once again, and depending on the details, perhaps to the top of policymakers' agendas as well. The median consensus in a Reuters po",
+          "score": 0.9686196,
+          "numbers": [
+            "59",
+            "000",
+            "4.3"
+          ]
+        },
+        {
+          "headline": "US jobless claims filings unchanged from previous week at 21 Last month, the Labor Department reported that U.S. (213, 000, 130, 4.3)",
+          "title": "US jobless claims filings unchanged from previous week at 213,000 as layoffs remain low - AP News",
+          "url": "https://apnews.com/article/unemployment-benefits-jobless-claims-layoffs-labor-0347cbb2214f8449c5181d38e000df54",
+          "snippet": "Last month, the Labor Department reported that U.S. employers added a surprisingly strong 130,000 jobs in January and the unemployment rate fell to 4.3% from 4.4%. However, government revisions cut 2024-2025 U.S. payrolls by hundreds of thousands, reducing the number of jobs created last year to jus",
+          "score": 0.9588471,
+          "numbers": [
+            "213",
+            "000",
+            "130",
+            "4.3"
+          ]
+        },
+        {
+          "headline": "Dow futures tick higher, but index heads for worst week sinc Friday brings traders a new market catalyst in the form of February's nonfar...",
+          "title": "Dow futures tick higher, but index heads for worst week since October on oil surge: Live updates - CNBC",
+          "url": "https://www.cnbc.com/2026/03/05/stock-market-today-live-updates.html",
+          "snippet": "Friday brings traders a new market catalyst in the form of February's nonfarm payrolls, due at 8:30 a.m. ET. Economists polled by Dow Jones are looking for growth of 50,000 jobs, down from the 130,000 payrolls added in January. They also expect the unemployment rate to hold steady at 4.3%. This week",
+          "score": 0.7620701,
+          "numbers": [
+            "8",
+            "30",
+            "50",
+            "000"
+          ]
+        }
+      ],
+      "count": 8
+    },
+    "Robotics": {
+      "summary": "人形机器人企业Agility Robotics更名；雷军与优必选布局；Tesollo等推高混合低量机器人；SFA目标2030全自主制造用AI机器人。",
+      "items": [
+        {
+          "headline": "Humanoid developer Agility Robotics rebrands Agility is an early pioneer in the humanoid market, but the company now has intense competit...",
+          "title": "Humanoid developer Agility Robotics rebrands - The Robot Report",
+          "url": "https://www.therobotreport.com/humanoid-developer-agility-robotics-rebrands/",
+          "snippet": "Agility is an early pioneer in the humanoid market, but the company now has intense competition across the globe. Agility recently announced a deployment with Toyota Canada to deploy its Digit robot in its facilities after a successful year-long pilot. Toyota joins a growing number of Fortune 500 co",
+          "score": 0.746139,
+          "numbers": [
+            "500",
+            "2025",
+            "2024",
+            "2023"
+          ]
+        },
+        {
+          "headline": "Lei Jun and Ubtech Share the Vision The market's keen perception has already been translated into action. (1.7, 2025, 1.4, 99)",
+          "title": "Lei Jun and Ubtech Share the Vision: Making Robots Skilled Workers - 让一部分人先看到未来",
+          "url": "https://eu.36kr.com/en/p/3711335977447937",
+          "snippet": "The market's keen perception has already been translated into action. In the past two years, \"entering factories to work\" has become a training method for leading humanoid robot companies. Products of companies such as UBTECH, Tesla, Xiaomi, Zhipu Robotics, and Unitree have entered different factory",
+          "score": 0.5234204,
+          "numbers": [
+            "1.7",
+            "2025",
+            "1.4",
+            "99"
+          ]
+        },
+        {
+          "headline": "Tesollo and Techman Robot unveil robot for high-mix, low-vol #### Related Articles Read More > ##### Tesollo commercializes its lightweig...",
+          "title": "Tesollo and Techman Robot unveil robot for high-mix, low-volume production - The Robot Report",
+          "url": "https://www.therobotreport.com/tesollo-techman-robot-unveil-robot-high-mix-low-volume-production/",
+          "snippet": "#### Related Articles Read More > ##### Tesollo commercializes its lightweight, compact robotic hand for humanoids ##### Warehousing robot maker turns to lubrication-free motion plastics ##### OnRobot to share automation roadmap advice in Dallas ##### Robotiq brings sense of touch to physical AI wit",
+          "score": 0.28108034,
+          "numbers": [
+            "2025",
+            "2024",
+            "2023",
+            "2022"
+          ]
+        },
+        {
+          "headline": "SFA Targets Fully Autonomous Manufacturing by 2030 Using AI Robotics is another critical component of autonomous manufacturing. (2030, 76)",
+          "title": "SFA Targets Fully Autonomous Manufacturing by 2030 Using AI and Robotics - thelec.net",
+          "url": "https://www.thelec.net/news/articleView.html?idxno=5651",
+          "snippet": "Robotics is another critical component of autonomous manufacturing. According to SFA, logistics robots account for about 76% of the company's current revenue, reflecting rapidly growing demand for automation across manufacturing and distribution sectors. The company is expanding its lineup of roboti",
+          "score": 0.22864738,
+          "numbers": [
+            "2030",
+            "76"
+          ]
+        },
+        {
+          "headline": "Technicians Restore Lost Film Believed to Depict Cinema’s Fi February 5, 2026 Product Development ##### EV Maker Faraday Future Launches ...",
+          "title": "Technicians Restore Lost Film Believed to Depict Cinema’s First Robot - Industrial Equipment News",
+          "url": "https://www.ien.com/automation/video/22961951/technicians-restore-lost-film-believed-to-depict-cinemas-first-robot",
+          "snippet": "February 5, 2026 Product Development ##### EV Maker Faraday Future Launches Three New Robots That includes the “action master” humanoid and quadruped companion. February 5, 2026 Automation ##### Stellantis Uses Warehouse Robot for Autonomous Inventory Tracking WATCH: Each full scan covers more than ",
+          "score": 0.2149224,
+          "numbers": [
+            "5",
+            "2026",
+            "36",
+            "000"
+          ]
+        },
+        {
+          "headline": "Op-ed What $5 billion humanoid robots Apptronik was spinning out of The University of Texas at Austin. (5, 15, 1, 18)",
+          "title": "Op-ed: What $5 billion humanoid robots taught me about risk, jobs and the future of the economy - CNBC",
+          "url": "https://www.cnbc.com/2026/03/05/robot-investing-risk-jobs-manufacturing-economy.html",
+          "snippet": "Apptronik was spinning out of The University of Texas at Austin. The pitch: build general-purpose humanoid robots capable of operating in real-world industrial environments. It sounded borderline insane. But within minutes, our group — all founders and operators — knew we wanted in, and we became th",
+          "score": 0.11579087,
+          "numbers": [
+            "5",
+            "15",
+            "1",
+            "18"
+          ]
+        },
+        {
+          "headline": "Techman Robot and Tesollo unveil adaptive robotic gripper so Following last year’s teleoperation demo combining a humanoid robot hand and...",
+          "title": "Techman Robot and Tesollo unveil adaptive robotic gripper solution for high-mix manufacturing - Robotics & Automation News",
+          "url": "https://roboticsandautomationnews.com/2026/03/07/techman-robot-and-tesollo-unveil-adaptive-robotic-gripper-solution-for-high-mix-manufacturing/99308/",
+          "snippet": "Following last year’s teleoperation demo combining a humanoid robot hand and a TM robot arm, the two companies have shifted this year’s exhibition concept to a process-oriented solution that can be directly deployed in industrial sites. The core of this collaboration is to implement flexible automat",
+          "score": 0.098503634,
+          "numbers": [
+            "11"
+          ]
+        },
+        {
+          "headline": "AI-Designed 'Metamachines' Run Wild, Recover from Damage and Aerospace Automotive Exclusives Manufacturing Medical Military New Products ...",
+          "title": "AI-Designed 'Metamachines' Run Wild, Recover from Damage and Change Shapes - Design and Development Today",
+          "url": "https://www.designdevelopmenttoday.com/new-products/motion-control/video/22962040/aidesigned-metamachines-run-wild-recover-from-damage-and-change-shapes",
+          "snippet": "Aerospace Automotive Exclusives Manufacturing Medical Military New Products News 1. New Products 2. Motion Control # AI-Designed 'Metamachines' Run Wild, Recover from Damage and Change Shapes These machines adapt, recover and survive—even when a leg breaks off. Mar 6, 2026 Northwestern University en",
+          "score": 0.09204121,
+          "numbers": [
+            "1",
+            "2",
+            "6",
+            "2026"
+          ]
+        }
+      ],
+      "count": 8
+    },
+    "Commercial Space": {
+      "summary": "Rocket Lab发射卫星（或涉美军成像）、Space One第三次发射失败；美空军给BlackSky近亿合同，空客与Orbit Fab合作可加油GEO卫星。",
+      "items": [
+        {
+          "headline": "Rocket Lab launches satellite for undisclosed customer Skip to content Covering the business and politics of space Sign In Home / Rocket ...",
+          "title": "Rocket Lab launches satellite for undisclosed customer - SpaceNews",
+          "url": "https://spacenews.com/rocket-lab-launches-satellite-for-undisclosed-customer/",
+          "snippet": "Skip to content Covering the business and politics of space Sign In Home / Rocket Lab launches satellite for undisclosed customer Posted inLaunch # Rocket Lab launches satellite for undisclosed customer by Jeff Foust Share on X (Opens in new window) X Share on LinkedIn (Opens in new window) LinkedIn",
+          "score": 0.39026722,
+          "numbers": [
+            "5",
+            "26",
+            "3",
+            "2026"
+          ]
+        },
+        {
+          "headline": "Rocket Lab Launches What's Likely a US Military Imaging Sate Rocket Lab successfully launched an unnamed satellite into orbit aboard its ...",
+          "title": "Rocket Lab Launches What's Likely a US Military Imaging Satellite - Yahoo",
+          "url": "https://www.yahoo.com/news/articles/rocket-lab-launches-whats-likely-185915912.html",
+          "snippet": "Rocket Lab successfully launched an unnamed satellite into orbit aboard its Electron rocket, speculated to be part of BlackSky's Gen-3 satellite constellation for Earth imaging at a high resolution. The launch took place from Rocket Lab's New Zealand facility as part of a mission for a confidential ",
+          "score": 0.3175114,
+          "numbers": [
+            "3",
+            "292",
+            "2020",
+            "2026"
+          ]
+        },
+        {
+          "headline": "Space One Rocket Fails Third Consecutive Flight In January 2025, Woven by Toyota—the automaker’s investment subsidiary—committed ¥7B ($44...",
+          "title": "Space One Rocket Fails Third Consecutive Flight - Payload Space",
+          "url": "https://payloadspace.com/space-one-rocket-fails-third-consecutive-flight/",
+          "snippet": "In January 2025, Woven by Toyota—the automaker’s investment subsidiary—committed ¥7B ($44M) to Interstellar’s Series F. In June, Honda conducted a launch and landing test of an experimental reusable rocket. This week, Mitsubishi Electric was the lead investor on Spanish launch startup PLD Space’s €1",
+          "score": 0.24846168,
+          "numbers": [
+            "2025",
+            "7B",
+            "44M",
+            "180M"
+          ]
+        },
+        {
+          "headline": "Air Force lab awards BlackSky contract worth up to $99 milli ## Wide-area satellite imaging BlackSky has been exploring similar capabilit...",
+          "title": "Air Force lab awards BlackSky contract worth up to $99 million for large optical satellite payload - SpaceNews",
+          "url": "https://spacenews.com/air-force-lab-awards-blacksky-contract-worth-up-to-99-million-for-large-optical-satellite-payload/",
+          "snippet": "## Wide-area satellite imaging BlackSky has been exploring similar capabilities as part of its own satellite roadmap. The company last year said it plans to develop a wide-area Earth observation satellite designed to capture large regions of the planet for applications such as country-scale mapping ",
+          "score": 0.23903875,
+          "numbers": [
+            "99",
+            "2027",
+            "6",
+            "3"
+          ]
+        },
+        {
+          "headline": "Airbus Eyes Refuelable Satellites In GEO With Orbit Fab Sustainability + Space - Launch Vehicles & Propulsion - Commercial Space - Space ...",
+          "title": "Airbus Eyes Refuelable Satellites In GEO With Orbit Fab - Aviation Week",
+          "url": "https://aviationweek.com/space/satellites/airbus-eyes-refuelable-satellites-geo-orbit-fab",
+          "snippet": "- Sustainability + Space - Launch Vehicles & Propulsion - Commercial Space - Space Exploration - Satellites - Budget, Policy & Regulation - Operations & Safety + Business Aviation - Aircraft & Propulsion - Interiors & Connectivity - Airports, FBOs & Suppliers - Flight Deck - Safety, Ops & Regulation",
+          "score": 0.20683034,
+          "numbers": []
+        },
+        {
+          "headline": "Rocket Lab Launches What's Likely a US Military Imaging Sate 1. (1, 2, 2026, 3)",
+          "title": "Rocket Lab Launches What's Likely a US Military Imaging Satellite - extremetech.com",
+          "url": "https://www.extremetech.com/aerospace/rocket-lab-launches-whats-likely-a-us-military-imaging-satellite",
+          "snippet": "1. Home > 2. Aerospace # Rocket Lab Launches What's Likely a US Military Imaging Satellite It's supposed to be a secret, but the Wiki page has already been updated. By Jon Martindale Share on Facebook (opens in a new window) Share on X (opens in a new window) Share on Reddit (opens in a new window) ",
+          "score": 0.17009436,
+          "numbers": [
+            "1",
+            "2",
+            "2026",
+            "3"
+          ]
+        },
+        {
+          "headline": "Vast Secures $500M, Including $300M Series A Series A deets Balerion Space Ventures led the round, which also included participation from...",
+          "title": "Vast Secures $500M, Including $300M Series A - Payload Space",
+          "url": "https://payloadspace.com/vast-secures-500m-including-300m-series-a/",
+          "snippet": "Series A deets: Balerion Space Ventures led the round, which also included participation from IQT, Qatar Investment Authority, Mitsui & Co. Ltd., MUFG, Nikon Corporation, Stellar Ventures, Space Capital, and Earthrise Ventures—as well as Jed McCaleb, Vast’s founder. “The low-Earth orbit economy is a",
+          "score": 0.16234049,
+          "numbers": [
+            "500M",
+            "300M",
+            "5",
+            "2026"
+          ]
+        },
+        {
+          "headline": "NASA’s DART Mission Still Advancing Earth Planetary Defense Sustainability + Space - Launch Vehicles & Propulsion - Commercial Space - Sp...",
+          "title": "NASA’s DART Mission Still Advancing Earth Planetary Defense - Aviation Week",
+          "url": "https://aviationweek.com/space/space-exploration/nasas-dart-mission-still-advancing-earth-planetary-defense",
+          "snippet": "- Sustainability + Space - Launch Vehicles & Propulsion - Commercial Space - Space Exploration - Satellites - Budget, Policy & Regulation - Operations & Safety + Business Aviation - Aircraft & Propulsion - Interiors & Connectivity - Airports, FBOs & Suppliers - Flight Deck - Safety, Ops & Regulation",
+          "score": 0.15933539,
+          "numbers": [
+            "6"
+          ]
+        }
+      ],
+      "count": 8
+    }
+  }
+}

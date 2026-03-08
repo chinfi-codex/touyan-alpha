@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-03-08 Alpha日报</title>
+  <style>
+    :root {
+      --bg: #eef1f5;
+      --panel: #ffffff;
+      --panel-soft: #f7f8fb;
+      --line: #dde3eb;
+      --line-strong: #cdd5df;
+      --text: #161c24;
+      --muted: #667085;
+      --muted-2: #8a94a6;
+      --accent: #ff6a00;
+      --accent-soft: #fff2e8;
+      --ai-bg: #f4f8ff;
+      --ai-border: #d7e5ff;
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+      --shadow-soft: 0 4px 12px rgba(15, 23, 42, 0.04);
+      --warn-bg: #fff8ec;
+      --warn-line: #ffd8a8;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+    body { margin: 0; background: linear-gradient(180deg, #f7f8fa 0%, var(--bg) 220px); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color: #0b63ce; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    button { font: inherit; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 16px 16px 32px; }
+    .report-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding: 4px 0 10px; border-bottom: 1px solid rgba(205,213,223,.75); }
+    .report-title-wrap { display: grid; gap: 6px; }
+    .report-kicker { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+    .report-kicker::before { content: ''; width: 8px; height: 8px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 0 4px rgba(255,106,0,.12); }
+    h1 { margin: 0; font-size: 24px; line-height: 1.1; }
+    .report-subtitle { color: var(--muted); font-size: 13px; }
+    .report-meta { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    .meta-badge { display: inline-flex; align-items: center; gap: 6px; min-height: 24px; padding: 0 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel-soft); color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .meta-badge.strong { background: var(--accent-soft); border-color: #ffd0b2; color: #ad4d00; font-weight: 600; }
+    .meta-badge.subtle { color: var(--muted-2); }
+    .tabs { display: flex; gap: 8px; margin-top: 12px; padding: 8px 0; position: sticky; top: 0; z-index: 20; overflow-x: auto; background: rgba(238,241,245,.92); backdrop-filter: blur(10px); }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.92); color: var(--muted); font-size: 13px; font-weight: 600; white-space: nowrap; }
+    .tab:hover { border-color: #ffc59b; color: #a74b00; background: #fff7f1; text-decoration: none; }
+    .content-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 14px; }
+    .panel { background: var(--panel); border: 1px solid rgba(221,227,235,.95); border-radius: 12px; box-shadow: var(--shadow); padding: 16px; }
+    .compact-panel { scroll-margin-top: 72px; }
+    .section-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 8px; }
+    h2 { margin: 0; font-size: 17px; line-height: 1.2; }
+    .section-summary { margin-bottom: 10px; color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .accordion-list { display: grid; gap: 10px; }
+    .accordion-block { border: 1px solid var(--line); border-radius: 10px; background: var(--panel-soft); overflow: hidden; }
+    .accordion-trigger { width: 100%; border: 0; padding: 11px 12px; background: transparent; display: grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto; align-items: center; gap: 10px; text-align: left; cursor: pointer; }
+    .accordion-main { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0; }
+    .accordion-title { font-size: 14px; font-weight: 700; color: var(--text); }
+    .accordion-summary { min-width: 0; color: var(--muted); font-size: 12px; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .accordion-icon { color: var(--muted-2); font-size: 12px; transition: transform .2s ease; }
+    .accordion-icon.is-open { transform: rotate(180deg); }
+    .accordion-body { border-top: 1px solid var(--line); padding: 12px; background: #fff; }
+    .accordion-body.collapsed { display: none; }
+    .accordion-body.open { display: block; }
+    .inline-summary { display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: start; padding: 10px 12px; margin-bottom: 10px; border: 1px solid var(--ai-border); border-radius: 10px; background: var(--ai-bg); }
+    .inline-summary-label { display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 22px; padding: 0 8px; border-radius: 999px; background: #fff; color: #2452b6; font-size: 11px; font-weight: 700; }
+    .inline-summary-text { color: var(--text); font-size: 13px; line-height: 1.55; white-space: pre-wrap; word-break: break-word; }
+    .clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .detail-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .detail-table thead th { position: sticky; top: 68px; z-index: 5; background: #f7f8fb; color: var(--muted); font-size: 12px; font-weight: 600; text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line-strong); }
+    .detail-table td { padding: 9px 10px; border-bottom: 1px solid #edf1f5; vertical-align: top; line-height: 1.5; }
+    .detail-table tr:last-child td { border-bottom: 0; }
+    .detail-table td.title { max-width: 0; }
+    .detail-table tbody tr:hover td { background: #fbfcfd; }
+    .inline-symbol { color: var(--muted-2); font-size: 12px; margin-left: 6px; }
+    .action-group { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+    .news-list { display: grid; gap: 2px; }
+    .news-item { display: grid; grid-template-columns: 20px minmax(0, 1fr) auto auto; gap: 8px; align-items: start; padding: 7px 0; border-bottom: 1px solid #edf1f5; font-size: 12px; }
+    .news-item:last-child { border-bottom: 0; }
+    .news-index { color: var(--muted-2); }
+    .news-headline { color: var(--text); line-height: 1.45; }
+    .news-score { display: inline-flex; align-items: center; height: 20px; padding: 0 6px; border-radius: 999px; background: #f0f3f6; color: var(--muted); font-size: 11px; }
+    .company-list { display: grid; gap: 8px; }
+    .notice-company-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) auto; gap: 10px; align-items: start; padding: 10px 0; border-bottom: 1px solid #edf1f5; }
+    .notice-company-row:last-child { border-bottom: 0; }
+    .notice-company-row.regulatory { padding-left: 10px; border-left: 3px solid #f59e0b; }
+    .notice-company-main { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .notice-company-text { color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .notice-company-link { text-align: right; white-space: nowrap; }
+    .section-footnote { margin-top: 8px; color: var(--muted-2); font-size: 12px; }
+    .regulatory-warning { background: linear-gradient(180deg, var(--warn-bg), #fff); border-color: var(--warn-line); }
+    .empty { padding: 20px 14px; border: 1px dashed var(--line-strong); border-radius: 10px; background: #fafbfd; color: var(--muted-2); text-align: center; font-size: 13px; }
+
+    @media (max-width: 768px) {
+      .wrap { padding: 14px 12px 28px; }
+      .report-header { align-items: flex-start; flex-direction: column; }
+      .report-meta { justify-content: flex-start; }
+      h1 { font-size: 22px; }
+      .panel { padding: 14px; }
+      .accordion-trigger { grid-template-columns: 1fr auto; }
+      .accordion-summary { grid-column: 1 / -1; white-space: normal; }
+      .news-item { grid-template-columns: 20px minmax(0, 1fr); }
+      .notice-company-row { grid-template-columns: 1fr; }
+      .detail-table { display: block; overflow-x: auto; white-space: nowrap; }
+      .detail-table td.title, .detail-table th { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="report-header">
+      <div class="report-title-wrap">
+        <span class="report-kicker">Alpha Daily</span>
+        <h1>2026-03-08 Alpha日报</h1>
+        <div class="report-subtitle">先总览后下钻：压缩空白，优先呈现高价值模块。</div>
+      </div>
+      <div class="report-meta">
+        <span class="meta-badge">生成时间 2026-03-08 09:39</span>
+        <span class="meta-badge">数据覆盖 1/6</span>
+        <span class="meta-badge strong">当日输出 2026-03-08</span>
+      </div>
+    </header>
+
+    <nav class="tabs"><a class='tab' href='#news'>新闻动态</a><a class='tab' href='#knowledge'>专业知识</a><a class='tab' href='#forecast'>业绩预告</a><a class='tab' href='#relation'>机构调研</a><a class='tab' href='#interaction'>互动问答</a><a class='tab' href='#notice'>公告解读</a></nav>
+
+    <section class="content-grid">
+      
+    <section id="news" class="panel compact-panel">
+      <div class="section-head">
+        <h2>新闻动态</h2>
+        <span class="meta-badge strong">4类 / 32条</span>
+      </div>
+      <div class="section-summary">按主题聚合，默认展开首个分类，其余保留单行 AI 摘要。</div>
+      <div class="accordion-list">
+        
+        <article class="accordion-block news-block" id="news-0">
+          <button class="accordion-trigger" type="button" data-target="news-0-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">AI产业</span>
+              <span class="meta-badge strong">8条</span>
+            </span>
+            <span class="accordion-summary">全球数据中心建设加速，超算企业签白宫资助承诺；美拟AI芯片出口管制致Nvidia、AMD股价下跌，Nvidia投40亿推进下一代AI数据中心。</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="news-0-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">AI</span>
+              <div class="inline-summary-text clamp-3">全球数据中心建设加速，超算企业签白宫资助承诺；美拟AI芯片出口管制致Nvidia、AMD股价下跌，Nvidia投40亿推进下一代AI数据中心。</div>
+            </div>
+            <div class="news-list">
+              
+            <div class="news-item">
+              <span class="news-index">1</span>
+              <span class="news-headline">The case for building modular, repeatable data centers The pace of data center construction is accelerating across the world. (400, 10, 1...</span>
+              <span class="news-score">1.00</span>
+              <a href='https://www.constructiondive.com/news/data-centers-modular-construction-sap/814106/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">2</span>
+              <span class="news-headline">Hyperscalers Sign White House Pledge to Fund Data Center Pow The pledge follows a series of executive actions from the Trump administrati...</span>
+              <span class="news-score">0.99</span>
+              <a href='https://www.powermag.com/hyperscalers-sign-white-house-pledge-to-fund-data-center-power-grid-upgrades/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">3</span>
+              <span class="news-headline">Nvidia and AMD Stock Dip as U.S. Drafts Global AI Chip Expor Small Orders Buying up to 1,000 of Nvidia’s GB300 chips would likely involve...</span>
+              <span class="news-score">0.98</span>
+              <a href='https://www.tipranks.com/news/nvidia-and-amd-stock-dip-as-u-s-drafts-global-ai-chip-export-permits' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">4</span>
+              <span class="news-headline">Tech stocks today ## Nvidia invests $4 billion in Coherent, Lumentum to advance next-gen AI data centers Nvidia (NVDA) said it struck two...</span>
+              <span class="news-score">0.98</span>
+              <a href='https://finance.yahoo.com/news/live/tech-stocks-today-nvidia-stops-h200-chip-production-anthropic-restarts-talks-with-pentagon-135928945.html' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">5</span>
+              <span class="news-headline">Nvidia and AMD Stocks Drop after Report of New U.S. Rules Re ## What the Draft Rules Would Do The proposed framework would position the U...</span>
+              <span class="news-score">0.88</span>
+              <a href='https://www.tipranks.com/news/nvidia-and-amd-stocks-drop-after-report-of-new-u-s-rules-requiring-approval-for-ai-chip-exports' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">6</span>
+              <span class="news-headline">Nvidia Is Reportedly Planning To Launch a New Version of Its A post on X by user @Zed\_\_Wang, addressing the leaks, claims that the RTX ...</span>
+              <span class="news-score">0.86</span>
+              <a href='https://in.ign.com/tech/254887/news/nvidia-is-reportedly-planning-to-launch-a-new-version-of-its-geforce-rtx-5050-gpu-with-barely-more-v' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">7</span>
+              <span class="news-headline">Demand for AI Data Centers Sends Prospectors Hunting for Lan As the A.I. (85, 2030)</span>
+              <span class="news-score">0.76</span>
+              <a href='https://www.nytimes.com/2026/03/05/technology/ai-data-centers-land-cloverleaf-infrastructure.html' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">8</span>
+              <span class="news-headline">AI ‘Man Camps’ Offer Golf, Free Steaks to Lure Workers in Te As data-center projects increasingly push into more remote areas, developers...</span>
+              <span class="news-score">0.74</span>
+              <a href='https://www.insurancejournal.com/news/southcentral/2026/03/06/860884.htm' target='_blank'>原文</a>
+            </div>
+            
+            </div>
+          </div>
+        </article>
+        
+        <article class="accordion-block news-block" id="news-1">
+          <button class="accordion-trigger" type="button" data-target="news-1-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">宏观</span>
+              <span class="meta-badge strong">8条</span>
+            </span>
+            <span class="accordion-summary">2月美国非农就业减少9.2万，失业率或上升；美伊局势紧张投资者谨慎，就业数据令焦点重回经济。</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="news-1-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">AI</span>
+              <div class="inline-summary-text clamp-3">2月美国非农就业减少9.2万，失业率或上升；美伊局势紧张投资者谨慎，就业数据令焦点重回经济。</div>
+            </div>
+            <div class="news-list">
+              
+            <div class="news-item">
+              <span class="news-index">1</span>
+              <span class="news-headline">‘Overwhelmingly disappointing’ job losses mar February Skip to main content CONTINUE TO SITE ➞ An article from BLS jobs report # ‘Overwhe...</span>
+              <span class="news-score">0.57</span>
+              <a href='https://www.hrdive.com/news/disappointing-job-losses-mar-february/814039/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">2</span>
+              <span class="news-headline">Investors brace for what&#x27;s next as U.S.-Iran war stretches i war with Iran. (2.4, 2.3, 3.0, 92)</span>
+              <span class="news-score">0.56</span>
+              <a href='https://www.cnbc.com/2026/03/06/stock-market-next-week-outlook-for-march-9-13-2026.html' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">3</span>
+              <span class="news-headline">US jobs data forces gaze back from Mideast mayhem to AI &#x27;doo Advertisement · Scroll to continue Friday&#x27;s U.S. (59, 000, 4.3)</span>
+              <span class="news-score">0.56</span>
+              <a href='https://www.reuters.com/markets/us/us-jobs-data-forces-gaze-back-mideast-mayhem-ai-doom-2026-03-05/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">4</span>
+              <span class="news-headline">US nonfarm payrolls decline in February; unemployment rate r Nonfarm payrolls decreased by 92,000 jobs last month after ​a downwardly rev...</span>
+              <span class="news-score">0.51</span>
+              <a href='https://www.reuters.com/world/us/us-nonfarm-payrolls-decline-february-unemployment-rate-rises-44-2026-03-06/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">5</span>
+              <span class="news-headline">US labor market holding steady; worker productivity still st The number of people receiving unemployment benefits after an initial week o...</span>
+              <span class="news-score">0.50</span>
+              <a href='https://www.kitco.com/news/off-the-wire/2026-03-05/us-labor-market-holding-steady-worker-productivity-still-strong-q4' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">6</span>
+              <span class="news-headline">Fed&#x27;s Barkin Payroll processor ADP&#x27;s monthly employment report also pointed to a higher than expected increase in private jobs, while (4....</span>
+              <span class="news-score">0.48</span>
+              <a href='https://www.kitco.com/news/off-the-wire/2026-03-05/feds-barkin-sticky-inflation-better-jobs-data-could-shift-risk-outlook' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">7</span>
+              <span class="news-headline">What to expect in Friday’s jobs report A construction worker welds a beam at a building under construction, on February 26, 2026, in Bost...</span>
+              <span class="news-score">0.45</span>
+              <a href='https://www.cnn.com/2026/03/05/economy/us-jobs-report-february-preview' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">8</span>
+              <span class="news-headline">US Defense Department seeks information to expand metal stoc Silver Futures $ 82.385 / ozt -1.80% Aluminum Futures $ 3261.25 / ton -1.17%...</span>
+              <span class="news-score">0.43</span>
+              <a href='https://www.mining.com/web/us-defense-department-seeks-information-to-expand-metal-stockpiles/' target='_blank'>原文</a>
+            </div>
+            
+            </div>
+          </div>
+        </article>
+        
+        <article class="accordion-block news-block" id="news-2">
+          <button class="accordion-trigger" type="button" data-target="news-2-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">机器人</span>
+              <span class="meta-badge strong">8条</span>
+            </span>
+            <span class="accordion-summary">Agility Robotics更名，雷军与优必选理念契合，Tesollo等推高混合低量机器人，SFA2030目标全自主制造，Apptronik人形机器人展灵巧性。</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="news-2-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">AI</span>
+              <div class="inline-summary-text clamp-3">Agility Robotics更名，雷军与优必选理念契合，Tesollo等推高混合低量机器人，SFA2030目标全自主制造，Apptronik人形机器人展灵巧性。</div>
+            </div>
+            <div class="news-list">
+              
+            <div class="news-item">
+              <span class="news-index">1</span>
+              <span class="news-headline">Humanoid developer Agility Robotics rebrands Agility is an early pioneer in the humanoid market, but the company now has intense competit...</span>
+              <span class="news-score">0.97</span>
+              <a href='https://www.therobotreport.com/humanoid-developer-agility-robotics-rebrands/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">2</span>
+              <span class="news-headline">Lei Jun and Ubtech Share the Vision According to Frost &amp; Sullivan data, the global market size of embodied intelligent robot solutions is...</span>
+              <span class="news-score">0.88</span>
+              <a href='https://eu.36kr.com/en/p/3711335977447937' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">3</span>
+              <span class="news-headline">Tesollo and Techman Robot unveil robot for high-mix, low-vol #### Related Articles Read More &gt; ##### Tesollo commercializes its lightweig...</span>
+              <span class="news-score">0.74</span>
+              <a href='https://www.therobotreport.com/tesollo-techman-robot-unveil-robot-high-mix-low-volume-production/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">4</span>
+              <span class="news-headline">SFA Targets Fully Autonomous Manufacturing by 2030 Using AI Robotics is another critical component of autonomous manufacturing. (2030, 76)</span>
+              <span class="news-score">0.65</span>
+              <a href='https://www.thelec.net/news/articleView.html?idxno=5651' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">5</span>
+              <span class="news-headline">Op-ed What $5 billion humanoid robots An Apollo humanoid robot prototype, made by Apptronik Inc., demonstrates its dexterity during a med...</span>
+              <span class="news-score">0.24</span>
+              <a href='https://www.cnbc.com/2026/03/05/robot-investing-risk-jobs-manufacturing-economy.html' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">6</span>
+              <span class="news-headline">Technicians Restore Lost Film Believed to Depict Cinema’s Fi These robots still face major engineering and manufacturing constraints. (3,...</span>
+              <span class="news-score">0.13</span>
+              <a href='https://www.ien.com/automation/video/22961951/technicians-restore-lost-film-believed-to-depict-cinemas-first-robot' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">7</span>
+              <span class="news-headline">AI-Designed &#x27;Metamachines&#x27; Run Wild, Recover from Damage and “It can sense its surroundings, move from place to place, compute and learn,...</span>
+              <span class="news-score">0.13</span>
+              <a href='https://www.designdevelopmenttoday.com/new-products/motion-control/video/22962040/aidesigned-metamachines-run-wild-recover-from-damage-and-change-shapes' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">8</span>
+              <span class="news-headline">Techman Robot and Tesollo unveil adaptive robotic gripper so Following last year’s teleoperation demo combining a humanoid robot hand and...</span>
+              <span class="news-score">0.03</span>
+              <a href='https://roboticsandautomationnews.com/2026/03/07/techman-robot-and-tesollo-unveil-adaptive-robotic-gripper-solution-for-high-mix-manufacturing/99308/' target='_blank'>原文</a>
+            </div>
+            
+            </div>
+          </div>
+        </article>
+        
+        <article class="accordion-block news-block" id="news-3">
+          <button class="accordion-trigger" type="button" data-target="news-3-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">商业航天</span>
+              <span class="meta-badge strong">8条</span>
+            </span>
+            <span class="accordion-summary">Rocket Lab发射疑似美军成像卫星；Space One火箭第三次试飞失败；美空军实验室授BlackSky9900万合同；空客与Orbit Fab研发GEO可加油卫星。</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="news-3-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">AI</span>
+              <div class="inline-summary-text clamp-3">Rocket Lab发射疑似美军成像卫星；Space One火箭第三次试飞失败；美空军实验室授BlackSky9900万合同；空客与Orbit Fab研发GEO可加油卫星。</div>
+            </div>
+            <div class="news-list">
+              
+            <div class="news-item">
+              <span class="news-index">1</span>
+              <span class="news-headline">Rocket Lab launches satellite for undisclosed customer Skip to content Covering the business and politics of space Sign In Home / Rocket ...</span>
+              <span class="news-score">0.39</span>
+              <a href='https://spacenews.com/rocket-lab-launches-satellite-for-undisclosed-customer/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">2</span>
+              <span class="news-headline">Rocket Lab Launches What&#x27;s Likely a US Military Imaging Sate Rocket Lab successfully launched an unnamed satellite into orbit aboard its ...</span>
+              <span class="news-score">0.32</span>
+              <a href='https://www.yahoo.com/news/articles/rocket-lab-launches-whats-likely-185915912.html' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">3</span>
+              <span class="news-headline">Space One Rocket Fails Third Consecutive Flight In January 2025, Woven by Toyota—the automaker’s investment subsidiary—committed ¥7B ($44...</span>
+              <span class="news-score">0.25</span>
+              <a href='https://payloadspace.com/space-one-rocket-fails-third-consecutive-flight/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">4</span>
+              <span class="news-headline">Air Force lab awards BlackSky contract worth up to $99 milli ## Wide-area satellite imaging BlackSky has been exploring similar capabilit...</span>
+              <span class="news-score">0.24</span>
+              <a href='https://spacenews.com/air-force-lab-awards-blacksky-contract-worth-up-to-99-million-for-large-optical-satellite-payload/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">5</span>
+              <span class="news-headline">Airbus Eyes Refuelable Satellites In GEO With Orbit Fab Sustainability + Space - Launch Vehicles &amp; Propulsion - Commercial Space - Space ...</span>
+              <span class="news-score">0.21</span>
+              <a href='https://aviationweek.com/space/satellites/airbus-eyes-refuelable-satellites-geo-orbit-fab' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">6</span>
+              <span class="news-headline">Rocket Lab Launches What&#x27;s Likely a US Military Imaging Sate 1. (1, 2, 2026, 3)</span>
+              <span class="news-score">0.17</span>
+              <a href='https://www.extremetech.com/aerospace/rocket-lab-launches-whats-likely-a-us-military-imaging-satellite' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">7</span>
+              <span class="news-headline">Vast Secures $500M, Including $300M Series A Series A deets Balerion Space Ventures led the round, which also included participation from...</span>
+              <span class="news-score">0.16</span>
+              <a href='https://payloadspace.com/vast-secures-500m-including-300m-series-a/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">8</span>
+              <span class="news-headline">NASA’s DART Mission Still Advancing Earth Planetary Defense Sustainability + Space - Launch Vehicles &amp; Propulsion - Commercial Space - Sp...</span>
+              <span class="news-score">0.16</span>
+              <a href='https://aviationweek.com/space/space-exploration/nasas-dart-mission-still-advancing-earth-planetary-defense' target='_blank'>原文</a>
+            </div>
+            
+            </div>
+          </div>
+        </article>
+        
+      </div>
+    </section>
+    
+      
+    <section id="knowledge" class="panel compact-panel">
+      <div class="section-head">
+        <h2>专业知识</h2>
+      </div>
+      <div class="section-summary">信源：clippings-api、知识星球</div>
+      <div class="empty">暂无当日新内容</div>
+    </section>
+    
+      
+    <section id="forecast" class="panel compact-panel">
+      <div class="section-head">
+        <h2>业绩预告</h2>
+        <span class="meta-badge strong">0家公司 / 0条</span>
+      </div>
+      <div class="section-summary">默认全部折叠，点击展开查看详情，减少纵向占用。</div>
+      <div class="accordion-list">
+        <div class='empty'>暂无业绩预告数据</div>
+      </div>
+    </section>
+    
+      
+    <section id="relation" class="panel compact-panel">
+      <div class="section-head">
+        <h2>机构调研</h2>
+        <span class="meta-badge strong">0条</span>
+      </div>
+      <div class="section-summary">保留表格形态，压缩为日期、公司、标题、操作四列。</div>
+      <table class="detail-table relation-table">
+        <thead>
+          <tr><th>日期</th><th>公司</th><th>标题</th><th>操作</th></tr>
+        </thead>
+        <tbody><tr><td colspan='4'>暂无机构调研数据</td></tr></tbody>
+      </table>
+    </section>
+    
+      
+    <section id="interaction" class="panel compact-panel">
+      <div class="section-head">
+        <h2>互动问答</h2>
+        <span class="meta-badge strong">0家公司 / 0条</span>
+      </div>
+      <div class="section-summary">按公司聚合展示，默认折叠明细，仅保留核心摘要与问答数。</div>
+      <div class="accordion-list">
+        <div class='empty'>暂无互动问答数据</div>
+      </div>
+    </section>
+    
+      
+    <section id="notice" class="panel compact-panel">
+      <div class="section-head">
+        <h2>公告解读</h2>
+        <span class="meta-badge strong">0条</span>
+      </div>
+      <div class="section-summary">按分类和公司聚合展示</div>
+      <div class="accordion-list">
+        <div class='empty'>暂无公告解读数据</div>
+      </div>
+    </section>
+    
+    </section>
+  </main>
+
+  <script>
+    function setAccordionState(trigger, expanded) {
+      const targetId = trigger.getAttribute('data-target');
+      const body = document.getElementById(targetId);
+      const icon = trigger.querySelector('.accordion-icon');
+      if (!body) return;
+      trigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      body.classList.toggle('collapsed', !expanded);
+      body.classList.toggle('open', expanded);
+      if (icon) icon.classList.toggle('is-open', expanded);
+    }
+
+    function bindAccordions() {
+      document.querySelectorAll('.accordion-trigger').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          const expanded = trigger.getAttribute('aria-expanded') === 'true';
+          setAccordionState(trigger, !expanded);
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      bindAccordions();
+      document.querySelectorAll('.accordion-trigger').forEach((trigger) => {
+        setAccordionState(trigger, trigger.getAttribute('aria-expanded') === 'true');
+      });
+    });
+
+  </script>
+</body>
+</html>

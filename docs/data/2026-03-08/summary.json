@@ -1,0 +1,15 @@
+{
+  "date": "2026-03-08",
+  "counts": {
+    "cninfo_fulltext": 0,
+    "cninfo_relation": 0,
+    "p5w_interaction": 0,
+    "tushare_forecast": 0
+  },
+  "counts_by_subcategory": {},
+  "excluded_counts_by_rule": {},
+  "errors": {},
+  "tavily_news": "ok",
+  "zsxq": "ok",
+  "clippings": "ok"
+}
