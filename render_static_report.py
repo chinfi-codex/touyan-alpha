@@ -772,14 +772,14 @@ def render_professional_knowledge_section(data: dict) -> str:
 
     # 构建知识星球主题列表
     topic_items = []
-    for row in zsxq_topics:
+    for idx, row in enumerate(zsxq_topics):
         title = row.get("title", "")
         content = row.get("content", "")
         author = row.get("author", "")
         created_at = row.get("created_at", "")
         url = row.get("url", "")
         # 内容摘要
-        content_summary = clip_text(content, 120) if content else ""
+        topic_id = f"zsxq-topic-{idx}"
         
         topic_items.append(
             f"""
@@ -788,7 +788,8 @@ def render_professional_knowledge_section(data: dict) -> str:
             <a href="{fmt(url)}" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">{fmt(title)}</a>
             <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">{fmt(created_at)}</span>
           </div>
-          <div style="font-size: 13px; color: #4b5563; line-height: 1.5; margin-bottom: 6px;">{fmt(content_summary)}</div>
+          <div id="{topic_id}" class="topic-content topic-content-collapsed">{fmt(content or "")}</div>
+          <button type="button" class="topic-toggle" data-target="{topic_id}" data-expanded="false">展开全文</button>
           <div style="font-size: 12px; color: #9ca3af;">👤 {fmt(author)}</div>
         </div>
         """
@@ -1038,6 +1039,10 @@ def render_report(date, base_dir):
     .section-footnote {{ margin-top: 8px; color: var(--muted-2); font-size: 12px; }}
     .regulatory-warning {{ background: linear-gradient(180deg, var(--warn-bg), #fff); border-color: var(--warn-line); }}
     .empty {{ padding: 20px 14px; border: 1px dashed var(--line-strong); border-radius: 10px; background: #fafbfd; color: var(--muted-2); text-align: center; font-size: 13px; }}
+    .topic-content {{ font-size: 13px; color: #4b5563; line-height: 1.6; margin-bottom: 6px; white-space: pre-wrap; word-break: break-word; }}
+    .topic-content-collapsed {{ overflow: hidden; max-height: calc(1.6em * 3); }}
+    .topic-toggle {{ border: 0; background: transparent; color: #2563eb; font-size: 12px; padding: 0; margin: 0 0 6px; cursor: pointer; }}
+    .topic-toggle:hover {{ text-decoration: underline; }}
 
     @media (max-width: 768px) {{
       .wrap {{ padding: 14px 12px 28px; }}
@@ -1102,8 +1107,29 @@ def render_report(date, base_dir):
       }});
     }}
 
+    function bindTopicToggles() {{
+      document.querySelectorAll('.topic-toggle').forEach((btn) => {{
+        const targetId = btn.getAttribute('data-target');
+        const content = document.getElementById(targetId);
+        if (content && content.scrollHeight <= content.clientHeight + 1) {{
+          btn.style.display = 'none';
+          return;
+        }}
+        btn.addEventListener('click', () => {{
+          const targetId = btn.getAttribute('data-target');
+          const content = document.getElementById(targetId);
+          if (!content) return;
+          const expanded = btn.getAttribute('data-expanded') === 'true';
+          content.classList.toggle('topic-content-collapsed', expanded);
+          btn.setAttribute('data-expanded', expanded ? 'false' : 'true');
+          btn.textContent = expanded ? '展开全文' : '收起';
+        }});
+      }});
+    }}
+
     document.addEventListener('DOMContentLoaded', function() {{
       bindAccordions();
+      bindTopicToggles();
       document.querySelectorAll('.accordion-trigger').forEach((trigger) => {{
         setAccordionState(trigger, trigger.getAttribute('aria-expanded') === 'true');
       }});
