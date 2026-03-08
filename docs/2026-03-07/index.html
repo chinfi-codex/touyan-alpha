@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-03-07 Alpha日报</title>
+  <style>
+    :root {
+      --bg: #eef1f5;
+      --panel: #ffffff;
+      --panel-soft: #f7f8fb;
+      --line: #dde3eb;
+      --line-strong: #cdd5df;
+      --text: #161c24;
+      --muted: #667085;
+      --muted-2: #8a94a6;
+      --accent: #ff6a00;
+      --accent-soft: #fff2e8;
+      --ai-bg: #f4f8ff;
+      --ai-border: #d7e5ff;
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+      --shadow-soft: 0 4px 12px rgba(15, 23, 42, 0.04);
+      --warn-bg: #fff8ec;
+      --warn-line: #ffd8a8;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+    body { margin: 0; background: linear-gradient(180deg, #f7f8fa 0%, var(--bg) 220px); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color: #0b63ce; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    button { font: inherit; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 16px 16px 32px; }
+    .report-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding: 4px 0 10px; border-bottom: 1px solid rgba(205,213,223,.75); }
+    .report-title-wrap { display: grid; gap: 6px; }
+    .report-kicker { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+    .report-kicker::before { content: ''; width: 8px; height: 8px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 0 4px rgba(255,106,0,.12); }
+    h1 { margin: 0; font-size: 24px; line-height: 1.1; }
+    .report-subtitle { color: var(--muted); font-size: 13px; }
+    .report-meta { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    .meta-badge { display: inline-flex; align-items: center; gap: 6px; min-height: 24px; padding: 0 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel-soft); color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .meta-badge.strong { background: var(--accent-soft); border-color: #ffd0b2; color: #ad4d00; font-weight: 600; }
+    .meta-badge.subtle { color: var(--muted-2); }
+    .tabs { display: flex; gap: 8px; margin-top: 12px; padding: 8px 0; position: sticky; top: 0; z-index: 20; overflow-x: auto; background: rgba(238,241,245,.92); backdrop-filter: blur(10px); }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.92); color: var(--muted); font-size: 13px; font-weight: 600; white-space: nowrap; }
+    .tab:hover { border-color: #ffc59b; color: #a74b00; background: #fff7f1; text-decoration: none; }
+    .content-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 14px; }
+    .panel { background: var(--panel); border: 1px solid rgba(221,227,235,.95); border-radius: 12px; box-shadow: var(--shadow); padding: 16px; }
+    .compact-panel { scroll-margin-top: 72px; }
+    .section-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 8px; }
+    h2 { margin: 0; font-size: 17px; line-height: 1.2; }
+    .section-summary { margin-bottom: 10px; color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .accordion-list { display: grid; gap: 10px; }
+    .accordion-block { border: 1px solid var(--line); border-radius: 10px; background: var(--panel-soft); overflow: hidden; }
+    .accordion-trigger { width: 100%; border: 0; padding: 11px 12px; background: transparent; display: grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto; align-items: center; gap: 10px; text-align: left; cursor: pointer; }
+    .accordion-main { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0; }
+    .accordion-title { font-size: 14px; font-weight: 700; color: var(--text); }
+    .accordion-summary { min-width: 0; color: var(--muted); font-size: 12px; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .accordion-icon { color: var(--muted-2); font-size: 12px; transition: transform .2s ease; }
+    .accordion-icon.is-open { transform: rotate(180deg); }
+    .accordion-body { border-top: 1px solid var(--line); padding: 12px; background: #fff; }
+    .accordion-body.collapsed { display: none; }
+    .accordion-body.open { display: block; }
+    .inline-summary { display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: start; padding: 10px 12px; margin-bottom: 10px; border: 1px solid var(--ai-border); border-radius: 10px; background: var(--ai-bg); }
+    .inline-summary-label { display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 22px; padding: 0 8px; border-radius: 999px; background: #fff; color: #2452b6; font-size: 11px; font-weight: 700; }
+    .inline-summary-text { color: var(--text); font-size: 13px; line-height: 1.55; white-space: pre-wrap; word-break: break-word; }
+    .clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .detail-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .detail-table thead th { position: sticky; top: 68px; z-index: 5; background: #f7f8fb; color: var(--muted); font-size: 12px; font-weight: 600; text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line-strong); }
+    .detail-table td { padding: 9px 10px; border-bottom: 1px solid #edf1f5; vertical-align: top; line-height: 1.5; }
+    .detail-table tr:last-child td { border-bottom: 0; }
+    .detail-table td.title { max-width: 0; }
+    .detail-table tbody tr:hover td { background: #fbfcfd; }
+    .inline-symbol { color: var(--muted-2); font-size: 12px; margin-left: 6px; }
+    .action-group { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+    .news-list { display: grid; gap: 2px; }
+    .news-item { display: grid; grid-template-columns: 20px minmax(0, 1fr) auto auto; gap: 8px; align-items: start; padding: 7px 0; border-bottom: 1px solid #edf1f5; font-size: 12px; }
+    .news-item:last-child { border-bottom: 0; }
+    .news-index { color: var(--muted-2); }
+    .news-headline { color: var(--text); line-height: 1.45; }
+    .news-score { display: inline-flex; align-items: center; height: 20px; padding: 0 6px; border-radius: 999px; background: #f0f3f6; color: var(--muted); font-size: 11px; }
+    .company-list { display: grid; gap: 8px; }
+    .notice-company-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) auto; gap: 10px; align-items: start; padding: 10px 0; border-bottom: 1px solid #edf1f5; }
+    .notice-company-row:last-child { border-bottom: 0; }
+    .notice-company-row.regulatory { padding-left: 10px; border-left: 3px solid #f59e0b; }
+    .notice-company-main { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .notice-company-text { color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .notice-company-link { text-align: right; white-space: nowrap; }
+    .section-footnote { margin-top: 8px; color: var(--muted-2); font-size: 12px; }
+    .regulatory-warning { background: linear-gradient(180deg, var(--warn-bg), #fff); border-color: var(--warn-line); }
+    .empty { padding: 20px 14px; border: 1px dashed var(--line-strong); border-radius: 10px; background: #fafbfd; color: var(--muted-2); text-align: center; font-size: 13px; }
+
+    @media (max-width: 768px) {
+      .wrap { padding: 14px 12px 28px; }
+      .report-header { align-items: flex-start; flex-direction: column; }
+      .report-meta { justify-content: flex-start; }
+      h1 { font-size: 22px; }
+      .panel { padding: 14px; }
+      .accordion-trigger { grid-template-columns: 1fr auto; }
+      .accordion-summary { grid-column: 1 / -1; white-space: normal; }
+      .news-item { grid-template-columns: 20px minmax(0, 1fr); }
+      .notice-company-row { grid-template-columns: 1fr; }
+      .detail-table { display: block; overflow-x: auto; white-space: nowrap; }
+      .detail-table td.title, .detail-table th { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="report-header">
+      <div class="report-title-wrap">
+        <span class="report-kicker">Alpha Daily</span>
+        <h1>2026-03-07 Alpha日报</h1>
+        <div class="report-subtitle">先总览后下钻：压缩空白，优先呈现高价值模块。</div>
+      </div>
+      <div class="report-meta">
+        <span class="meta-badge">生成时间 2026-03-08 09:30</span>
+        <span class="meta-badge">数据覆盖 3/6</span>
+        <span class="meta-badge strong">当日输出 2026-03-07</span>
+      </div>
+    </header>
+
+    <nav class="tabs"><a class='tab' href='#news'>新闻动态</a><a class='tab' href='#knowledge'>专业知识</a><a class='tab' href='#forecast'>业绩预告</a><a class='tab' href='#relation'>机构调研</a><a class='tab' href='#interaction'>互动问答</a><a class='tab' href='#notice'>公告解读</a></nav>
+
+    <section class="content-grid">
+      <section id="news" class="panel compact-panel"><div class="section-head"><h2>新闻动态</h2></div><div class="empty">暂无新闻数据</div></section>
+      
+    <section id="knowledge" class="panel compact-panel">
+      <div class="section-head">
+        <h2>专业知识</h2>
+      </div>
+      <div class="section-summary">信源：clippings-api、知识星球</div>
+      <div class="empty">暂无当日新内容</div>
+    </section>
+    
+      
+    <section id="forecast" class="panel compact-panel">
+      <div class="section-head">
+        <h2>业绩预告</h2>
+        <span class="meta-badge strong">1家公司 / 1条</span>
+      </div>
+      <div class="section-summary">默认全部折叠，点击展开查看详情，减少纵向占用。</div>
+      <div class="accordion-list">
+        
+        <article class="accordion-block forecast-block" id="forecast-0">
+          <button class="accordion-trigger" type="button" data-target="forecast-0-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">万邦德</span>
+              <span class="meta-badge">002082.SZ</span>
+              <span class="meta-badge strong">1项</span>
+            </span>
+            <span class="accordion-summary">1、公司由仿制药向创新药战略发展转型初见成效，报告期业务拓展取得积极进展，带来新的业绩增长点，并持续加大研发力度。2、报告期内，公司加强内部管理，加大应收款回收力度，有效加速资金回笼。</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="forecast-0-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">原因</span>
+              <div class="inline-summary-text clamp-3">1、公司由仿制药向创新药战略发展转型初见成效，报告期业务拓展取得积极进展，带来新的业绩增长点，并持续加大研发力度。2、报告期内，公司加强内部管理，加大应收款回收力度，有效加速资金回笼。</div>
+            </div>
+            <div class='empty'>暂无详细业绩指标</div>
+          </div>
+        </article>
+        
+      </div>
+    </section>
+    
+      
+    <section id="relation" class="panel compact-panel">
+      <div class="section-head">
+        <h2>机构调研</h2>
+        <span class="meta-badge strong">0条</span>
+      </div>
+      <div class="section-summary">保留表格形态，压缩为日期、公司、标题、操作四列。</div>
+      <table class="detail-table relation-table">
+        <thead>
+          <tr><th>日期</th><th>公司</th><th>标题</th><th>操作</th></tr>
+        </thead>
+        <tbody><tr><td colspan='4'>暂无机构调研数据</td></tr></tbody>
+      </table>
+    </section>
+    
+      
+    <section id="interaction" class="panel compact-panel">
+      <div class="section-head">
+        <h2>互动问答</h2>
+        <span class="meta-badge strong">2家公司 / 3条</span>
+      </div>
+      <div class="section-summary">按公司聚合展示，默认折叠明细，仅保留核心摘要与问答数。</div>
+      <div class="accordion-list">
+        
+        <article class="accordion-block interaction-block" id="interaction-0">
+          <button class="accordion-trigger" type="button" data-target="interaction-0-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">骏鼎达</span>
+              <span class="meta-badge">301538</span>
+              <span class="meta-badge strong">2问</span>
+              
+            </span>
+            <span class="accordion-summary">最近还是没机构过去调研，公司也不路演？?尊敬的投资者，您好！感谢您对公司的关注。公司最近一次机构调研活动于20…?3月3日，广东省投资项目在线审批监管平台显示…</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="interaction-0-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">AI</span>
+              <div class="inline-summary-text clamp-3">最近还是没机构过去调研，公司也不路演？?尊敬的投资者，您好！感谢您对公司的关注。公司最近一次机构调研活动于20…?3月3日，广东省投资项目在线审批监管平台显示，深圳引望…?尊敬的…</div>
+            </div>
+            <table class='detail-table qa-table'><thead><tr><th>日期</th><th>问题</th><th>摘要</th><th>链接</th></tr></thead><tbody><tr><td>2026-03-07</td><td class='title'>最近还是没机构过去调研，公司也不路演？</td><td class='title'>尊敬的投资者，您好！感谢您对公司的关注。公司最近一次机构调研活动于2025年10月29日开展，相关信息已按规定披露；2025年10月29日之后，公司未组织机构调研或对外路演活动。后续如有相关安排，公司将严格依规履行信息披露义务。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>原文</a></td></tr><tr><td>2026-03-07</td><td class='title'>3月3日，广东省投资项目在线审批监管平台显示，深圳引望智能技术有限公司投资建设“东莞引望智能汽车制造项目”,华为加注东莞新能源汽车产业。2025 年底，东莞比亚</td><td class='title'>尊敬的投资者，您好！感谢您对公司的关注。基于契约精神，公司不方便透露具体客户的合作信息，请以公司对外披露的公告内容为准。敬请广大投资者理性投资，注意投资风险。 (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>原文</a></td></tr></tbody></table>
+          </div>
+        </article>
+        
+        <article class="accordion-block interaction-block" id="interaction-1">
+          <button class="accordion-trigger" type="button" data-target="interaction-1-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">晨化股份</span>
+              <span class="meta-badge">300610</span>
+              <span class="meta-badge strong">1问</span>
+              
+            </span>
+            <span class="accordion-summary">请问吴董秘，晨化是个小微公司，抗风险能力差，中东局势突…?尊敬的投资者，您好。尽管国际形势云波诡异，在董事长强有力的领导之下，目…</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="interaction-1-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">AI</span>
+              <div class="inline-summary-text clamp-3">请问吴董秘，晨化是个小微公司，抗风险能力差，中东局势突…?尊敬的投资者，您好。尽管国际形势云波诡异，在董事长强有力的领导之下，目…</div>
+            </div>
+            <table class='detail-table qa-table'><thead><tr><th>日期</th><th>问题</th><th>摘要</th><th>链接</th></tr></thead><tbody><tr><td>2026-03-07</td><td class='title'>请问吴董秘，晨化是个小微公司，抗风险能力差，中东局势突变，石油价格暴涨，会否导致晨化因成本大幅上升而出现巨额亏损破产退市？</td><td class='title'>尊敬的投资者，您好。尽管国际形势云波诡异，在董事长强有力的领导之下，目前公司生产经营依然有条不紊，公司各部门正全力以赴，努力在去年的基础上使新增产能充分释放。面对紧张复杂的国际形势，公司云淡风轻应对中东局势主要基于以下三方面原因：一、公司长期以来一直密切关注国际形势的变化，并积…</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>原文</a></td></tr></tbody></table>
+          </div>
+        </article>
+        
+      </div>
+    </section>
+    
+      
+    <section id="notice" class="panel compact-panel">
+      <div class="section-head">
+        <h2>公告解读</h2>
+        <span class="meta-badge strong">102条</span>
+      </div>
+      <div class="section-summary">已过滤 39 条低价值公告</div>
+      <div class="accordion-list">
+        
+        <article class="accordion-block notice-block" id="notice-0">
+          <button class="accordion-trigger" type="button" data-target="notice-0-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">重大合作/投资项目</span>
+              <span class="meta-badge strong">12条</span>
+            </span>
+            <span class="accordion-summary">默认展示前 5 个公司项</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="notice-0-body">
+            <div class="company-list">
+              
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">安迪苏</span>
+                <span class="meta-badge">600299</span>
+                <span class="meta-badge strong">4条</span>
+              </div>
+              <div class="notice-company-text">中信证券股份有限公司关于蓝星安迪苏股份有限公司调整部分募集资金投资项目相关投资事项的核查意见；安迪苏关于调整部分募集资金投资项目相关投资事项的公告；安迪苏关于拟与中化集团财务有限责任公司签署《金融服务协议》暨关联交易的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000493.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">中研股份</span>
+                <span class="meta-badge">688716</span>
+                <span class="meta-badge strong">2条</span>
+              </div>
+              <div class="notice-company-text">吉林省中研高分子材料股份有限公司变更募集资金投资项目公告；国泰海通证券股份有限公司关于吉林省中研高分子材料股份有限公司变更部分募集资金投资项目的核查意见</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999371.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">华软科技</span>
+                <span class="meta-badge">002453</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于收购山东莱恩光电科技股份有限公司67%股权暨签署《股份转让协议》的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999980.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">文科股份</span>
+                <span class="meta-badge">002775</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于签署佛茂国资协同系列战略合作协议暨关联交易的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999385.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">新光光电</span>
+                <span class="meta-badge">688011</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">哈尔滨新光光电科技股份有限公司关于自愿披露收到中标通知书的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224998798.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            </div>
+            <div class='section-footnote'>另有 3 家公司未展开</div>
+          </div>
+        </article>
+        
+        <article class="accordion-block notice-block" id="notice-1">
+          <button class="accordion-trigger" type="button" data-target="notice-1-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">减持</span>
+              <span class="meta-badge strong">6条</span>
+            </span>
+            <span class="accordion-summary">默认展示前 5 个公司项</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="notice-1-body">
+            <div class="company-list">
+              
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">*ST声迅</span>
+                <span class="meta-badge">003004</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于公司股东减持股份的预披露公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999983.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">中农立华</span>
+                <span class="meta-badge">603970</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">中农立华股东减持股份计划公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000013.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">华胜天成</span>
+                <span class="meta-badge">600410</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">董事及高级管理人员减持股份计划公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000098.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">横店影视</span>
+                <span class="meta-badge">603103</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">横店影视股份有限公司股东减持股份计划公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000027.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">红星发展</span>
+                <span class="meta-badge">600367</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">红星发展董事、高级管理人员减持股份计划公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000051.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            </div>
+            <div class='section-footnote'>另有 1 家公司未展开</div>
+          </div>
+        </article>
+        
+        <article class="accordion-block notice-block" id="notice-2">
+          <button class="accordion-trigger" type="button" data-target="notice-2-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">资本运作-特定对象发行</span>
+              <span class="meta-badge strong">46条</span>
+            </span>
+            <span class="accordion-summary">资本运作按公司聚合</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="notice-2-body">
+            <div class="company-list">
+              
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">大连圣亚</span>
+                <span class="meta-badge">600593</span>
+                <span class="meta-badge strong">10条</span>
+              </div>
+              <div class="notice-company-text">关于向特定对象发行A股股票申请获得上海证券交易所受理的公告；大连圣亚旅游控股股份有限公司2025年度向特定对象发行股票证券募集说明书（申报稿）；公司2025年度向特定对象发行A股股票预案（二次修订稿）</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000430.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">合盛硅业</span>
+                <span class="meta-badge">603260</span>
+                <span class="meta-badge strong">8条</span>
+              </div>
+              <div class="notice-company-text">合盛硅业关于暂不召开股东会审议2026年度向特定对象发行A股股票相关事项的公告；合盛硅业关于向特定对象发行A股股票后被摊薄即期回报的填补措施及相关主体承诺的公告；合盛硅业关于向特定对象发行A股股票不存在直接或通过利益相关方向参与认购的投资者提供财务资助或补偿的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999792.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">博力威</span>
+                <span class="meta-badge">688345</span>
+                <span class="meta-badge strong">7条</span>
+              </div>
+              <div class="notice-company-text">广东博力威科技股份有限公司关于向特定对象发行股票摊薄即期回报对公司主要财务指标的影响与填补措施及相关主体承诺（…；广东博力威科技股份有限公司2025年度向特定对象发行A股股票方案的论证分析报告（修订稿）；广东博力威科技股份有限公司2025年度向特定对象发行A股股票募集资金使用的可行性分析报告（修订稿）</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000144.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">诚邦股份</span>
+                <span class="meta-badge">603316</span>
+                <span class="meta-badge strong">7条</span>
+              </div>
+              <div class="notice-company-text">诚邦生态环境股份有限公司关于提请股东会授权董事会办理2026年度以简易程序向特定对象发行股票相关事宜的公告；诚邦生态环境股份有限公司2025年度以简易程序向特定对象发行股票预案（修订稿）；诚邦生态环境股份有限公司关于以简易程序向特定对象发行股票预案修订说明的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000565.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">德明利</span>
+                <span class="meta-badge">001309</span>
+                <span class="meta-badge strong">6条</span>
+              </div>
+              <div class="notice-company-text">深圳市德明利技术股份有限公司2025年度向特定对象发行股票预案（修订稿）；深圳市德明利技术股份有限公司2025年度向特定对象发行股票募集资金使用可行性分析报告（修订稿）；深圳市德明利技术股份有限公司2025年度向特定对象发行股票方案的论证分析报告（修订稿）</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999961.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            </div>
+            <div class='section-footnote'>另有 7 家公司未展开</div>
+          </div>
+        </article>
+        
+        <article class="accordion-block notice-block" id="notice-3">
+          <button class="accordion-trigger" type="button" data-target="notice-3-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">资本运作-股权激励</span>
+              <span class="meta-badge strong">28条</span>
+            </span>
+            <span class="accordion-summary">资本运作按公司聚合</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="notice-3-body">
+            <div class="company-list">
+              
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">力芯微</span>
+                <span class="meta-badge">688601</span>
+                <span class="meta-badge strong">4条</span>
+              </div>
+              <div class="notice-company-text">2026年限制性股票激励计划激励对象名单；2026年限制性股票激励计划（草案）；2026年限制性股票激励计划实施考核管理办法</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000046.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">雅戈尔</span>
+                <span class="meta-badge">600177</span>
+                <span class="meta-badge strong">4条</span>
+              </div>
+              <div class="notice-company-text">雅戈尔时尚股份有限公司2026年限制性股票激励计划实施考核管理办法；雅戈尔时尚股份有限公司2026年限制性股票激励计划激励对象名单；雅戈尔时尚股份有限公司2026年限制性股票激励计划</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000342.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">恒而达</span>
+                <span class="meta-badge">300946</span>
+                <span class="meta-badge strong">3条</span>
+              </div>
+              <div class="notice-company-text">关于公司第一期股权激励计划内幕信息知情人买卖公司股票的自查报告；关于向公司第一期股权激励计划激励对象首次授予限制性股票的公告；福建恒而达新材料股份有限公司第一期股权激励计划首次授予激励对象名单（授予日）</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999612.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">溢多利</span>
+                <span class="meta-badge">300381</span>
+                <span class="meta-badge strong">3条</span>
+              </div>
+              <div class="notice-company-text">2025年限制性股票激励计划预留授予激励对象名单；关于向2025年限制性股票激励计划激励对象授予预留限制性股票的公告；关于调整公司2025年限制性股票激励计划授予价格的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999608.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">首钢股份</span>
+                <span class="meta-badge">000959</span>
+                <span class="meta-badge strong">3条</span>
+              </div>
+              <div class="notice-company-text">北京首钢股份有限公司2025年股票期权与限制性股票激励计划激励对象名单（截至授予日）；北京首钢股份有限公司关于向激励对象授予股票期权与限制性股票的公告；北京首钢股份有限公司关于调整2025年股票期权与限制性股票激励计划激励对象名单及授予权益数量的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000093.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            </div>
+            <div class='section-footnote'>另有 11 家公司未展开</div>
+          </div>
+        </article>
+        
+        <article class="accordion-block notice-block regulatory-warning" id="notice-4">
+          <button class="accordion-trigger" type="button" data-target="notice-4-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">对问询回复</span>
+              <span class="meta-badge strong">10条</span>
+            </span>
+            <span class="accordion-summary">监管类优先关注</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="notice-4-body">
+            <div class="company-list">
+              
+            <div class="notice-company-row regulatory">
+              <div class="notice-company-main">
+                <span class="accordion-title">电投能源</span>
+                <span class="meta-badge">002128</span>
+                <span class="meta-badge strong">4条</span>
+              </div>
+              <div class="notice-company-text">中信证券股份有限公司关于深圳证券交易所《关于内蒙古电投能源股份有限公司发行股份及支付现金购买资产并募集配套资金…；北京天健兴业资产评估有限公司关于深圳证券交易所《关于内蒙古电投能源股份有限公司发行股份及支付现金购买资产并募集…；关于发行股份及支付现金购买资产并募集配套资金暨关联交易的审核问询函回复的提示性公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999138.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row regulatory">
+              <div class="notice-company-main">
+                <span class="accordion-title">均普智能</span>
+                <span class="meta-badge">688306</span>
+                <span class="meta-badge strong">2条</span>
+              </div>
+              <div class="notice-company-text">宁波均普智能制造股份有限公司关于向特定对象发行股票申请文件的审核问询函回复的提示性公告；关于宁波均普智能制造股份有限公司向特定对象发行股票申请文件审核问询函的回复(豁免版）</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1225000157.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row regulatory">
+              <div class="notice-company-main">
+                <span class="accordion-title">沙河股份</span>
+                <span class="meta-badge">000014</span>
+                <span class="meta-badge strong">2条</span>
+              </div>
+              <div class="notice-company-text">金证（上海）资产评估有限公司关于深圳证券交易所《关于对沙河实业股份有限公司重大资产购买暨关联交易的问询函》之资…；沙河实业股份有限公司关于深圳证券交易所《关于对沙河实业股份有限公司重大资产购买暨关联交易的问询函》的回复公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999499.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row regulatory">
+              <div class="notice-company-main">
+                <span class="accordion-title">长安汽车</span>
+                <span class="meta-badge">000625</span>
+                <span class="meta-badge strong">2条</span>
+              </div>
+              <div class="notice-company-text">立信会计师事务所(特殊普通合伙)关于公司申请向特定对象发行股票的审核问询函的回复(豁免版)；关于公司2025年度向特定对象发行股票的审核问询函回复及募集说明书等申请文件更新的提示性公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-07/1224999572.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            </div>
+            
+          </div>
+        </article>
+        
+      </div>
+    </section>
+    
+    </section>
+  </main>
+
+  <script>
+    function setAccordionState(trigger, expanded) {
+      const targetId = trigger.getAttribute('data-target');
+      const body = document.getElementById(targetId);
+      const icon = trigger.querySelector('.accordion-icon');
+      if (!body) return;
+      trigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      body.classList.toggle('collapsed', !expanded);
+      body.classList.toggle('open', expanded);
+      if (icon) icon.classList.toggle('is-open', expanded);
+    }
+
+    function bindAccordions() {
+      document.querySelectorAll('.accordion-trigger').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          const expanded = trigger.getAttribute('aria-expanded') === 'true';
+          setAccordionState(trigger, !expanded);
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      bindAccordions();
+      document.querySelectorAll('.accordion-trigger').forEach((trigger) => {
+        setAccordionState(trigger, trigger.getAttribute('aria-expanded') === 'true');
+      });
+    });
+
+  </script>
+</body>
+</html>

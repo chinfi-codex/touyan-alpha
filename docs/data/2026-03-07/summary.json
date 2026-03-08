@@ -1,0 +1,18 @@
+{
+  "date": "2026-03-07",
+  "counts": {
+    "clippings": 0,
+    "cninfo_fulltext": 1133,
+    "cninfo_relation": 0,
+    "p5w_interaction": 5,
+    "tavily_news": 0,
+    "tushare_forecast": 1,
+    "zsxq": 0
+  },
+  "counts_by_subcategory": {},
+  "excluded_counts_by_rule": {},
+  "errors": {},
+  "tavily_news": "skipped",
+  "zsxq": "skipped",
+  "clippings": "skipped"
+}
