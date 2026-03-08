@@ -6,6 +6,11 @@ on:
       date:
         description: 'YYYY-MM-DD (optional)'
         required: false
+      enable_get_clue:
+        description: 'Enable get clue step'
+        required: false
+        type: boolean
+        default: false
   schedule:
     # 每天 21:00 CST (13:00 UTC) 执行一次
     - cron: '0 13 * * *'
@@ -53,6 +58,11 @@ jobs:
       - name: Collect data
         run: |
           python collect.py --date "${{ steps.meta.outputs.date }}"
+
+      - name: Get clue (manual opt-in only)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.enable_get_clue == true }}
+        run: |
+          python scripts/gen_clues_json.py --date "${{ steps.meta.outputs.date }}"
 
       - name: Render report
         run: |
