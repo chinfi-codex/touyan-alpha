@@ -43,6 +43,8 @@ PAYLOAD_TEMPLATE = {
     'include_raw_content': False,
 }
 
+SOURCE = "tavily_news"
+
 
 def clean_text(s: str) -> str:
     """严格复制run_monitor.py"""
@@ -310,6 +312,26 @@ def save_news_data(date: str, output_dir: Path) -> bool:
     except Exception as e:
         print(f"保存新闻动态数据失败: {e}")
         return False
+
+
+def collect(date: str, include_next_day: bool = False):
+    """Adapter-compatible entrypoint used by collect.py."""
+    del include_next_day
+    result = collect_all_news()
+    if result.get("error"):
+        return {
+            "date": date,
+            "source": SOURCE,
+            "count": 0,
+            "items": [],
+            "error": str(result["error"]),
+        }
+    return {
+        "date": date,
+        "source": SOURCE,
+        "count": 0,
+        "items": [],
+    }
 
 
 if __name__ == "__main__":
