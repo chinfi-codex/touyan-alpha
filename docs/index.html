@@ -3,86 +3,60 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Touyan Alpha Dashboard</title>
-  <meta name="description" content="Touyan Alpha 每日投研汇总与 GitHub Action 状态看板">
+  <title>Touyan Alpha 每日汇总</title>
+  <meta name="description" content="Touyan Alpha 每日汇总首页，查看最近更新记录与日报入口">
   <style>
-    :root{--bg:#081018;--panel:#0e1a26;--panel2:#122232;--text:#e9eef4;--muted:#8ca1b3;--line:rgba(143,173,196,.16);--accent:#62d2ff;--mint:#71efc6;--ok:#50d389;--bad:#ff7171;--warn:#f3c55d;--run:#65b6ff;--shadow:0 20px 60px rgba(0,0,0,.35);--radius:24px;--sans:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;--mono:Consolas,"SFMono-Regular",monospace}
-    *{box-sizing:border-box} html{color-scheme:dark} body{margin:0;font-family:var(--sans);color:var(--text);background:radial-gradient(circle at top left,rgba(98,210,255,.14),transparent 28%),radial-gradient(circle at top right,rgba(113,239,198,.12),transparent 22%),linear-gradient(180deg,#061019,#081018 55%,#09121c)} body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(180deg,rgba(0,0,0,.45),transparent)} a{color:inherit;text-decoration:none}
-    .shell{width:min(calc(100vw - 32px),1240px);margin:0 auto;padding:32px 0 56px;position:relative;z-index:1} .hero,.panel{border:1px solid var(--line);box-shadow:var(--shadow)} .hero{overflow:hidden;position:relative;padding:28px;border-radius:28px;background:linear-gradient(135deg,rgba(14,35,52,.94),rgba(7,18,28,.96))} .hero::after{content:"";position:absolute;width:280px;height:280px;right:-80px;top:-120px;border-radius:50%;background:radial-gradient(circle,rgba(98,210,255,.22),transparent 68%)}
-    .eyebrow{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mint);background:rgba(113,239,198,.08);border:1px solid rgba(113,239,198,.18)} .hero-grid{margin-top:18px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(320px,.9fr);gap:20px;align-items:end} h1{margin:0;font-size:clamp(34px,5vw,58px);line-height:.96;letter-spacing:-.04em;max-width:8ch} .copy{margin-top:16px;max-width:54ch;color:#b7c5d2;line-height:1.7;font-size:15px}
-    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px} .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:999px;font-weight:700;transition:transform .16s ease,border-color .16s ease,background .16s ease} .btn:hover{transform:translateY(-1px)} .btn-primary{color:#04121d;background:linear-gradient(135deg,var(--accent),#a2e7ff)} .btn-secondary{background:rgba(255,255,255,.04);border:1px solid rgba(143,173,196,.18)}
-    .hero-side,.stack,.day-list{display:grid;gap:12px} .signal,.panel{background:linear-gradient(180deg,rgba(11,27,40,.92),rgba(9,20,30,.94))} .signal{padding:18px;border-radius:20px;border:1px solid rgba(143,173,196,.14)} .label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)} .value{margin-top:10px;font-size:28px;font-weight:700;letter-spacing:-.03em} .meta{margin-top:10px;font-size:13px;line-height:1.5;color:var(--muted)}
-    .layout{margin-top:24px;display:grid;gap:20px} .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px} .panel{overflow:hidden;position:relative;border-radius:24px} .panel-head{display:flex;justify-content:space-between;gap:16px;padding:22px 22px 0} .panel-body{padding:18px 22px 22px} .panel h2{margin:0;font-size:18px;letter-spacing:-.02em} .sub{margin-top:6px;color:var(--muted);font-size:13px;line-height:1.55}
-    .metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px} .metric,.row,.day-row{padding:14px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(143,173,196,.1)} .metric-value{margin-top:10px;font-size:28px;font-weight:700;letter-spacing:-.04em} .foot{margin-top:8px;font-size:12px;color:var(--muted);line-height:1.5}
-    .row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center} .source-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(143,173,196,.08)} .mono{font-family:var(--mono)} .muted{color:var(--muted)} .strong{font-weight:600}
-    .badge{display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap} .success{color:#dcfff0;background:rgba(80,211,137,.16);border:1px solid rgba(80,211,137,.24)} .failure{color:#ffe4e4;background:rgba(255,113,113,.16);border:1px solid rgba(255,113,113,.24)} .warning{color:#fff2cb;background:rgba(243,197,93,.16);border:1px solid rgba(243,197,93,.24)} .running{color:#e1f0ff;background:rgba(101,182,255,.16);border:1px solid rgba(101,182,255,.24)} .neutral{color:#d7e2eb;background:rgba(143,173,196,.12);border:1px solid rgba(143,173,196,.2)}
-    .day-row{display:grid;grid-template-columns:104px minmax(0,1fr) auto;gap:12px;align-items:center} .day-state{position:relative;padding-left:18px;font-size:13px;color:#c7d3dd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .day-state::before{content:"";position:absolute;left:0;top:50%;width:9px;height:9px;border-radius:50%;transform:translateY(-50%);background:var(--muted)} .day-state.success::before{background:var(--ok)} .day-state.failure::before{background:var(--bad)} .day-state.warning::before{background:var(--warn)} .day-state.running::before{background:var(--run)}
-    .table-wrap{overflow:auto;border-radius:18px;border:1px solid rgba(143,173,196,.1);background:rgba(2,9,14,.26)} table{width:100%;border-collapse:collapse;min-width:760px} th,td{text-align:left;padding:14px 16px;border-bottom:1px solid rgba(143,173,196,.08);vertical-align:middle} th{color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;background:rgba(255,255,255,.02)} tr:last-child td{border-bottom:none} .link{color:var(--accent);font-weight:600} .hidden{display:none!important} .footer-note{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.6}
-    @media (max-width:1100px){.hero-grid,.grid-3,.metrics{grid-template-columns:1fr}} @media (max-width:720px){.shell{width:min(calc(100vw - 20px),1240px);padding:16px 0 28px} .hero,.panel-head,.panel-body{padding-left:16px;padding-right:16px} .hero{padding-top:20px;padding-bottom:20px} .panel-head{padding-top:18px} .panel-body{padding-bottom:18px} .row,.day-row{grid-template-columns:1fr} h1{max-width:none}}
+    :root{--bg:#eef1f5;--panel:#ffffff;--panel-soft:#f7f8fb;--line:#dde3eb;--line-strong:#cdd5df;--text:#161c24;--muted:#667085;--muted-2:#8a94a6;--accent:#ff6a00;--accent-soft:#fff2e8;--shadow:0 8px 24px rgba(15,23,42,.05);--warn-bg:#fff8ec;--warn-line:#ffd8a8;--ok:#2f9e61;--bad:#d94841;--run:#2b6fd6;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:Consolas,"SFMono-Regular",monospace}
+    *{box-sizing:border-box} html{scroll-behavior:smooth;scroll-padding-top:68px} body{margin:0;background:linear-gradient(180deg,#f7f8fa 0%,var(--bg) 220px);color:var(--text);font-family:var(--sans)} a{color:#0b63ce;text-decoration:none} a:hover{text-decoration:underline} .wrap{max-width:1440px;margin:0 auto;padding:16px 16px 32px}
+    .page-header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:4px 0 10px;border-bottom:1px solid rgba(205,213,223,.75)} .title-wrap{display:grid;gap:6px} .kicker{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em} .kicker::before{content:'';width:8px;height:8px;border-radius:999px;background:var(--accent);box-shadow:0 0 0 4px rgba(255,106,0,.12)} h1{margin:0;font-size:24px;line-height:1.1} .subtitle{color:var(--muted);font-size:13px;line-height:1.6;max-width:58ch}
+    .meta-row{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px} .meta-badge{display:inline-flex;align-items:center;gap:6px;min-height:24px;padding:0 10px;border:1px solid var(--line);border-radius:999px;background:var(--panel-soft);color:var(--muted);font-size:12px;white-space:nowrap} .meta-badge.strong{background:var(--accent-soft);border-color:#ffd0b2;color:#ad4d00;font-weight:600}
+    .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px} .action-link{display:inline-flex;align-items:center;height:36px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.92);color:var(--muted);font-size:13px;font-weight:600;white-space:nowrap} .action-link:hover{border-color:#ffc59b;color:#a74b00;background:#fff7f1;text-decoration:none}
+    .content{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px} .panel{background:var(--panel);border:1px solid rgba(221,227,235,.95);border-radius:12px;box-shadow:var(--shadow);padding:16px} .section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px} h2{margin:0;font-size:17px;line-height:1.2} .section-summary{margin-bottom:10px;color:var(--muted);font-size:12px;line-height:1.45}
+    .status-list{display:grid;gap:10px} .status-row{display:grid;grid-template-columns:104px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--panel-soft)} .status-date{font-family:var(--mono);font-size:13px;color:var(--muted)} .status-main{display:grid;gap:4px;min-width:0} .status-title{font-size:14px;font-weight:700;color:var(--text)} .status-note{font-size:12px;color:var(--muted);line-height:1.5}
+    .status-pill{display:inline-flex;align-items:center;justify-content:center;min-height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap;border:1px solid var(--line)} .status-pill.success{background:#edf9f1;border-color:#c8ebd4;color:var(--ok)} .status-pill.failure{background:#fff1f0;border-color:#ffc9c5;color:var(--bad)} .status-pill.warning{background:var(--warn-bg);border-color:var(--warn-line);color:#ad6800} .status-pill.running{background:#eef4ff;border-color:#cfe0ff;color:var(--run)} .status-pill.neutral{background:var(--panel-soft);border-color:var(--line);color:var(--muted)}
+    .table-wrap{overflow:auto;border-radius:10px} table{width:100%;border-collapse:collapse;min-width:760px;font-size:13px} thead th{background:#f7f8fb;color:var(--muted);font-size:12px;font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line-strong)} td{padding:9px 10px;border-bottom:1px solid #edf1f5;vertical-align:top;line-height:1.5} tr:last-child td{border-bottom:0} tbody tr:hover td{background:#fbfcfd} .mono{font-family:var(--mono)} .link-strong{font-weight:600} .footer-note{margin-top:8px;color:var(--muted-2);font-size:12px}
+    .hidden{display:none!important} @media (max-width:768px){.wrap{padding:14px 12px 28px} .page-header{align-items:flex-start;flex-direction:column} .meta-row{justify-content:flex-start} h1{font-size:22px} .panel{padding:14px} .status-row{grid-template-columns:1fr} table{min-width:620px}}
   </style>
 </head>
 <body>
-  <main class="shell">
-    <section class="hero">
-      <div class="eyebrow">Touyan Alpha / Daily Intelligence Monitor</div>
-      <div class="hero-grid">
+  <main class="wrap">
+    <header class="page-header">
+      <div class="title-wrap">
+        <span class="kicker">Alpha Daily</span>
         <div>
-          <h1>每日投研汇总 Dashboard</h1>
-          <div class="copy">聚合最近日报、数据覆盖情况和 GitHub Action 运行状态。首页保持纯静态发布，运行状态通过公开 GitHub API 实时刷新，API 不可用时自动降级。</div>
-          <div class="actions">
-            <a id="latest-report-button" class="btn btn-primary" href="./">打开最新日报</a>
-            <a class="btn btn-secondary" href="https://github.com/chinfi-codex/touyan-alpha/actions/workflows/daily-update-pages.yml" target="_blank" rel="noreferrer">查看 GitHub Actions</a>
-          </div>
+          <h1>Touyan Alpha 每日汇总</h1>
+          <div class="subtitle">先看最近更新，再进入对应日报。首页保留最近 7 天更新记录和最近日报列表，帮助你快速判断今天是否有新内容。</div>
         </div>
-        <div class="hero-side">
-          <div class="signal">
-            <div class="label">最新日报</div>
-            <div id="hero-latest-date" class="value mono">--</div>
-            <div id="hero-latest-meta" class="meta">等待首页数据加载</div>
-          </div>
-          <div class="signal">
-            <div class="label">最近一次运行</div>
-            <div id="hero-run-status" class="value">加载中</div>
-            <div id="hero-run-meta" class="meta">正在获取 GitHub Actions 运行状态</div>
-          </div>
+        <div class="actions">
+          <a id="latest-report-button" class="action-link" href="./">打开最新日报</a>
+          <a class="action-link" href="https://github.com/chinfi-codex/touyan-alpha/actions/workflows/daily-update-pages.yml" target="_blank" rel="noreferrer">查看更新详情</a>
         </div>
       </div>
-    </section>
-    <section class="layout">
-      <div class="grid-3">
-        <article class="panel">
-          <div class="panel-head"><div><h2>数据覆盖</h2><div class="sub">基于站内 manifest 统计最近日报数量和最新一天的来源覆盖情况。</div></div></div>
-          <div class="panel-body">
-            <div class="metrics">
-              <div class="metric"><div class="label">最近 7 天日报</div><div id="metric-days-7" class="metric-value mono">0</div><div class="foot">按 manifest 中已有日期计数</div></div>
-              <div class="metric"><div class="label">最近 30 天日报</div><div id="metric-days-30" class="metric-value mono">0</div><div class="foot">首页默认展示最近 30 天</div></div>
-              <div class="metric"><div class="label">最新日报总条数</div><div id="metric-latest-total" class="metric-value mono">0</div><div class="foot">按最新日报各源 count 合计</div></div>
-            </div>
-            <div id="source-list" class="stack"></div>
-          </div>
-        </article>
-        <article class="panel">
-          <div class="panel-head"><div><h2>运行状态</h2><div class="sub">读取公开 GitHub Actions API，按上海日期归档最近运行情况。</div></div></div>
-          <div class="panel-body">
-            <div id="status-list" class="stack"></div>
-            <div id="status-fallback" class="footer-note hidden">实时状态暂不可用。首页仍可浏览最近日报，详细运行记录可在 <a class="link" href="https://github.com/chinfi-codex/touyan-alpha/actions/workflows/daily-update-pages.yml" target="_blank" rel="noreferrer">GitHub Actions</a> 查看。</div>
-          </div>
-        </article>
-        <article class="panel">
-          <div class="panel-head"><div><h2>近 7 天趋势</h2><div class="sub">每天只取当天最新一条 workflow 运行，展示 success、failure、running 等状态。</div></div></div>
-          <div class="panel-body"><div id="day-list" class="day-list"></div></div>
-        </article>
+      <div class="meta-row">
+        <span class="meta-badge strong">最新日报 <span id="hero-latest-date" class="mono">--</span></span>
+        <span class="meta-badge">最近 7 天 <span id="meta-days-7" class="mono">0</span> 期</span>
+        <span class="meta-badge">最近 30 天 <span id="meta-days-30" class="mono">0</span> 期</span>
+        <span class="meta-badge">更新于 <span id="footer-updated-at" class="mono">--</span> UTC</span>
       </div>
+    </header>
+
+    <section class="content">
       <article class="panel">
-        <div class="panel-head"><div><h2>最近日报列表</h2><div class="sub">展示最近 30 天日报入口、主要数据源条数和错误数。</div></div></div>
-        <div class="panel-body">
+        <div class="section-head"><h2>近 7 天更新记录</h2></div>
+        <div class="section-summary">按自然日展示最近更新结果。你可以直接查看当天记录，判断是否已经更新完成。</div>
+        <div id="status-list" class="status-list"></div>
+        <div id="status-fallback" class="footer-note hidden">最近更新记录暂时无法加载。你仍可以查看日报列表，或前往详情页查看当天情况。</div>
+      </article>
+      <article class="panel">
+        <div class="section-head"><h2>日报列表</h2></div>
+        <div class="section-summary">保留最近 30 天日报入口，方便从日期快速回看。主要内容一栏帮助你大致判断当日重点。</div>
+        <div>
           <div class="table-wrap">
             <table>
-              <thead><tr><th>日期</th><th>日报入口</th><th>来源条数</th><th>错误数</th><th>主要来源</th></tr></thead>
+              <thead><tr><th>日期</th><th>日报入口</th><th>内容条数</th><th>提醒</th><th>主要内容</th></tr></thead>
               <tbody id="reports-table-body"></tbody>
             </table>
           </div>
-          <div class="footer-note">更新时间 <span id="footer-updated-at" class="mono">--</span> UTC。实时运行状态与站内 manifest 独立获取，互不阻塞。</div>
         </div>
       </article>
     </section>
@@ -90,9 +64,9 @@
   <script>
     const ACTIONS_URL = "https://github.com/chinfi-codex/touyan-alpha/actions/workflows/daily-update-pages.yml";
     const RUNS_API_URL = "https://api.github.com/repos/chinfi-codex/touyan-alpha/actions/workflows/daily-update-pages.yml/runs?per_page=14";
-    const INITIAL_MANIFEST = {"updated_at":"2026-03-08T01:58:49.347804+00:00","days":{"2026-02-28":{"slot":"2200","counts":{"tushare_forecast":4},"errors":{},"page":"2026-02-28/index-2200.html"},"2026-03-01":{"slot":"2200","counts":{"cninfo_fulltext":2,"cninfo_relation":6,"p5w_interaction":22,"tushare_forecast":0,"tavily_news":45},"errors":{},"page":"2026-03-01/index-2200.html"},"2026-03-02":{"counts":{"cninfo_fulltext":2006,"cninfo_relation":38,"p5w_interaction":0,"tushare_forecast":0},"errors":{},"page":"2026-03-02/index.html"},"2026-03-03":{"counts":{"cninfo_fulltext":2278,"cninfo_relation":25,"p5w_interaction":52,"tushare_forecast":1},"errors":{},"page":"2026-03-03/index.html"},"2026-03-04":{"counts":{"cninfo_fulltext":1622,"cninfo_relation":23,"p5w_interaction":100,"tushare_forecast":3},"errors":{},"page":"2026-03-04/index.html"},"2026-03-05":{"counts":{"cninfo_fulltext":1609,"cninfo_relation":24,"p5w_interaction":100,"tushare_forecast":2},"errors":{},"page":"2026-03-05/index.html"},"2026-03-06":{"counts":{"cninfo_fulltext":2145,"cninfo_relation":26,"p5w_interaction":100,"tushare_forecast":2},"errors":{},"page":"2026-03-06/index.html"},"2026-03-07":{"counts":{"clippings":0,"cninfo_fulltext":1133,"cninfo_relation":0,"p5w_interaction":5,"tavily_news":0,"tushare_forecast":1,"zsxq":0},"errors":{},"page":"2026-03-07/index.html"},"2026-03-08":{"counts":{"cninfo_fulltext":0,"cninfo_relation":0,"p5w_interaction":0,"tushare_forecast":0},"errors":{},"page":"2026-03-08/index.html"}}};
+    const INITIAL_MANIFEST = {"updated_at":"2026-03-08T02:12:48.728340+00:00","days":{"2026-02-28":{"slot":"2200","counts":{"tushare_forecast":4},"errors":{},"page":"2026-02-28/index-2200.html"},"2026-03-01":{"slot":"2200","counts":{"cninfo_fulltext":2,"cninfo_relation":6,"p5w_interaction":22,"tushare_forecast":0,"tavily_news":45},"errors":{},"page":"2026-03-01/index-2200.html"},"2026-03-02":{"counts":{"cninfo_fulltext":2006,"cninfo_relation":38,"p5w_interaction":0,"tushare_forecast":0},"errors":{},"page":"2026-03-02/index.html"},"2026-03-03":{"counts":{"cninfo_fulltext":2278,"cninfo_relation":25,"p5w_interaction":52,"tushare_forecast":1},"errors":{},"page":"2026-03-03/index.html"},"2026-03-04":{"counts":{"cninfo_fulltext":1622,"cninfo_relation":23,"p5w_interaction":100,"tushare_forecast":3},"errors":{},"page":"2026-03-04/index.html"},"2026-03-05":{"counts":{"cninfo_fulltext":1609,"cninfo_relation":24,"p5w_interaction":100,"tushare_forecast":2},"errors":{},"page":"2026-03-05/index.html"},"2026-03-06":{"counts":{"cninfo_fulltext":2145,"cninfo_relation":26,"p5w_interaction":100,"tushare_forecast":2},"errors":{},"page":"2026-03-06/index.html"},"2026-03-07":{"counts":{"clippings":0,"cninfo_fulltext":1133,"cninfo_relation":0,"p5w_interaction":5,"tavily_news":0,"tushare_forecast":1,"zsxq":0},"errors":{},"page":"2026-03-07/index.html"},"2026-03-08":{"counts":{"cninfo_fulltext":0,"cninfo_relation":0,"p5w_interaction":0,"tushare_forecast":0},"errors":{},"page":"2026-03-08/index.html"}}};
     const INITIAL_ENTRIES = [{"date":"2026-03-08","page":"2026-03-08/index.html","counts":{"cninfo_fulltext":0,"cninfo_relation":0,"p5w_interaction":0,"tushare_forecast":0},"errors":{},"count_total":0,"error_count":0},{"date":"2026-03-07","page":"2026-03-07/index.html","counts":{"clippings":0,"cninfo_fulltext":1133,"cninfo_relation":0,"p5w_interaction":5,"tavily_news":0,"tushare_forecast":1,"zsxq":0},"errors":{},"count_total":1139,"error_count":0},{"date":"2026-03-06","page":"2026-03-06/index.html","counts":{"cninfo_fulltext":2145,"cninfo_relation":26,"p5w_interaction":100,"tushare_forecast":2},"errors":{},"count_total":2273,"error_count":0},{"date":"2026-03-05","page":"2026-03-05/index.html","counts":{"cninfo_fulltext":1609,"cninfo_relation":24,"p5w_interaction":100,"tushare_forecast":2},"errors":{},"count_total":1735,"error_count":0},{"date":"2026-03-04","page":"2026-03-04/index.html","counts":{"cninfo_fulltext":1622,"cninfo_relation":23,"p5w_interaction":100,"tushare_forecast":3},"errors":{},"count_total":1748,"error_count":0},{"date":"2026-03-03","page":"2026-03-03/index.html","counts":{"cninfo_fulltext":2278,"cninfo_relation":25,"p5w_interaction":52,"tushare_forecast":1},"errors":{},"count_total":2356,"error_count":0},{"date":"2026-03-02","page":"2026-03-02/index.html","counts":{"cninfo_fulltext":2006,"cninfo_relation":38,"p5w_interaction":0,"tushare_forecast":0},"errors":{},"count_total":2044,"error_count":0},{"date":"2026-03-01","page":"2026-03-01/index-2200.html","counts":{"cninfo_fulltext":2,"cninfo_relation":6,"p5w_interaction":22,"tushare_forecast":0,"tavily_news":45},"errors":{},"count_total":75,"error_count":0},{"date":"2026-02-28","page":"2026-02-28/index-2200.html","counts":{"tushare_forecast":4},"errors":{},"count_total":4,"error_count":0}];
-    const INITIAL_SUMMARY = {"latest_date":"2026-03-08","latest_page":"2026-03-08/index.html","latest_counts":{"cninfo_fulltext":0,"cninfo_relation":0,"p5w_interaction":0,"tushare_forecast":0},"days_7":7,"days_30":9,"last_updated":"2026-03-08T01:58:49.347804+00:00"};
+    const INITIAL_SUMMARY = {"latest_date":"2026-03-08","latest_page":"2026-03-08/index.html","latest_counts":{"cninfo_fulltext":0,"cninfo_relation":0,"p5w_interaction":0,"tushare_forecast":0},"days_7":7,"days_30":9,"last_updated":"2026-03-08T02:12:48.728340+00:00"};
     const SOURCE_LABELS = {
       cninfo_fulltext: "公告全文",
       cninfo_relation: "机构调研",
@@ -209,36 +183,19 @@
 
     function renderManifest() {
       const latest = state.entries[0] || null;
-      const latestCounts = state.summary.latest_counts || {};
-      const latestTotal = countTotal(latestCounts);
       document.getElementById("hero-latest-date").textContent = state.summary.latest_date || "--";
-      document.getElementById("hero-latest-meta").textContent = latest
-        ? `最新日报共 ${fmtNum(latestTotal)} 条，${topSources(latestCounts, 2).join(" / ") || "暂无数据"}`
-        : "暂无已发布日报";
       document.getElementById("latest-report-button").setAttribute("href", latest ? `./${latest.page}` : "./");
-      document.getElementById("metric-days-7").textContent = fmtNum(state.summary.days_7 || 0);
-      document.getElementById("metric-days-30").textContent = fmtNum(state.summary.days_30 || 0);
-      document.getElementById("metric-latest-total").textContent = fmtNum(latestTotal);
+      document.getElementById("meta-days-7").textContent = fmtNum(state.summary.days_7 || 0);
+      document.getElementById("meta-days-30").textContent = fmtNum(state.summary.days_30 || 0);
       document.getElementById("footer-updated-at").textContent = fmtUtc(state.summary.last_updated || state.manifest.updated_at);
-
-      const sourceList = document.getElementById("source-list");
-      const sourceEntries = Object.entries(latestCounts).sort((a, b) => (Number(b[1]) || 0) - (Number(a[1]) || 0));
-      sourceList.innerHTML = sourceEntries.length
-        ? sourceEntries.map(([key, value]) => `
-            <div class="source-row">
-              <div><div class="strong">${esc(sourceLabel(key))}</div><div class="muted">最新日报来源条数</div></div>
-              <div class="mono strong">${fmtNum(value)}</div>
-            </div>
-          `).join("")
-        : `<div class="source-row"><div class="muted">最新日报暂无来源计数</div><div class="mono strong">0</div></div>`;
 
       document.getElementById("reports-table-body").innerHTML = state.entries.length
         ? state.entries.map((entry) => `
             <tr>
               <td class="mono strong">${esc(entry.date)}</td>
-              <td><a class="link" href="./${esc(entry.page)}">打开日报</a></td>
+              <td><a class="link-strong" href="./${esc(entry.page)}">打开日报</a></td>
               <td class="mono">${fmtNum(entry.count_total)}</td>
-              <td class="mono">${fmtNum(entry.error_count)}</td>
+              <td class="mono">${entry.error_count ? `发现 ${fmtNum(entry.error_count)} 条提醒` : "正常"}</td>
               <td>${esc(topSources(entry.counts).join(" / ") || "暂无")}</td>
             </tr>
           `).join("")
@@ -246,85 +203,38 @@
     }
 
     function renderRunFallback() {
-      document.getElementById("hero-run-status").textContent = "实时状态不可用";
-      document.getElementById("hero-run-meta").textContent = "GitHub API 获取失败，已降级为仅展示日报数据";
       document.getElementById("status-fallback").classList.remove("hidden");
       document.getElementById("status-list").innerHTML = `
-        <div class="row">
-          <span class="${badgeClass("neutral")}">不可用</span>
-          <div><div class="strong">GitHub Actions API 暂时不可达</div><div class="muted">不影响首页日报浏览，可直接打开 Actions 页面查看运行详情。</div></div>
-          <a class="link" href="${ACTIONS_URL}" target="_blank" rel="noreferrer">查看</a>
-        </div>
-      `;
-      document.getElementById("day-list").innerHTML = `
-        <div class="day-row">
-          <div class="mono">--</div>
-          <div class="day-state">暂无实时运行趋势</div>
-          <a class="link" href="${ACTIONS_URL}" target="_blank" rel="noreferrer">打开</a>
+        <div class="status-row">
+          <div class="status-date mono">--</div>
+          <div class="status-main">
+            <div class="status-title">最近更新记录暂时不可用</div>
+            <div class="status-note">不影响浏览日报列表，你也可以打开详情页查看更新情况。</div>
+          </div>
+          <a class="link-strong" href="${ACTIONS_URL}" target="_blank" rel="noreferrer">查看详情</a>
         </div>
       `;
     }
 
     function renderRuns(rawRuns) {
       const runs = (rawRuns || []).map(normalizeRun);
-      const latest = runs[0] || null;
-      const today = shDay(new Date().toISOString());
-      const todayRun = runs.find((run) => run.shanghaiDay === today) || null;
       const byDay = new Map();
       for (const run of runs) if (run.shanghaiDay && !byDay.has(run.shanghaiDay)) byDay.set(run.shanghaiDay, run);
       const days = Array.from(byDay.values()).sort((a, b) => String(b.shanghaiDay).localeCompare(String(a.shanghaiDay))).slice(0, 7);
       document.getElementById("status-fallback").classList.add("hidden");
 
-      if (latest) {
-        document.getElementById("hero-run-status").textContent = latest.label;
-        document.getElementById("hero-run-meta").textContent =
-          `#${latest.run_number} · ${fmtSh(latest.run_started_at || latest.created_at)} · ${latest.event || "unknown"}` +
-          `${latest.durationMinutes != null ? ` · ${latest.durationMinutes} 分钟` : ""}`;
-      } else {
-        document.getElementById("hero-run-status").textContent = "暂无运行记录";
-        document.getElementById("hero-run-meta").textContent = "GitHub API 没有返回最近运行记录";
-      }
-
-      const rows = [];
-      if (latest) rows.push(`
-        <div class="row">
-          <span class="${badgeClass(latest.tone)}">${esc(latest.label)}</span>
-          <div><div class="strong">最近一次运行 #${esc(latest.run_number)}</div><div class="muted">触发方式 ${esc(latest.event || "unknown")}，开始于 ${esc(fmtSh(latest.run_started_at || latest.created_at))}</div></div>
-          <a class="link" href="${esc(latest.html_url || ACTIONS_URL)}" target="_blank" rel="noreferrer">详情</a>
-        </div>
-      `);
-      if (todayRun) rows.push(`
-        <div class="row">
-          <span class="${badgeClass(todayRun.tone)}">${esc(todayRun.label)}</span>
-          <div><div class="strong">今日运行状态</div><div class="muted">${esc(todayRun.shanghaiDay)} 的最新运行，${todayRun.durationMinutes != null ? `耗时 ${todayRun.durationMinutes} 分钟` : "耗时待定"}。</div></div>
-          <a class="link" href="${esc(todayRun.html_url || ACTIONS_URL)}" target="_blank" rel="noreferrer">详情</a>
-        </div>
-      `);
-      else rows.push(`
-        <div class="row">
-          <span class="${badgeClass("warning")}">未见运行</span>
-          <div><div class="strong">今日尚未检测到运行</div><div class="muted">按上海日期归档，当前没有今天的 workflow 记录。</div></div>
-          <a class="link" href="${ACTIONS_URL}" target="_blank" rel="noreferrer">查看</a>
-        </div>
-      `);
-      if (latest) rows.push(`
-        <div class="row">
-          <span class="${badgeClass(latest.tone)}">${esc(latest.event || "unknown")}</span>
-          <div><div class="strong">运行耗时与触发方式</div><div class="muted">${latest.durationMinutes != null ? `${latest.durationMinutes} 分钟` : "耗时未知"}，actor ${esc((latest.actor && latest.actor.login) || "unknown")}。</div></div>
-          <a class="link" href="${esc(latest.html_url || ACTIONS_URL)}" target="_blank" rel="noreferrer">详情</a>
-        </div>
-      `);
-      document.getElementById("status-list").innerHTML = rows.join("");
-
-      document.getElementById("day-list").innerHTML = days.length
+      document.getElementById("status-list").innerHTML = days.length
         ? days.map((run) => `
-            <div class="day-row">
-              <div class="mono strong">${esc(run.shanghaiDay)}</div>
-              <div class="day-state ${esc(run.tone)}">#${esc(run.run_number)} · ${esc(run.label)} · ${esc(run.event || "unknown")}</div>
-              <a class="link" href="${esc(run.html_url || ACTIONS_URL)}" target="_blank" rel="noreferrer">详情</a>
+            <div class="status-row">
+              <div class="status-date">${esc(run.shanghaiDay)}</div>
+              <div class="status-main">
+                <div class="status-title">更新${esc(run.label)}</div>
+                <div class="status-note">记录时间 ${esc(fmtSh(run.run_started_at || run.created_at))}${run.durationMinutes != null ? ` · 用时 ${run.durationMinutes} 分钟` : ""}</div>
+              </div>
+              <a class="status-pill ${esc(run.tone)}" href="${esc(run.html_url || ACTIONS_URL)}" target="_blank" rel="noreferrer">${esc(run.label)}</a>
             </div>
           `).join("")
-        : `<div class="day-row"><div class="mono">--</div><div class="day-state">暂无趋势数据</div><a class="link" href="${ACTIONS_URL}" target="_blank" rel="noreferrer">打开</a></div>`;
+        : `<div class="status-row"><div class="status-date mono">--</div><div class="status-main"><div class="status-title">最近 7 天暂无更新记录</div><div class="status-note">你可以稍后再看，或直接打开最新日报。</div></div><a class="link-strong" href="${ACTIONS_URL}" target="_blank" rel="noreferrer">查看详情</a></div>`;
     }
 
     async function loadManifest() {
