@@ -1,0 +1,1060 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-03-10 Alpha日报</title>
+  <style>
+    :root {
+      --bg: #eef1f5;
+      --panel: #ffffff;
+      --panel-soft: #f7f8fb;
+      --line: #dde3eb;
+      --line-strong: #cdd5df;
+      --text: #161c24;
+      --muted: #667085;
+      --muted-2: #8a94a6;
+      --accent: #ff6a00;
+      --accent-soft: #fff2e8;
+      --ai-bg: #f4f8ff;
+      --ai-border: #d7e5ff;
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+      --shadow-soft: 0 4px 12px rgba(15, 23, 42, 0.04);
+      --warn-bg: #fff8ec;
+      --warn-line: #ffd8a8;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+    body { margin: 0; background: linear-gradient(180deg, #f7f8fa 0%, var(--bg) 220px); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color: #0b63ce; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    button { font: inherit; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 16px 16px 32px; }
+    .report-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding: 4px 0 10px; border-bottom: 1px solid rgba(205,213,223,.75); }
+    .report-title-wrap { display: grid; gap: 6px; }
+    .report-kicker { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+    .report-kicker::before { content: ''; width: 8px; height: 8px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 0 4px rgba(255,106,0,.12); }
+    h1 { margin: 0; font-size: 24px; line-height: 1.1; }
+    .report-subtitle { color: var(--muted); font-size: 13px; }
+    .report-meta { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    .meta-badge { display: inline-flex; align-items: center; gap: 6px; min-height: 24px; padding: 0 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel-soft); color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .meta-badge.strong { background: var(--accent-soft); border-color: #ffd0b2; color: #ad4d00; font-weight: 600; }
+    .meta-badge.subtle { color: var(--muted-2); }
+    .tabs { display: flex; gap: 8px; margin-top: 12px; padding: 8px 0; position: sticky; top: 0; z-index: 20; overflow-x: auto; background: rgba(238,241,245,.92); backdrop-filter: blur(10px); }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.92); color: var(--muted); font-size: 13px; font-weight: 600; white-space: nowrap; }
+    .tab:hover { border-color: #ffc59b; color: #a74b00; background: #fff7f1; text-decoration: none; }
+    .content-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 14px; }
+    .panel { background: var(--panel); border: 1px solid rgba(221,227,235,.95); border-radius: 12px; box-shadow: var(--shadow); padding: 16px; }
+    .compact-panel { scroll-margin-top: 72px; }
+    .section-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 8px; }
+    h2 { margin: 0; font-size: 17px; line-height: 1.2; }
+    .section-summary { margin-bottom: 10px; color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .accordion-list { display: grid; gap: 10px; }
+    .accordion-block { border: 1px solid var(--line); border-radius: 10px; background: var(--panel-soft); overflow: hidden; }
+    .accordion-trigger { width: 100%; border: 0; padding: 11px 12px; background: transparent; display: grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto; align-items: center; gap: 10px; text-align: left; cursor: pointer; }
+    .accordion-main { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0; }
+    .accordion-title { font-size: 14px; font-weight: 700; color: var(--text); }
+    .accordion-summary { min-width: 0; color: var(--muted); font-size: 12px; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .accordion-icon { color: var(--muted-2); font-size: 12px; transition: transform .2s ease; }
+    .accordion-icon.is-open { transform: rotate(180deg); }
+    .accordion-body { border-top: 1px solid var(--line); padding: 12px; background: #fff; }
+    .accordion-body.collapsed { display: none; }
+    .accordion-body.open { display: block; }
+    .inline-summary { display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: start; padding: 10px 12px; margin-bottom: 10px; border: 1px solid var(--ai-border); border-radius: 10px; background: var(--ai-bg); }
+    .inline-summary-label { display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 22px; padding: 0 8px; border-radius: 999px; background: #fff; color: #2452b6; font-size: 11px; font-weight: 700; }
+    .inline-summary-text { color: var(--text); font-size: 13px; line-height: 1.55; white-space: pre-wrap; word-break: break-word; }
+    .clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .detail-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .detail-table thead th { position: sticky; top: 68px; z-index: 5; background: #f7f8fb; color: var(--muted); font-size: 12px; font-weight: 600; text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line-strong); }
+    .detail-table td { padding: 9px 10px; border-bottom: 1px solid #edf1f5; vertical-align: top; line-height: 1.5; }
+    .detail-table tr:last-child td { border-bottom: 0; }
+    .detail-table td.title { max-width: 0; }
+    .detail-table tbody tr:hover td { background: #fbfcfd; }
+    .inline-symbol { color: var(--muted-2); font-size: 12px; margin-left: 6px; }
+    .action-group { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+    .news-list { display: grid; gap: 2px; }
+    .news-item { display: grid; grid-template-columns: 20px minmax(0, 1fr) auto auto; gap: 8px; align-items: start; padding: 7px 0; border-bottom: 1px solid #edf1f5; font-size: 12px; }
+    .news-item:last-child { border-bottom: 0; }
+    .news-index { color: var(--muted-2); }
+    .news-headline { color: var(--text); line-height: 1.45; }
+    .news-score { display: inline-flex; align-items: center; height: 20px; padding: 0 6px; border-radius: 999px; background: #f0f3f6; color: var(--muted); font-size: 11px; }
+    .forecast-table { width: 100%; }
+    .forecast-table .change-col { white-space: nowrap; text-align: center; }
+    .forecast-table .reason-col { max-width: 400px; }
+    .forecast-table .date-col { white-space: nowrap; text-align: center; }
+    .forecast-table tr.forecast-highlight { background: linear-gradient(90deg, #fff8ec 0%, #fff 100%); }
+    .forecast-table tr.forecast-highlight td.change-col { color: #d94841; font-weight: 600; }
+    .company-list { display: grid; gap: 8px; }
+    .notice-company-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) auto; gap: 10px; align-items: start; padding: 10px 0; border-bottom: 1px solid #edf1f5; }
+    .notice-company-row:last-child { border-bottom: 0; }
+    .notice-company-row.regulatory { padding-left: 10px; border-left: 3px solid #f59e0b; }
+    .notice-company-main { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .notice-company-text { color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .notice-company-link { text-align: right; white-space: nowrap; }
+    .section-footnote { margin-top: 8px; color: var(--muted-2); font-size: 12px; }
+    .regulatory-warning { background: linear-gradient(180deg, var(--warn-bg), #fff); border-color: var(--warn-line); }
+    .empty { padding: 20px 14px; border: 1px dashed var(--line-strong); border-radius: 10px; background: #fafbfd; color: var(--muted-2); text-align: center; font-size: 13px; }
+    .topic-content { font-size: 13px; color: #4b5563; line-height: 1.6; margin-bottom: 6px; white-space: pre-wrap; word-break: break-word; }
+    .topic-content-collapsed { overflow: hidden; max-height: calc(1.6em * 3); }
+    .topic-toggle { border: 0; background: transparent; color: #2563eb; font-size: 12px; padding: 0; margin: 0 0 6px; cursor: pointer; }
+    .topic-toggle:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .wrap { padding: 14px 12px 28px; }
+      .report-header { align-items: flex-start; flex-direction: column; }
+      .report-meta { justify-content: flex-start; }
+      h1 { font-size: 22px; }
+      .panel { padding: 14px; }
+      .accordion-trigger { grid-template-columns: 1fr auto; }
+      .accordion-summary { grid-column: 1 / -1; white-space: normal; }
+      .news-item { grid-template-columns: 20px minmax(0, 1fr); }
+      .notice-company-row { grid-template-columns: 1fr; }
+      .detail-table { display: block; overflow-x: auto; white-space: nowrap; }
+      .detail-table td.title, .detail-table th { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="report-header">
+      <div class="report-title-wrap">
+        <span class="report-kicker">Alpha Daily</span>
+        <h1>2026-03-10 Alpha日报</h1>
+      </div>
+      <div class="report-meta">
+        <span class="meta-badge">生成时间 2026-03-10 00:18</span>
+        <span class="meta-badge">数据覆盖 2/6</span>
+        <span class="meta-badge strong">当日输出 2026-03-10</span>
+      </div>
+    </header>
+
+    <nav class="tabs"><a class='tab' href='#news'>新闻动态</a><a class='tab' href='#knowledge'>专业知识</a><a class='tab' href='#forecast'>业绩预告</a><a class='tab' href='#relation'>机构调研</a><a class='tab' href='#interaction'>互动问答</a><a class='tab' href='#notice'>公告解读</a></nav>
+
+    <section class="content-grid">
+      
+    <section id="news" class="panel compact-panel">
+      <div class="section-head">
+        <h2>新闻动态</h2>
+        <span class="meta-badge strong">4类 / 32条</span>
+      </div>
+      <div class="accordion-list">
+        
+        <article class="accordion-block news-block" id="news-0">
+          <button class="accordion-trigger" type="button" data-target="news-0-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">AI产业</span>
+              <span class="meta-badge strong">8条</span>
+            </span>
+            <span class="accordion-summary">英伟达因AI芯片限制重启RTX 3060；西弗吉尼亚获40亿数据中心，英、美亚马逊等多国布局AI及数据中心设施。</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="news-0-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">AI</span>
+              <div class="inline-summary-text">• 英伟达因AI芯片限制重启RTX 3060
+• 西弗吉尼亚获40亿数据中心，英、美亚马逊等多国布局AI及数据中心设施。</div>
+            </div>
+            <div class="news-list">
+              
+            <div class="news-item">
+              <span class="news-index">1</span>
+              <span class="news-headline">NVIDIA reportedly brings GeForce RTX 3060 back to Samsung 8n Hankyung ties the reported restart to tighter limits around advanced AI chip...</span>
+              <a href='https://videocardz.com/newz/nvidia-reportedly-brings-geforce-rtx-3060-back-to-samsung-8nm-production' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">2</span>
+              <span class="news-headline">West Virginia snares $4B data center Penzance ultimately selected the West Virginia site due to the state’s Power Generation and Consumpt...</span>
+              <a href='https://www.constructiondive.com/news/west-virginia-penzance-data-center-investment/814095/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">3</span>
+              <span class="news-headline">Revealed UK’s multibillion AI drive is The Lanarkshire site currently hosts a datacentre with 24MW of electricity – less than 3% of the p...</span>
+              <a href='https://www.theguardian.com/technology/2026/mar/09/revealed-uks-multibillion-ai-drive-is-built-on-phantom-investments' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">4</span>
+              <span class="news-headline">The Global AI Land Rush Recently, Amazon started constructing a massive AI facility on about 1,200 acres of Indiana farmland. (1, 200, 10x)</span>
+              <a href='https://www.cedarkeybeacon.com/technology/4798/the-global-ai-land-rush-why-tech-giants-are-buying-power-plants-and-farmland-for-data-centers/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">5</span>
+              <span class="news-headline">Owner of ICE detention facility sees big opportunity in AI m Target apparently sees the U.S. (9, 1.6, 132, 1)</span>
+              <a href='https://techcrunch.com/2026/03/08/owner-of-ice-detention-facility-sees-big-opportunity-in-ai-man-camps/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">6</span>
+              <span class="news-headline">Coming Soon, From the People Behind ICE Detention Camps The camp featured in Bloomberg is being built to house and entertain over 1,000 w...</span>
+              <a href='https://gizmodo.com/coming-soon-from-the-people-behind-ice-detention-camps-data-center-company-towns-2000731145' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">7</span>
+              <span class="news-headline">IREN Limited Rises 22% in 6 Months IREN Benefits From Strong Momentum in AI Cloud IREN recently announced plans to expand the capacity of...</span>
+              <a href='https://www.tradingview.com/news/zacks:2502a93ec094b:0-iren-limited-rises-22-in-6-months-buy-sell-or-hold-the-stock/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">8</span>
+              <span class="news-headline">NVIDIA’s Answer to the GPU Shortage Has Samsung Resurrecting 45 Active Readers #### This AI Startup Demands AMD to Build a 96 GB RDNA 5 G...</span>
+              <a href='https://wccftech.com/nvidia-answer-to-the-gpu-shortage-has-samsung-resurrecting-the-geforce-rtx-3060/' target='_blank'>原文</a>
+            </div>
+            
+            </div>
+          </div>
+        </article>
+        
+        <article class="accordion-block news-block" id="news-1">
+          <button class="accordion-trigger" type="button" data-target="news-1-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">宏观</span>
+              <span class="meta-badge strong">8条</span>
+            </span>
+            <span class="accordion-summary">美债收益率攀升，黄金跌1%（能源通胀），中国消费通胀创3年高（假期），美元上涨，中东战争致油价超110美元。</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="news-1-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">AI</span>
+              <div class="inline-summary-text">• 美债收益率攀升，黄金跌1%（能源通胀），中国消费通胀创3年高（假期），美元上涨，中东战争致油价超110美元。</div>
+            </div>
+            <div class="news-list">
+              
+            <div class="news-item">
+              <span class="news-index">1</span>
+              <span class="news-headline">Treasury yields climb higher as investors monitor Iran war a Sawdah Bhaimiya WATCH LIVE In this article US30Y US2Y US10Y HAL PSX VLO MPC ...</span>
+              <a href='https://www.cnbc.com/2026/03/09/us-treasury-yields-investors-monitor-iran-war-and-soaring-oil-price.html' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">2</span>
+              <span class="news-headline">Gold Falls as High Energy Prices Fuel Inflation Concerns 0758 GMT – Gold prices fall 1% on fears that rising energy prices could stoke in...</span>
+              <a href='https://www.wsj.com/finance/commodities-futures/gold-falls-amid-dollars-strength-9f105ffc?gaa_at=eafs&amp;gaa_n=AWEtsqf04kkOaO-R2_O3TWVrutr9Aj5nXR6l5zb0aFORVYSZKUyMglUMQez_&amp;gaa_ts=69ae83ee&amp;gaa_sig=TKSImcKhkgdu9SyCmmVbf0IrcXIkA9lZ7wwZPg7vn6q46bqrIAsIH0SYAirEBsh_ljX0586J01XrklMKzyUoog%3D%3D' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">3</span>
+              <span class="news-headline">China consumer inflation hits 3-yr high on holiday surge, pr Beijing is aiming for GDP growth of between 4.5% and 5% for the year, slower...</span>
+              <a href='https://www.reuters.com/world/asia-pacific/chinas-consumer-inflation-accelerates-february-producer-deflation-eases-2026-03-09/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">4</span>
+              <span class="news-headline">Dollar surges as Middle East war sends oil above $110 a barr Risk-sensitive sterling and the Australian and New Zealand dollars fell roug...</span>
+              <a href='https://www.cnbc.com/amp/2026/03/09/dollar-surges-as-middle-east-war-sends-oil-above-110-a-barrel.html' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">5</span>
+              <span class="news-headline">China Consumer Inflation Beats Expectations on Holiday Boost Advertisement This copy is for your personal, non-commercial use only. (1, 8...</span>
+              <a href='https://www.wsj.com/economy/china-consumer-inflation-beats-expectations-on-holiday-boost-117c538e?gaa_at=eafs&amp;gaa_n=AWEtsqcpiW5DuWg9uO--14wnOt8UJkrXQVS4XRYArh6cl_CHx3_BbhyTJFSd&amp;gaa_ts=69ae3054&amp;gaa_sig=cLjoe58B3rMeEeMcThTGZKAeGgtve4Tk_Q1sGKwsqmG5oU_YlQQH6yx23SLTO8AzuWruU_q_pCOd7PgD0mFLWg%3D%3D' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">6</span>
+              <span class="news-headline">China Consumer Inflation Beats Expectations on Holiday Boost Image 5 All eyes will be on developments in the Middle East after the U.S. (...</span>
+              <a href='https://www.wsj.com/economy/china-consumer-inflation-beats-expectations-on-holiday-boost-117c538e' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">7</span>
+              <span class="news-headline">China consumer inflation hits three-year high as producer de In a top economic policy-setting meeting last week, Beijing kept its annual ...</span>
+              <a href='https://www.cnbc.com/2026/03/09/china-february-inflation-cpi-producer-prices-stimulus-economy-ppi-factory-consumer.html' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">8</span>
+              <span class="news-headline">China&#x27;s exports likely opened new year at an even faster pac Now more governments are weighing up following Washington with trade curbs, ...</span>
+              <a href='https://www.reuters.com/world/asia-pacific/chinas-exports-likely-opened-new-year-an-even-faster-pace-after-record-2025-2026-03-09/' target='_blank'>原文</a>
+            </div>
+            
+            </div>
+          </div>
+        </article>
+        
+        <article class="accordion-block news-block" id="news-2">
+          <button class="accordion-trigger" type="button" data-target="news-2-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">机器人</span>
+              <span class="meta-badge strong">8条</span>
+            </span>
+            <span class="accordion-summary">人形机器人或低于2万美元；TI、高通、ABB等与英伟达等合作；DHL与Locus达10亿次仓储拣选里程碑。</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="news-2-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">AI</span>
+              <div class="inline-summary-text">• 人形机器人或低于2万美元
+• TI、高通、ABB等与英伟达等合作
+• DHL与Locus达10亿次仓储拣选里程碑。</div>
+            </div>
+            <div class="news-list">
+              
+            <div class="news-item">
+              <span class="news-index">1</span>
+              <span class="news-headline">From affordable humanoids to robotaxis According to the Network’s outlook, capable bipedal humanoids could drop below the $20,000 price p...</span>
+              <a href='https://roboticsandautomationnews.com/2026/03/09/from-affordable-humanoids-to-robotaxis-pittsburgh-robotics-network-predicts-the-next-wave-of-physical-ai/99389/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">2</span>
+              <span class="news-headline">Texas Instruments and Nvidia partner to accelerate humanoid TI connects Nvidia physical AI compute to real-world applications with determ...</span>
+              <a href='https://roboticsandautomationnews.com/2026/03/09/texas-instruments-and-nvidia-partner-to-accelerate-humanoid-robot-development/99374/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">3</span>
+              <span class="news-headline">Qualcomm’s partnership with Neura Robotics is just the begin Rebecca Szkutak German robotics startup Neura Robotics has inked a partnersh...</span>
+              <a href='https://techcrunch.com/2026/03/09/qualcomms-partnership-with-neura-robotics-is-just-the-beginning/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">4</span>
+              <span class="news-headline">DHL and Locus Robotics reach one billion warehouse picks mil In 2020, the global Locus Robotics customer network passed 100 million picks...</span>
+              <a href='https://roboticsandautomationnews.com/2026/03/09/dhl-and-locus-robotics-reach-one-billion-warehouse-picks-milestone/99384/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">5</span>
+              <span class="news-headline">ABB Robotics partners with NVIDIA to deliver industrial-grad The collaboration focuses on combining ABB Robotics’ software programming, d...</span>
+              <a href='https://www.themanufacturer.com/articles/abb-robotics-partners-with-nvidia-to-deliver-industrial-grade-physical-ai-at-scale/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">6</span>
+              <span class="news-headline">Ex-Google Researcher Seeks to Transform Japan’s Robots With Daily Labor Report Email Share To Facebook LinkedIn # Ex-Google Researcher Se...</span>
+              <a href='https://news.bloomberglaw.com/daily-labor-report/ex-google-researcher-seeks-to-transform-japans-robots-with-ai' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">7</span>
+              <span class="news-headline">We’re Data Experts at Ford. Here’s How We See AI Agents Resh Impact AI solutions deployed on a cloud platform can result in 15 to 20% in ...</span>
+              <a href='https://www.industryweek.com/technology-and-iiot/emerging-technologies/article/55362524/were-data-experts-at-ford-heres-how-we-see-ai-agents-reshaping-the-shop-floor' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">8</span>
+              <span class="news-headline">From Times Square to Silicon Valley, Nuwa Agricultural Techn Silicon Valley - TuringEra, a global leading provider in edge AI solutions, ...</span>
+              <a href='https://www.openpr.com/news/4417029/from-times-square-to-silicon-valley-nuwa-agricultural' target='_blank'>原文</a>
+            </div>
+            
+            </div>
+          </div>
+        </article>
+        
+        <article class="accordion-block news-block" id="news-3">
+          <button class="accordion-trigger" type="button" data-target="news-3-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">商业航天</span>
+              <span class="meta-badge strong">8条</span>
+            </span>
+            <span class="accordion-summary">国会拟延长国际空间站运行；Astrobotic获意月球栖息地轮式合同，PLD Space完成1.8亿欧元C轮并计划今年试飞；马斯克4月首射SpaceX星舰V3。</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="news-3-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">AI</span>
+              <div class="inline-summary-text">• 国会拟延长国际空间站运行
+• Astrobotic获意月球栖息地轮式合同，PLD Space完成1.8亿欧元C轮并计划今年试飞
+• 马斯克4月首射SpaceX星舰V3。</div>
+            </div>
+            <div class="news-list">
+              
+            <div class="news-item">
+              <span class="news-index">1</span>
+              <span class="news-headline">Congress wants the International Space Station to keep flyin &quot;This is a pivotal moment for our nation&#x27;s space program,&quot; Cruz said during ...</span>
+              <a href='https://www.space.com/space-exploration/human-spaceflight/congress-wants-the-international-space-station-to-keep-flying-until-2032-heres-why' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">2</span>
+              <span class="news-headline">Astrobotic Wins Lunar Wheel Contract For Italian Habitat Europe • Launch ## PLD Space Closes €180M Series C, Eyes Flight Test This Year T...</span>
+              <a href='https://payloadspace.com/astrobotic-wins-lunar-wheel-contract-for-italian-habitat/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">3</span>
+              <span class="news-headline">Musk Eyes First SpaceX Starship V3 Launch In April Already a member of AWIN or subscribe to Aerospace Daily &amp; Defense Report through your...</span>
+              <a href='https://aviationweek.com/space/launch-vehicles-propulsion/musk-eyes-first-spacex-starship-v3-launch-april' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">4</span>
+              <span class="news-headline">Analyzing the SpaceX IPO The first These are the ultimate in capital intensive enterprises. (1.5, 10, 000, 400)</span>
+              <a href='https://fortune.com/2026/03/08/is-space-x-profitable-ipo-stock-date-earnings-outlook/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">5</span>
+              <span class="news-headline">AeroSync Mission Airborne Connectivity System Available for Email By Matt Thurber • Editor-in-Chief March 8, 2026 ## In this article ## L...</span>
+              <a href='https://www.ainonline.com/aviation-news/business-aviation/2026-03-08/aerosync-mission-available-leonardo-aw119' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">6</span>
+              <span class="news-headline">Is there a Plan B if private Space systems fail? Questions a The United States relies heavily on private companies for space operations, ...</span>
+              <a href='https://www.primetimer.com/features/is-there-a-plan-b-if-private-space-systems-fail-questions-about-us-space-strategy-examined' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">7</span>
+              <span class="news-headline">Voyager Technologies invests in Max Space Taylor said Voyager may make additional strategic investments in companies to support its plans...</span>
+              <a href='https://spacenews.com/voyager-technologies-invests-in-max-space/' target='_blank'>原文</a>
+            </div>
+            
+            <div class="news-item">
+              <span class="news-index">8</span>
+              <span class="news-headline">Black Hawk Demonstrates Automated Flight with Genesys Autopi ## Brazil Air Force Selects Garmin G5000H for UH-60 Fleet ### Brazil air for...</span>
+              <a href='https://www.ainonline.com/aviation-news/business-aviation/2026-03-08/black-hawk-automatic-flight-powered-genesys-autopilot' target='_blank'>原文</a>
+            </div>
+            
+            </div>
+          </div>
+        </article>
+        
+      </div>
+    </section>
+    
+      
+    <section id="knowledge" class="panel compact-panel">
+      <div class="section-head">
+        <h2>专业知识</h2>
+      </div>
+      <div class="section-summary">信源：clippings-api、知识星球</div>
+      <div class="empty">暂无当日新内容</div>
+    </section>
+    
+      
+    <section id="forecast" class="panel compact-panel">
+      <div class="section-head"><h2>业绩预告</h2></div>
+      <div class="empty">暂无业绩预告数据</div>
+    </section>
+    
+      
+    <section id="relation" class="panel compact-panel">
+      <div class="section-head">
+        <h2>机构调研</h2>
+        <span class="meta-badge strong">0条</span>
+      </div>
+      <table class="detail-table relation-table">
+        <thead>
+          <tr><th>日期</th><th>公司</th><th>标题</th><th>操作</th></tr>
+        </thead>
+        <tbody><tr><td colspan='4'>暂无机构调研数据</td></tr></tbody>
+      </table>
+    </section>
+    
+      
+    <section id="interaction" class="panel compact-panel">
+      <div class="section-head">
+        <h2>互动问答</h2>
+        <span class="meta-badge strong">0家公司 / 0条</span>
+      </div>
+      <div class="accordion-list">
+        <div class='empty'>暂无互动问答数据</div>
+      </div>
+    </section>
+    
+      
+    <section id="notice" class="panel compact-panel">
+      <div class="section-head">
+        <h2>公告解读</h2>
+        <span class="meta-badge strong">74条</span>
+      </div>
+      <div class="accordion-list">
+        
+        <article class="accordion-block notice-block" id="notice-0">
+          <button class="accordion-trigger" type="button" data-target="notice-0-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">重大合作/投资项目</span>
+              <span class="meta-badge strong">12条</span>
+            </span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="notice-0-body">
+            <div class="company-list">
+              
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">*ST阳光</span>
+                <span class="meta-badge">000608</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于签署《委托租赁终止协议》的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001269.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">中贝通信</span>
+                <span class="meta-badge">603220</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于变更部分募集资金投资项目实施地点的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001239.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">光洋股份</span>
+                <span class="meta-badge">002708</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于签署战略合作协议的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225000960.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">宏达股份</span>
+                <span class="meta-badge">600331</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于什邡有色金属分公司投资电解锌冶炼系统设备更新项目的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001514.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">强一股份</span>
+                <span class="meta-badge">688809</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于公司与合肥经济技术开发区管理委员会签署《投资协议书》暨终止原投资协议的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001693.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">悍高集团</span>
+                <span class="meta-badge">001221</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">悍高集团股份有限公司关于拟购买土地使用权并投资建设项目的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225002249.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">津荣天宇</span>
+                <span class="meta-badge">300988</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于持股5%以上股东签署股份转让协议暨权益变动的提示性公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001615.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">浙江建投</span>
+                <span class="meta-badge">002761</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">浙江省建设投资集团股份有限公司关于子公司收到中标通知书的自愿信息披露公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001394.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">渤海汽车</span>
+                <span class="meta-badge">600960</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于就发行股份及支付现金购买资产并募集配套资金暨关联交易事项签署相关补充协议的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001079.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">申达股份</span>
+                <span class="meta-badge">600626</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">申达股份关于全资子公司Auria Solutions Ltd.2026年新项目投资计划的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001764.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">维信诺</span>
+                <span class="meta-badge">002387</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于股东续签《一致行动协议》及管理团队签署《股份表决权委托协议》的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001160.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">铭普光磁</span>
+                <span class="meta-badge">002902</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于签署募集资金四方监管协议的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225000959.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            </div>
+            
+          </div>
+        </article>
+        
+        <article class="accordion-block notice-block" id="notice-1">
+          <button class="accordion-trigger" type="button" data-target="notice-1-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">增持</span>
+              <span class="meta-badge strong">1条</span>
+            </span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="notice-1-body">
+            <div class="company-list">
+              
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">古汉医药</span>
+                <span class="meta-badge">000590</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于控股股东之一致行动人增持公司股份计划的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001559.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            </div>
+            
+          </div>
+        </article>
+        
+        <article class="accordion-block notice-block" id="notice-2">
+          <button class="accordion-trigger" type="button" data-target="notice-2-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">资本运作-股权激励</span>
+              <span class="meta-badge strong">25条</span>
+            </span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="notice-2-body">
+            <div class="company-list">
+              
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">天赐材料</span>
+                <span class="meta-badge">002709</span>
+                <span class="meta-badge strong">3条</span>
+              </div>
+              <div class="notice-company-text">关于公司注销2024年股票期权激励计划部分股票期权的公告；关于公司2024年股票期权激励计划首次授予部分第一个行权期行权条件成就的公告；关于调整2024年股票期权激励计划行权价格的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225002127.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">奥拓电子</span>
+                <span class="meta-badge">002587</span>
+                <span class="meta-badge strong">3条</span>
+              </div>
+              <div class="notice-company-text">上市公司股权激励计划自查表；2026年限制性股票激励计划（草案）；2026年限制性股票激励计划（草案）摘要</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001875.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">超捷股份</span>
+                <span class="meta-badge">301005</span>
+                <span class="meta-badge strong">3条</span>
+              </div>
+              <div class="notice-company-text">创业板上市公司股权激励计划自查表；超捷紧固系统（上海）股份有限公司2026年限制性股票激励计划（草案）；超捷紧固系统（上海）股份有限公司2026年限制性股票激励计划（草案）摘要</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001990.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">五芳斋</span>
+                <span class="meta-badge">603237</span>
+                <span class="meta-badge strong">2条</span>
+              </div>
+              <div class="notice-company-text">浙江五芳斋实业股份有限公司关于向2026年限制性股票激励计划激励对象首次授予限制性股票的公告；浙江五芳斋实业股份有限公司关于调整2026年限制性股票激励计划相关事项的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225002148.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">华润微</span>
+                <span class="meta-badge">688396</span>
+                <span class="meta-badge strong">2条</span>
+              </div>
+              <div class="notice-company-text">关于公司2021年第二类限制性股票激励计划预留部分第二个归属期符合归属条件的公告；关于调整2021年第二类限制性股票激励计划授予价格及作废部分限制性股票的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225002077.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">联芸科技</span>
+                <span class="meta-badge">688449</span>
+                <span class="meta-badge strong">2条</span>
+              </div>
+              <div class="notice-company-text">2026年限制性股票激励计划（草案）；2026年限制性股票激励计划（草案）摘要公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225002470.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">隆利科技</span>
+                <span class="meta-badge">300752</span>
+                <span class="meta-badge strong">2条</span>
+              </div>
+              <div class="notice-company-text">2026年股票期权激励计划激励对象名单（授予日）；关于向公司2026年股票期权激励计划激励对象授予股票期权的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001425.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">*ST清研</span>
+                <span class="meta-badge">301288</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于向2025年限制性股票激励计划激励对象授予预留限制性股票的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001978.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">东软集团</span>
+                <span class="meta-badge">600718</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">东软集团2024年股票期权激励计划第一个行权期自主行权结果暨股份变动的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001770.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">安宁股份</span>
+                <span class="meta-badge">002978</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于2025年限制性股票激励计划授予登记完成的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001347.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">安联锐视</span>
+                <span class="meta-badge">301042</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于2026年限制性股票激励计划内幕信息知情人买卖公司股票的自查报告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001961.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">星宸科技</span>
+                <span class="meta-badge">301536</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于向2025年限制性股票激励计划激励对象授予预留限制性股票的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225002017.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">皓元医药</span>
+                <span class="meta-badge">688131</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">上海皓元医药股份有限公司关于向2025年限制性股票激励计划激励对象授予预留部分限制性股票的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001737.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">联科科技</span>
+                <span class="meta-badge">001207</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">山东联科科技股份有限公司关于向激励对象授予限制性股票的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225000998.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">能辉科技</span>
+                <span class="meta-badge">301046</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于2024年限制性股票激励计划第一类限制性股票预留授予登记完成的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225002455.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            </div>
+            
+          </div>
+        </article>
+        
+        <article class="accordion-block notice-block" id="notice-3">
+          <button class="accordion-trigger" type="button" data-target="notice-3-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">资本运作-特定对象发行</span>
+              <span class="meta-badge strong">24条</span>
+            </span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="notice-3-body">
+            <div class="company-list">
+              
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">珠海冠宇</span>
+                <span class="meta-badge">688772</span>
+                <span class="meta-badge strong">7条</span>
+              </div>
+              <div class="notice-company-text">2026年度向特定对象发行A股股票方案的论证分析报告；董事会审计委员会关于公司2026年度向特定对象发行A股股票相关事项的书面审核意见；关于2026年度向特定对象发行A股股票预案披露的提示性公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001941.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">美利信</span>
+                <span class="meta-badge">301307</span>
+                <span class="meta-badge strong">6条</span>
+              </div>
+              <div class="notice-company-text">2025年度向特定对象发行A股股票方案论证分析报告（修订稿）；重庆美利信科技股份有限公司2025年度向特定对象发行A股股票预案（修订稿）；重庆美利信科技股份有限公司特定对象发行A股股票募集资金使用可行性分析报告（修订稿）</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001622.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">凌云光</span>
+                <span class="meta-badge">688400</span>
+                <span class="meta-badge strong">2条</span>
+              </div>
+              <div class="notice-company-text">关于2024年度向特定对象发行股票发行结果暨股本变动公告；凌云光技术股份有限公司2024年度向特定对象发行A股股票上市公告书</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001943.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">中国国航</span>
+                <span class="meta-badge">601111</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">中国国际航空股份有限公司关于向特定对象发行A股股票申请获得中国证监会同意注册批复的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001471.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">中油工程</span>
+                <span class="meta-badge">600339</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">中油工程关于向特定对象发行A股股票申请获得中国证券监督管理委员会同意注册批复的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001699.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">安孚科技</span>
+                <span class="meta-badge">603031</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">安徽安孚电池科技股份有限公司关于提请股东会授权董事会办理以简易程序向特定对象发行股票相关事宜的的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225002576.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">山东矿机</span>
+                <span class="meta-badge">002526</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于收到深圳证券交易所恢复审核公司向特定对象发行股票通知的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001018.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">德力股份</span>
+                <span class="meta-badge">002571</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">安徽德力日用玻璃股份有限公司2025年度向特定对象发行股票募集说明书（修订稿）</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225000792.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">汇纳科技</span>
+                <span class="meta-badge">300609</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">汇纳科技股份有限公司2025年度向特定对象发行A股股票募集说明书（修订稿）</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225000900.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">海天股份</span>
+                <span class="meta-badge">603759</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">向不特定对象发行可转换公司债券上市公告书</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001630.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">百合花</span>
+                <span class="meta-badge">603823</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">百合花集团股份有限公司关于向特定对象发行限售股上市流通的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001845.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">长高电新</span>
+                <span class="meta-badge">002452</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">长高电新科技股份公司向不特定对象发行可转换公司债券网上发行中签率及优先配售结果公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225001529.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            </div>
+            
+          </div>
+        </article>
+        
+        <article class="accordion-block notice-block regulatory-warning" id="notice-4">
+          <button class="accordion-trigger" type="button" data-target="notice-4-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">对问询回复</span>
+              <span class="meta-badge strong">12条</span>
+            </span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="notice-4-body">
+            <div class="company-list">
+              
+            <div class="notice-company-row regulatory">
+              <div class="notice-company-main">
+                <span class="accordion-title">汇纳科技</span>
+                <span class="meta-badge">300609</span>
+                <span class="meta-badge strong">3条</span>
+              </div>
+              <div class="notice-company-text">立信会计师事务所（特殊普通合伙）关于汇纳科技股份有限公司申请向特定对象发行股票的审核问询函的回复（豁免版）；汇纳科技股份有限公司关于申请向特定对象发行股票的审核问询函之回复及募集说明书等申请文件更新的提示性公告；汇纳科技股份有限公司与国金证券股份有限公司关于向特定对象发行股票的审核问询函的回复（豁免版）</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225000901.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row regulatory">
+              <div class="notice-company-main">
+                <span class="accordion-title">盛德鑫泰</span>
+                <span class="meta-badge">300881</span>
+                <span class="meta-badge strong">3条</span>
+              </div>
+              <div class="notice-company-text">公证天业会计师事务所（特殊普通合伙）关于盛德鑫泰新材料股份有限公司可转债申请文件的反馈意见的回复；关于申请向不特定对象发行可转换公司债券的审核问询函回复等相关申请文件更新的提示性公告；盛德鑫泰新材料股份有限公司与东方证券股份有限公司关于盛德鑫泰新材料股份有限公司申请向不特定对象发行可转换公司债…</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225000752.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row regulatory">
+              <div class="notice-company-main">
+                <span class="accordion-title">能科科技</span>
+                <span class="meta-badge">603859</span>
+                <span class="meta-badge strong">3条</span>
+              </div>
+              <div class="notice-company-text">关于能科科技股份有限公司向特定对象发行股票申请文件的审核问询函的回复（修订稿）；天圆全会计师事务所（特殊普通合伙）关于能科科技股份有限公司向特定对象发行股票申请文件的审核问询函的回复（修订稿）；关于向特定对象发行股票申请文件的审核问询函回复（修订稿）的提示性公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225002403.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row regulatory">
+              <div class="notice-company-main">
+                <span class="accordion-title">德力股份</span>
+                <span class="meta-badge">002571</span>
+                <span class="meta-badge strong">2条</span>
+              </div>
+              <div class="notice-company-text">天职国际会计师事务所关于安徽德力日用玻璃股份有限公司申请向特定对象发行股票的审核问询函回复；关于向特定对象发行股票申请文件审核问询函回复及募集说明书等申请文件修订的提示性公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225000789.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row regulatory">
+              <div class="notice-company-main">
+                <span class="accordion-title">*ST原尚</span>
+                <span class="meta-badge">603813</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">广东原尚物流股份有限公司关于上海证券交易所对公司2025年业绩预告问询函的回复公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-10/1225002456.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            </div>
+            
+          </div>
+        </article>
+        
+      </div>
+    </section>
+    
+    </section>
+  </main>
+
+  <script>
+    function setAccordionState(trigger, expanded) {
+      const targetId = trigger.getAttribute('data-target');
+      const body = document.getElementById(targetId);
+      const icon = trigger.querySelector('.accordion-icon');
+      if (!body) return;
+      trigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      body.classList.toggle('collapsed', !expanded);
+      body.classList.toggle('open', expanded);
+      if (icon) icon.classList.toggle('is-open', expanded);
+    }
+
+    function bindAccordions() {
+      document.querySelectorAll('.accordion-trigger').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          const expanded = trigger.getAttribute('aria-expanded') === 'true';
+          setAccordionState(trigger, !expanded);
+        });
+      });
+    }
+
+    function bindTopicToggles() {
+      document.querySelectorAll('.topic-toggle').forEach((btn) => {
+        const targetId = btn.getAttribute('data-target');
+        const content = document.getElementById(targetId);
+        if (content && content.scrollHeight <= content.clientHeight + 1) {
+          btn.style.display = 'none';
+          return;
+        }
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-target');
+          const content = document.getElementById(targetId);
+          if (!content) return;
+          const expanded = btn.getAttribute('data-expanded') === 'true';
+          content.classList.toggle('topic-content-collapsed', expanded);
+          btn.setAttribute('data-expanded', expanded ? 'false' : 'true');
+          btn.textContent = expanded ? '展开全文' : '收起';
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      bindAccordions();
+      bindTopicToggles();
+      document.querySelectorAll('.accordion-trigger').forEach((trigger) => {
+        setAccordionState(trigger, trigger.getAttribute('aria-expanded') === 'true');
+      });
+    });
+
+  </script>
+</body>
+</html>
