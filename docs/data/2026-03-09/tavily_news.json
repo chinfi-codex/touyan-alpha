@@ -2,45 +2,40 @@
   "date": "2026-03-09",
   "categories": {
     "AI Industry": {
-      "summary": "英伟达因先进AI芯片限制重启RTX3060，西弗吉尼亚获40亿数据中心，英、甲骨文、亚马逊也推进AI/数据中心项目。",
+      "summary": "AI行业动态：OpenAI员工支持Anthropic；英伟达与Groq交易利好AI芯片初创，5股或成下一个英伟达；甲骨文用未来芯片建旧数据中心；Meta与英伟达达成多年合作。",
       "items": [
         {
-          "headline": "NVIDIA reportedly brings GeForce RTX 3060 back to Samsung 8n Hankyung ties the reported restart to tighter limits around advanced AI chip...",
-          "title": "NVIDIA reportedly brings GeForce RTX 3060 back to Samsung 8nm production - VideoCardz.com",
-          "url": "https://videocardz.com/newz/nvidia-reportedly-brings-geforce-rtx-3060-back-to-samsung-8nm-production",
-          "snippet": "Hankyung ties the reported restart to tighter limits around advanced AI chips and NVIDIA’s position in China. The report says NVIDIA is looking at older GPUs as an alternative sales path where top-end AI accelerators face export barriers. Reuters reported on March 5 that U.S. officials are discussin",
-          "score": 0.97887486,
+          "headline": "Workers at OpenAI show support for Anthropic as the company In court filings, Anthropic executives warned that the fallout is already hit...",
+          "title": "Workers at OpenAI show support for Anthropic as the company says it could lose $5 billion in its feud with the Pentagon - Business Insider",
+          "url": "https://www.businessinsider.com/anthropic-face-loss-in-dispute-with-pentagon-openai-2026-3",
+          "snippet": "In court filings, Anthropic executives warned that the fallout is already hitting the company's finances. Chief financial officer Krishna Rao wrote in a court statement that hundreds of millions of dollars in expected revenue tied to Pentagon-related work are at risk this year. If the government suc",
+          "score": 0.9795115,
           "numbers": [
-            "3060",
-            "8nm",
             "5",
-            "2026"
+            "2023",
+            "1",
+            "2"
           ]
         },
         {
-          "headline": "West Virginia snares $4B data center Penzance ultimately selected the West Virginia site due to the state’s Power Generation and Consumpt...",
-          "title": "West Virginia snares $4B data center - Construction Dive",
-          "url": "https://www.constructiondive.com/news/west-virginia-penzance-data-center-investment/814095/",
-          "snippet": "Penzance ultimately selected the West Virginia site due to the state’s Power Generation and Consumption Act and House Bill 2002. The legislation streamlines permitting, expands microgrid use and allows companies to use coal, natural gas and other reliable energy sources. That type of regulatory envi",
-          "score": 0.9777139,
-          "numbers": [
-            "4B",
-            "2002",
-            "4",
-            "1.9"
-          ]
+          "headline": "Fallout From Nvidia-Groq Deal Validates AI Chip Startup Land Nvidia’s deal with Groq is great news for other chip startups, Sandra Rivera...",
+          "title": "Fallout From Nvidia-Groq Deal Validates AI Chip Startup Landscape - EE Times",
+          "url": "https://www.eetimes.com/fallout-from-nvidia-groq-deal-validates-ai-chip-startup-landscape/",
+          "snippet": "Nvidia’s deal with Groq is great news for other chip startups, Sandra Rivera, chair of the board at AI chip startup Vsora, told EE Times during a recent interview. “Through the Groq licensing deal, [Nvidia] has acknowledged that [inference] is not a one-size-fits-all, it just isn’t,” Rivera said. “Y",
+          "score": 0.96765566,
+          "numbers": []
         },
         {
-          "headline": "Revealed UK’s multibillion AI drive is The Lanarkshire site currently hosts a datacentre with 24MW of electricity – less than 3% of the p...",
-          "title": "Revealed: UK’s multibillion AI drive is built on ‘phantom investments’ - The Guardian",
-          "url": "https://www.theguardian.com/technology/2026/mar/09/revealed-uks-multibillion-ai-drive-is-built-on-phantom-investments",
-          "snippet": "The Lanarkshire site currently hosts a datacentre with 24MW of electricity – less than 3% of the promised renewable supply – operated by the Scottish firm DataVita, which is partnering with CoreWeave in developing the site. One planning application, to extend this to 40MW, has been approved; other a",
-          "score": 0.967163,
+          "headline": "5 AI Stocks That Could Be the Next Nvidia Even as a GPU shortage helped define 2023 and 2024, as AI data centers scale in 2026 and beyond...",
+          "title": "5 AI Stocks That Could Be the Next Nvidia — Before Wall Street Figures It Out - 24/7 Wall St.",
+          "url": "https://247wallst.com/investing/2026/03/09/5-ai-stocks-that-could-be-the-next-nvidia-before-wall-street-figures-it-out/",
+          "snippet": "Even as a GPU shortage helped define 2023 and 2024, as AI data centers scale in 2026 and beyond, the constraints are shifting, and the chips are shipping. Instead, what’s in short supply now is the physical infrastructure to make those chips useful. The cooling systems, high-speed networking, memory",
+          "score": 0.938124,
           "numbers": [
-            "24MW",
-            "3",
-            "40MW",
-            "2025"
+            "5",
+            "24",
+            "7",
+            "2023"
           ]
         },
         {
@@ -53,18 +48,6 @@
             "100",
             "23",
             "2025"
-          ]
-        },
-        {
-          "headline": "The Global AI Land Rush Recently, Amazon started constructing a massive AI facility on about 1,200 acres of Indiana farmland. (1, 200, 10x)",
-          "title": "The Global AI Land Rush - Why Tech Giants Are Buying Power Plants and Farmland for Data Centers - cedarkeybeacon.com",
-          "url": "https://www.cedarkeybeacon.com/technology/4798/the-global-ai-land-rush-why-tech-giants-are-buying-power-plants-and-farmland-for-data-centers/",
-          "snippet": "Recently, Amazon started constructing a massive AI facility on about 1,200 acres of Indiana farmland. When the project is completed, it may use more than two gigawatts of electricity, which is about the same amount as a million households. Similar initiatives are being pursued by Microsoft, Google, ",
-          "score": 0.9235924,
-          "numbers": [
-            "1",
-            "200",
-            "10x"
           ]
         },
         {
@@ -81,16 +64,27 @@
           ]
         },
         {
-          "headline": "IREN Limited Rises 22% in 6 Months IREN Benefits From Strong Momentum in AI Cloud IREN recently announced plans to expand the capacity of...",
-          "title": "IREN Limited Rises 22% in 6 Months: Buy, Sell or Hold the Stock? - TradingView",
-          "url": "https://www.tradingview.com/news/zacks:2502a93ec094b:0-iren-limited-rises-22-in-6-months-buy-sell-or-hold-the-stock/",
-          "snippet": "IREN Benefits From Strong Momentum in AI Cloud IREN recently announced plans to expand the capacity of its AI cloud infrastructure, where the company has agreed to purchase more than 50,000 NVIDIA B300 graphics processing units (GPUs). After this purchase, the company’s total GPU fleet is expected t",
-          "score": 0.79565805,
+          "headline": "AMD expands Ryzen AI Embedded P100 with new 8-core to 12-cor Mar 09 MSI launches entry-level MAG B850M GAMING PRO MAX board with “OC Engi...",
+          "title": "AMD expands Ryzen AI Embedded P100 with new 8-core to 12-core models - VideoCardz.com",
+          "url": "https://videocardz.com/newz/amd-expands-ryzen-ai-embedded-p100-with-new-8-core-to-12-core-models",
+          "snippet": "Mar 09 MSI launches entry-level MAG B850M GAMING PRO MAX board with “OC Engine” Mar 09 NVIDIA announces GeForce ON Community Update at GDC 2026 Mar 09 Most Popular Redditor claims $100 Amazon returns pallet contained 40x 16GB DDR5 sticks, another user gets the entire box instead of one kit Feb 27 Pl",
+          "score": 0.7371582,
           "numbers": [
-            "22",
-            "6",
-            "50",
-            "000"
+            "8",
+            "12",
+            "09",
+            "2026"
+          ]
+        },
+        {
+          "headline": "AMD expands Ryzen AI processor product line For mobile robots, the processors manage navigation, motion control, and route planning on th...",
+          "title": "AMD expands Ryzen AI processor product line - The Robot Report",
+          "url": "https://www.therobotreport.com/amd-expands-ryzen-ai-processor-product-line/",
+          "snippet": "For mobile robots, the processors manage navigation, motion control, and route planning on the CPU. Meanwhile, the GPU processes multicamera feeds for spatial awareness, Visual SLAM, and advanced AI workloads like vision-language-action (VLA) models. Unified memory between the CPU and GPU unlocks lo",
+          "score": 0.5983122,
+          "numbers": [
+            "3.2",
+            "36"
           ]
         },
         {
@@ -110,84 +104,19 @@
       "count": 8
     },
     "Macro": {
-      "summary": "中国2月CPI同比涨1.3%，创三年新高，受节日因素推动且超出市场预期。",
+      "summary": "中国前两月出口超预期，2月CPI同比涨1.3%；黄金因通胀担忧走低，银铝期货下跌；美股关注，原油期货$99。",
       "items": [
         {
-          "headline": "China consumer inflation hits three-year high as producer de The consumer price index rose 1.3% in February from a year earlier, China's ...",
-          "title": "China consumer inflation hits three-year high as producer deflation eases - CNBC",
-          "url": "https://www.cnbc.com/2026/03/09/china-february-inflation-cpi-producer-prices-stimulus-economy-ppi-factory-consumer.html",
-          "snippet": "The consumer price index rose 1.3% in February from a year earlier, China's National Bureau of Statistics data showed Monday, beating economists' forecast for a 0.8% increase in a Reuters poll. The increase followed a 0.2% growth in January, marking the strongest rebound since January 2023, accordin",
-          "score": 0.9951325,
+          "headline": "China exports sharply beat expectations in the first two mon China's CPI rose 1.3% in February from a year earlier and surpassed economis...",
+          "title": "China exports sharply beat expectations in the first two months as trade surplus surges to highest on record - CNBC",
+          "url": "https://www.cnbc.com/2026/03/10/china-trade-balance-surplus-record-exports-tariffs-imports.html",
+          "snippet": "China's CPI rose 1.3% in February from a year earlier and surpassed economists' forecasts for a 0.8% increase in a Reuters poll. The increase, following a 0.2% rise in January, marked the strongest rebound since January 2023. The data also comes after China concluded its \"Two Sessions\" policy meetin",
+          "score": 0.41869688,
           "numbers": [
             "1.3",
             "0.8",
             "0.2",
             "2023"
-          ]
-        },
-        {
-          "headline": "China consumer inflation hits 3-yr high on holiday surge, pr There was a modicum of relief in the data, however. (3, 2024, 0.9, 1.4)",
-          "title": "China consumer inflation hits 3-yr high on holiday surge, producer deflation lingers - Reuters",
-          "url": "https://www.reuters.com/world/asia-pacific/chinas-consumer-inflation-accelerates-february-producer-deflation-eases-2026-03-09/",
-          "snippet": "There was a modicum of relief in the latest data, however. The producer price index (PPI) recorded the smallest year-on-year drop since July 2024, having fallen 0.9% in February. It declined 1.4% the previous month, and the Reuters poll had forecast a 1.2% drop. In a statement, NBS statistician Dong",
-          "score": 0.983343,
-          "numbers": [
-            "3",
-            "2024",
-            "0.9",
-            "1.4"
-          ]
-        },
-        {
-          "headline": "China Consumer Inflation Beats Expectations on Holiday Boost Advertisement This copy is for your personal, non-commercial use only. (1, 8...",
-          "title": "China Consumer Inflation Beats Expectations on Holiday Boost - WSJ",
-          "url": "https://www.wsj.com/economy/china-consumer-inflation-beats-expectations-on-holiday-boost-117c538e?gaa_at=eafs&gaa_n=AWEtsqcpiW5DuWg9uO--14wnOt8UJkrXQVS4XRYArh6cl_CHx3_BbhyTJFSd&gaa_ts=69ae3054&gaa_sig=cLjoe58B3rMeEeMcThTGZKAeGgtve4Tk_Q1sGKwsqmG5oU_YlQQH6yx23SLTO8AzuWruU_q_pCOd7PgD0mFLWg%3D%3D",
-          "snippet": "Advertisement This copy is for your personal, non-commercial use only. Distribution and use of this material are governed by our Subscriber Agreement and by copyright law. For non-personal use or to order multiple copies, please contact Dow Jones Reprints at 1-800-843-0008 or visit www.djreprints.co",
-          "score": 0.971779,
-          "numbers": [
-            "1",
-            "800",
-            "843",
-            "0008"
-          ]
-        },
-        {
-          "headline": "China consumer inflation hits three-year high as producer de From cnbc.com China’s consumer inflation recorded the biggest jump in more t...",
-          "title": "China consumer inflation hits three-year high as producer deflation ease - Forex Factory",
-          "url": "https://www.forexfactory.com/news/1387614-china-consumer-inflation-hits-three-year-high-as-producer",
-          "snippet": "From cnbc.com China’s consumer inflation recorded the biggest jump in more than three years, as an extended holiday bolstered spending while deflation in factory-gate prices moderated. The consumer price index rose 1.3% in February from a year earlier, China’s National Bureau of Statistics data show",
-          "score": 0.9539661,
-          "numbers": [
-            "1.3",
-            "0.8",
-            "0.2",
-            "2023"
-          ]
-        },
-        {
-          "headline": "China Consumer Inflation Beats Expectations on Holiday Boost Share Resize Listen (2 min) Image 1 An older woman in a blue jacket browses ...",
-          "title": "China Consumer Inflation Beats Expectations on Holiday Boost - WSJ",
-          "url": "https://www.wsj.com/economy/china-consumer-inflation-beats-expectations-on-holiday-boost-117c538e",
-          "snippet": "Share Resize Listen (2 min) Image 1: An older woman in a blue jacket browses a supermarket aisle filled with cleaning supplies. China’s producer-price index dropped 0.9% from a year earlier in February.Pedro Pardo/Agence France-Presse/Getty Images China’s consumer inflation rose more than expected i",
-          "score": 0.8587186,
-          "numbers": [
-            "2",
-            "1",
-            "0.9",
-            "1.3"
-          ]
-        },
-        {
-          "headline": "Treasury yields climb higher as investors monitor Iran war a Sawdah Bhaimiya WATCH LIVE In this article US30Y US2Y US10Y HAL PSX VLO MPC ...",
-          "title": "Treasury yields climb higher as investors monitor Iran war and soaring oil price - CNBC",
-          "url": "https://www.cnbc.com/2026/03/09/us-treasury-yields-investors-monitor-iran-war-and-soaring-oil-price.html",
-          "snippet": "Sawdah Bhaimiya WATCH LIVE In this article US30Y US2Y US10Y HAL PSX VLO MPC OXY TIP COP CVX XOM USO BIL IEF SHY TLT U.S. Treasury yields climbed higher on Monday as oil prices soared past $100 a barrel and increased inflation fears among investors. At 6 a.m. ET, the benchmark 10-year Treasury yields",
-          "score": 0.41392776,
-          "numbers": [
-            "100",
-            "6",
-            "10",
-            "3"
           ]
         },
         {
@@ -215,37 +144,108 @@
             "3338.5",
             "1.24"
           ]
+        },
+        {
+          "headline": "Stock Market Today U.S. (1.5, 4.1, 3, 2)",
+          "title": "Stock Market Today: Oil Futures Slide After Trump Comments; Dow Futures Edge Up - WSJ",
+          "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-03-10-2026",
+          "snippet": "U.S. stock futures gained Tuesday morning, and Asian and European indexes rallied. Gold futures rose around 1.5%. After soaring Monday, U.S. Treasury yields stabilized around 4.1%. In recent trading: The dollar fell against a basket of currencies. Bitcoin also rose almost 3%. _—By__Angus Berwick_ 🔎 ",
+          "score": 0.3535403,
+          "numbers": [
+            "1.5",
+            "4.1",
+            "3",
+            "2"
+          ]
+        },
+        {
+          "headline": "Stock market today ^DJI ^IXIC ^GSPC Advanced Chart Futures for West Texas Intermediate (CL=F) and Brent (BZ=F) crude oil traded at $99 an...",
+          "title": "Stock market today: Nasdaq wavers, Dow, S&P 500 slip as oil prices ease after spiking above $100 - Yahoo Finance",
+          "url": "https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-sink-as-oil-prices-surge-past-100-a-barrel-141649119.html",
+          "snippet": "^DJI ^IXIC ^GSPC Advanced Chart Futures for West Texas Intermediate (CL=F) and Brent (BZ=F) crude oil traded at $99 and $102 per barrel, respectively, after spiking above $110 briefly on Sunday evening. Treasury yields also rose, with the 10-year yield (^TNX) up 2 basis points Jared Blikre ## Oil vo",
+          "score": 0.29500186,
+          "numbers": [
+            "500",
+            "100",
+            "99",
+            "102"
+          ]
+        },
+        {
+          "headline": "Iran oil price shock scrambles Fed outlook, rate discussions Tilley said he thinks the discussion within the FOMC will shift from whether...",
+          "title": "Iran oil price shock scrambles Fed outlook, rate discussions - Yahoo Finance",
+          "url": "https://finance.yahoo.com/news/iran-oil-price-shock-scrambles-fed-outlook-rate-discussions-183201187.html",
+          "snippet": "Tilley said he thinks the discussion within the FOMC will shift from whether the federal funds rate is at a neutral level, designed to neither spur nor slow economic growth, to whether monetary policy should become more accommodative. If it's the latter, that could make a case for lower rates. But c",
+          "score": 0.2799569,
+          "numbers": [
+            "2",
+            "92",
+            "000",
+            "70"
+          ]
+        },
+        {
+          "headline": "RBA's Hauser expects 'genuine' policy debate next week as Ir Purchase Licensing Rights ## Read Next Morning Bid Trump says war is 'very c...",
+          "title": "RBA's Hauser expects 'genuine' policy debate next week as Iran war uncertainty mounts - Reuters",
+          "url": "https://www.reuters.com/world/asia-pacific/rbas-hauser-expects-genuine-policy-debate-next-week-iran-war-uncertainty-mounts-2026-03-10/",
+          "snippet": "Purchase Licensing Rights ## Read Next Morning Bid: Trump says war is 'very complete' - Iran has other ideas Aramco posts drop in annual profit, announces its first buyback Worldcategory Fed Chair Powell held 13 calls with US lawmakers in week after DOJ probe disclosure Trading Day: Wall Street roar",
+          "score": 0.23299049,
+          "numbers": [
+            "13",
+            "11",
+            "2",
+            "60"
+          ]
+        },
+        {
+          "headline": "Warsh to meet Tillis as Senate confirmation remains blocked Warsh didn't immediately respond to a request for comment. (15, 2028, 3.5, 3.75)",
+          "title": "Warsh to meet Tillis as Senate confirmation remains blocked - CNBC",
+          "url": "https://www.cnbc.com/2026/03/09/fed-warsh-tillis-nomination-senate.html",
+          "snippet": "Warsh didn't immediately respond to a request for comment. Powell's term as chair ends May 15, though he can continue to serve in the board seat on the Fed he also occupies until January 2028. Powell has led the Fed through a round of rate cuts that have left its benchmark overnight interest rate at",
+          "score": 0.23165809,
+          "numbers": [
+            "15",
+            "2028",
+            "3.5",
+            "3.75"
+          ]
         }
       ],
       "count": 8
     },
     "Robotics": {
-      "summary": "Robotics领域动态：人形机器人或降至2万美元内；TI、Qualcomm、ABB分别与Nvidia、Neura Robotics等合作推进技术。",
+      "summary": "小米测试人形机器人生产线，宝马引入带多传感器人形机器人，高通联Neura、ABB联英伟达推AI/工业级机器人。",
       "items": [
         {
-          "headline": "From affordable humanoids to robotaxis According to the Network’s outlook, capable bipedal humanoids could drop below the $20,000 price p...",
-          "title": "From affordable humanoids to robotaxis: Pittsburgh Robotics Network predicts the next wave of physical AI - Robotics & Automation News",
-          "url": "https://roboticsandautomationnews.com/2026/03/09/from-affordable-humanoids-to-robotaxis-pittsburgh-robotics-network-predicts-the-next-wave-of-physical-ai/99389/",
-          "snippet": "According to the Network’s outlook, capable bipedal humanoids could drop below the $20,000 price point, triggering the first true wave of mass-production deployments in industrial settings. Once price and reliability converge, warehouse and factory operators gain a flexible automation layer able to ",
-          "score": 0.99457306,
+          "headline": "Xiaomi tests humanoid robots on electric production line in ### Growing interest in humanoid robots for manufacturing Humanoid robots hav...",
+          "title": "Xiaomi tests humanoid robots on electric production line in automotive factory - Robotics & Automation News",
+          "url": "https://roboticsandautomationnews.com/2026/03/10/xiaomi-tests-humanoid-robots-on-electric-production-line-in-automotive-factory/99418/",
+          "snippet": "### Growing interest in humanoid robots for manufacturing Humanoid robots have attracted increasing attention in recent years as companies explore whether human-like machines could perform complex tasks in factories, warehouses, and logistics operations. Several technology companies – including Tesl",
+          "score": 0.9728308,
           "numbers": [
-            "20",
-            "000",
-            "400",
-            "1"
+            "2024"
           ]
         },
         {
-          "headline": "Texas Instruments and Nvidia partner to accelerate humanoid TI connects Nvidia physical AI compute to real-world applications with determ...",
-          "title": "Texas Instruments and Nvidia partner to accelerate humanoid robot development - Robotics & Automation News",
-          "url": "https://roboticsandautomationnews.com/2026/03/09/texas-instruments-and-nvidia-partner-to-accelerate-humanoid-robot-development/99374/",
-          "snippet": "TI connects Nvidia physical AI compute to real-world applications with deterministic control, sensing, power and safety at every joint and subsystem. This partnership will help developers move faster from virtual development to production-ready, scalable and safety-compliant systems. As part of this",
-          "score": 0.96432143,
+          "headline": "BMW Group brings humanoid robots to Germany The robot carries 22 integrated sensors, including peripheral cameras, time-of-flight, infrar...",
+          "title": "BMW Group brings humanoid robots to Germany - The Next Web",
+          "url": "https://thenextweb.com/news/bmw-group-brings-humanoid-robots-to-germany",
+          "snippet": "The robot carries 22 integrated sensors, including peripheral cameras, time-of-flight, infrared, SLAM navigation cameras, and microphones, giving it 360-degree real-time spatial awareness. It runs on NVIDIA Jetson Orin onboard computers and was trained largely through simulation using NVIDIA’s Isaac",
+          "score": 0.95257413,
           "numbers": [
-            "16",
-            "19",
-            "2026"
+            "22",
+            "360",
+            "5.1",
+            "2024"
           ]
+        },
+        {
+          "headline": "Qualcomm teams up with Neura Robotics for physical AI push The firms are betting on the combination of high-performance edge AI with full...",
+          "title": "Qualcomm teams up with Neura Robotics for physical AI push - Telecoms",
+          "url": "https://www.telecoms.com/ai/qualcomm-teams-up-with-neura-robotics-for-physical-ai-push",
+          "snippet": "The firms are betting on the combination of high-performance edge AI with full-stack robotic platforms, in the pursuit of moving robotics from research into production-ready deployment. This will involve Qualcomm’s robotics processors, including the Dragonwing IQ10 Series, physical AI acceleration a",
+          "score": 0.9241418,
+          "numbers": []
         },
         {
           "headline": "Qualcomm’s partnership with Neura Robotics is just the begin Rebecca Szkutak German robotics startup Neura Robotics has inked a partnersh...",
@@ -289,124 +289,25 @@
           "numbers": []
         },
         {
-          "headline": "Ex-Google Researcher Seeks to Transform Japan’s Robots With Daily Labor Report Email Share To Facebook LinkedIn # Ex-Google Researcher Se...",
-          "title": "Ex-Google Researcher Seeks to Transform Japan’s Robots With AI - Bloomberg Law News",
-          "url": "https://news.bloomberglaw.com/daily-labor-report/ex-google-researcher-seeks-to-transform-japans-robots-with-ai",
-          "snippet": "Daily Labor Report Email Share To:Facebook LinkedIn # Ex-Google Researcher Seeks to Transform Japan’s Robots With AI March 9, 2026, 4:15 AM UTC Min Jeong Lee Bloomberg News A Silicon Valley-born AI startup is turning to Japan to prove AI can reshape one of the world’s largest industrial robot supply",
-          "score": 0.02865267,
+          "headline": "We’re Data Experts at Ford. Here’s How We See AI Agents Resh Autonomous manufacturing operations AI agents can oversee entire production ...",
+          "title": "We’re Data Experts at Ford. Here’s How We See AI Agents Reshaping the Shop Floor - IndustryWeek",
+          "url": "https://www.industryweek.com/technology-and-iiot/emerging-technologies/article/55362524/were-data-experts-at-ford-heres-how-we-see-ai-agents-reshaping-the-shop-floor",
+          "snippet": "Autonomous manufacturing operations: AI agents can oversee entire production processes, ensuring robotic systems operate at peak efficiency and managing deviations in schedules. They can handle most real-time decisions, with human workers intervening only for issues requiring judgment. Predictive ma",
+          "score": 0.030675802,
           "numbers": [
-            "9",
-            "2026",
-            "4",
-            "15"
-          ]
-        },
-        {
-          "headline": "Clark Why agility will define winning ## Bottom line Agility, measured in how quickly you can reprice, reroute, reallocate, and retrain, ...",
-          "title": "Clark: Why agility will define winning fleets in the volatile 2026 trucking market - FleetOwner",
-          "url": "https://www.fleetowner.com/perspectives/ideaxchange/blog/55362309/clark-why-agility-will-define-winning-fleets-in-the-volatile-2026-trucking-market",
-          "snippet": "## Bottom line Agility, measured in how quickly you can reprice, reroute, reallocate, and retrain, is now the decisive competitive advantage. The global situation amplifies cost volatility and supply uncertainty just as trucking contends with weak freight, high operating costs, labor constraints, an",
-          "score": 0.016914913,
-          "numbers": [
-            "2026",
-            "8",
-            "2027"
+            "40",
+            "20",
+            "25",
+            "3"
           ]
         }
       ],
       "count": 8
     },
     "Commercial Space": {
-      "summary": "Dish发射16年来首颗新宽带卫星；国会拟延长国际空间站运行；Astrobotic获月球轮合同，PLD Space完成1.8亿欧元C轮；马斯克4月试射Starship V3；Space Force导弹预警卫星过PDR。",
-      "items": [
-        {
-          "headline": "Dish launches first new broadband satellite in 16 years ## Looking ahead Next week brings a notably busy manifest. (16, 19, 6, 22)",
-          "title": "Dish launches first new broadband satellite in 16 years - Astronomy Magazine",
-          "url": "https://www.astronomy.com/whats-launching-this-week/dish-launches-first-new-broadband-satellite-in-16-years/",
-          "snippet": "## Looking ahead Next week brings a notably busy manifest. SpaceX has three Starlink missions scheduled across both coasts. On Wednesday, March 19, Rocket Lab will attempt to launch StriX-6, an Earth-observation satellite for Japanese company Synspective, from the Māhia Peninsula in New Zealand. Als",
-          "score": 0.8031738,
-          "numbers": [
-            "16",
-            "19",
-            "6",
-            "22"
-          ]
-        },
-        {
-          "headline": "Congress wants the International Space Station to keep flyin \"This is a pivotal moment for our nation's space program,\" Cruz said during ...",
-          "title": "Congress wants the International Space Station to keep flying until 2032. Here's why - Space",
-          "url": "https://www.space.com/space-exploration/human-spaceflight/congress-wants-the-international-space-station-to-keep-flying-until-2032-heres-why",
-          "snippet": "\"This is a pivotal moment for our nation's space program,\" Cruz said during the September hearing. \"America must maintain leadership in low Earth orbit while also embarking on a new era of exploration with Artemis.\" And U.S. leadership in LEO is under threat. Get the Space.com Newsletter Breaking sp",
-          "score": 0.3090237,
-          "numbers": [
-            "2032",
-            "2021",
-            "2022",
-            "500"
-          ]
-        },
-        {
-          "headline": "Astrobotic Wins Lunar Wheel Contract For Italian Habitat Europe • Launch ## PLD Space Closes €180M Series C, Eyes Flight Test This Year T...",
-          "title": "Astrobotic Wins Lunar Wheel Contract For Italian Habitat - Payload Space",
-          "url": "https://payloadspace.com/astrobotic-wins-lunar-wheel-contract-for-italian-habitat/",
-          "snippet": "Europe • Launch ## PLD Space Closes €180M Series C, Eyes Flight Test This Year The new funds give PLD a huge boost in its effort to clear significant milestones this year. EO • Europe ## ICEYE Launches New Deforestation Monitoring Tool ICEYE just one-upped the Lorax. Instead of speaking for the tree",
-          "score": 0.1561049,
-          "numbers": [
-            "180M",
-            "9",
-            "2026",
-            "2025"
-          ]
-        },
-        {
-          "headline": "Musk Eyes First SpaceX Starship V3 Launch In April + Aerospace - Aircraft & Propulsion - Connected Aerospace - Emerging Technologies - Ma...",
-          "title": "Musk Eyes First SpaceX Starship V3 Launch In April - Aviation Week",
-          "url": "https://aviationweek.com/space/launch-vehicles-propulsion/musk-eyes-first-spacex-starship-v3-launch-april",
-          "snippet": "+ Aerospace - Aircraft & Propulsion - Connected Aerospace - Emerging Technologies - Manufacturing & Supply Chain - Advanced Air Mobility - Sustainability + Air Transport - Aircraft & Propulsion - Interiors & Connectivity - Airports & Networks - Airlines & Lessors - Safety, Ops & Regulation - Mainten",
-          "score": 0.14067852,
-          "numbers": []
-        },
-        {
-          "headline": "Space Force MEO-Based Missile Warning Satellites Reach PDR + Aerospace - Aircraft & Propulsion - Connected Aerospace - Emerging Technolog...",
-          "title": "Space Force MEO-Based Missile Warning Satellites Reach PDR - Aviation Week",
-          "url": "https://aviationweek.com/defense/missile-defense-weapons/space-force-meo-based-missile-warning-satellites-reach-pdr",
-          "snippet": "+ Aerospace - Aircraft & Propulsion - Connected Aerospace - Emerging Technologies - Manufacturing & Supply Chain - Advanced Air Mobility - Sustainability + Air Transport - Aircraft & Propulsion - Interiors & Connectivity - Airports & Networks - Airlines & Lessors - Safety, Ops & Regulation - Mainten",
-          "score": 0.07217119,
-          "numbers": []
-        },
-        {
-          "headline": "The ISS May Live for a Little Bit Longer for a Totally Predi Congress added a sense of urgency toward NASA’s plans of maintaining a human...",
-          "title": "The ISS May Live for a Little Bit Longer for a Totally Predictable Reason - Gizmodo",
-          "url": "https://gizmodo.com/the-iss-may-live-for-a-little-bit-longer-for-a-totally-predictable-reason-2000731283",
-          "snippet": "Congress added a sense of urgency toward NASA’s plans of maintaining a human presence in Earth orbit by transitioning to the use of commercial space stations. Despite the ISS retirement scheduled in a few years’ time, the space agency has yet to kick off the final round of a competition among indust",
-          "score": 0.071073666,
-          "numbers": [
-            "2030"
-          ]
-        },
-        {
-          "headline": "NASA To Award ULA SLS Upper Stage Contract + Aerospace - Aircraft & Propulsion - Connected Aerospace - Emerging Technologies - Manufactur...",
-          "title": "NASA To Award ULA SLS Upper Stage Contract - Aviation Week",
-          "url": "https://aviationweek.com/space/launch-vehicles-propulsion/nasa-award-ula-sls-upper-stage-contract",
-          "snippet": "+ Aerospace - Aircraft & Propulsion - Connected Aerospace - Emerging Technologies - Manufacturing & Supply Chain - Advanced Air Mobility - Sustainability + Air Transport - Aircraft & Propulsion - Interiors & Connectivity - Airports & Networks - Airlines & Lessors - Safety, Ops & Regulation - Mainten",
-          "score": 0.058480237,
-          "numbers": []
-        },
-        {
-          "headline": "Startup Wants Giant Orbital Mirrors to Turn Night Into Day Your phone buzzes with a Starlink while you’re reading about another space sta...",
-          "title": "Startup Wants Giant Orbital Mirrors to Turn Night Into Day – Scientists Are Horrified - Gadget Review",
-          "url": "https://www.gadgetreview.com/startup-wants-giant-orbital-mirrors-to-turn-night-into-day-scientists-are-horrified",
-          "snippet": "Your phone buzzes with a Starlink update while you’re reading about another space startup that makes Elon Musk’s constellation look modest. Reflect Orbital wants to deploy 50,000 orbital mirrors by 2035, beaming sunlight to Earth’s night side like some cosmic flashlight. The Hawthorne startup has ra",
-          "score": 0.058094297,
-          "numbers": [
-            "50",
-            "000",
-            "2035",
-            "28"
-          ]
-        }
-      ],
-      "count": 8
+      "summary": "暂无新闻",
+      "items": [],
+      "count": 0
     }
   }
 }
