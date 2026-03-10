@@ -49,11 +49,20 @@ jobs:
         shell: bash
         run: |
           DATE="${{ github.event.inputs.date }}"
+          EVENT_NAME="${{ github.event_name }}"
+
           if [ -z "$DATE" ]; then
-            DATE=$(python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('Asia/Shanghai')).strftime('%Y-%m-%d'))")
+            if [ "$EVENT_NAME" = "schedule" ]; then
+              # 定时任务使用 UTC 日期，避免调度延迟跨过上海零点导致日期偏移
+              DATE=$(date -u +"%F")
+            else
+              # 手动触发默认仍按上海日期
+              DATE=$(python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('Asia/Shanghai')).strftime('%Y-%m-%d'))")
+            fi
           fi
+
           echo "date=$DATE" >> "$GITHUB_OUTPUT"
-          echo "Using DATE=$DATE"
+          echo "Using EVENT_NAME=$EVENT_NAME DATE=$DATE"
 
       - name: Collect data
         run: |
