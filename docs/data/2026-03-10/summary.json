@@ -1,27 +1,31 @@
 {
   "date": "2026-03-10",
   "counts": {
-    "cninfo_fulltext": 1220,
-    "cninfo_relation": 0,
+    "cninfo_fulltext": 2377,
+    "cninfo_relation": 23,
     "p5w_interaction": 0,
     "tushare_forecast": 0,
-    "tavily_news": 32,
-    "zsxq": 0,
+    "tavily_news": 0,
+    "zsxq": 20,
     "clippings": 0
   },
   "counts_by_subcategory": {
-    "其他": 1047,
-    "资本运作-特定对象发行": 33,
-    "资本运作-员工持股计划": 23,
-    "资本运作-股权激励": 69,
-    "对问询回复": 13,
-    "重大合作/投资项目": 15,
-    "增持": 5,
-    "减持": 14,
-    "快报": 1
+    "其他": 2046,
+    "减持": 43,
+    "快报": 5,
+    "资本运作-股权激励": 112,
+    "资本运作-特定对象发行": 74,
+    "对问询回复": 22,
+    "重大合作/投资项目": 27,
+    "增持": 10,
+    "资本运作-员工持股计划": 36,
+    "监管函": 2,
+    "机构调研": 23
   },
   "excluded_counts_by_rule": {},
-  "errors": {},
+  "errors": {
+    "p5w_interaction": "HTTPSConnectionPool(host='ir.p5w.net', port=443): Max retries exceeded with url: /interaction/getNewSearchR.shtml (Caused by ConnectTimeoutError(<HTTPSConnection(host='ir.p5w.net', port=443) at 0x7f7dac6d4fd0>, 'Connection to ir.p5w.net timed out. (connect timeout=20)'))"
+  },
   "tavily_news": "ok",
   "zsxq": "ok",
   "clippings": "ok"

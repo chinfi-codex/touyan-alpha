@@ -2,6 +2,6 @@
   "date": "2026-03-10",
   "source": "p5w_interaction",
   "count": 0,
-  "error": "",
+  "error": "HTTPSConnectionPool(host='ir.p5w.net', port=443): Max retries exceeded with url: /interaction/getNewSearchR.shtml (Caused by ConnectTimeoutError(<HTTPSConnection(host='ir.p5w.net', port=443) at 0x7f7dac6d4fd0>, 'Connection to ir.p5w.net timed out. (connect timeout=20)'))",
   "items": []
 }
