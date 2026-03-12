@@ -1,0 +1,34 @@
+{
+  "date": "2026-03-12",
+  "counts": {
+    "cninfo_fulltext": 1831,
+    "cninfo_relation": 26,
+    "p5w_interaction": 100,
+    "tushare_forecast": 4,
+    "tavily_news": 0,
+    "zsxq": 17,
+    "clippings": 0
+  },
+  "counts_by_subcategory": {
+    "其他": 1606,
+    "减持": 37,
+    "重大合作/投资项目": 31,
+    "快报": 12,
+    "资本运作-股权激励": 52,
+    "对问询回复": 17,
+    "资本运作-特定对象发行": 63,
+    "资本运作-员工持股计划": 8,
+    "增持": 5,
+    "机构调研": 26,
+    "互动问答": 100,
+    "业绩预告": 4
+  },
+  "excluded_counts_by_rule": {
+    "cninfo.fulltext.excluded.decrease_progress.v1": 1,
+    "cninfo.fulltext.excluded.abnormal_volatility_reply.v1": 3
+  },
+  "errors": {},
+  "tavily_news": "ok",
+  "zsxq": "ok",
+  "clippings": "ok"
+}
