@@ -92,16 +92,6 @@ def run_collect(date, base_dir, sources=""):
     except Exception as e:
         summary["zsxq"] = f"error: {str(e)[:100]}"
 
-    # 收集 clippings 数据
-    try:
-        from adapters.clippings import save_clippings_data
-        clippings_ok = save_clippings_data(date, base_dir / "output")
-        summary["clippings"] = "ok" if clippings_ok else "failed"
-        clippings_json = _load_output_json(out_dir / "clippings.json")
-        summary["counts"]["clippings"] = int(clippings_json.get("count") or 0)
-    except Exception as e:
-        summary["clippings"] = f"error: {str(e)[:100]}"
-
     (out_dir / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     return summary
 

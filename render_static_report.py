@@ -79,21 +79,10 @@ def fmt_file_size(size):
 
 
 def load_professional_knowledge(out_dir: Path, date: str, limit=50):
-    """从输出目录加载专业知识数据（clippings 和 知识星球）"""
+    """Load professional knowledge data from zsxq only."""
     all_items = []
     errors = []
-    
-    # 1. 加载 clippings 数据
-    clippings_file = out_dir / date / "clippings.json"
-    if clippings_file.exists():
-        try:
-            data = json.loads(clippings_file.read_text(encoding="utf-8"))
-            items = data.get("items", [])
-            all_items.extend(items[:limit])
-        except Exception as e:
-            errors.append(f"clippings: {e}")
-    
-    # 2. 加载知识星球数据
+
     zsxq_file = out_dir / date / "zsxq.json"
     if zsxq_file.exists():
         try:
@@ -102,8 +91,9 @@ def load_professional_knowledge(out_dir: Path, date: str, limit=50):
             all_items.extend(items[:limit])
         except Exception as e:
             errors.append(f"zsxq: {e}")
-    
+
     return {"items": all_items[:limit], "error": "; ".join(errors) if errors else ""}
+
 
 
 def get_kimi_api_key():
@@ -775,51 +765,32 @@ def render_news_section(data: dict) -> str:
 def render_professional_knowledge_section(data: dict) -> str:
     items = data.get("items") or []
     error = data.get("error") or ""
-    
-    # 分类：文件和知识星球主题
-    files = [i for i in items if i.get("type") == "clipping_file"]
+
     zsxq_topics = [i for i in items if i.get("type") == "zsxq_topic"]
-    
-    if not items:
-        detail = "暂无当日新内容"
+
+    if not zsxq_topics:
+        detail = "\u6682\u65e0\u5f53\u65e5\u65b0\u5185\u5bb9"
         if error:
-            detail = f"拉取失败：{error}"
+            detail = f"\u62c9\u53d6\u5931\u8d25\uff1a{error}"
         return f"""
     <section id="knowledge" class="panel compact-panel">
       <div class="section-head">
-        <h2>专业知识</h2>
+        <h2>\u4e13\u4e1a\u77e5\u8bc6</h2>
       </div>
-      <div class="section-summary">信源：clippings-api、知识星球</div>
+      <div class="section-summary">\u4fe1\u6e90\uff1a\u77e5\u8bc6\u661f\u7403\uff08\u5f53\u65e5\u521b\u5efa\uff09</div>
       <div class="empty">{fmt(detail)}</div>
     </section>
     """
 
-    # 构建文件表格
-    file_rows = []
-    for row in files:
-        link_html = f"<a href='{fmt(row.get('url'))}' target='_blank'>查看</a>"
-        file_rows.append(
-            f"""
-        <tr>
-          <td class="title">{fmt(row.get("path"))}</td>
-          <td>{fmt(row.get("created_at"))}</td>
-          <td>{fmt(row.get("size_text"))}</td>
-          <td>{link_html}</td>
-        </tr>
-        """
-        )
-
-    # 构建知识星球主题列表
     topic_items = []
     for idx, row in enumerate(zsxq_topics):
-        title = row.get("title", "")
-        content = row.get("content", "")
-        author = row.get("author", "")
+        title = row.get("title") or row.get("topic_title") or "Untitled"
+        content = row.get("summary") or row.get("content") or ""
+        author = row.get("author") or row.get("author_name") or "Unknown"
         created_at = row.get("created_at", "")
         url = row.get("url", "")
-        # 内容摘要
         topic_id = f"zsxq-topic-{idx}"
-        
+
         topic_items.append(
             f"""
         <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
@@ -828,71 +799,28 @@ def render_professional_knowledge_section(data: dict) -> str:
             <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">{fmt(created_at)}</span>
           </div>
           <div id="{topic_id}" class="topic-content topic-content-collapsed">{fmt(content or "")}</div>
-          <button type="button" class="topic-toggle" data-target="{topic_id}" data-expanded="false">展开全文</button>
-          <div style="font-size: 12px; color: #9ca3af;">👤 {fmt(author)}</div>
+          <button type="button" class="topic-toggle" data-target="{topic_id}" data-expanded="false">\u5c55\u5f00\u5168\u6587</button>
+          <div style="font-size: 12px; color: #9ca3af;">\u4f5c\u8005 {fmt(author)}</div>
         </div>
         """
         )
 
-    # 构建信源说明
-    sources = []
-    if files:
-        sources.append("clippings-api")
-    if zsxq_topics:
-        sources.append("知识星球")
-    source_text = "、".join(sources) if sources else "clippings-api、知识星球"
-    
-    # 统计徽章
-    badges = []
-    if files:
-        badges.append(f'<span class="meta-badge">{len(files)}个文件</span>')
-    if zsxq_topics:
-        badges.append(f'<span class="meta-badge strong">{len(zsxq_topics)}条动态</span>')
-    badges_html = " ".join(badges)
-
-    # 文件表格 HTML
-    files_html = ""
-    if file_rows:
-        files_html = f"""
-      <div style="margin-bottom: 16px;">
-        <div style="font-size: 13px; font-weight: 500; color: #374151; margin-bottom: 8px;">📁 文件</div>
-        <table class="detail-table">
-          <thead>
-            <tr>
-              <th>文件路径</th>
-              <th>创建时间</th>
-              <th>大小</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            {''.join(file_rows)}
-          </tbody>
-        </table>
-      </div>
-    """
-
-    # 知识星球主题 HTML
-    topics_html = ""
-    if topic_items:
-        topics_html = f"""
-      <div>
-        <div style="font-size: 13px; font-weight: 500; color: #374151; margin-bottom: 8px;">💬 知识星球动态</div>
-        {''.join(topic_items)}
-      </div>
-    """
+    badges_html = f'<span class="meta-badge strong">{len(zsxq_topics)}\u6761\u52a8\u6001</span>'
 
     return f"""
     <section id="knowledge" class="panel compact-panel">
       <div class="section-head">
-        <h2>专业知识</h2>
+        <h2>\u4e13\u4e1a\u77e5\u8bc6</h2>
         {badges_html}
       </div>
-      <div class="section-summary">信源：{source_text}（当日创建）</div>
-      {files_html}
-      {topics_html}
+      <div class="section-summary">\u4fe1\u6e90\uff1a\u77e5\u8bc6\u661f\u7403\uff08\u5f53\u65e5\u521b\u5efa\uff09</div>
+      <div>
+        <div style="font-size: 13px; font-weight: 500; color: #374151; margin-bottom: 8px;">\u77e5\u8bc6\u661f\u7403\u52a8\u6001</div>
+        {''.join(topic_items)}
+      </div>
     </section>
     """
+
 
 
 def load_forecast_from_akshare(date):

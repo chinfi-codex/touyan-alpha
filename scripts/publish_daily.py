@@ -212,7 +212,6 @@ def build_index_html(manifest: dict, entries: list[dict], summary: dict) -> str:
       tushare_forecast: "业绩预告",
       tavily_news: "新闻动态",
       zsxq: "知识星球",
-      clippings: "Clippings",
     }};
     const STATUS_META = {{
       success: {{ label: "成功", tone: "success" }},
@@ -289,6 +288,7 @@ def build_index_html(manifest: dict, entries: list[dict], summary: dict) -> str:
 
     function topSources(counts, limit = 3) {{
       return Object.entries(counts || {{}})
+        .filter(([key]) => key !== "clippings")
         .sort((a, b) => (Number(b[1]) || 0) - (Number(a[1]) || 0))
         .slice(0, limit)
         .map(([key, value]) => `${{sourceLabel(key)}} ${{fmtNum(value)}}`);
