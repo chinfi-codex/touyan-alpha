@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026-03-15 Alpha日报</title>
+  <style>
+    :root {
+      --bg: #eef1f5;
+      --panel: #ffffff;
+      --panel-soft: #f7f8fb;
+      --line: #dde3eb;
+      --line-strong: #cdd5df;
+      --text: #161c24;
+      --muted: #667085;
+      --muted-2: #8a94a6;
+      --accent: #ff6a00;
+      --accent-soft: #fff2e8;
+      --ai-bg: #f4f8ff;
+      --ai-border: #d7e5ff;
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+      --shadow-soft: 0 4px 12px rgba(15, 23, 42, 0.04);
+      --warn-bg: #fff8ec;
+      --warn-line: #ffd8a8;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+    body { margin: 0; background: linear-gradient(180deg, #f7f8fa 0%, var(--bg) 220px); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color: #0b63ce; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    button { font: inherit; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 16px 16px 32px; }
+    .report-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding: 4px 0 10px; border-bottom: 1px solid rgba(205,213,223,.75); }
+    .report-title-wrap { display: grid; gap: 6px; }
+    .report-kicker { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+    .report-kicker::before { content: ''; width: 8px; height: 8px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 0 4px rgba(255,106,0,.12); }
+    h1 { margin: 0; font-size: 24px; line-height: 1.1; }
+    .report-subtitle { color: var(--muted); font-size: 13px; }
+    .report-meta { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    .meta-badge { display: inline-flex; align-items: center; gap: 6px; min-height: 24px; padding: 0 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel-soft); color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .meta-badge.strong { background: var(--accent-soft); border-color: #ffd0b2; color: #ad4d00; font-weight: 600; }
+    .meta-badge.subtle { color: var(--muted-2); }
+    .tabs { display: flex; gap: 8px; margin-top: 12px; padding: 8px 0; position: sticky; top: 0; z-index: 20; overflow-x: auto; background: rgba(238,241,245,.92); backdrop-filter: blur(10px); }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.92); color: var(--muted); font-size: 13px; font-weight: 600; white-space: nowrap; }
+    .tab:hover { border-color: #ffc59b; color: #a74b00; background: #fff7f1; text-decoration: none; }
+    .content-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 14px; }
+    .panel { background: var(--panel); border: 1px solid rgba(221,227,235,.95); border-radius: 12px; box-shadow: var(--shadow); padding: 16px; }
+    .compact-panel { scroll-margin-top: 72px; }
+    .section-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 8px; }
+    h2 { margin: 0; font-size: 17px; line-height: 1.2; }
+    .section-summary { margin-bottom: 10px; color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .accordion-list { display: grid; gap: 10px; }
+    .accordion-block { border: 1px solid var(--line); border-radius: 10px; background: var(--panel-soft); overflow: hidden; }
+    .accordion-trigger { width: 100%; border: 0; padding: 11px 12px; background: transparent; display: grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto; align-items: center; gap: 10px; text-align: left; cursor: pointer; }
+    .accordion-main { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0; }
+    .accordion-title { font-size: 14px; font-weight: 700; color: var(--text); }
+    .accordion-summary { min-width: 0; color: var(--muted); font-size: 12px; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .accordion-icon { color: var(--muted-2); font-size: 12px; transition: transform .2s ease; }
+    .accordion-icon.is-open { transform: rotate(180deg); }
+    .accordion-body { border-top: 1px solid var(--line); padding: 12px; background: #fff; }
+    .accordion-body.collapsed { display: none; }
+    .accordion-body.open { display: block; }
+    .inline-summary { display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: start; padding: 10px 12px; margin-bottom: 10px; border: 1px solid var(--ai-border); border-radius: 10px; background: var(--ai-bg); }
+    .inline-summary-label { display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 22px; padding: 0 8px; border-radius: 999px; background: #fff; color: #2452b6; font-size: 11px; font-weight: 700; }
+    .inline-summary-text { color: var(--text); font-size: 13px; line-height: 1.55; white-space: pre-wrap; word-break: break-word; }
+    .clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .detail-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .detail-table thead th { position: sticky; top: 68px; z-index: 5; background: #f7f8fb; color: var(--muted); font-size: 12px; font-weight: 600; text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line-strong); }
+    .detail-table td { padding: 9px 10px; border-bottom: 1px solid #edf1f5; vertical-align: top; line-height: 1.5; }
+    .detail-table tr:last-child td { border-bottom: 0; }
+    .detail-table td.title { max-width: 0; }
+    .detail-table tbody tr:hover td { background: #fbfcfd; }
+    .inline-symbol { color: var(--muted-2); font-size: 12px; margin-left: 6px; }
+    .action-group { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+    .news-list { display: grid; gap: 2px; }
+    .news-item { display: grid; grid-template-columns: 20px minmax(0, 1fr) auto auto; gap: 8px; align-items: start; padding: 7px 0; border-bottom: 1px solid #edf1f5; font-size: 12px; }
+    .news-item:last-child { border-bottom: 0; }
+    .news-index { color: var(--muted-2); }
+    .news-headline { color: var(--text); line-height: 1.45; }
+    .news-score { display: inline-flex; align-items: center; height: 20px; padding: 0 6px; border-radius: 999px; background: #f0f3f6; color: var(--muted); font-size: 11px; }
+    .forecast-table { width: 100%; }
+    .forecast-table .change-col { white-space: nowrap; text-align: center; }
+    .forecast-table .reason-col { max-width: 400px; }
+    .forecast-table .date-col { white-space: nowrap; text-align: center; }
+    .forecast-table tr.forecast-highlight { background: linear-gradient(90deg, #fff8ec 0%, #fff 100%); }
+    .forecast-table tr.forecast-highlight td.change-col { color: #d94841; font-weight: 600; }
+    .company-list { display: grid; gap: 8px; }
+    .notice-company-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) auto; gap: 10px; align-items: start; padding: 10px 0; border-bottom: 1px solid #edf1f5; }
+    .notice-company-row:last-child { border-bottom: 0; }
+    .notice-company-row.regulatory { padding-left: 10px; border-left: 3px solid #f59e0b; }
+    .notice-company-main { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .notice-company-text { color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .notice-company-link { text-align: right; white-space: nowrap; }
+    .section-footnote { margin-top: 8px; color: var(--muted-2); font-size: 12px; }
+    .regulatory-warning { background: linear-gradient(180deg, var(--warn-bg), #fff); border-color: var(--warn-line); }
+    .empty { padding: 20px 14px; border: 1px dashed var(--line-strong); border-radius: 10px; background: #fafbfd; color: var(--muted-2); text-align: center; font-size: 13px; }
+    .topic-content { font-size: 13px; color: #4b5563; line-height: 1.6; margin-bottom: 6px; white-space: pre-wrap; word-break: break-word; }
+    .topic-content-collapsed { overflow: hidden; max-height: calc(1.6em * 3); }
+    .topic-toggle { border: 0; background: transparent; color: #2563eb; font-size: 12px; padding: 0; margin: 0 0 6px; cursor: pointer; }
+    .topic-toggle:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .wrap { padding: 14px 12px 28px; }
+      .report-header { align-items: flex-start; flex-direction: column; }
+      .report-meta { justify-content: flex-start; }
+      h1 { font-size: 22px; }
+      .panel { padding: 14px; }
+      .accordion-trigger { grid-template-columns: 1fr auto; }
+      .accordion-summary { grid-column: 1 / -1; white-space: normal; }
+      .news-item { grid-template-columns: 20px minmax(0, 1fr); }
+      .notice-company-row { grid-template-columns: 1fr; }
+      .detail-table { display: block; overflow-x: auto; white-space: nowrap; }
+      .detail-table td.title, .detail-table th { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="report-header">
+      <div class="report-title-wrap">
+        <span class="report-kicker">Alpha Daily</span>
+        <h1>2026-03-15 Alpha日报</h1>
+      </div>
+      <div class="report-meta">
+        <span class="meta-badge">生成时间 2026-03-15 21:50</span>
+        <span class="meta-badge">数据覆盖 4/6</span>
+        <span class="meta-badge strong">当日输出 2026-03-15</span>
+      </div>
+    </header>
+
+    <nav class="tabs"><a class='tab' href='#news'>新闻动态</a><a class='tab' href='#knowledge'>专业知识</a><a class='tab' href='#forecast'>业绩预告</a><a class='tab' href='#relation'>机构调研</a><a class='tab' href='#interaction'>互动问答</a><a class='tab' href='#notice'>公告解读</a></nav>
+
+    <section class="content-grid">
+      
+    <section id="news" class="panel compact-panel">
+      <div class="section-head">
+        <h2>新闻动态</h2>
+        <span class="meta-badge strong">4类 / 0条</span>
+      </div>
+      <div class="accordion-list">
+        
+        <article class="accordion-block news-block" id="news-0">
+          <button class="accordion-trigger" type="button" data-target="news-0-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">AI产业</span>
+              <span class="meta-badge strong">0条</span>
+            </span>
+            <span class="accordion-summary">暂无新闻</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="news-0-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">AI</span>
+              <div class="inline-summary-text">• 暂无新闻</div>
+            </div>
+            <div class="news-list">
+              <div class='empty'>暂无新闻</div>
+            </div>
+          </div>
+        </article>
+        
+        <article class="accordion-block news-block" id="news-1">
+          <button class="accordion-trigger" type="button" data-target="news-1-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">宏观</span>
+              <span class="meta-badge strong">0条</span>
+            </span>
+            <span class="accordion-summary">暂无新闻</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="news-1-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">AI</span>
+              <div class="inline-summary-text">• 暂无新闻</div>
+            </div>
+            <div class="news-list">
+              <div class='empty'>暂无新闻</div>
+            </div>
+          </div>
+        </article>
+        
+        <article class="accordion-block news-block" id="news-2">
+          <button class="accordion-trigger" type="button" data-target="news-2-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">机器人</span>
+              <span class="meta-badge strong">0条</span>
+            </span>
+            <span class="accordion-summary">暂无新闻</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="news-2-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">AI</span>
+              <div class="inline-summary-text">• 暂无新闻</div>
+            </div>
+            <div class="news-list">
+              <div class='empty'>暂无新闻</div>
+            </div>
+          </div>
+        </article>
+        
+        <article class="accordion-block news-block" id="news-3">
+          <button class="accordion-trigger" type="button" data-target="news-3-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">商业航天</span>
+              <span class="meta-badge strong">0条</span>
+            </span>
+            <span class="accordion-summary">暂无新闻</span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="news-3-body">
+            <div class="inline-summary">
+              <span class="inline-summary-label">AI</span>
+              <div class="inline-summary-text">• 暂无新闻</div>
+            </div>
+            <div class="news-list">
+              <div class='empty'>暂无新闻</div>
+            </div>
+          </div>
+        </article>
+        
+      </div>
+    </section>
+    
+      
+    <section id="knowledge" class="panel compact-panel">
+      <div class="section-head">
+        <h2>专业知识</h2>
+        <span class="meta-badge strong">20条动态</span>
+      </div>
+      <div class="section-summary">信源：知识星球（当日创建）</div>
+      <div>
+        <div style="font-size: 13px; font-weight: 500; color: #374151; margin-bottom: 8px;">知识星球动态</div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/55188411512882554" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">本周我们团队和产业组织了多场公...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:41</span>
+          </div>
+          <div id="zsxq-topic-0" class="topic-content topic-content-collapsed">本周我们团队和产业组织了多场公开交流，并在三地进行了七十多场龙虾部署路演，对龙虾在二级投研领域的实践程度有了一个初步的摸底和认知。以下是我对龙虾投研的一些个人看法：
+
+1）OpenClaw目前对95%的从业者都没有什么ROI，ChatGPT 5.4对于大部分人/大部分任务来说已经具备PMF。这意味着市面上的各种龙虾热，其实都是贩卖焦虑，风评反噬也是可预见的。但这并不是不去接触龙虾及其类似物的借口。相反，我极其推荐每一位从业者去尝试这类AI工具，尤其是Claude Code。因为未来拉开人与人差距的，恰恰不是这面上95%能被龙虾自动化的投研任务，而是剩下那5%的深度个人定制的高价值任务。只有自己上手了，才能做排除法找到它们。
+
+2）这5%的高价值任务之所以是未来的胜负手，是因为它们将AI的杠杆效应拉到最大。这类任务满足一些特征，包括但不限于①深度定制的复杂工作流、②不可复制的数据壁垒、③具备极高的迭代收益。这跟我们分析AI应用公司的价值标尺是完全一致的。
+
+3）这也意味着任何试图从别人的分享中得到的AI投研案例都是低价值的，一方面是因为高价值任务跟量化挖因子是一个道理，不会轻易言传；另一方面你会逐渐发现这些工作流和用不用AI的关系并不大，而跟这个人本身会不会做研究和投资的关系更大（我们观察到身边的J人明显用得更好，因为他们计划性更强，有大量现成的工作流可以被AI自动化）。因此，不要指望从任何上门部署龙虾的分析师口中得到龙虾投研的正确打开方式，亦或是判断龙虾有没有用，这都是具有极强误导性的。
+
+4）AI投研的终极目的一定不只是提效，而是加速人脑的迭代。换言之，我们应该想尽办法让AI更好的让自己的大脑迭代，而不是指望AI代替我们完成更多决策。Anthropic最近发布了一个AI对劳动力市场冲击的报告《Labor market impacts of AI: A new measure and early evidence》。好消息是，AI对就业的影响很可能还没有到来。但坏消息是，当影响真正出现时，可能会非常剧烈。更坏的消息是，报告列出了 AI 暴露度最高的职业，前十名基本都属于信息处理类工作，金融投资分析师赫然在列。所以，加速自我迭代摆脱信息处理这一工作循环或许才是正解。
+
+⚡HYJSJ DJN</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-0" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/45811288584114458" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">【天风轻纺】台华新材：再次提示...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:40</span>
+          </div>
+          <div id="zsxq-topic-1" class="topic-content topic-content-collapsed">【天风轻纺】台华新材：再次提示锦纶产业链
+
+■此前我们提示公司机会，目前处相对底部，作为原油基重要合成纺织纤维，积极要素逐步积累：
+
+&lt;e type=&quot;hashtag&quot; hid=&quot;48582145251548&quot; title=&quot;%23%E5%B9%B4%E5%88%9D%E6%9D%A5%E9%94%A6%E7%BA%B6%EF%BC%88%E9%95%BF%E4%B8%9D%EF%BC%89%E6%B6%A8%E5%B9%85%E9%AB%98%E4%BA%8E%E5%8E%9F%E6%96%99%E6%B6%A8%E5%B9%85%23&quot; /&gt;
+
+据三方数据（型号众多，仅供参考），26Q1来己内酰胺（PA6核心原料）上涨约20%，PA6纱线涨幅约25-30%；
+
+产业链成本压力沿“原油-纯苯-己内酰胺-锦纶长丝”传导；25Q2Q3下游需求偏弱，锦纶长丝涨幅不及成本涨幅，行业普遍亏损；本轮行情纱线企业积极跟涨，上下游一致看涨预期明确，激发下游面料/成衣厂补库需求，锦纶长丝涨幅超过成本涨幅。PA6在25Q4吨利减亏，26Q1预期扭亏，产业盈利拐点显现；同时台华借助差异化品种毛利有望扩大。
+
+#PA66主要竞对（以色列屹立公司）外部扰动加大
+
+台华差异化品种主要为PA66及可再生纱线，其中PA66（民用丝）全球核心竞对为屹立，其占全球约一半以上市场（占据国内约1/3）且大部分产能位于以色列；当前中东形势多变，供应链稳定性或能源成本面临复杂环境；台华PA66原料（切片）采购及纺纱、织布均在国内完成，具备锦纶织造完整一体化布局；产业链地位或充分显现，本轮有望扩大市场份额。
+
+#公司吨利处于底部向上通道；外部不确定性加大凸显供应链安全稀缺性，建议积极关注；
+
+此外涨价链条关注华旺科技（吨利明确修复在手现金充沛）百隆东方（看涨美棉核心映射）新澳股份（羊毛加速上涨盈利向上无虞）菜百股份（继续看好免税投资金盈利及市场潜力）等。
+
+----------------
+
+欢迎交流 | 天风轻纺</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-1" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/55188411512848884" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">SW白酒批价更新2026031...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:40</span>
+          </div>
+          <div id="zsxq-topic-2" class="topic-content topic-content-collapsed">SW白酒批价更新20260315：
+
+🧧批价：据今日酒价数据，本周茅台批价散瓶1570元，周环比下跌10元，整箱批价1605元，周环比上涨10元，五粮液批价约785元，周环比下跌5元；国窖1573批价约825元，周环比下跌5元。
+
+🧧本期更新：贵州茅台
+①贵州茅台：贵州茅台对多款个性化产品落地代售政策，陈年茅台酒(15)、精品茅台酒、生肖酒(经典版、礼盒装)，以及鼓乐飞天、53 度飞天茅台全系列非500ml产品(1000ml、200ml、100m1、50ml)等均纳入代售范畴。据悉，此次代售政策明确三大核心要求，一是经销商申请参与并需缴纳保证金;二是所有代售产品须通过i茅台平台完成销售，原团购客户可扫描专卖店专属i茅台二维码采购;三是产品售价严格执行公司统一的i 茅台定价标准，经销商预计可获得5%的返利利润空间。
+②贵州茅台：3月8日i茅台公众号消息，新增贵阳茅台酒销售有限公司为总仓配送服务门店，会根据消费者在i茅台APP购买的不同茅台酒产品，由仁怀市华赤酒业销售有限公司或贵阳茅台酒销售有限公司为消费者提供销售及配送服务，以上两家公司均是茅台官方自营店。
+③贵州茅台：茅台1935酒(尊享)正式在i茅台APPQ上线开售，定价998元，精准填补品牌价格带空白。
+④行业：3月9日，国家统计局发布的数据显示，2月，全国居民消费价格同比上涨1.3%，环比增长1.0%；1-2月，全国居民消费价格同比增长0.8%。其中，2月，酒类价格同比下降2.6%，环比下降1.1%；1-2月，酒类价格同比下降2.2%。
+
+批价数据，仅供参考，详细数据库，欢迎联系～</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-2" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/22811488285144281" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">【中泰科技消费丨家电】1-2月...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:39</span>
+          </div>
+          <div id="zsxq-topic-3" class="topic-content topic-content-collapsed">【中泰科技消费丨家电】1-2月大家电零售口径（奥维）：#内销景气度普通、市场最关心的空调和清洁竞争还是比较激烈、但冰洗电视油烟机等格局向好、顺价顺利。
+
+#注意！最近两年春节日期错开，我们把2个月合起来看更可靠
+
+&lt;e type=&quot;hashtag&quot; hid=&quot;51514825458224&quot; title=&quot;%23%E6%99%AF%E6%B0%94%E5%BA%A6%23&quot; /&gt;
+➤25Q1外销高基数，但内销基数不算高（内销Q2基数最高）。#国补退坡+需求透支后、26M1-2内销景气度一般、线下表现好于线上（国补侧重线下）、均价表现更好、估计内销利润表现好于收入。
+
+#竞争：洗衣机/电视竞争格局最好＞冰箱/油烟机＞空调/扫地机/洗地机
+
+➤空调：小米走弱（销额份额-4pct）、#格力主品牌+晶弘份额提升（格力+1pct，晶弘+6pct）。
+➤冰箱：华凌/统帅等低端品牌涨价，&lt;e type=&quot;hashtag&quot; hid=&quot;28284152421551&quot; title=&quot;%23%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84%E5%BE%80%E4%B8%8A%E3%80%82%23&quot; /&gt;
+➤洗衣机：#品牌涨价比冰箱还猛，高端品牌量份额提升，结构显著相当。
+➤电视：和洗衣机类似，存储+面板涨价背景下，品牌涨价（mini和非mini都在涨价），且海信TCL两个高端品牌量份额提升，&lt;e type=&quot;hashtag&quot; hid=&quot;15451824148252&quot; title=&quot;%23%E7%BB%93%E6%9E%84%E6%94%B9%E5%96%84%E3%80%82%23&quot; /&gt;
+➤油烟机：头部品牌集中度提升。
+➤扫地机：科沃斯石头份额提升，小米追觅云鲸份额下降。
+➤洗地机：石头延续份额提升趋势，依次为添可32%、石头22%、追觅16%份额。
+
+风险提示：业绩不及预期、数据准确度不及预期</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-3" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/82811488285144842" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">汇报3❗【天风汽车】航发动力再...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:39</span>
+          </div>
+          <div id="zsxq-topic-4" class="topic-content topic-content-collapsed">汇报3❗【天风汽车】航发动力再Call：燃机业务为什么能做/怎么做-0315
+———————————
+前期我们重点强调了公司在航改燃的产能优势和客户进展，当前市场普遍质疑其核心机出口能力，今天我们针对这个问题进一步更新。
+
+从技术角度看，根据观察者网报道，太行核心机来源于WS-10，# 而WS-10技术源头为北美CFM-56发动机，和当前主流的海外航改燃产品LM系列、CFM系列等底层技术均来自于北美GE9，# 技术同源背景下并不存在技术泄密的政策限制。
+
+从业务模式看，航发动力负责核心机和热端叶片生产制造，销售給航发燃机公司，后者是专做民品的燃机公司，负责做集成和整机销售。# 航发动力本身不直接对接海外客户，燃机公司产品此前也有海外业务落地。
+
+投资建议：
+①对标东方电气（1GW订单、0.5GW产能），公司当前2.5GW订单、3-4GW产能，对应250亿营收、50亿利润，# 30xPE对应1500亿市值增量。
+
+②主业（1200亿）+商发业务（1000亿），# 合计目标市值在3700亿，当前位置看显著低估。
+———————————
+欢迎交流：孙潇雅/谢坤</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-4" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/45811288584122858" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">【国泰海通食饮】周报第9期：非...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:39</span>
+          </div>
+          <div id="zsxq-topic-5" class="topic-content topic-content-collapsed">【国泰海通食饮】周报第9期：非标茅台代售制，pet担忧带来饮料买点
+
+投资建议：1）白酒首选具有价格弹性标的：贵州茅台、五粮液、泸州老窖以及有望陆续出清标的：迎驾贡酒、古井贡酒、山西汾酒、今世缘、珍酒李渡、舍得酒业、金徽酒；2）饮料受益出行良好景气度，推荐东鹏饮料、农夫山泉（港股），同时重视低估值高股息，推荐中国食品（港股）、康师傅控股（港股）、统一企业中国（港股）；3）零食及食品原料成长标的：推荐百龙创园、卫龙美味（港股）、盐津铺子、西麦食品；4）啤酒推荐青岛啤酒、珠江啤酒、百润股份，华润啤酒（港股）；5）调味品平稳、牧业产能去化，餐供有望恢复推荐千禾味业、宝立食品、巴比食品、安井食品、海天味业、安琪酵母、伊利股份、新乳业、优然牧业（港股）、现代牧业（港股）。
+
+白酒：茅台非标代售制落地，五粮液召开运营商顾问团会议。茅台各地联谊会近期召开会议，明确非标茅台全面实行代售制，酒厂保留货权，经销商缴纳保证金后获得销售权，按官方统一价格对外销售并获得5%的佣金，同时接受酒厂的考核和监管。我们认为非标茅台实行代售制或有几方面考虑，核心是全面市场化：1）“多劳多得”激励渠道做大蛋糕；2）提升消费者服务水平；3）维护价盘。五粮液本周召开品牌运营商顾问团营销工作扩大会议，伴随精准化市场政策落地落实，2026年春节五粮液产品表现超预期，多地动销较2025年明显增长，市场份额切实提升。节后进入淡季，飞天批价震荡后企稳，我们认为白酒行业已进入本轮周期底部，渠道情绪已观察到修复迹象，景气改善、批价上涨、库存去化等边际变化以及宏观政策对股价有较强催化。
+
+大众品：短期pet价格担忧发酵，饮料龙头迎来价值布局区间。受油价上涨驱动，3月以来pet价格持续上涨导致市场担心饮料企业盈利受损。不过考虑到头部饮料企业均有一定的pet锁价策略以对冲成本波动，也有能力通过产品结构调整、市场费用调整等手段来保障自身盈利水平。因此只要pet价格后续能正常回落，我们预计饮料企业盈利没有那么悲观。此外参照22年情况，饮料龙头企业更有能力对冲成本上周压力。当前农夫山泉和东鹏饮料的pe水平均处历史中低分位，因此看好后续饮料龙头企业的价值修复带来的投资机会。</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-5" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/55188411512844284" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">持续看好变压器出口，回撤带来上...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:39</span>
+          </div>
+          <div id="zsxq-topic-6" class="topic-content topic-content-collapsed">持续看好变压器出口，回撤带来上车机会
+
+明阳电气：低估值变压器出口公司，已拿到XAI小批量订单，后续催化：美国批量订单有望落地，欧洲主变在对接，Q2欧洲海风订单有望落地。
+
+望变电气：美国CSP订单已经落地，后续CSP订单有持续落地潜力，，取向硅钢供给偏紧，具备涨价潜力。
+
+安靠智电：微软批量变压器订单已经落地，后续CSP订单、电力公司主变订单有落地潜力。
+
+怎么看待美国新进入越来越多的变压器企业？
+
+美国变压器市场很大，短期新进入几家变压器厂商，证明美国变压器缺口较大，在放松对中国企业的限制。且新进入的公司美国订单毛利率45-50%，并没有低价拿单的情况，不用担心格局。
+
+美国变压器市场多大？
+
+woodmac数据，25美国变压器缺口1.4W台，按照配变500万一台计算，700亿缺口市场，美国变压器产能短缺，缺的是绕线工，熟练工培养需要2-3年时间，短期较难补，缺口预计会持续放大。
+
+欧美电网改造+数据中心建设，变压器需求强是长周期，也建议关注取向硅钢涨价潜力。</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-6" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/22811488285144541" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">【浙商轻工史凡可】周观点：重申...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:39</span>
+          </div>
+          <div id="zsxq-topic-7" class="topic-content topic-content-collapsed">【浙商轻工史凡可】周观点：重申裕同科技推荐，强调涨价和分红
+
+周期见底：特种纸提涨良好，地产链分红价值
+造纸：本周跟踪特种纸提价顺畅、箱板纸价格较强。近期首推# 华旺 装饰原纸格局拐点；# 仙鹤 广西二期稳步建设贡献中期利润。浆纸龙头持续推荐# 玖龙 # 太阳 # 博汇。
+地产链：关注下周软体龙头# 顾家 # 喜临门 # 慕思 智能产品线发布会，其余# 欧派 # 敏华 # 索菲亚 # 奥普 分红价值突出。强调# 奥普产品推新贡献超额、优质小而美。
+金属罐：# 奥瑞金 联合上下游推进再生铝项目、供应链提效，逢低布局。
+
+出海大势：成长择优，回调坚定布局
+制造：# 裕同 强推成长拐点，重视服务价值链延伸，1+N+T战略元年；# 英科医疗 涨价首选品种，自给配套原料工厂保障充分受益，继续重大推荐；# 众鑫 成本优势突出，全球布局当时。
+消费：持续重点推荐# 英科再生 装饰建材成长提速期；# 匠心 期待infinity新品；# 致欧 关注Q2基本面改善。
+
+新消费：核心品种多已进入布局区
+# 西锐： 短期宏观担忧干扰，基本面无虞，重视长期逻辑，逢低布局。
+潮玩：# 泡泡 LABUBUx三丽鸥毛绒挂件抖音预约量19.2w、大娃预约量13.7w，全渠道秒罄，世界杯联名产品图流出，关注后续业绩会、LABUBU4.0、世界杯联名等催化；# 布鲁可 25A经调净利6.7亿元（+16%）、符合预期，成人向&amp;出海稳步兑现（16+岁产品占比25H2环比+3.5pct至18%），积木车有亮点（25年11月推出后实现收入4310万元），关注26年放量进展。
+烟草：1）# 雾芯 25A营收为39.59亿（+44%）、经调净利11.62亿（+23.5%），其中25Q4收入同增40%（吸收海外业务），当期海外收入占比达76.5%；公司账上现金类资产22.5亿美元、当前市值27.4亿美元，建议关注。2）HNB全球景气&amp;烟草出海叙事延续，重点标的# 思摩尔 # 中烟 # 华宝。
+个护：看好315后# 登康 # 倍加洁 布局窗口；# 乐舒适 非洲龙头成长稳健，成本影响整体可控。
+宠物：2月宠物赛道增长稳健，中宠三大品牌延续提速，建议关注。
+
+风险提示：竞争加剧、汇兑波动、成本涨价等</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-7" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/82811488285142142" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">皓元医药-调研小结【东吴医药朱...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:38</span>
+          </div>
+          <div id="zsxq-topic-8" class="topic-content topic-content-collapsed">皓元医药-调研小结【东吴医药朱国广团队】
+
+逻辑：依旧看好公司①ADC CDMO供应能力、订单情况增速可观；②海外订单占比提升，同步改善盈利结构；③前端维持高增速，26年分子砌块利润改善，生化试剂加强出海；④整合CADD和AIDD等AI赋能。
+
+后端：截至26m1 CDMO在手订单8.7e，截至25m12订单7.4e（+40%），CDMO需求恢复趋势明显，1月新签1e大单展示良好趋势；后端海外占比达40%（+20pct），海外BD团队拓展欧美市场成效较好，有望提升后端毛利率。
+
+ADC：小分子已经提供了5个ADC BLA服务，26H1预期6-7个项目IND，已有16个项目申报美国DMF，预期26年将迎来FDA和CDE审计。大分子项目数量增长，重庆大分子产能爬坡超预期，具备爆发弹性。
+
+前端：维持高增速、高毛利，26年分子砌块将实现较好利润改善，生化试剂加强出海。
+
+25Q4利润：经营利润增速高于收入，营业利润yoy+31.0%，扣非+40.8%；归母利润受到汇兑损益1kw+资产处置2kw+投资收益2kw+商誉减值600-700w等影响，还原后符合原先预期。
+
+我们预测26年工具化合物增速20%，分子砌块30-35%，后端20%，26-27年收入34.9/42.3亿元（+22%/21%），利润3.6/5.0亿元（+45%/39%），PE估值约39/28倍。</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-8" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/82811488285142122" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">【国金策略-市场情绪跟踪】
+
+...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:38</span>
+          </div>
+          <div id="zsxq-topic-9" class="topic-content topic-content-collapsed">【国金策略-市场情绪跟踪】
+
+本周市场情绪从周一的底部开始震荡回升，目前市场情绪处于历史中枢水平。拆分投资者来看，个人投资情绪震荡下行，机构投资情绪则震荡回升但仍偏弱。这种情绪组合意味着市场未来仍可能会延续震荡走势并无明显上行或下行趋势。
+
+行业上，农林牧渔、房地产、电子、通信等板块未来短期或上行且未过热；商贸零售、消费者服务、家电、医药、食品饮料、非银、交运、传媒等板块未来短期有修复可能。
+
+煤炭、电力及公用事业、轻工、军工、纺服、计算机等板块未来短期或下行；其余板块未来短期或均震荡走势。
+
+A股与其他大类资产的联动性仍处于高位。</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-9" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/45811288584125148" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">【财通食饮】油脂期货专家交流核...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:38</span>
+          </div>
+          <div id="zsxq-topic-10" class="topic-content topic-content-collapsed">【财通食饮】油脂期货专家交流核心要点-20260315
+
+整体情况：1）原先预期：#26年油脂潜在供应量较大，菜籽、葵籽、棕榈油增产，大豆持平，油脂供应增量约450万吨，#原本基本面偏宽松或震荡。2）战争后：原油上涨，生物柴油需求预期提升，形成供需双增格局，#矛盾取决于生物柴油计划落地情况。3）短期判断：预计维持大幅震荡，#若原油或B50计划有变、基本面或快速反转。
+
+棕榈油：
+短期偏紧：25年7月降水偏低致26年2-3月马来、印尼产量下滑，库存去化加快。
+需求预期：伴随棕油柴油价差加大，有望加速印尼B50若落地，预计新增消费400-500万吨。
+价格判断：当前9880元接近24年历史高位（10500元），#原油若维持现价上涨空间有限；若回落则回调压力大。
+
+豆油：
+外盘支撑：美豆受生物柴油预期及中美贸易协议（采购1200万吨）提振。
+国内扰动：通关延迟、巴西发船延后导致短期偏紧，但中期到港将大增；油厂压榨利润高，或加大采购并套保，&lt;e type=&quot;hashtag&quot; hid=&quot;28284152424151&quot; title=&quot;%23%E5%AF%B9%E4%BB%B7%E6%A0%BC%E5%BD%A2%E6%88%90%E5%8E%8B%E5%8A%9B%E3%80%82%23&quot; /&gt;
+
+菜油：
+政策改善：中加关系转暖，取消100%关税，后续供应有望恢复。
+现状：库存低位但预期改善，菜油为小品种，交易边缘化、受消息面影响大。
+
+详细内容，欢迎联系~
+
+联系人：吴文德/黄欣培15900970824</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-10" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/45811288584141288" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">【国投机械】本周我们举办了国投...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:38</span>
+          </div>
+          <div id="zsxq-topic-11" class="topic-content topic-content-collapsed">【国投机械】本周我们举办了国投上海策略会，涉及重要板块和核心公司的交流内容再做反馈，欢迎参考：
+
+1、数控刀具
+总体来看对钨价和需求保持乐观，价格上涨动能充足。当期原材料库存的影响是主要盈利矛盾，各家公司也在积极布局PCB钻针等新领域。
+
+# 欧科亿： 主业方面，当前在手1000吨以上低价原料库存，截至25年底公司刀片累计提价40%，26年1-2月份继续加速提价。棒材方面，竞争格局更好，25H2PCB供应占比更多，后续将配合大客户做好高端钻针的技术突破。
+
+# 新锐股份：公司低价碳化钨有3000吨，全年维度看具备显著的低价库存优势。钻针方面，慧联团队经营经验丰富，具备设备自研能力，公司只收购其PCB资产和泰国工厂，预计26年中之前完全落地。</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-11" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/45811288584141528" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">【建投食饮|杨骥团队】关注政策...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:38</span>
+          </div>
+          <div id="zsxq-topic-12" class="topic-content topic-content-collapsed">【建投食饮|杨骥团队】关注政策和涨价链受益标的，看好牧场、强定价权龙头
+
+两会释放提振消费强信号，扩大内需被列为26年经济工作的首要任务，扩大优质消费品和服务供给，政府工作报告强调“激发下沉市场消费活力”、消费品以旧换新政策接续实施并加力扩容，关注茅台蜜雪等核心消费资产的底部配置机会，#万辰锅圈等零售连锁变革符合内需政策方向。
+
+2026年3月13日茅台落地多款核心个性化非标产品代售政策，系其多维运营模式落地关键举措。产品所有权归茅台，经销商缴保证金参与，交易走i茅台平台，盈利改赚5%固定服务费。茅台设考核机制倒逼动销，线上线下联动，此举夯实其To C转型，也重塑白酒渠道生态。白酒方面，&lt;e type=&quot;hashtag&quot; hid=&quot;51514825454824&quot; title=&quot;%23%E6%8E%A8%E8%8D%90%E8%B4%B5%E5%B7%9E%E8%8C%85%E5%8F%B0%E3%80%81%E5%B1%B1%E8%A5%BF%E6%B1%BE%E9%85%92%E3%80%82%23&quot; /&gt;
+
+输入型通胀压力下，关注涨价链受益标的，看好上游牧场，下半年肉奶共振可期，牛肉价格持续上涨，肉牛公司紫燕食品直接受益。锅圈26年目标净增门店约3000家，开店目标及单店表现指引均超预期。部分量贩门店反馈1-2月同店近双位数增长，整体表现超预期，量贩零食当下处于竞争格局改善和利润释放期，26年单店提升可期，强推零售连锁变革的投资机会。大众品方面，#推荐万辰集团、锅圈、紫燕食品、安井食品、安琪酵母。</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-12" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/55188411512828514" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">一文读懂算电协同行业投资，十五...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:38</span>
+          </div>
+          <div id="zsxq-topic-13" class="topic-content topic-content-collapsed">一文读懂算电协同行业投资，十五五电网核心建设主题！【天风计算机缪欣君/刘鉴团队】
+
+1️⃣#国家战略定调、十五五投资同比+40%支撑
+
+3月5日，“算电协同”首次被写入政府工作报告，明确构建新型电力系统、加快智能电网、发展新型储能、扩大绿电应用。同日国新办吹风会上，国务院研究室副主任陈昌盛强调“AI 的尽头是能源，要用好国家电网体系优势，加快建设超大规模智算集群与算电协同新型基础设施。”此外，&lt;e type=&quot;hashtag&quot; hid=&quot;51514825454484&quot; title=&quot;%23%E5%9B%BD%E5%AE%B6%E7%94%B5%E7%BD%91%E5%8D%81%E4%BA%94%E4%BA%94%E8%A7%84%E5%88%92%E6%8A%95%E8%B5%844%23&quot; /&gt; 万亿元，南方电网计划投入2万亿，较十四五同比增长40%，重点投向特高压、智能电网、算电协同配套。
+
+2️⃣#两大核心内涵、灵活降低电力成本+创造增值收益
+
+&gt;当前算电协同包含两大核心内涵：（1）#算随电动：引导对时延不敏感的算力（如AI训练）向西部新能源富集地区布局，就地消纳低成本绿电；（2）#电随算动：主要针对东部的数据中心，通过将其作为柔性负荷参与电网需求侧响应，优化其用电模式，提升电网运行效率。
+&gt;算电协同的利润核心驱动力在于降低电力成本和创造增值收益，如在西部绿电富集区，新建数据中心与风光电站“捆绑”实现绿点就地消纳，在东部地区通过电力交易市场签订中长协、绿证交易等锁定长期低价绿点。
+
+3️⃣&lt;e type=&quot;hashtag&quot; hid=&quot;28284152424411&quot; title=&quot;%23%E4%BA%A7%E4%B8%9A%E9%93%BE%E4%B8%80%E8%A7%88%23&quot; /&gt;
+
+上游为发电和算力硬件设备，电力基础设施包括绿电生产（主要为光伏和风电）、储能、智能电网设备，算力基础设施包括IDC、IT设备、液冷配套等。
+中游为平台调度与运营，为全国算电协同网络核心，包括绿电+算力一体化运营商、电网数字化与调度服务商、自建绿电IDC厂商。
+下游为需求方，核心用户为AI大模型厂商、云服务企业、新兴科技产业。
+
+核心标的：
+1）&lt;e type=&quot;hashtag&quot; hid=&quot;15451824141822&quot; title=&quot;%23%E7%AE%97%E7%94%B5%E4%B8%80%E4%BD%93%E5%8C%96%EF%BC%9A%23&quot; /&gt; 中国能建（央企总包龙头、东数西算最核心建设方）、协鑫能科（自有电力+上海苏州投资算力）、豫能控股（火电+绿电+抽水蓄能、收购郑州合盈数据布局IDC）、金开新能（自有风光电力+投资5000p智算建设）
+2）&lt;e type=&quot;hashtag&quot; hid=&quot;48582145252148&quot; title=&quot;%23%E7%94%B5%E7%BD%91%E6%95%B0%E5%AD%97%E5%8C%96%E4%B8%8E%E8%B0%83%E5%BA%A6%EF%BC%9A%23&quot; /&gt; 国电南瑞（国网电力AI调度龙头）、南网数字（南网数字化核心、南方区域算电调度）、四方股份（电力调度AI系统核心供应商）
+3）&lt;e type=&quot;hashtag&quot; hid=&quot;88284152424152&quot; title=&quot;%23%E7%94%B5%E5%8A%9B%E5%B8%82%E5%9C%BA%E4%BA%A4%E6%98%93%E4%B8%8E%E7%BB%BF%E7%94%B5%E6%B6%88%E7%BA%B3%EF%BC%9A%23&quot; /&gt; 国能日新（新能源电站功率预测龙头、电力市场交易先驱）、朗新科技（实现临港算力转移福建计算、参与华北电力大学和阿里巴巴算力-电力调优）
+
+更多详细信息欢迎交流！
+缪欣君/王屿熙</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-13" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/22811488285151841" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">燃气轮机
+#联德股份： 利润方...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:38</span>
+          </div>
+          <div id="zsxq-topic-14" class="topic-content topic-content-collapsed">燃气轮机
+&lt;e type=&quot;hashtag&quot; hid=&quot;15451824141182&quot; title=&quot;%23%E8%81%94%E5%BE%B7%E8%82%A1%E4%BB%BD%EF%BC%9A%23&quot; /&gt; 利润方面，25年利润增速在20%左右，26年利润有望做到30%-50%，净利率做到20%以上。产值方面，26-28年保持每年新扩2-3万吨的节奏，单吨价值量有望小幅提升。卡特、颜巴赫、瓦锡兰、康明斯都在积极推进合作中。
+&lt;e type=&quot;hashtag&quot; hid=&quot;48582145252218&quot; title=&quot;%23%E5%BA%94%E6%B5%81%E8%82%A1%E4%BB%BD%EF%BC%9A%23&quot; /&gt; 25年两机订单超过20亿，整体订单41.5亿。26年预计两机订单超过30亿，整体订单超过50亿。产值方面，25年两机产值13亿，目前单月产值1.3亿/月，年底有望做到2亿/月。客户方面，安萨尔多、贝克休斯、西门子、等都有积极进展。
+&lt;e type=&quot;hashtag&quot; hid=&quot;88284152424412&quot; title=&quot;%23%E5%B4%87%E5%BE%B7%E7%A7%91%E6%8A%80%EF%BC%9A%23&quot; /&gt; 公司有2-3年收入翻倍的目标，到26年底年化产值可以做到10-12亿元。燃机方面，GEV、贝克休斯、安萨尔多、西门子、东气都有积极进展，预计26H2-27年会有更大批量订单。核电方面，受益新增机组核准+存量机组国产化改造，在手订单1亿元，80%是岛内轴承（毛利率超60%）。风电27年有望拿到采埃孚上亿订单，毛利率稳中有升。</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-14" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/55188411512828124" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">【国投机械】策略会交流总结2：...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:37</span>
+          </div>
+          <div id="zsxq-topic-15" class="topic-content topic-content-collapsed">【国投机械】策略会交流总结2：
+
+5、AI 设备及机器人
+#大族数控：1）#超快：25Q4开始小批出货，载板和光模块进展更快，PCB算力定价更高，按照下游客户反推，26Q2大批订单或可期；2）#订单和产能：26年1-2月订单增速可观。全年产能目标翻倍，扩产暂无瓶颈；3）#均价&amp;盈利能力：受益产品结构优化，CCD钻机均价大幅提升，且此等高价值CCD钻机占比较高；
+#斯菱股份：机器人核心产品不变，谐波+一体化轴承+普通轴承，谐波最快已经定点，1-2月发货小几十台整机对应的需求；一体化轴承其次。海外泰国扩产已准备好，预计6月达产，匹配T下半年规模放量需求。
+#雷迪克：机器人核心产品丝杠+轴承，丝杠客户XM、XP，3-4月考虑赴美对接T；轴承客户1X，供应100多个轴承品类，单机ASP约2万；#脑机接口，投资傲意，预计26H1拿到医疗器械注册证，后续为傲意代工灵巧手模组。
+
+6、3C&amp;泛半导体
+#博众精工：收购光模块耦合设备公司中南鸿思，已进入联特科技、AAOI等；自动化设备供货旭创泰国工厂、工业富联等。预计全年订单110亿+，同比增加40%+，3C、新能源领域增量明显。
+#天准科技：25年签单额增长30%以上，在手订单14.5亿，明显高于往年。半导体设备28nm明场检测供货华力，长存一直同步测试，指标达到国内竞对水平，推动Q2-Q3样机进入长存。机器人大脑控制器25年签单4600万，目前为国内最好水平。
+
+7、出海
+#涛涛车业：产品提价落地，26年持续拓展经销商数量、商超渠道，加密全美经销商网络。北美产能目标到26年底提升至6000台。机器人在巡检领域落地比较顺利，二次开发后在美国做本地化部署。
+#捷昌驱动：主业北美接近双位数增长。机器人产品对接国内主机厂，送样客户达十几二十家，计划26年中将轻量化旋转模组推向美国市场。
+
+详细内容，欢迎联系国投机械团队！</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-15" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/45811288584141458" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">固态设备
+#先导智能：25年中...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:37</span>
+          </div>
+          <div id="zsxq-topic-16" class="topic-content topic-content-collapsed">固态设备
+#先导智能：25年中标订单240亿、26年目标不断上修中。25年国内锂电占50%，海外订单占20%出头，动力与储能订单比例约7:3，储能增速高，26年订单目标不断上修中，至少30%以上增速。C、B固态招标有望在3-4月有新进展。
+#华自科技：在手订单80亿。当前总体在手订单80多亿，其中锂电池智能装备30多亿、源网荷储近50亿、水利水电及环保各几个亿。26年锂电预期增长30%+。固态布局高压化成分容+等静压。等静压公司新成立，预计几个月内推出等静压新产品。</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-16" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/14588155452824122" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">VLA大模型&amp;燃机&amp;经销商更新...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:36</span>
+          </div>
+          <div id="zsxq-topic-17" class="topic-content topic-content-collapsed">VLA大模型&amp;燃机&amp;经销商更新 -20260315
+
+# 小鹏拉开智驾产业升级序幕
+小鹏二代VLA实车体验平顺。2026年是智驾升级大年，特斯拉+小鹏，Robotaxi+2C大模型全面发力，叠加国内L3L4测试，催化较多。重点推荐：# 耐世特 Robotaxi增量零部件，此外美国大车格局改善、景气可期；# 小鹏汽车 VLA跃升之年，Robotaxi+机器人值得期待；# 中国汽研 L2强检前置，下半年检测市场开始爬坡
+
+# AIDC发电
+从PSI、瓦锡兰、卡特彼勒的配套信息看，往复式燃气发电机组有望成为AIDC主流主供电源，不止是燃气轮机的替补。继续推荐# 潍柴动力，及供应链# 天润工业 </div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-17" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/22811488285152251" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">【水泥周盘点：长三角熟料开始提...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:36</span>
+          </div>
+          <div id="zsxq-topic-18" class="topic-content topic-content-collapsed">【水泥周盘点：长三角熟料开始提涨】国泰海通建材鲍雁辛20260315
+
+本周全国水泥市场价格环比回落0.3%。价格上涨地区主要有江苏、浙江和河南，幅度20-30元/吨；价格下跌区域为广东、海南、广西和贵州，幅度20-30元/吨。
+3月中旬，随着天气好转，以及下游工程开工率提升，国内水泥市场需求缓慢增加，全国各地主要企业水泥出货率近25%，环比提升9.5百分点。价格方面，受整体需求恢复较弱影响，部分高价地区水泥价格延续下行走势，带动全国水泥价格震荡回落。
+辽宁大连地区水泥企业第二次公布价格上涨，幅度30元/吨，由于第一轮价格上涨未执行到位，企业进行了二次推涨，以缓解运营压力；目前气温仍偏低，市场需求刚刚启动，价格执行情况待跟踪。据了解，泛东北地区企业计划于3月15日前后继续新一轮推涨价格，幅度40元/吨。
+江苏南京、苏锡常、扬泰、南通及盐城等地区水泥企业陆续公布价格上涨20元/吨，水泥价格持续底部徘徊，企业经营压力较大，为提升运营质量，企业依靠行业自律推动价格上涨，若此次价格执行到位，企业计划月底前继续上调价格。目前市场需求恢复一般，企业发货在3-5成，库存偏高运行，价格执行情况待跟踪。
+浙江杭嘉湖、绍兴及金建衢地区水泥企业陆续公布散装价格上涨20元/吨，前期价格水平偏低，随着市场需求逐步恢复，企业涨价意愿增加，尝试推涨价格。天气情况良好，浙北地区水泥需求恢复至3-4成水平。
+安徽合肥、马鞍山、芜湖及宣城等地水泥企业公布散装价格上涨20元/吨，天气晴好，工程项目和搅拌站开工率提升，水泥需求继续恢复，企业发货提升至3-5成，为改善运营质量，企业尝试推涨价格。铜陵、池州地区水泥企业连续两轮公布散装价格上涨，累计幅度30元/吨，受新开工程项目拉动，水泥需求恢复较好，企业发货在4-5成，库存中高位，为提升盈利，企业上调价格。皖北地区散装水泥价格上涨20元/吨，受周边地区涨价带动，为改善盈利水平，本地企业积极跟涨，新开工程项目较少，水泥需求表现欠佳，企业发货量在2-3成，价格执行情况待观察。长三角地区熟料价格同步上涨20元/吨，涨后沿江熟料平仓价220元/吨。
+江西南昌地区部分企业下调水泥价格20元/吨，由于市场需求启动缓慢，企业发货仅在3成左右，为打开销量，价格出现回落。赣东北地区水泥价格下调10-20元/吨，新开工程项目较少，搅拌站开工率不足，水泥需求恢复欠佳，企业日出货在3-4成，为提振销量，价格回落。
+山东济南、德州、菏泽、泰安等地区水泥企业陆续公布价格上涨20-30元/吨，长时间错峰生产导致企业生产成本增加，以及春节前价格曾小幅回落，多数企业处于亏损状态，为提升运营质量，主导企业积极引领价格上涨，省内企业地区也有跟涨计划。
+广东珠三角及粤北地区水泥价格下调20元/吨，搅拌站因去年回款较差，以及税率上涨等因素开工放缓，工程项目和民用市场也未恢复至正常水平，水泥需求表现一般，企业发货在4-5成，库存高低不一，为增加销量，价格继续回落。粤西湛江、茂名地区水泥价格下调20元/吨，搅拌站和工程项目复工缓慢，水泥需求表现欠佳，企业日出货在3成左右，为刺激下游拿货，企业小幅降价促销。
+广西南宁、崇左和玉林等地区企业下调水泥价格20-30元/吨，现南宁地区P.O42.5散出厂价210元/吨左右，新开工程项目较少，搅拌站因资金紧张开工不足，水泥需求恢复较慢，企业日出货仅在3成左右，库存偏高运行，为提振销量，部分企业先行下调价格，其他企业陆续跟降。
+海南海口地区水泥企业下调价格20元/吨，新开工程项目较少，以及搅拌站因回款欠佳开工积极性不高，市场需求启动缓慢，企业发货仅在2-3成，为提振销量，部分企业先行降价促销，其他企业陆续跟降。
+湖北武汉以及鄂东地区水泥价格平稳，天气虽已放晴，但下游资金紧张，搅拌站和市政工程开工率缓慢，水泥需求表现低迷，企业发货仅恢复至2-3成，库存高位运行，短期价格继续底部徘徊。宜昌地区水泥价格暂稳，重点工程项目启动较快，企业出货普遍能达5成左右，目前部分生产线仍在执行错峰生产，库存中低位运行，为提升运营质量，企业计划于近日推涨水泥价格，预计幅度20-30元/吨。
+四川成都地区袋装水泥价格下调15元/吨，为抵御外来水泥干扰，同时刺激民用市场需求，企业小幅下调袋装水泥价格，散装报价暂稳，市场需求方面，受工程项目拉动，不同企业出货量略有差异，在3-5成不等，库存在50%-70%。宜宾、泸州地区水泥价格稳定，市场资金紧张，水泥需求恢复不及预期，企业出货量仅在正常水平的3-4成，受益于企业执行错峰生产，库存中高位。
+青海西宁、海东地区水泥价格平稳，市场需求尚在启动阶段，企业发货在1成左右，目前各企业生产线仍在执行冬季错峰生产，库存30%-60%不等。海西地区水泥企业公布价格上调30元/吨，受原燃材料价格上涨影响，水泥运输成本增加，以及为市场启动后奠定价格基础，企业积极推涨价格；由于气温较低，市场需求暂未启动，预计3月下旬市场逐步恢复。</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-18" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+        <div class="topic-item" style="margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+            <a href="https://wx.zsxq.com/dweb2/index/topic/22811488285152821" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: none;">【20260315煤炭观点周度...</a>
+            <span style="font-size: 12px; color: #6b7280; white-space: nowrap;">2026-03-15 19:36</span>
+          </div>
+          <div id="zsxq-topic-19" class="topic-content topic-content-collapsed">【20260315煤炭观点周度更新】
+
+动力煤：淡季跌幅或有限多重利好支撑关注4-5月行情
+近期国内煤矿复产叠加发运利润改善，而下游电厂日耗受居民用电需求季节性走弱以及新能源出力等影响缺乏亮眼表现，大秦线近期满发状态下综合导致港口持续累库，短期价格承压运行。但四大因素或支撑后市：1）4月大秦线将迎来检修；2）近期海外煤价虽阶段性暂稳但仍高位运行，叠加海运费持续上涨，中国进口印尼煤及澳煤价格持续倒挂，后续采购需求或转向国内，建议密切关注电厂（尤其华南电厂）是否出现前置采购节奏，本周2场华南电厂专家交流详情&amp;纪要欢迎私信；3）油价高位运行，国内煤化工需求预期走强；4）卡塔尔暂停LNG出口，受影响较大的日韩、印度、中国台湾等地区或有煤电替代气电的需求，而以上国家进口煤结构与中国相似，未来中国进口煤或面临争抢。预计国内煤炭市场淡季跌幅也将有限，并有望在4-5月后开启新一轮上涨。
+
+炼焦煤：短期基本面矛盾不大价格或震荡偏强运行
+近期开工率已基本恢复至节前并略高于2025年同期水平，受中东地缘因素影响，近期期货盘面小幅向上波动带动情绪改善，叠加重要会议结束后钢厂复产预期，投机需求与下游刚需补库均有释放，综合造成本周焦煤上下游库存呈现上游去库、下游补库的特征，国内焦煤市场由前期偏弱转为涨跌互现。地缘冲突对于焦煤价格影响相对间接，且当前国内炼焦煤主要进口国已转为蒙古、俄罗斯，当前蒙古进口供应相对稳定，甘其毛都通关量及库存均高位运行，对焦煤价格向上形成一定压制，但鉴于当前焦煤基本面矛盾并不大，价格驱动逻辑或从基本面定价转为资金情绪&amp;基本面双重定价，短期焦煤价格或震荡偏强运行。</div>
+          <button type="button" class="topic-toggle" data-target="zsxq-topic-19" data-expanded="false">展开全文</button>
+          <div style="font-size: 12px; color: #9ca3af;">作者 Unknown</div>
+        </div>
+        
+      </div>
+    </section>
+    
+      
+    <section id="forecast" class="panel compact-panel">
+      <div class="section-head"><h2>业绩预告</h2></div>
+      <div class="empty">暂无业绩预告数据</div>
+    </section>
+    
+      
+    <section id="relation" class="panel compact-panel">
+      <div class="section-head">
+        <h2>机构调研</h2>
+        <span class="meta-badge strong">2条</span>
+      </div>
+      <table class="detail-table relation-table">
+        <thead>
+          <tr><th>日期</th><th>公司</th><th>标题</th><th>操作</th></tr>
+        </thead>
+        <tbody><tr><td>2026-03-15</td><td class='title'>华润三九 <span class='inline-symbol'>000999</span></td><td class='title'>2026年3月8日-3月13日投资者关系活动记录表</td><td><div class='action-group'><a href='http://static.cninfo.com.cn/finalpage/2026-03-15/1225010509.PDF' target='_blank'>原文</a></div></td></tr>
+<tr><td>2026-03-15</td><td class='title'>光力科技 <span class='inline-symbol'>300480</span></td><td class='title'>300480光力科技投资者关系管理信息20260313</td><td><div class='action-group'><a href='http://static.cninfo.com.cn/finalpage/2026-03-15/1225010405.PDF' target='_blank'>原文</a></div></td></tr></tbody>
+      </table>
+    </section>
+    
+      
+    <section id="interaction" class="panel compact-panel">
+      <div class="section-head">
+        <h2>互动问答</h2>
+        <span class="meta-badge strong">3家公司 / 12条</span>
+      </div>
+      <div class="accordion-list">
+        
+        <article class="accordion-block interaction-block" id="interaction-0">
+          <button class="accordion-trigger" type="button" data-target="interaction-0-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">中科创达</span>
+              <span class="meta-badge">300496</span>
+              <span class="meta-badge strong">4问</span>
+              
+            </span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="interaction-0-body">
+            <table class='detail-table qa-table'><thead><tr><th>日期</th><th>问题</th><th>摘要</th><th>链接</th></tr></thead><tbody><tr><td>2026-03-15</td><td class='title'>日前，英伟达（NVDA）发布了一段行驶视频显示，该辆汽车使用了英伟达（NVDA）全栈自动驾驶软件平台DRIVE AV，未出现人工接管情况。请问在DRIVE AV</td><td class='title'>您好。公司与客户的合作信息请以公司披露的信息为准。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>原文</a></td></tr><tr><td>2026-03-15</td><td class='title'>请问每年研发投入多少？</td><td class='title'>您好。公司研发投入情况请您查阅公司定期报告。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>原文</a></td></tr><tr><td>2026-03-15</td><td class='title'>公司会应邀参加今年的英伟达GTC大会吗？公司与英伟达在自驾领域的深度合作推进情况如何，目前取得了哪些新的成果？</td><td class='title'>您好。参会情况您可关注公司微信公众号“中科创达thundersoft”。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>原文</a></td></tr><tr><td>2026-03-15</td><td class='title'>华为中国合作伙伴大会2026即将于3.19启幕，请问公司或者子公司会受邀参会吗？</td><td class='title'>您好。会议情况，请您以主办方官方发布的信息为准。感谢您的关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>原文</a></td></tr></tbody></table>
+          </div>
+        </article>
+        
+        <article class="accordion-block interaction-block" id="interaction-1">
+          <button class="accordion-trigger" type="button" data-target="interaction-1-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">五 粮 液</span>
+              <span class="meta-badge">000858</span>
+              <span class="meta-badge strong">4问</span>
+              
+            </span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="interaction-1-body">
+            <table class='detail-table qa-table'><thead><tr><th>日期</th><th>问题</th><th>摘要</th><th>链接</th></tr></thead><tbody><tr><td>2026-03-15</td><td class='title'>建议五粮液打造官方直销APP＂和美五粮＂，借鉴i茅台成功经验，建设品牌数字化阵地。以＂和美＂文化为核心，融合产品直供、文化互动与会员服务，既能提升消费体验、增强</td><td class='title'>尊敬的投资者，感谢您的建议！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>原文</a></td></tr><tr><td>2026-03-15</td><td class='title'>建议公司立即建立常态化股份回购机制，未来三年每年回购资金不少于20亿元。作为中国白酒高端龙头，股价长期低迷与公司品牌美誉度及资本市场形象不匹配。维护股价就是维护</td><td class='title'>尊敬的投资者，感谢您的建议！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>原文</a></td></tr><tr><td>2026-03-15</td><td class='title'>秘您好！证明一款五粮液系列酒为正品，需要提供哪些连贯完整的证据？是否应当包括： 1. 生产批次记录（窖池使用、酿造时间、灌装时间）； 2. 出厂质检报告； 3.</td><td class='title'>尊敬的投资者，欢迎拨打0831-3567000留下您的联系方式，我们会安排专人解答您的疑问。感谢关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>原文</a></td></tr><tr><td>2026-03-15</td><td class='title'>董秘您好，公司今年在品牌建设和高端化方面，有哪些重点举措？以及为了提高股东回报率，是否会推出股票回购计划，感谢！</td><td class='title'>尊敬的投资者，在品牌建设和高端方面，我们会持续夯实品质根基，讲好品牌故事，深耕高端产品布局，巩固核心竞争力。在股东回报方面，未来公司在生产经营稳步发展的基础上，会考虑持续加大分红力度，回馈广大投资者。感谢关注！ (来自：深交所互动易)</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>原文</a></td></tr></tbody></table>
+          </div>
+        </article>
+        
+        <article class="accordion-block interaction-block" id="interaction-2">
+          <button class="accordion-trigger" type="button" data-target="interaction-2-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">国瓷材料</span>
+              <span class="meta-badge">300285</span>
+              <span class="meta-badge strong">4问</span>
+              
+            </span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="interaction-2-body">
+            <table class='detail-table qa-table'><thead><tr><th>日期</th><th>问题</th><th>摘要</th><th>链接</th></tr></thead><tbody><tr><td>2026-03-15</td><td class='title'>尊敬的董秘您好！在稀土国内外价格倒挂背景下，公司MLCC介质粉、齿科氧化锆、催化材料三大核心业务均高度受益于本土稀土供应优势，综合竞争力显著优于海外厂商。请问公</td><td class='title'>尊敬的投资者，您好。公司依托本土稀土资源供应优势，综合竞争力显著领先海外同行。未来，公司将通过持续的技术创新与产品研发，丰富高端产品矩阵，夯实核心竞争力；同时加大国内外市场开拓力度，精准匹配客户需求，稳步提升各产品线的市场占有率。此外，面对下游需求的持续增长，公司将密切关注市场…</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>原文</a></td></tr><tr><td>2026-03-15</td><td class='title'>董秘你好！请问贵公司和比亚迪在电池邻域有合作吗？</td><td class='title'>尊敬的投资者，您好。公司新能源材料板块已形成氧化铝、勃姆石、锂电池正极添加剂、氧化锆微珠等核心产品矩阵，广泛应用于锂电池隔膜涂覆、正极材料改性及正负极研磨等关键工艺环节。凭借优异的产品性能与稳定的供应能力，公司已成为新能源行业头部企业的合格供应商，客户结构持续优化。谢谢关注。…</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>原文</a></td></tr><tr><td>2026-03-15</td><td class='title'>董秘您好！当前海外牙科氧化锆粉体供应链因稀土/氧化钇供应问题出现波动，贵司凭借粉体—瓷块一体化全产业链布局，在牙科氧化锆领域具备显著优势。请问： 1.公司是否会</td><td class='title'>尊敬的投资者，您好。公司依托“粉体—瓷块”一体化全产业链布局，在牙科氧化锆领域构建了显著的竞争优势；同时，公司电子级氧化锆粉体也广泛应用于高端手机背板、智能手表外壳等消费电子领域。面对稀土管制带来的行业变局，公司将密切跟踪政策走向与国内外行业动态，灵活调整经营策略，积极把握相关…</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>原文</a></td></tr><tr><td>2026-03-15</td><td class='title'>请问贵公司和华为有在哪些领域有合作或者相关业务吗，和我们国内哪些领域的上市公司有相关业务往来，合作情况怎么样，稳不稳定！！谢谢！！</td><td class='title'>尊敬的投资者，您好。公司构建了“电子材料、催化材料、生物医疗材料、新能源材料、精密陶瓷、数码打印及其他材料”六大业务板块，产品广泛应用于电子信息与通讯、汽车及工业催化、生物医疗、新能源汽车、半导体、建筑陶瓷等领域。在各细分领域，公司均与行业头部客户建立了长期稳定的合作关系，形成…</td><td><a href='https://ir.p5w.net/interaction/' target='_blank'>原文</a></td></tr></tbody></table>
+          </div>
+        </article>
+        
+      </div>
+    </section>
+    
+      
+    <section id="notice" class="panel compact-panel">
+      <div class="section-head">
+        <h2>公告解读</h2>
+        <span class="meta-badge strong">19条</span>
+      </div>
+      <div class="accordion-list">
+        
+        <article class="accordion-block notice-block" id="notice-0">
+          <button class="accordion-trigger" type="button" data-target="notice-0-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">重大合作/投资项目</span>
+              <span class="meta-badge strong">3条</span>
+            </span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="notice-0-body">
+            <div class="company-list">
+              
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">浙富控股</span>
+                <span class="meta-badge">002266</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">工程中标公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-16/1225010421.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">特锐德</span>
+                <span class="meta-badge">300001</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于中标青海油田风电项目的提示性公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-16/1225010448.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">贝仕达克</span>
+                <span class="meta-badge">300822</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于终止募集资金投资项目并将剩余募集资金永久补充流动资金的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-16/1225009864.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            </div>
+            
+          </div>
+        </article>
+        
+        <article class="accordion-block notice-block" id="notice-1">
+          <button class="accordion-trigger" type="button" data-target="notice-1-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">减持</span>
+              <span class="meta-badge strong">1条</span>
+            </span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="notice-1-body">
+            <div class="company-list">
+              
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">聚辰股份</span>
+                <span class="meta-badge">688123</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">聚辰股份股东减持股份计划公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-16/1225010505.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            </div>
+            
+          </div>
+        </article>
+        
+        <article class="accordion-block notice-block regulatory-warning" id="notice-2">
+          <button class="accordion-trigger" type="button" data-target="notice-2-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">监管函</span>
+              <span class="meta-badge strong">1条</span>
+            </span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="notice-2-body">
+            <div class="company-list">
+              
+            <div class="notice-company-row regulatory">
+              <div class="notice-company-main">
+                <span class="accordion-title">广汽集团</span>
+                <span class="meta-badge">601238</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">广汽集团关于上海证券交易所对公司业绩预告相关事项监管工作函的回复公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-16/1225010465.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            </div>
+            
+          </div>
+        </article>
+        
+        <article class="accordion-block notice-block" id="notice-3">
+          <button class="accordion-trigger" type="button" data-target="notice-3-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">资本运作-特定对象发行</span>
+              <span class="meta-badge strong">10条</span>
+            </span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="notice-3-body">
+            <div class="company-list">
+              
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">博士眼镜</span>
+                <span class="meta-badge">300622</span>
+                <span class="meta-badge strong">5条</span>
+              </div>
+              <div class="notice-company-text">博士眼镜连锁股份有限公司向不特定对象发行可转换公司债券网上路演公告；博士眼镜连锁股份有限公司向不特定对象发行可转换公司债券发行公告；博士眼镜连锁股份有限公司向不特定对象发行可转换公司债券募集说明书摘要</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-16/1225009258.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">上声电子</span>
+                <span class="meta-badge">688533</span>
+                <span class="meta-badge strong">4条</span>
+              </div>
+              <div class="notice-company-text">苏州上声电子股份有限公司向不特定对象发行可转换公司债券发行公告；苏州上声电子股份有限公司向不特定对象发行可转换公司债券募集说明书摘要；苏州上声电子股份有限公司向不特定对象发行可转换公司债券募集说明书</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-16/1225010500.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">鹏翎股份</span>
+                <span class="meta-badge">300375</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于向特定对象发行股票解除限售并上市流通的提示性公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-16/1225009081.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            </div>
+            
+          </div>
+        </article>
+        
+        <article class="accordion-block notice-block regulatory-warning" id="notice-4">
+          <button class="accordion-trigger" type="button" data-target="notice-4-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">对问询回复</span>
+              <span class="meta-badge strong">3条</span>
+            </span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="notice-4-body">
+            <div class="company-list">
+              
+            <div class="notice-company-row regulatory">
+              <div class="notice-company-main">
+                <span class="accordion-title">概伦电子</span>
+                <span class="meta-badge">688206</span>
+                <span class="meta-badge strong">3条</span>
+              </div>
+              <div class="notice-company-text">金证（上海）资产评估有限公司关于上海证券交易所《关于上海概伦电子股份有限公司发行股份及支付现金购买资产并募集配…；关于发行股份及支付现金购买资产并募集配套资金暨关联交易申请的审核问询函回复的提示性公告；关于上海概伦电子股份有限公司发行股份及支付现金购买资产并募集配套资金暨关联交易申请的审核问询函的回复</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-16/1225010494.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            </div>
+            
+          </div>
+        </article>
+        
+        <article class="accordion-block notice-block" id="notice-5">
+          <button class="accordion-trigger" type="button" data-target="notice-5-body" aria-expanded="false">
+            <span class="accordion-main">
+              <span class="accordion-title">资本运作-股权激励</span>
+              <span class="meta-badge strong">1条</span>
+            </span>
+            <span class="accordion-icon" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="accordion-body collapsed" id="notice-5-body">
+            <div class="company-list">
+              
+            <div class="notice-company-row">
+              <div class="notice-company-main">
+                <span class="accordion-title">皖天然气</span>
+                <span class="meta-badge">603689</span>
+                <span class="meta-badge strong">1条</span>
+              </div>
+              <div class="notice-company-text">关于2022年限制性股票激励计划第二个解除限售期解除限售暨上市的公告</div>
+              <div class="notice-company-link"><a href='http://static.cninfo.com.cn/finalpage/2026-03-16/1225010493.PDF' target='_blank'>原文</a></div>
+            </div>
+            
+            </div>
+            
+          </div>
+        </article>
+        
+      </div>
+    </section>
+    
+    </section>
+  </main>
+
+  <script>
+    function setAccordionState(trigger, expanded) {
+      const targetId = trigger.getAttribute('data-target');
+      const body = document.getElementById(targetId);
+      const icon = trigger.querySelector('.accordion-icon');
+      if (!body) return;
+      trigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      body.classList.toggle('collapsed', !expanded);
+      body.classList.toggle('open', expanded);
+      if (icon) icon.classList.toggle('is-open', expanded);
+    }
+
+    function bindAccordions() {
+      document.querySelectorAll('.accordion-trigger').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          const expanded = trigger.getAttribute('aria-expanded') === 'true';
+          setAccordionState(trigger, !expanded);
+        });
+      });
+    }
+
+    function bindTopicToggles() {
+      document.querySelectorAll('.topic-toggle').forEach((btn) => {
+        const targetId = btn.getAttribute('data-target');
+        const content = document.getElementById(targetId);
+        if (content && content.scrollHeight <= content.clientHeight + 1) {
+          btn.style.display = 'none';
+          return;
+        }
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-target');
+          const content = document.getElementById(targetId);
+          if (!content) return;
+          const expanded = btn.getAttribute('data-expanded') === 'true';
+          content.classList.toggle('topic-content-collapsed', expanded);
+          btn.setAttribute('data-expanded', expanded ? 'false' : 'true');
+          btn.textContent = expanded ? '展开全文' : '收起';
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      bindAccordions();
+      bindTopicToggles();
+      document.querySelectorAll('.accordion-trigger').forEach((trigger) => {
+        setAccordionState(trigger, trigger.getAttribute('aria-expanded') === 'true');
+      });
+    });
+
+  </script>
+</body>
+</html>
